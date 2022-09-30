@@ -7,16 +7,17 @@ public class Projectile : MonoBehaviour
     private float _speed = 3f;
     private IProjectileMovement _movement;
     private bool _isInitialized = false;
-    //private IProjectileDamager _damager;
+    private IProjectileDamager _damager;
 
     private void Awake()
     {
         _transform = this.transform;
     }
 
-    public void Initialize(IProjectileMovement movement, float speed, Transform targetTransform)
+    public void Initialize(IProjectileMovement movement, IProjectileDamager damager, float speed, Transform targetTransform)
     {
         _movement = movement;
+        _damager = damager;
         _speed = speed;
         _targetTransform = targetTransform;
 
@@ -49,8 +50,7 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
             IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
-            damageableEnemy.ReceiveDamage(50);
-            Debug.Log("Choco");
+            _damager.ApplyDamage(50, damageableEnemy);
         }
     }
 }

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 17
+  controlID: 67
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 110
+  controlID: 65
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 115
+  controlID: 66
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,8 +242,8 @@ MonoBehaviour:
     y: 630
     width: 1177
     height: 317
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 84
+  controlID: 121
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -411,7 +411,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 0
+    m_HSlider: 1
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -425,18 +425,18 @@ MonoBehaviour:
       y: 21
       width: 390
       height: 588
-    m_Scale: {x: 0.203125, y: 0.203125}
-    m_Translation: {x: 195, y: 294}
+    m_Scale: {x: 0.20921873, y: 0.20921873}
+    m_Translation: {x: 198.18, y: 294}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -960
-      y: -1447.3846
-      width: 1920
-      height: 2894.7693
+      x: -947.23834
+      y: -1405.2279
+      width: 1864.0779
+      height: 2810.4558
     m_MinimalGUI: 1
   m_defaultScale: 0.203125
   m_LastWindowPixelSize: {x: 390, y: 609}
@@ -724,9 +724,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.14855097, y: 0.84021956, z: -0.28638873, w: -0.43582684}
   m_Size:
-    m_Target: 12.729814
+    m_Target: 6.3807635
     speed: 2
-    m_Value: 12.729814
+    m_Value: 6.3807635
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -812,8 +812,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e253ffff
-      m_LastClickedID: 0
+      m_SelectedIDs: eafaffff
+      m_LastClickedID: -1302
       m_ExpandedIDs: 36fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -880,21 +880,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Code/Projectiles/SO/Movement
+    - Assets/Code/Projectiles/SO
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\Developer\GithubRepositories\Juego-RRSS
+  m_LastProjectPath: D:\Developer\GithubRepositories\The-Wise-Defense
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a66d0000
     m_LastClickedID: 28070
-    m_ExpandedIDs: 000000003a5300003c5300003e53000040530000425300004453000046530000
+    m_ExpandedIDs: 000000004e53000050530000525300005453000056530000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -922,7 +922,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000003a5300003c5300003e530000405300004453000046530000f655000002560000
+    m_ExpandedIDs: ffffffff000000004e530000505300005253000054530000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
