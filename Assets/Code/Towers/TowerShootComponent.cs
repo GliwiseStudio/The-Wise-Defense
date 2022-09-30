@@ -4,18 +4,18 @@ using UnityEngine;
 public class TowerShootComponent
 {
     private readonly ProjectileSpawner _projectileSpawner;
-    private readonly string _projectileType;
+    private readonly ProjectileConfigurationSO _projectileConfiguration;
     private readonly float _fireRate;
     private bool _canShoot = true;
     private float _lastShotTime = 0f;
 
     public event Action OnShotPerformed;
 
-    public TowerShootComponent(ProjectileSpawner projectileSpawner, string projectileType, float fireRate)
+    public TowerShootComponent(ProjectileSpawner projectileSpawner, float fireRate, ProjectileConfigurationSO projectileConfiguration)
     {
         _projectileSpawner = projectileSpawner;
-        _projectileType = projectileType;
         _fireRate = fireRate;
+        _projectileConfiguration = projectileConfiguration;
     }
 
     public void Update()
@@ -34,7 +34,7 @@ public class TowerShootComponent
         }
     }
 
-    public void Shoot(Vector3 shotPosition, Vector3 shotDirection)
+    public void Shoot(Vector3 shotPosition, Vector3 shotDirection, Transform targetTransform)
     {
         if(!_canShoot)
         {
@@ -43,8 +43,8 @@ public class TowerShootComponent
 
         _canShoot = false;
         _lastShotTime = Time.time;
-        Debug.Log(shotDirection);
-        _projectileSpawner.Spawn(shotPosition, shotDirection, _projectileType);
+
+        _projectileSpawner.Spawn(shotPosition, shotDirection, 10f, _projectileConfiguration, targetTransform);
         OnShotPerformed?.Invoke();
     }
 

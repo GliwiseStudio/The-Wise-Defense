@@ -3,10 +3,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class TowerController : MonoBehaviour
 {
-    [SerializeField] private float _detectionRange = 5f;
-    [SerializeField] private string _enemiesLayerMask = "Enemies";
-    [SerializeField] private string _projectileType = "Arrow";
-    [SerializeField] private float _fireRate = 0.8f;
+    [SerializeField] private TowerConfigurationSO _configuration;
     [SerializeField] private Transform _firingPointTransform;
 
     private TowerHeadRotator _headRotator;
@@ -17,8 +14,8 @@ public class TowerController : MonoBehaviour
     private void Awake()
     {
         _headRotator = new TowerHeadRotator(transform);
-        _enemyDetector = new TargetDetector(transform, _detectionRange, _enemiesLayerMask);
-        _shootComponent = new TowerShootComponent(FindObjectOfType<ProjectileSpawner>(), _projectileType, _fireRate);
+        _enemyDetector = new TargetDetector(transform, _configuration.DetectionRange, _configuration.TargetLayerMask);
+        _shootComponent = new TowerShootComponent(FindObjectOfType<ProjectileSpawner>(), _configuration.FireRate, _configuration.ProjectileConfigurationSO);
     }
 
     private void Update()
@@ -30,7 +27,7 @@ public class TowerController : MonoBehaviour
             if (_enemyDetector.IsTargetInRange(_targetTransform.position))
             {
                 _headRotator.Update(_targetTransform);
-                _shootComponent.Shoot(_firingPointTransform.position, transform.forward);
+                _shootComponent.Shoot(_firingPointTransform.position, transform.forward, _targetTransform);
             }
             else
             {

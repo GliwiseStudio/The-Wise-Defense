@@ -3,25 +3,39 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Transform _transform;
-    private float _speed = 15f;
+    private Transform _targetTransform;
+    private float _speed = 3f;
     private IProjectileMovement _movement;
+    private bool _isInitialized = false;
     //private IProjectileDamager _damager;
 
     private void Awake()
     {
         _transform = this.transform;
-        _movement = new ProjectileStraightMovement();
+    }
+
+    public void Initialize(IProjectileMovement movement, float speed, Transform targetTransform)
+    {
+        _movement = movement;
+        _speed = speed;
+        _targetTransform = targetTransform;
+
+        _isInitialized = true;
     }
 
     private void Update()
     {
+        if(!_isInitialized)
+        {
+            return;
+        }
+
         UpdateMovement();
     }
 
     private void UpdateMovement()
     {
-        ProjectileMovementConfiguration movementConfiguration = new ProjectileMovementConfiguration(_transform.position, _transform.forward, _speed);
-        Vector3 newPosition = _movement.UpdateMovement(movementConfiguration);
+        Vector3 newPosition = _movement.UpdateMovement(_transform, _targetTransform, _speed);
         ApplyMovement(newPosition);
     }
 
@@ -30,9 +44,13 @@ public class Projectile : MonoBehaviour
         _transform.position = newPosition;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        EnemyInterface damageableEnemy = collision.gameObject.GetComponent<EnemyInterface>();
-        //_damager.ApplyDamage(5);
+        if(other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+        {
+            IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
+            damageableEnemy.ReceiveDamage(50);
+            Debug.Log("Choco");
+        }
     }
 }

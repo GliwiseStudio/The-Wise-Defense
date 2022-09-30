@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class ProjectileStraightMovement : IProjectileMovement
 {
-    public Vector3 UpdateMovement(ProjectileMovementConfiguration movementConfiguration)
+    private Vector3 _lastTargetPosition = Vector3.zero;
+
+    public Vector3 UpdateMovement(Transform projectileTransform, Transform targetTransform, float speed)
     {
-        return movementConfiguration.currentPosition + (movementConfiguration.currentNormalizedDirection * movementConfiguration.speed * Time.deltaTime);
+        if(targetTransform != null)
+        {
+            _lastTargetPosition = targetTransform.position;
+        }
+
+        return Vector3.Lerp(projectileTransform.position, _lastTargetPosition, speed * Time.deltaTime);
     }
 }

@@ -97,10 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f773693b24c6f9449be76cbf7fc47088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectionRange: 5
-  _enemiesLayerMask: Enemies
-  _projectileType: Arrow
-  _fireRate: 0.8
+  _configuration: {fileID: 11400000, guid: 5c5869f9024d4fd44a00b5d5b700ac09, type: 2}
   _firingPointTransform: {fileID: 3394819569507720146}
 --- !u!1 &3394819567875399389
 GameObject:

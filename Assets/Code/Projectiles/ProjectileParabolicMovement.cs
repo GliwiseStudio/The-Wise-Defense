@@ -5,23 +5,26 @@ public class ProjectileParabolicMovement : IProjectileMovement
     private readonly AnimationCurve _trajectoryAnimationCurve;
     private bool _hasMovementStarted = false;
     private float _duration = 1f;
-    private float _height = 2f;
     private float _currentTime = 0f;
-    Vector3 _startPosition;
-    Vector3 _endPosition;
+    private Vector3 _endPosition = Vector3.zero;
 
     public ProjectileParabolicMovement(AnimationCurve trajectoryAnimationCurve)
     {
         _trajectoryAnimationCurve = trajectoryAnimationCurve;
     }
 
-    public Vector3 UpdateMovement(ProjectileMovementConfiguration movementConfiguration)
+    public Vector3 UpdateMovement(Transform projectileTransform, Transform targetTransform, float speed)
     {
         if(!_hasMovementStarted)
         {
             _hasMovementStarted = true;
-            _duration = movementConfiguration.speed;
-            _startPosition = movementConfiguration.currentPosition;
+            _duration = speed;
+        }
+
+        
+        if(targetTransform != null)
+        {
+            _endPosition = targetTransform.position;
         }
 
         _currentTime += Time.deltaTime;
@@ -30,6 +33,8 @@ public class ProjectileParabolicMovement : IProjectileMovement
         {
             float normalizedTime = _currentTime / _duration;
             float currentHeight = _trajectoryAnimationCurve.Evaluate(normalizedTime);
+            Debug.Log(currentHeight);
+            return Vector3.MoveTowards(projectileTransform.position, _endPosition, normalizedTime) + (Vector3.up * 0.05f);
         }
 
         return Vector3.zero;

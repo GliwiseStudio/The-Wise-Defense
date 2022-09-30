@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface EnemyInterface
+public interface IDamage
 {
     public void ReceiveDamage(int damage);
 }

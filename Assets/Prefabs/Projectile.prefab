@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7111185824318117408}
   - component: {fileID: 1757745736621807558}
   - component: {fileID: 6814174017433073038}
+  - component: {fileID: 3878746993825051218}
+  - component: {fileID: -1777615074115471797}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -96,3 +98,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b0ac7d79607ba47a05e5795b61046e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 5.645906
+      outSlope: 5.645906
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.058570884
+    - serializedVersion: 3
+      time: 0.5000038
+      value: 1.9983474
+      inSlope: -0.000015258789
+      outSlope: -0.000015258789
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -4.190187
+      outSlope: -4.190187
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08179298
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!135 &3878746993825051218
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953694685834103283}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.49999997
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-1777615074115471797
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953694685834103283}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
