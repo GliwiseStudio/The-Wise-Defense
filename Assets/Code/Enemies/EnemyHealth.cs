@@ -32,6 +32,7 @@ public class EnemyHealth
 
         if (_currentHealth <= 0)
         {
+            _slider.value = 0;
             _isEnemyDead = true;
             return;
         }

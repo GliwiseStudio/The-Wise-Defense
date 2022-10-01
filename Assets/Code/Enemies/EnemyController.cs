@@ -13,8 +13,13 @@ public class EnemyController : MonoBehaviour, IDamage
     private Camera _sceneCamera;
     private Transform _targetTransform;
     private GameObject _targetGameObject;
+
     private bool _canDamage = true;
     private float _lastDamagedTime;
+
+    private Material _mat;
+    private bool _firstDeathCall = true;
+    private float _timeOfDeath;
 
     private EnemyHealth _enemyHealth;
     private EnemyMovement _enemyMovement;
@@ -23,13 +28,15 @@ public class EnemyController : MonoBehaviour, IDamage
     private void Start()
     {
         _sceneCamera = FindObjectOfType<Camera>();
-        _slider = _slider = GetComponentInChildren<Slider>();
+        _slider = GetComponentInChildren<Slider>();
 
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
 
         _enemyMovement = new EnemyMovement(transform, _speed);
 
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
+
+        _mat = GetComponent<Renderer>().material;
     }
 
     private void Update()
@@ -49,11 +56,8 @@ public class EnemyController : MonoBehaviour, IDamage
                         _canDamage = false;
                         _lastDamagedTime = Time.time;
 
-                        Debug.Log("shooting");
-
                         IDamage obstacleInterface = _targetGameObject.GetComponent<IDamage>();
                         obstacleInterface.ReceiveDamage(_damagePerSecond);
-
                     }
                 }
                 else
@@ -72,7 +76,13 @@ public class EnemyController : MonoBehaviour, IDamage
         }
         else
         {
-            Destroy(gameObject);
+            if(_firstDeathCall == true)
+            {
+                _timeOfDeath = Time.time;
+                _firstDeathCall = false;
+            }
+
+            Dissolve();
         }
     }
 
@@ -90,5 +100,19 @@ public class EnemyController : MonoBehaviour, IDamage
                 _canDamage = true;
             }
         }
+    }
+
+    private void Dissolve()
+    {
+        if(Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
+        {
+            float i = 1 - (Time.time - _timeOfDeath);
+            _mat.SetFloat("_Progress", i);
+        }
+        else // when a second has passed, destroy the gameObject
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }
