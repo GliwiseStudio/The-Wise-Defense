@@ -17,8 +17,7 @@ public class WaveSpawner : MonoBehaviour
     private void Awake()
     {
         _currentWave = waves[0];
-        //_timeBetweenWaves = _currentWave.TimeBeforeThisWave;
-        _timeBetweenWaves = 1f; // temporarily for testing
+        _timeBetweenWaves = _currentWave.TimeBeforeThisWave;
     }
 
     private void Update()
@@ -28,12 +27,12 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        if (Time.time >= _timeBetweenWaves)
+        if (Time.time >= _timeBetweenWaves) // temporarily for testing, later each wave will occur after the player has managed their cards
         {
             StartCoroutine(SpawnWave());
             IncWave();
 
-            _timeBetweenWaves = Time.time + _currentWave.TimeBeforeThisWave;
+            _timeBetweenWaves = Time.time + _currentWave.TimeBeforeThisWave; // i'm not sure this will be necessary later (?)
         }
     }
 
@@ -52,12 +51,15 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        int numberOfEnemies = _currentWave.EnemiesInWave.Length;
-        for (int i = 0; i < numberOfEnemies; i++)
-        {
-            Instantiate(_currentWave.EnemiesInWave[i], spawnPoint.position, spawnPoint.rotation);
+        EnemyWave currentWave = _currentWave;
 
-            yield return new WaitForSeconds(0.5f); // time to wait between enemies spawning
+        for (int i = 0; i < currentWave.EnemyTypesInWave.Length; i++)
+        {
+            for (int j = 0; j < currentWave.NumberOfEnemiesPerType[i]; j++)
+            {
+                Instantiate(_currentWave.EnemyTypesInWave[i], spawnPoint.position, spawnPoint.rotation);
+                yield return new WaitForSeconds(0.5f); // time to wait between enemies spawning
+            }
         }
     }
 }
