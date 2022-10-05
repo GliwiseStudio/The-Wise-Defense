@@ -5,6 +5,7 @@ using UnityEngine;
 public class placement : MonoBehaviour
 {
     public bool selected;
+    public bool botonPulsado; //hasta que no pulsas el boton en spawnPower no te permite spawnear la carta
     public GameObject Turret;
     public GameObject Cube;
     public int TurretCost;
@@ -12,13 +13,14 @@ public class placement : MonoBehaviour
 
     public Material Gray;
     public Material StartingMaterial;
-    public Renderer rend;
-    public Renderer rendOnMouseEnter;
-
+    private Renderer rend;
+    private Renderer rendOnMouseEnter;
+ 
     // Start is called before the first frame update
     void Start()
     {
         Placeable = true;
+        botonPulsado = false;
         rend = GetComponent<Renderer>();
         StartingMaterial = rend.material;
     }
@@ -26,7 +28,7 @@ public class placement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(selected == true && Input.GetKeyDown("t") && Placeable == true)
+        if(selected == true && Input.GetKeyDown("t") && Placeable == true && botonPulsado == true)
         {
             //Debug.Log("Posicion es : x " + Cube.transform.position.x + " y : " + Cube.transform.position.y + " z: " + Cube.transform.position.z);
             Instantiate(Turret, new Vector3(Cube.transform.position.x, Cube.transform.position.y + 0.5f, Cube.transform.position.z), Quaternion.identity);
@@ -49,6 +51,9 @@ public class placement : MonoBehaviour
     public void OnMouseEnter()
     {
         rendOnMouseEnter = GetComponent<Renderer>();
-        rendOnMouseEnter.material = Gray;
+        if (botonPulsado == true)
+        {
+            rendOnMouseEnter.material = Gray;
+        }
     }
 }

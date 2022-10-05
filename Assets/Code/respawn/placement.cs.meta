@@ -3,7 +3,14 @@ guid: af7ff2fe29252764c8c8fda86e8ffaa4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Turret: {fileID: 3937351206723500830, guid: b97940a48a1f6c94aa9dd64fbb362177,
+      type: 3}
+  - Cube: {fileID: 1464226115189281116, guid: eea49f3bb9d78784e871e1f341f31c54, type: 3}
+  - Gray: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+  - StartingMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - rend: {instanceID: 0}
+  - rendOnMouseEnter: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
