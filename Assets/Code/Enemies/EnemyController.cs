@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour, IDamage
+public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 {
+    #region Variables
+
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _maxHealth = 500;
     [SerializeField] private float _detectionRange = 2f;
@@ -24,6 +26,8 @@ public class EnemyController : MonoBehaviour, IDamage
     private EnemyHealth _enemyHealth;
     private EnemyMovement _enemyMovement;
     private TargetDetector _obstacleDetector;
+
+    #endregion
 
     private void Start()
     {
@@ -86,11 +90,6 @@ public class EnemyController : MonoBehaviour, IDamage
         }
     }
 
-    public void ReceiveDamage(int damageAmount)
-    {
-        _enemyHealth.ReceiveDamage(damageAmount);
-    }
-
     private void DamageControlUpdate()
     {
         if (!_canDamage)
@@ -115,4 +114,24 @@ public class EnemyController : MonoBehaviour, IDamage
         }
         
     }
+
+    #region Interface methods
+    public void ReceiveDamage(int damageAmount)
+    {
+        _enemyHealth.ReceiveDamage(damageAmount);
+    }
+
+    public void ReceiveSlowdown(float slowdown)
+    {
+        _speed -= slowdown;
+        _enemyMovement.UpdateSpeed(_speed);
+    }
+
+    public void ReleaseSlowdown(float slowdown)
+    {
+        _speed += slowdown;
+        _enemyMovement.UpdateSpeed(_speed);
+    }
+
+    #endregion
 }

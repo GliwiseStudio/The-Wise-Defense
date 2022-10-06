@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Obstacle: MonoBehaviour, IDamage
+public class DamageableObstacle: MonoBehaviour, IDamage
 {
     [SerializeField] private float _maxHealth = 500;
     private Slider _slider;
