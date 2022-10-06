@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Assertions;
+using System.Collections.Generic;
 
 public class TargetDetector
 {
-    private readonly Transform _transform;
+    private Transform _transform;
     private readonly float _detectionRadius;
     private readonly string _targetLayerMaskName;
 
@@ -11,6 +13,17 @@ public class TargetDetector
         _transform = towerTransform;
         _detectionRadius = detectionRadius;
         _targetLayerMaskName = targetLayerMaskString;
+    }
+
+    public TargetDetector(float detectionRadius, string targetLayerMaskString)
+    {
+        _detectionRadius = detectionRadius;
+        _targetLayerMaskName = targetLayerMaskString;
+    }
+
+    public void SetTransform(Transform transform)
+    {
+        _transform = transform;
     }
 
     public Transform DetectTarget()
@@ -73,5 +86,19 @@ public class TargetDetector
         }
 
         return true;
+    }
+
+    public IReadOnlyList<Transform> GetAllTargetsInRange()
+    {
+        Collider[] targets = Physics.OverlapSphere(_transform.position, _detectionRadius, LayerMask.GetMask(_targetLayerMaskName));
+
+        List<Transform> targetTransforms = new List<Transform>();
+
+        for (int i = 0; i < targets.Length; i++)
+        {
+            targetTransforms.Add(targets[i].transform);
+        }
+
+        return targetTransforms;
     }
 }
