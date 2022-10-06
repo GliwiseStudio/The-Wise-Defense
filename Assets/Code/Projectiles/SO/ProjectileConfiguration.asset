@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ProjectileConfiguration
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5953694685834103283, guid: fd2f85a249a5a1145885691dc5b99137, type: 3}
-  _movementType: {fileID: 11400000, guid: 282668766242fc44e83bd04b1b7ffdc7, type: 2}
+  _movementType: {fileID: 11400000, guid: 5ca6456016ae2724ca5102cd0d132df5, type: 2}
   _damageType: {fileID: 11400000, guid: 0e10c5644f650c0428ba1d2dbaa21481, type: 2}

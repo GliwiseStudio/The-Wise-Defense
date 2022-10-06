@@ -50,7 +50,7 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
             IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
-            _damager.ApplyDamage(50, damageableEnemy);
+            _damager.ApplyDamage(50, damageableEnemy, other.transform);
         }
     }
 }
