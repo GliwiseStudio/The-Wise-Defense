@@ -33,7 +33,6 @@ public class ProjectileParabolicMovement : IProjectileMovement
         {
             float normalizedTime = _currentTime / _duration;
             float currentHeight = _trajectoryAnimationCurve.Evaluate(normalizedTime);
-            Debug.Log(currentHeight);
             return Vector3.MoveTowards(projectileTransform.position, _endPosition, normalizedTime) + (Vector3.up * 0.05f);
         }
 
