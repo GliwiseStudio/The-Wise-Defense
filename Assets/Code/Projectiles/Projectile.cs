@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour
     private Transform _transform;
     private Transform _targetTransform;
     private float _speed = 3f;
+    private int _damage = 10;
     private IProjectileMovement _movement;
     private bool _isInitialized = false;
     private IProjectileDamager _damager;
@@ -14,12 +15,13 @@ public class Projectile : MonoBehaviour
         _transform = this.transform;
     }
 
-    public void Initialize(IProjectileMovement movement, IProjectileDamager damager, float speed, Transform targetTransform)
+    public void Initialize(IProjectileMovement movement, IProjectileDamager damager, float speed, Transform targetTransform, int damage)
     {
         _movement = movement;
         _damager = damager;
         _speed = speed;
         _targetTransform = targetTransform;
+        _damage = damage;
 
         _isInitialized = true;
     }
@@ -50,7 +52,7 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
             IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
-            _damager.ApplyDamage(50, damageableEnemy, other.transform);
+            _damager.ApplyDamage(_damage, damageableEnemy, other.transform);
         }
     }
 }
