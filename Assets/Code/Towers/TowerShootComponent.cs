@@ -34,7 +34,7 @@ public class TowerShootComponent
         }
     }
 
-    public void Shoot(Vector3 shotPosition, Vector3 shotDirection, Transform targetTransform)
+    public void Shoot(Vector3 shotPosition, Vector3 shotDirection, Transform targetTransform, int damage)
     {
         if(!_canShoot)
         {
@@ -44,7 +44,7 @@ public class TowerShootComponent
         _canShoot = false;
         _lastShotTime = Time.time;
 
-        _projectileSpawner.Spawn(shotPosition, shotDirection, 10f, _projectileConfiguration, targetTransform);
+        _projectileSpawner.Spawn(shotPosition, shotDirection, 10f, _projectileConfiguration, targetTransform, damage);
         OnShotPerformed?.Invoke();
     }
 

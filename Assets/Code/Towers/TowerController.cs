@@ -44,7 +44,7 @@ public class TowerController : MonoBehaviour
 
     private void PlayShootSound()
     {
-        _audioPlayer.PlayAudio("CannonShot");
+        _audioPlayer.PlayAudio(_configuration.AudioConfiguration.ShotSound);
     }
 
     private void Update()
@@ -56,7 +56,7 @@ public class TowerController : MonoBehaviour
             if (_enemyDetector.IsTargetInRange(_targetTransform.position))
             {
                 _headRotator.Update(_targetTransform);
-                _shootComponent.Shoot(_firingPointTransform.position, transform.forward, _targetTransform);
+                _shootComponent.Shoot(_firingPointTransform.position, transform.forward, _targetTransform, _configuration.Damage);
             }
             else
             {

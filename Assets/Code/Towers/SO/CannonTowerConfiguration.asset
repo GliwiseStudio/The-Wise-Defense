@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee91a19e59907644999db73fab5baa5, type: 3}
-  m_Name: TowerNameConfiguration
+  m_Name: CannonTowerConfiguration
   m_EditorClassIdentifier: 
   _detectionRange: 5
   _targetLayerMask: Enemies
-  _fireRate: 0.8
+  _fireRate: 1.1
+  _damage: 10
   _audioConfiguration:
     _shotSound: CannonShot
-  _projectileConfiguration: {fileID: 11400000, guid: 6d4b6f0507dc8e941a253dee19a17887,
+  _projectileConfiguration: {fileID: 11400000, guid: a6d524c09e554a04ca2b0281acd9d500,
     type: 2}

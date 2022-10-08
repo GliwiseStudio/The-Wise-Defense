@@ -6,11 +6,16 @@ public class TowerConfigurationSO : ScriptableObject
     [SerializeField] private float _detectionRange = 5f;
     [SerializeField] private string _targetLayerMask = "Enemies";
     [SerializeField] private float _fireRate = 0.8f;
+    [SerializeField] private int _damage = 10;
+
+    [SerializeField] private TowerAudioConfiguration _audioConfiguration;
 
     [SerializeField] private ProjectileConfigurationSO _projectileConfiguration;
 
     public float DetectionRange => _detectionRange;
     public string TargetLayerMask => _targetLayerMask;
     public float FireRate => _fireRate;
+    public int Damage => _damage;
+    public TowerAudioConfiguration AudioConfiguration => _audioConfiguration;
     public ProjectileConfigurationSO ProjectileConfigurationSO => _projectileConfiguration;
 }
