@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICardPower
 {
-    public void Activate();
+    public void Activate(Transform transform);
 }
