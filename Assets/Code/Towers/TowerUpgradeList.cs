@@ -7,7 +7,10 @@ public class TowerUpgradeList
 {
     [SerializeField] private List<TowerUpgrade> _upgrades;
 
-    public TowerUpgradeList() { }
+    public TowerUpgradeList()
+    {
+        _upgrades = new List<TowerUpgrade>();
+    }
 
     public TowerUpgrade GetUpgrade(int currentUpgrade)
     {

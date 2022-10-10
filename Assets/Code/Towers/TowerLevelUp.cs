@@ -1,10 +1,12 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerLevelUp
 {
-    private int _currentLevel = 1;
+    public event Action<TowerUpgrade> OnLevelUp;
+
+    private int _currentLevel = 0;
     private readonly TowerUpgradeList _upgradeList;
 
     public TowerLevelUp(TowerUpgradeList upgradeList)
@@ -12,15 +14,14 @@ public class TowerLevelUp
         _upgradeList = upgradeList;
     }
 
-    public void Upgrade()
+    public void Start()
     {
-        _currentLevel++;
 
-        ApplyUpgrade(_upgradeList.GetUpgrade(_currentLevel));
     }
 
-    private void ApplyUpgrade(TowerUpgrade newUpgrade)
+    public void LevelUp()
     {
-
+        _currentLevel++;
+        OnLevelUp?.Invoke(_upgradeList.GetUpgrade(_currentLevel));
     }
 }
