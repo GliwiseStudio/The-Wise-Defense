@@ -57,6 +57,7 @@ public class EnemyMovement
     void CalculateDirection()
     {
         _dir = (_target.position - _enemyTransform.position).normalized; // calculate direction of movement
+
         _enemyTransform.LookAt(_target); // look in the direction of the target
     }
 
