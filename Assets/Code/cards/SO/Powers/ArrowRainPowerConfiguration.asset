@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4932cd5b88e3c424491afce185cc0aa6, type: 3}
-  m_Name: CardConfiguration
+  m_Script: {fileID: 11500000, guid: 8a7840a0dc7f1f14abccf2c03538f641, type: 3}
+  m_Name: ArrowRainPowerConfiguration
   m_EditorClassIdentifier: 
-  cardPower: {fileID: 11400000, guid: dce944127dfc54d43b6871605b593273, type: 2}
+  _prefab: {fileID: 6704589981316177330, guid: e398112c7cbce054d93822c9a9509cd7, type: 3}
+  _damage: 30
+  _range: 10
+  _targetLayerMasks:
+  - GroundEnemies
