@@ -6,8 +6,8 @@ public class EnemyMovement
     //[SerializeField] private float _speed = 5f;
 
     private readonly Transform _enemyTransform;
-    private readonly float _speed;
 
+    private float _speed;
     private Vector3 _dir;
     private Transform _target; // next point on the way
     private int _targetIdx = 0; // index of the target waypoint on the waypoints array
@@ -59,6 +59,11 @@ public class EnemyMovement
     {
         _dir = (_target.position - _enemyTransform.position).normalized; // calculate direction of movement
         _enemyTransform.LookAt(_target); // look in the direction of the target
+    }
+
+    public void UpdateSpeed(float speed)
+    {
+        _speed = speed;
     }
 
 }

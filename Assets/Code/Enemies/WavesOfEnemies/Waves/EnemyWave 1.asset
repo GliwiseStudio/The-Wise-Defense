@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe117501d7ebc0b4ea9bcad7c297eba0, type: 3}
   m_Name: EnemyWave 1
   m_EditorClassIdentifier: 
-  <EnemiesInWave>k__BackingField:
+  <EnemyTypesInWave>k__BackingField:
   - {fileID: 7432338685846853279, guid: 544f0ff29591e894c98962db3abc9b7f, type: 3}
-  - {fileID: 7432338685846853279, guid: 544f0ff29591e894c98962db3abc9b7f, type: 3}
-  - {fileID: 7432338685846853279, guid: 544f0ff29591e894c98962db3abc9b7f, type: 3}
+  <NumberOfEnemiesPerType>k__BackingField: 02000000
   <TimeBeforeThisWave>k__BackingField: 5

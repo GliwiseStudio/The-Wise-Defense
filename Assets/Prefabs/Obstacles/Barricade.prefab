@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 2911683318704082066}
   - component: {fileID: 2911683318704082094}
   m_Layer: 7
-  m_Name: Obstacle
+  m_Name: Barricade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

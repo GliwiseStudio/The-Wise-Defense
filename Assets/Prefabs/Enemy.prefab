@@ -206,7 +206,7 @@ MonoBehaviour:
   _maxHealth: 500
   _detectionRange: 2
   _damagePerSecond: 50
-  _obstaclesLayerMask: Obstacles
+  _obstaclesLayerMask: DamageableObstacles
 --- !u!1 &7432338686022511727
 GameObject:
   m_ObjectHideFlags: 0
