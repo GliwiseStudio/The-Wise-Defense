@@ -5,37 +5,25 @@ public class Cards : MonoBehaviour
 {
     private Button _button;
     [SerializeField] private CardConfigurationSO _cardConfig;
-    private TargetDetector _targetDetector;
-
-    public void Activate(GameObject go, Transform transform)
-    {
-        _cardConfig.cardPower.Power.Activate(go, transform);
-    }
 
     private void Awake()
     {
         _button = GetComponent<Button>();
-        _targetDetector = new TargetDetector(_cardConfig.SpawnLayers);
     }
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(ActivateOnMouseClick);
+        _button.onClick.AddListener(SpawnBlueprint);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(ActivateOnMouseClick);
+        _button.onClick.RemoveListener(SpawnBlueprint);
     }
 
-    public void ActivateOnMouseClick()
+    private void SpawnBlueprint()
     {
-        GameObject go = _targetDetector.GetGameObjectFromClickInLayer();
-
-        Vector3 spawnPosition = _targetDetector.GetPositionFromClickInLayer();
-        GameObject newGO = new GameObject();
-        newGO.transform.position = spawnPosition;
-
-        Activate(go, newGO.transform);
+        GameObject blueprint = Instantiate(_cardConfig.BlueprintPrefab);
+        blueprint.GetComponent<CardBlueprint>().Initialize(_cardConfig);
     }
 }
