@@ -6,19 +6,34 @@ public class TargetDetector
 {
     private Transform _transform;
     private readonly float _detectionRadius;
-    private readonly string _targetLayerMaskName;
+    private readonly string[] _targetLayerMaskName;
 
     public TargetDetector(Transform towerTransform, float detectionRadius, string targetLayerMaskString)
     {
         _transform = towerTransform;
         _detectionRadius = detectionRadius;
-        _targetLayerMaskName = targetLayerMaskString;
+        _targetLayerMaskName = new string[1];
+        _targetLayerMaskName[0] = targetLayerMaskString;
+    }
+
+    public TargetDetector(Transform towerTransform, float detectionRadius, string[] targetLayerMasksString)
+    {
+        _transform = towerTransform;
+        _detectionRadius = detectionRadius;
+        _targetLayerMaskName = targetLayerMasksString;
     }
 
     public TargetDetector(float detectionRadius, string targetLayerMaskString)
     {
         _detectionRadius = detectionRadius;
-        _targetLayerMaskName = targetLayerMaskString;
+        _targetLayerMaskName = new string[1];
+        _targetLayerMaskName[0] = targetLayerMaskString;
+    }
+
+    public TargetDetector(string targetLayerMasksString)
+    {
+        _targetLayerMaskName = new string[1];
+        _targetLayerMaskName[0] = targetLayerMasksString;
     }
 
     public void SetTransform(Transform transform)
@@ -100,5 +115,18 @@ public class TargetDetector
         }
 
         return targetTransforms;
+    }
+
+    public Vector3 GetPositionFromClickInLayer()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 clickPoint = new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity);
+
+        if (Physics.Raycast(ray, out RaycastHit info, Mathf.Infinity, LayerMask.GetMask(_targetLayerMaskName)))
+        {
+            clickPoint = info.point;
+        }
+
+        return clickPoint;
     }
 }

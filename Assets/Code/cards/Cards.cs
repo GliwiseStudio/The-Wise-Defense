@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Cards : MonoBehaviour
 {
-    private Button button;
+    private Button _button;
     public CardConfigurationSO cardConfig;
+    private TargetDetector _targetDetector;
 
     public void Activate(Transform transform)
     {
@@ -15,7 +16,8 @@ public class Cards : MonoBehaviour
 
     private void Awake()
     {
-        button = GetComponent<Button>();
+        _button = GetComponent<Button>();
+        _targetDetector = new TargetDetector("Ground");
     }
 
     private Transform GetTransform()
@@ -23,30 +25,26 @@ public class Cards : MonoBehaviour
         return transform;
     }
 
-    private void OnEnable(Transform transform)
+    private void OnEnable()
     {
-        button.onClick.AddListener(ActivateOnMouseClick);
+        _button.onClick.AddListener(ActivateOnMouseClick);
         //Transform tr = GetTransform();
         //button.onClick.AddListener(Activate(tr));
     }
 
-    private void OnDissable()
+    private void OnDisable()
     {
-        button.onClick.RemoveListener(ActivateOnMouseClick);
+        _button.onClick.RemoveListener(ActivateOnMouseClick);
     }
 
     public void ActivateOnMouseClick()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 spawnPosition = _targetDetector.GetPositionFromClickInLayer();
+        GameObject newGO = new GameObject();
+        newGO.transform.position = spawnPosition;
 
-        if (Physics.Raycast(ray, out RaycastHit info, 100000, LayerMask.GetMask("Enemies")))
-        {
-            //Debug.Log("Pinchado en " + info.collider.name);
+        Debug.Log("H");
 
-            GameObject newGO = new GameObject();
-            newGO.transform.position = info.point;
-
-            Activate(newGO.transform);
-        }
+        Activate(newGO.transform);
     }
 }

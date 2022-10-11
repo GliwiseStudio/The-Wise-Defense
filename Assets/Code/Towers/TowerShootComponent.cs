@@ -8,14 +8,16 @@ public class TowerShootComponent
     private readonly float _fireRate;
     private bool _canShoot = true;
     private float _lastShotTime = 0f;
+    private string[] _targetLayerMasks;
 
     public event Action OnShotPerformed;
 
-    public TowerShootComponent(ProjectileSpawner projectileSpawner, float fireRate, ProjectileConfigurationSO projectileConfiguration)
+    public TowerShootComponent(ProjectileSpawner projectileSpawner, float fireRate, ProjectileConfigurationSO projectileConfiguration, string[] targetLayerMasks)
     {
         _projectileSpawner = projectileSpawner;
         _fireRate = fireRate;
         _projectileConfiguration = projectileConfiguration;
+        _targetLayerMasks = targetLayerMasks;
     }
 
     public void Update()
@@ -44,7 +46,7 @@ public class TowerShootComponent
         _canShoot = false;
         _lastShotTime = Time.time;
 
-        _projectileSpawner.Spawn(shotPosition, shotDirection, 10f, _projectileConfiguration, targetTransform, damage);
+        _projectileSpawner.Spawn(shotPosition, shotDirection, 10f, _projectileConfiguration, targetTransform, damage, _targetLayerMasks);
         OnShotPerformed?.Invoke();
     }
 

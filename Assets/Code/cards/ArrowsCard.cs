@@ -1,27 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ArrowsCard : MonoBehaviour
 {
-    private readonly float detectionRadius = 5.0f;
-    private Transform detectionTransform;
-    private readonly string layer = "Enemies";
+    private readonly float _detectionRadius = 5.0f;
+    private Transform _detectionTransform;
+    private readonly string _layer = "Enemies";
 
-    private IReadOnlyList<Transform> objectives;
+    private IReadOnlyList<Transform> _objectives;
     private TargetDetector _targetDetector;
 
     private void Awake()
     {
-        _targetDetector = new TargetDetector(this.transform, detectionRadius, layer);
+        _targetDetector = new TargetDetector(this.transform, _detectionRadius, _layer);
     }
     
     private void Start()
     {
-        objectives = _targetDetector.GetAllTargetsInRange();
-        foreach(Transform t in objectives)
+        _objectives = _targetDetector.GetAllTargetsInRange();
+        foreach(Transform t in _objectives)
         {
             t.gameObject.GetComponent<IDamage>().ReceiveDamage(30);
         }

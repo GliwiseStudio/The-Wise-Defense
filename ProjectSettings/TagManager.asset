@@ -14,9 +14,9 @@ TagManager:
   - UI
   - Enemies
   - DamageableObstacles
-  - 
-  - 
-  - 
+  - FlyingEnemies
+  - GroundEnemies
+  - Ground
   - 
   - 
   - 

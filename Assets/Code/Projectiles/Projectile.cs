@@ -11,13 +11,14 @@ public class Projectile : MonoBehaviour
     private IProjectileMovement _movement;
     private IProjectileDamager _damager;
     private float _currentLifetime;
+    private string[] _targetLayerMasks;
 
     private void Awake()
     {
         _transform = this.transform;
     }
 
-    public void Initialize(ProjectileConfigurationSO configuration, float speed, Transform targetTransform, int damage)
+    public void Initialize(ProjectileConfigurationSO configuration, float speed, Transform targetTransform, int damage, string[] targetLayerMasks)
     {
         _configuration = configuration;
         _movement = _configuration.Movement;
@@ -26,6 +27,7 @@ public class Projectile : MonoBehaviour
         _speed = speed;
         _targetTransform = targetTransform;
         _damage = damage;
+        _targetLayerMasks = targetLayerMasks;
 
         _isInitialized = true;
     }
@@ -64,7 +66,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+        Debug.Log(other.gameObject.layer);
+        if(other.gameObject.layer == LayerMask.NameToLayer("GroundEnemies"))
         {
             IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
             _damager.ApplyDamage(_damage, damageableEnemy, other.transform);

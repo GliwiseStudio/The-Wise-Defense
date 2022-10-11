@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InstantiateOnMouseClick : MonoBehaviour
 {
-    public GameObject prefab;
+    public GameObject _prefab;
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +22,7 @@ public class InstantiateOnMouseClick : MonoBehaviour
         {
             //Debug.Log("Pinchado en " + info.collider.name);
             Vector3 instantiationPoint = info.point;
-            GameObject newGO = Instantiate(prefab, instantiationPoint, Quaternion.identity);
+            GameObject newGO = Instantiate(_prefab, instantiationPoint, Quaternion.identity);
             Rigidbody rb = newGO.GetComponent<Rigidbody>();
             if(rb == null)
             {

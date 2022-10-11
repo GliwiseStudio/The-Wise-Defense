@@ -130,11 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3861084699784176524, guid: 544f0ff29591e894c98962db3abc9b7f,
-        type: 3}
-      propertyPath: _speed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7432338685846853264, guid: 544f0ff29591e894c98962db3abc9b7f,
         type: 3}
       propertyPath: m_RootOrder
@@ -643,6 +638,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164128866525163943, guid: 6e477e2caf1b18340a8ab6cf4b5f4f1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4164128866525163945, guid: 6e477e2caf1b18340a8ab6cf4b5f4f1e,
         type: 3}

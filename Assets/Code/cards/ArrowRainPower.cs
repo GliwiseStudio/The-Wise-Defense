@@ -1,25 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Cards/Power/ArrowRainPowerConfiguration", fileName = "ArrowRainPowerConfiguration")]
 public class ArrowRainPower : ICardPower
 {
-    private readonly float detectionRadius = 5.0f;
-    private Transform detectionTransform;
-    private readonly string layer = "Enemies";
+    private readonly float _detectionRadius = 5.0f;
+    private Transform _detectionTransform;
+    private readonly string _layer = "Enemies";
 
-    private IReadOnlyList<Transform> objectives;
+    private IReadOnlyList<Transform> _objectives;
     private TargetDetector _targetDetector;
 
     public void Activate(Transform transform)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("O");
+        _targetDetector = new TargetDetector(transform, _detectionRadius, _layer);
 
-        _targetDetector = new TargetDetector(transform, detectionRadius, layer);
-
-        objectives = _targetDetector.GetAllTargetsInRange();
-        foreach (Transform t in objectives)
+        _objectives = _targetDetector.GetAllTargetsInRange();
+        foreach (Transform t in _objectives)
         {
             t.gameObject.GetComponent<IDamage>().ReceiveDamage(30);
         }

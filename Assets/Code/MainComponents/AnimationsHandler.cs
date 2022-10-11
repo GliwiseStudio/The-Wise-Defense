@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class TowerAnimationsHandler
+public class AnimationsHandler
 {
     private readonly Animator _animator;
 
-    public TowerAnimationsHandler(Animator animator)
+    public AnimationsHandler(Animator animator)
     {
         _animator = animator;
     }

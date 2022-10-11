@@ -13,7 +13,7 @@ public class TowerController : MonoBehaviour
     private TargetDetector _enemyDetector;
     private TowerShootComponent _shootComponent;
     private Transform _targetTransform;
-    private TowerAnimationsHandler _animationsHandler;
+    private AnimationsHandler _animationsHandler;
     private AudioPlayer _audioPlayer;
     private TowerLevelUp _upgradeComponent;
 
@@ -21,8 +21,8 @@ public class TowerController : MonoBehaviour
     {
         _headRotator = new TowerHeadRotator(transform);
         _enemyDetector = new TargetDetector(transform, _configuration.DetectionRange, _configuration.TargetLayerMask);
-        _shootComponent = new TowerShootComponent(FindObjectOfType<ProjectileSpawner>(), _configuration.FireRate, _configuration.ProjectileConfigurationSO);
-        _animationsHandler = new TowerAnimationsHandler(_animator);
+        _shootComponent = new TowerShootComponent(FindObjectOfType<ProjectileSpawner>(), _configuration.FireRate, _configuration.ProjectileConfigurationSO, _configuration.TargetLayerMask);
+        _animationsHandler = new AnimationsHandler(_animator);
         _upgradeComponent = new TowerLevelUp(_configuration.UpgradeList);
         _audioPlayer = GetComponent<AudioPlayer>();
     }

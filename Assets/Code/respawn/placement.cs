@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //this class is for respawn the turrent in the cubes, we have to create a cube and add this script
@@ -14,16 +12,16 @@ public class placement : MonoBehaviour
 
     public Material Gray;
     public Material StartingMaterial;
-    private Renderer rend;
-    private Renderer rendOnMouseEnter;
+    private Renderer _rend;
+    private Renderer _rendOnMouseEnter;
  
     // Start is called before the first frame update
     void Start()
     {
         Placeable = true;
         botonPulsado = false;
-        rend = GetComponent<Renderer>();
-        StartingMaterial = rend.material;
+        _rend = GetComponent<Renderer>();
+        StartingMaterial = _rend.material;
     }
 
     // Update is called once per frame
@@ -45,16 +43,16 @@ public class placement : MonoBehaviour
     public void OnMouseExit()
     {
         selected = false;
-        rendOnMouseEnter = GetComponent<Renderer>();
-        rendOnMouseEnter.material = StartingMaterial;
+        _rendOnMouseEnter = GetComponent<Renderer>();
+        _rendOnMouseEnter.material = StartingMaterial;
     }
 
     public void OnMouseEnter()
     {
-        rendOnMouseEnter = GetComponent<Renderer>();
+        _rendOnMouseEnter = GetComponent<Renderer>();
         if (botonPulsado == true)
         {
-            rendOnMouseEnter.material = Gray;
+            _rendOnMouseEnter.material = Gray;
         }
     }
 }

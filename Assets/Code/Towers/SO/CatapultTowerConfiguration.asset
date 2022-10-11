@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: CatapultTowerConfiguration
   m_EditorClassIdentifier: 
   _detectionRange: 5
-  _targetLayerMask: Enemies
+  _targetLayerMask:
+  - GroundEnemies
   _fireRate: 2
   _damage: 80
+  _upgradeList:
+    _upgrades: []
   _audioConfiguration:
     _shotSound: CannonShot
   _projectileConfiguration: {fileID: 11400000, guid: 4a23c228cd55880438575089dc3ec662,

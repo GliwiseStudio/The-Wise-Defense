@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CannonTowerConfiguration
   m_EditorClassIdentifier: 
   _detectionRange: 5
-  _targetLayerMask: Enemies
+  _targetLayerMask:
+  - GroundEnemies
   _fireRate: 1.1
   _damage: 10
   _upgradeList:

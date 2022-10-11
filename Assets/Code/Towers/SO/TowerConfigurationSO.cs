@@ -4,7 +4,7 @@ using UnityEngine;
 public class TowerConfigurationSO : ScriptableObject
 {
     [SerializeField] private float _detectionRange = 5f;
-    [SerializeField] private string _targetLayerMask = "Enemies";
+    [SerializeField] private string[] _targetLayerMask;
     [SerializeField] private float _fireRate = 0.8f;
     [SerializeField] private int _damage = 10;
     [SerializeField] private TowerUpgradeList _upgradeList;
@@ -14,7 +14,7 @@ public class TowerConfigurationSO : ScriptableObject
     [SerializeField] private ProjectileConfigurationSO _projectileConfiguration;
 
     public float DetectionRange => _detectionRange;
-    public string TargetLayerMask => _targetLayerMask;
+    public string[] TargetLayerMask => _targetLayerMask;
     public float FireRate => _fireRate;
     public int Damage => _damage;
     public TowerUpgradeList UpgradeList => _upgradeList;
