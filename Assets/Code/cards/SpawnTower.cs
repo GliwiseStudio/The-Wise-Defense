@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnTower : ICardPower
 {
     placement respawn;
-    public void Activate()
+    public void Activate(Transform transform)
     {
-        Debug.Log("TOWERRR");
+        Debug.Log("TOWERRR", transform);
 
         respawn = GameObject.FindGameObjectWithTag("TagPlacement").GetComponent<placement>();
 

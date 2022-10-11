@@ -22,7 +22,7 @@ public class InstantiateOnMouseClick : MonoBehaviour
 
         if(Physics.Raycast(ray, out RaycastHit info))
         {
-            Debug.Log("Pinchado en " + info.collider.name);
+            //Debug.Log("Pinchado en " + info.collider.name);
             Vector3 instantiationPoint = info.point;
             GameObject newGO = Instantiate(prefab, instantiationPoint, Quaternion.identity);
             Rigidbody rb = newGO.GetComponent<Rigidbody>();

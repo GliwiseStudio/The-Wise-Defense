@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this class is for respawn the turrent in the cubes, we have to create a cube and add this script
 public class placement : MonoBehaviour
 {
     public bool selected;
-    public bool botonPulsado; //hasta que no pulsas el boton en spawnPower no te permite spawnear la carta
+    public bool botonPulsado; //until you dont click the botton isnt allowed you to respawn the turrent
     public GameObject Turret;
     public GameObject Cube;
     public int TurretCost;
