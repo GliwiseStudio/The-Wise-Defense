@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Cards/Power/ArrowRainPowerConfiguration", fileName = "ArrowRainPowerConfiguration")]
 public class ArrowRainPower : ICardPower
 {
     private readonly GameObject _prefab;
@@ -19,7 +18,7 @@ public class ArrowRainPower : ICardPower
         _targetDetector = new TargetDetector(_range, _targetLayerMasks);
     }
 
-    public void Activate(GameObject go, Transform transform)
+    public void Activate(GameObject gameobject, Transform transform)
     {
         GameObject.Instantiate(_prefab, transform.position, Quaternion.identity);
         _targetDetector.SetTransform(transform.transform);
@@ -27,7 +26,7 @@ public class ArrowRainPower : ICardPower
         IReadOnlyList<Transform> objetives = _targetDetector.GetAllTargetsInRange();
         foreach (Transform t in objetives)
         {
-            //t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage);
+            //t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage); //DESCOMENTAR
         }
     }
 }

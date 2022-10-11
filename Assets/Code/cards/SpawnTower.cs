@@ -16,12 +16,5 @@ public class SpawnTower : ICardPower
     {
         TowerBase respawn = go.GetComponent<TowerBase>();
         respawn.Spawn(_towerPrefab);
-
-        //_respawn.Spawn();
-        //_respawn.botonPulsado = true; //Se ha pulsado el boton (seleccionado la carta), por tanto, la variable que se encuentra en placement para regular esto, cambia
-
-        //_respawn.OnMouseDown();
-        //_respawn.OnMouseExit();
-        //_respawn.OnMouseEnter();
     }
 }

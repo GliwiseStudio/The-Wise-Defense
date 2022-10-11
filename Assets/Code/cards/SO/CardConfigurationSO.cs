@@ -4,7 +4,9 @@ using UnityEngine;
 public class CardConfigurationSO : ScriptableObject
 {
     public CardPowerConfigurationSO cardPower;
+    [SerializeField] private GameObject _blueprintPrefab;
     [SerializeField] private string[] _spawnLayers;
 
+    public GameObject BlueprintPrefab => _blueprintPrefab;
     public string[] SpawnLayers => _spawnLayers;
 }
