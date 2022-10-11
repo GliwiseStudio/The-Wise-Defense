@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df4a1781db12d104b9a1b9c940fb5c64, type: 3}
-  m_Name: CardSpawnPowerConfiguration
+  m_Script: {fileID: 11500000, guid: 4932cd5b88e3c424491afce185cc0aa6, type: 3}
+  m_Name: ArrowRainCardConfiguration
   m_EditorClassIdentifier: 
+  cardPower: {fileID: 11400000, guid: 32df48343d0df0544a25ae8ca0dba4cb, type: 2}
+  _spawnLayers:
+  - Ground

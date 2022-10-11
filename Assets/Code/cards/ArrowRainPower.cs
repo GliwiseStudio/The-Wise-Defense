@@ -4,22 +4,30 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Cards/Power/ArrowRainPowerConfiguration", fileName = "ArrowRainPowerConfiguration")]
 public class ArrowRainPower : ICardPower
 {
-    private readonly float _detectionRadius = 5.0f;
-    private Transform _detectionTransform;
-    private readonly string _layer = "Enemies";
+    private readonly GameObject _prefab;
+    private readonly int _damage = 30;
+    private readonly float _range = 5f;
+    private readonly string[] _targetLayerMasks;
+    private readonly TargetDetector _targetDetector;
 
-    private IReadOnlyList<Transform> _objectives;
-    private TargetDetector _targetDetector;
-
-    public void Activate(Transform transform)
+    public ArrowRainPower(GameObject prefab, int damage, float range, string[] targetLayerMasks)
     {
-        Debug.Log("O");
-        _targetDetector = new TargetDetector(transform, _detectionRadius, _layer);
+        _prefab = prefab;
+        _damage = damage;
+        _range = range;
+        _targetLayerMasks = targetLayerMasks;
+        _targetDetector = new TargetDetector(_range, _targetLayerMasks);
+    }
 
-        _objectives = _targetDetector.GetAllTargetsInRange();
-        foreach (Transform t in _objectives)
+    public void Activate(GameObject go, Transform transform)
+    {
+        GameObject.Instantiate(_prefab, transform.position, Quaternion.identity);
+        _targetDetector.SetTransform(transform.transform);
+
+        IReadOnlyList<Transform> objetives = _targetDetector.GetAllTargetsInRange();
+        foreach (Transform t in objetives)
         {
-            t.gameObject.GetComponent<IDamage>().ReceiveDamage(30);
+            //t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage);
         }
     }
 }

@@ -4,4 +4,7 @@ using UnityEngine;
 public class CardConfigurationSO : ScriptableObject
 {
     public CardPowerConfigurationSO cardPower;
+    [SerializeField] private string[] _spawnLayers;
+
+    public string[] SpawnLayers => _spawnLayers;
 }
