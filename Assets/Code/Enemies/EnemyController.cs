@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private bool _canDamage = true;
     private float _lastDamagedTime;
 
-    private Material _mat;
+    private Material[] _materials;
     private bool _firstDeathCall = true;
     private float _timeOfDeath;
 
@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
         _sceneCamera = FindObjectOfType<Camera>();
         _slider = GetComponentInChildren<Slider>();
-        _mat = GetComponentInChildren<Renderer>().material;
+        _materials = GetComponentInChildren<Renderer>().materials;
         _animator = GetComponent<Animator>();
 
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
@@ -113,10 +113,13 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
     private void Dissolve()
     {
-        if(Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
+        if (Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
         {
-            float i = 1 - (Time.time - _timeOfDeath);
-            _mat.SetFloat("_Progress", i);
+            float i = Time.time - _timeOfDeath;
+            foreach(Material _mat in _materials)
+            {
+                _mat.SetFloat("_DissolveProgress", i);
+            }
         }
         else // when a second has passed, destroy the gameObject
         {

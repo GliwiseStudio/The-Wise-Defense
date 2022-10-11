@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5a0e9086bd6bbf245bd506367fc008db, type: 2}
+  - {fileID: 2100000, guid: 9183c43429466a847b86a5898254487a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 41bda4a7f9afee341ae6529504dd4532, type: 2}
-  _obstaclesLayerMask: DamageableObstacles
 --- !u!95 &391029606251655167
 Animator:
   serializedVersion: 4

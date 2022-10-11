@@ -306,7 +306,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3154c3309e1da084aabdd0c4d11b57b0, type: 2}
+  - {fileID: 2100000, guid: 2acadf08c695ffc4ebb2c18f0178723a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1349,7 +1349,7 @@ Animator:
   m_GameObject: {fileID: 8683087205353351800}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9bd65b472ed58ad40821cd6e237667b1, type: 2}
+  m_Controller: {fileID: 22100000, guid: 41df116a20ebc5d4e8d107697e71e368, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1372,7 +1372,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 114edd86456d3844d8ce75875ec184d4, type: 2}
-  _obstaclesLayerMask: DamageableObstacles
 --- !u!1 &8882484415430822179
 GameObject:
   m_ObjectHideFlags: 0
