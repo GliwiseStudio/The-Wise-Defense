@@ -18,6 +18,7 @@ TagManager:
   - GroundEnemies
   - Ground
   - NonDamageableObstacles
+  - TowerBase
   - 
   - 
   - 
