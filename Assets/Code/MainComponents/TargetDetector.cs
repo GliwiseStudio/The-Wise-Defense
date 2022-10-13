@@ -23,6 +23,12 @@ public class TargetDetector
         _targetLayerMaskName = targetLayerMasksString;
     }
 
+    public TargetDetector(float detectionRadius, string[] targetLayerMasksString)
+    {
+        _detectionRadius = detectionRadius;
+        _targetLayerMaskName = targetLayerMasksString;
+    }
+
     public TargetDetector(float detectionRadius, string targetLayerMaskString)
     {
         _detectionRadius = detectionRadius;
@@ -34,6 +40,11 @@ public class TargetDetector
     {
         _targetLayerMaskName = new string[1];
         _targetLayerMaskName[0] = targetLayerMasksString;
+    }
+
+    public TargetDetector(string[] targetLayerMasksString)
+    {
+        _targetLayerMaskName = targetLayerMasksString;
     }
 
     public void SetTransform(Transform transform)
@@ -125,6 +136,19 @@ public class TargetDetector
         if (Physics.Raycast(ray, out RaycastHit info, Mathf.Infinity, LayerMask.GetMask(_targetLayerMaskName)))
         {
             clickPoint = info.point;
+        }
+
+        return clickPoint;
+    }
+
+    public GameObject GetGameObjectFromClickInLayer()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        GameObject clickPoint = null;
+
+        if (Physics.Raycast(ray, out RaycastHit info, Mathf.Infinity, LayerMask.GetMask(_targetLayerMaskName)))
+        {
+            clickPoint = info.transform.gameObject;
         }
 
         return clickPoint;
