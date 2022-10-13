@@ -11,4 +11,7 @@ public class EnemyWave : ScriptableObject
 
     [field: SerializeField]
     public float TimeBeforeThisWave { get; private set; }
+
+    [field: SerializeField]
+    public float TimeBetweenEnemies { get; private set; }
 }

@@ -15,3 +15,5 @@ MonoBehaviour:
   _audios:
   - _name: CannonShot
     _audio: {fileID: 8300000, guid: 41bd50a9ee261ca49b4a645e78f8d263, type: 3}
+  - _name: Punch
+    _audio: {fileID: 8300000, guid: 431c32af07e66b64aa477b963eb3b024, type: 3}

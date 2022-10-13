@@ -9,7 +9,9 @@ AnimatorOverrideController:
   m_Name: OgreAnimator
   m_Controller: {fileID: 9100000, guid: 9bd65b472ed58ad40821cd6e237667b1, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: ed631ccf2b5b1b14f9b1c42663dc9811, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: ed631ccf2b5b1b14f9b1c42663dc9811, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: af597191c48a86e4ca2dd90da8ff1f24, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: af597191c48a86e4ca2dd90da8ff1f24, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: be8a8f6abca2ade4992711865dea53a4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: be8a8f6abca2ade4992711865dea53a4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cd38cb2fe48c0ab43a6b461cc7855b74, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ed631ccf2b5b1b14f9b1c42663dc9811, type: 2}

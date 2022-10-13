@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SlowdownArea : MonoBehaviour
 {
-    [SerializeField] private float _slowdownAmount = 3f;
+    [SerializeField][Range(0.1f, 0.9f)] private float _slowdownPercentage;
     [SerializeField] private string _targerLayerMask = "Enemies";
 
     private void OnTriggerEnter(Collider other)
@@ -10,7 +10,7 @@ public class SlowdownArea : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer(_targerLayerMask))
         {
             ISlowdown enemy = other.gameObject.GetComponent<ISlowdown>();
-            enemy.ReceiveSlowdown(_slowdownAmount);
+            enemy.ReceiveSlowdown(_slowdownPercentage);
         }
     }
 
@@ -19,7 +19,7 @@ public class SlowdownArea : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer(_targerLayerMask))
         {
             ISlowdown enemy = other.gameObject.GetComponent<ISlowdown>();
-            enemy.ReleaseSlowdown(_slowdownAmount);
+            enemy.ReleaseSlowdown(_slowdownPercentage);
         }
     }
 }

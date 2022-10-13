@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714f0b3202daa234c9aeafc9f615fd97, type: 3}
   m_Name: Orc
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 6
+  <Speed>k__BackingField: 4
   <MaxHealth>k__BackingField: 100
   <DetectionRange>k__BackingField: 1
-  <DamagePerSecond>k__BackingField: 40
+  <Damage>k__BackingField: 50
+  <DamageAnimTime>k__BackingField: 2
+  <HitTime>k__BackingField: 1
