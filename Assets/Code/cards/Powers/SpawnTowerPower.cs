@@ -1,15 +1,12 @@
 using UnityEngine;
 
-public class SpawnTower : ICardPower
+public class SpawnTowerPower : ICardPower
 {
     private readonly GameObject _towerPrefab;
-    private string[] _spawnLayers;
-    private TargetDetector _targetDetector;
 
-    public SpawnTower(GameObject towerPrefab)
+    public SpawnTowerPower(GameObject towerPrefab)
     {
         _towerPrefab = towerPrefab;
-        _targetDetector = new TargetDetector(_spawnLayers);
     }
 
     public void Activate(GameObject go, Transform transform)
