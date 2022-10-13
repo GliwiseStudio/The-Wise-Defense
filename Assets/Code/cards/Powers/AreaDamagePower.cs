@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowRainPower : ICardPower
+public class AreaDamagePower : ICardPower
 {
     private readonly GameObject _prefab;
     private readonly int _damage = 30;
@@ -9,7 +9,7 @@ public class ArrowRainPower : ICardPower
     private readonly string[] _targetLayerMasks;
     private readonly TargetDetector _targetDetector;
 
-    public ArrowRainPower(GameObject prefab, int damage, float range, string[] targetLayerMasks)
+    public AreaDamagePower(GameObject prefab, int damage, float range, string[] targetLayerMasks)
     {
         _prefab = prefab;
         _damage = damage;
@@ -27,6 +27,7 @@ public class ArrowRainPower : ICardPower
         foreach (Transform t in objetives)
         {
             //t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage); //DESCOMENTAR
+            Debug.Log("fhedfjkdj");
         }
     }
 }

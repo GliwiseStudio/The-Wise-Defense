@@ -8,7 +8,7 @@ public class CardSpawnTowerConfigurationSO : CardPowerConfigurationSO
 
     protected override ICardPower InitializePower()
     {
-        return new SpawnTower(_towerPrefab);
+        return new SpawnTowerPower(_towerPrefab);
     }
 
 }

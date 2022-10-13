@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Cards/Power/Arrow Rain Power Configuration", fileName = "ArrowRainPowerConfiguration")]
-public class ArrowRainPowerConfigurationSO : CardPowerConfigurationSO
+[CreateAssetMenu(menuName = "ScriptableObjects/Cards/Power/Area Damage Power Configuration", fileName = "AreaDamagePowerConfiguration")]
+public class AreaDamagePowerConfigurationSO : CardPowerConfigurationSO
 {
     [SerializeField] private GameObject _prefab;
     [SerializeField] private int _damage = 30;
@@ -10,6 +10,6 @@ public class ArrowRainPowerConfigurationSO : CardPowerConfigurationSO
 
     protected override ICardPower InitializePower()
     {
-        return new ArrowRainPower(_prefab, _damage, _range, _targetLayerMasks);
+        return new AreaDamagePower(_prefab, _damage, _range, _targetLayerMasks);
     }
 }

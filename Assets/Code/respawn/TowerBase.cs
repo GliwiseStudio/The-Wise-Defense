@@ -4,13 +4,24 @@ public class TowerBase : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint;
     private bool placeable = true;
+    private GameObject _tower;
 
     public void Spawn(GameObject towerPrefab)
     {
         if(placeable)
         {
-            Instantiate(towerPrefab, _spawnPoint.position, Quaternion.identity);
+            _tower = Instantiate(towerPrefab, _spawnPoint.position, Quaternion.identity);
             placeable = false;
         }
+    }
+
+    public GameObject GetTower()
+    {
+        if(!placeable)
+        {
+            return null;
+        }
+
+        return _tower;
     }
 }
