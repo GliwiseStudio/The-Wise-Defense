@@ -5,21 +5,25 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 {
     #region Variables
 
-    [SerializeField] private float _speed = 5f;
-    [SerializeField] private float _maxHealth = 500;
-    [SerializeField] private float _detectionRange = 2f;
-    [SerializeField] private int _damagePerSecond = 50;
-    [SerializeField] private string _obstaclesLayerMask = "Obstacles";
+    [SerializeField] private EnemyConfiguration _config;
+    
+    private string _obstaclesLayerMask = "DamageableObstacles";
+
+    private float _speed;
+    private float _maxHealth;
+    private float _detectionRange;
+    private int _damagePerSecond;
 
     private Slider _slider;
     private Camera _sceneCamera;
     private Transform _targetTransform;
     private GameObject _targetGameObject;
+    private Animator _animator;
 
     private bool _canDamage = true;
     private float _lastDamagedTime;
 
-    private Material _mat;
+    private Material[] _materials;
     private bool _firstDeathCall = true;
     private float _timeOfDeath;
 
@@ -31,16 +35,20 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
     private void Start()
     {
+        _speed = _config.Speed;
+        _maxHealth = _config.MaxHealth;
+        _detectionRange = _config.DetectionRange;
+        _damagePerSecond = _config.DamagePerSecond;
+
         _sceneCamera = FindObjectOfType<Camera>();
         _slider = GetComponentInChildren<Slider>();
+        _materials = GetComponentInChildren<Renderer>().materials;
+        _animator = GetComponent<Animator>();
 
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
-
         _enemyMovement = new EnemyMovement(transform, _speed);
-
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
 
-        _mat = GetComponent<Renderer>().material;
     }
 
     private void Update()
@@ -55,6 +63,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
             {
                 if (_obstacleDetector.IsTargetInRange(_targetTransform.position))
                 {
+                    _animator.SetBool("isFighting", true);
                     if (_canDamage)
                     {
                         _canDamage = false;
@@ -66,6 +75,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
                 }
                 else
                 {
+                    _animator.SetBool("isFighting", false);
                     _targetTransform = null;
                     _enemyMovement.Update();
 
@@ -103,10 +113,13 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
     private void Dissolve()
     {
-        if(Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
+        if (Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
         {
-            float i = 1 - (Time.time - _timeOfDeath);
-            _mat.SetFloat("_Progress", i);
+            float i = Time.time - _timeOfDeath;
+            foreach(Material _mat in _materials)
+            {
+                _mat.SetFloat("_DissolveProgress", i);
+            }
         }
         else // when a second has passed, destroy the gameObject
         {
