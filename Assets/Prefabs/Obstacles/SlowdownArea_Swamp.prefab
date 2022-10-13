@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8085124760034320706}
   - component: {fileID: 8085124760034320707}
   - component: {fileID: 8085124760034320733}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SlowdownArea_Swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,5 +128,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa836bbbe6157904799ecde9f0d1f985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowdownAmount: 2
+  _slowdownPercentage: 0.3
   _targerLayerMask: GroundEnemies

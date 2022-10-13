@@ -57,7 +57,7 @@ public class WaveSpawner : MonoBehaviour
             for (int j = 0; j < currentWave.NumberOfEnemiesPerType[i]; j++)
             {
                 Instantiate(currentWave.EnemyTypesInWave[i], spawnPoint.position, spawnPoint.rotation);
-                yield return new WaitForSeconds(0.5f); // time to wait between enemies spawning
+                yield return new WaitForSeconds(currentWave.TimeBetweenEnemies); // time to wait between enemies spawning
             }
         }
     }

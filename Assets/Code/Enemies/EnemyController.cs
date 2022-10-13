@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,8 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private float _maxHealth;
     private float _detectionRange;
     private int _damage;
-    private float _damageTime;
+    private float _damageAnimTime;
+    private float _hitTime;
 
     private Slider _slider;
     private Camera _sceneCamera;
@@ -34,6 +36,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private EnemyMovement _enemyMovement;
     private TargetDetector _obstacleDetector;
     private AnimationsHandler _animationsHandler;
+    private AudioPlayer _audioPlayer;
 
     #endregion
 
@@ -43,12 +46,14 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _maxHealth = _config.MaxHealth;
         _detectionRange = _config.DetectionRange;
         _damage = _config.Damage;
-        _damageTime = _config.DamageTime;
+        _damageAnimTime = _config.DamageAnimTime;
+        _hitTime = _config.HitTime;
 
         _sceneCamera = FindObjectOfType<Camera>();
         _slider = GetComponentInChildren<Slider>();
         _materials = GetComponentInChildren<Renderer>().materials;
         _animator = GetComponent<Animator>();
+        _audioPlayer = GetComponent<AudioPlayer>();
 
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
         _enemyMovement = new EnemyMovement(transform, _speed);
@@ -62,26 +67,9 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         {
             _enemyHealth.Update();
 
-            if (_targetTransform != null)
+            if (_targetTransform != null) // if there's an obstacle
             {
-                DamageControlUpdate();
-                // obstacles don't move, so once it sees a target it's always in range
-
-                if (_walkingStateChange)
-                {
-                    PlayFightingAnimation();
-                    _fightingStateChange = true;
-                    _walkingStateChange = false;
-                }
-
-                if (_canDamage) // check if enough time has passed to damage the obstacle again
-                {
-                    _canDamage = false;
-                    _lastDamagedTime = Time.time;
-
-                    IDamage obstacleInterface = _targetGameObject.GetComponent<IDamage>();
-                    obstacleInterface.ReceiveDamage(_damage);
-                }
+                ObstacleDetected();
             }
 
             else
@@ -111,17 +99,57 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         }
     }
 
+    #region Obstacles related methods
+
+    private void ObstacleDetected()
+    {
+        // obstacles don't move, so once it sees a target it's always in range
+
+        DamageControlUpdate();
+
+        if (_walkingStateChange)
+        {
+            PlayFightingAnimation();
+            _fightingStateChange = true;
+            _walkingStateChange = false;
+        }
+
+        if (_canDamage) // check if enough time has passed to damage the obstacle again
+        {
+            //PlayFightingAnimation();
+            _canDamage = false;
+            _lastDamagedTime = Time.time;
+            StartCoroutine(PlayDamage());
+        }
+    }
+
+    IEnumerator PlayDamage()
+    {
+        yield return new WaitForSeconds(_hitTime);
+        if(_targetTransform != null)
+        {
+            _audioPlayer.PlayAudio("Punch");
+
+            IDamage obstacleInterface = _targetGameObject.GetComponent<IDamage>();
+            obstacleInterface.ReceiveDamage(_damage);
+            
+        }
+    }
+
+
     private void DamageControlUpdate()
     {
         if (!_canDamage)
         {
-            if (Time.time - _lastDamagedTime >= _damageTime) // if a second has passed
+            if (Time.time - _lastDamagedTime >= _damageAnimTime) // if a second has passed
             {
                 _canDamage = true;
             }
         }
     }
+    #endregion
 
+    #region Death method
     private void Dissolve()
     {
         if (Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
@@ -136,8 +164,8 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         {
             Destroy(gameObject);
         }
-        
     }
+    #endregion
 
     #region Interface methods
     public void ReceiveDamage(int damageAmount)
@@ -145,21 +173,35 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _enemyHealth.ReceiveDamage(damageAmount);
     }
 
-    public void ReceiveSlowdown(float slowdown)
+    public void ReceiveSlowdown(float slowdownPercentage)
     {
-        _speed -= slowdown;
+        _speed = _speed * (1 - slowdownPercentage);
         _enemyMovement.UpdateSpeed(_speed);
+
+        float animSpeed = _animator.GetFloat("Speed");
+        animSpeed = animSpeed * (1 - slowdownPercentage);
+        _animator.SetFloat("Speed", animSpeed);
+
+        _damageAnimTime = _damageAnimTime / ( 1 - slowdownPercentage);
+        _hitTime = _hitTime / (1 - slowdownPercentage);
     }
 
-    public void ReleaseSlowdown(float slowdown)
+    public void ReleaseSlowdown(float slowdownPercentage)
     {
-        _speed += slowdown;
+        _speed = _speed / (1 - slowdownPercentage);
         _enemyMovement.UpdateSpeed(_speed);
+
+        float animSpeed = _animator.GetFloat("Speed");
+        animSpeed = animSpeed / (1 - slowdownPercentage);
+        _animator.SetFloat("Speed", animSpeed);
+
+        _damageAnimTime = _damageAnimTime * (1 - slowdownPercentage);
+        _hitTime = _hitTime * (1 - slowdownPercentage);
     }
 
     #endregion
 
-    #region AnimationsHandler functions
+    #region AnimationsHandler methods
     private void PlayFightingAnimation()
     {
         _animationsHandler.PlayAnimationState("Fighting", 0.1f);

@@ -16,4 +16,5 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 300
   <DetectionRange>k__BackingField: 1
   <Damage>k__BackingField: 100
-  <DamageTime>k__BackingField: 1.11
+  <DamageAnimTime>k__BackingField: 1.37
+  <HitTime>k__BackingField: 0.87

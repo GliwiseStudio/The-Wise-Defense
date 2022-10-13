@@ -16,5 +16,8 @@ public class EnemyConfiguration : ScriptableObject
     public int Damage { get; private set; }
 
     [field: SerializeField]
-    public float DamageTime { get; private set; }
+    public float DamageAnimTime { get; private set; }
+
+    [field: SerializeField]
+    public float HitTime { get; private set; }
 }
