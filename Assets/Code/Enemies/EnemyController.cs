@@ -12,7 +12,8 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private float _speed;
     private float _maxHealth;
     private float _detectionRange;
-    private int _damagePerSecond;
+    private int _damage;
+    private float _damageTime;
 
     private Slider _slider;
     private Camera _sceneCamera;
@@ -26,10 +27,13 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private Material[] _materials;
     private bool _firstDeathCall = true;
     private float _timeOfDeath;
+    private bool _fightingStateChange = false;
+    private bool _walkingStateChange = true;
 
     private EnemyHealth _enemyHealth;
     private EnemyMovement _enemyMovement;
     private TargetDetector _obstacleDetector;
+    private AnimationsHandler _animationsHandler;
 
     #endregion
 
@@ -38,7 +42,8 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _speed = _config.Speed;
         _maxHealth = _config.MaxHealth;
         _detectionRange = _config.DetectionRange;
-        _damagePerSecond = _config.DamagePerSecond;
+        _damage = _config.Damage;
+        _damageTime = _config.DamageTime;
 
         _sceneCamera = FindObjectOfType<Camera>();
         _slider = GetComponentInChildren<Slider>();
@@ -48,43 +53,49 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
         _enemyMovement = new EnemyMovement(transform, _speed);
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
-
+        _animationsHandler = new AnimationsHandler(_animator);
     }
 
     private void Update()
     {
-        DamageControlUpdate();
-
         if (_enemyHealth.GetEnemyState() == "alive")
         {
             _enemyHealth.Update();
 
             if (_targetTransform != null)
             {
-                if (_obstacleDetector.IsTargetInRange(_targetTransform.position))
-                {
-                    _animator.SetBool("isFighting", true);
-                    if (_canDamage)
-                    {
-                        _canDamage = false;
-                        _lastDamagedTime = Time.time;
+                DamageControlUpdate();
+                // obstacles don't move, so once it sees a target it's always in range
 
-                        IDamage obstacleInterface = _targetGameObject.GetComponent<IDamage>();
-                        obstacleInterface.ReceiveDamage(_damagePerSecond);
-                    }
+                if (_walkingStateChange)
+                {
+                    PlayFightingAnimation();
+                    _fightingStateChange = true;
+                    _walkingStateChange = false;
                 }
-                else
-                {
-                    _animator.SetBool("isFighting", false);
-                    _targetTransform = null;
-                    _enemyMovement.Update();
 
+                if (_canDamage) // check if enough time has passed to damage the obstacle again
+                {
+                    _canDamage = false;
+                    _lastDamagedTime = Time.time;
+
+                    IDamage obstacleInterface = _targetGameObject.GetComponent<IDamage>();
+                    obstacleInterface.ReceiveDamage(_damage);
                 }
             }
+
             else
             {
+                if (_fightingStateChange)
+                {
+                    PlayWalkingAnimation();
+                    _fightingStateChange = false;
+                    _walkingStateChange = true;
+                }
+
                 _targetGameObject = _obstacleDetector.DetectTargetGameObject();
-                _targetTransform = _obstacleDetector.DetectTarget(); 
+                _targetTransform = _obstacleDetector.DetectTarget();
+                
                 _enemyMovement.Update();
             }
         }
@@ -104,7 +115,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     {
         if (!_canDamage)
         {
-            if (Time.time - _lastDamagedTime >= 1) // if a second has passed
+            if (Time.time - _lastDamagedTime >= _damageTime) // if a second has passed
             {
                 _canDamage = true;
             }
@@ -147,4 +158,18 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     }
 
     #endregion
+
+    #region AnimationsHandler functions
+    private void PlayFightingAnimation()
+    {
+        _animationsHandler.PlayAnimationState("Fighting", 0.1f);
+    }
+
+    private void PlayWalkingAnimation()
+    {
+        _animationsHandler.PlayAnimationState("Walking", 0.1f);
+    }
+
+    #endregion
+
 }

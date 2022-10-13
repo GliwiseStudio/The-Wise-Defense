@@ -15,4 +15,4 @@ MonoBehaviour:
   <EnemyTypesInWave>k__BackingField:
   - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
   <NumberOfEnemiesPerType>k__BackingField: 02000000
-  <TimeBeforeThisWave>k__BackingField: 1
+  <TimeBeforeThisWave>k__BackingField: 5

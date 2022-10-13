@@ -15,4 +15,5 @@ MonoBehaviour:
   <Speed>k__BackingField: 3
   <MaxHealth>k__BackingField: 300
   <DetectionRange>k__BackingField: 1
-  <DamagePerSecond>k__BackingField: 100
+  <Damage>k__BackingField: 100
+  <DamageTime>k__BackingField: 1.11

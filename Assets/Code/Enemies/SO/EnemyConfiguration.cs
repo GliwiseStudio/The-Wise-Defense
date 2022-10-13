@@ -13,5 +13,8 @@ public class EnemyConfiguration : ScriptableObject
     public float DetectionRange { get; private set; }
 
     [field: SerializeField]
-    public int DamagePerSecond { get; private set; }
+    public int Damage { get; private set; }
+
+    [field: SerializeField]
+    public float DamageTime { get; private set; }
 }
