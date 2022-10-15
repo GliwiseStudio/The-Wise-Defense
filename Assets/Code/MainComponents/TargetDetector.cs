@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TargetDetector
 {
     private Transform _transform;
-    private readonly float _detectionRadius;
+    private float _detectionRadius;
     private readonly string[] _targetLayerMaskName;
 
     public TargetDetector(Transform towerTransform, float detectionRadius, string targetLayerMaskString)
@@ -50,6 +50,11 @@ public class TargetDetector
     public void SetTransform(Transform transform)
     {
         _transform = transform;
+    }
+
+    public void SetRadius(float newRadius)
+    {
+        _detectionRadius = newRadius;
     }
 
     public Transform DetectTarget()

@@ -5,14 +5,32 @@ using UnityEngine;
 public class BuffKeyValue
 {
     [SerializeField] private string _key;
-    [SerializeField] private float _value;
+    [SerializeField][Range(-100, 100)] private int _buffPercentage;
+    [SerializeField] private float _duration;
+    private float _durationLeft;
+    private bool _isActive;
 
     public string Key => _key;
-    public float Value => _value;
+    public int BuffPercentage => _buffPercentage;
+    public float Duration => _duration;
+    public void DecreaseDuration(float decreaseValue)
+    {
+        _durationLeft -= decreaseValue;
 
-    public BuffKeyValue(string key, float value)
+        if(_durationLeft <= 0f)
+        {
+            _durationLeft = 0f;
+            _isActive = false;
+        }
+    }
+    public bool IsActive => _isActive;
+
+    public BuffKeyValue(string key, int buffPercentage, float duration)
     {
         _key = key;
-        _value = value;
+        _buffPercentage = buffPercentage;
+        _duration = duration;
+        _durationLeft = duration;
+        _isActive = true;
     }
 }
