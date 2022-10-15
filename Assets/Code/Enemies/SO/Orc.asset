@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 4
   <MaxHealth>k__BackingField: 100
-  <DetectionRange>k__BackingField: 1
+  <DetectionRange>k__BackingField: 3
   <Damage>k__BackingField: 50
   <DamageAnimTime>k__BackingField: 2
   <HitTime>k__BackingField: 1

@@ -8,45 +8,64 @@ public class EnemyMovement
 
     private float _speed;
     private Vector3 _dir;
-    private Transform _target; // next point on the way
-    private int _targetIdx = 0; // index of the target waypoint on the waypoints array
+    private Transform _targetWp; // next point on the way
+    private Transform _obstacleTransform;
+    private int _targetWpIdx = 0; // index of the target waypoint on the waypoints array
     private bool _reachedEnd = false;
+    private bool _obstacleDetected = false;
+
+    private float _randomDistance = Random.Range(0.1f, 1.5f);
+
+    public bool ObstacleReached = false;
 
     public EnemyMovement(Transform enemyTransform, float speed)
     {
         _enemyTransform = enemyTransform;
         _speed = speed;
 
-        _target = Waypoints.waypoints[_targetIdx]; // initialice target
+        _targetWp = Waypoints.waypoints[_targetWpIdx]; // initialice target
 
-        CalculateDirection();
+        CalculateWaypointDirection();
     }
 
     public void Update()
     {
-        if(_reachedEnd == false)
-            TranslateEnemy();
+        if (_obstacleDetected)
+        {
+            if (!ObstacleReached)
+            {
+                TranslateEnemyToObstacle();
+            }
+        }
+        else
+        {
+            if (!_reachedEnd)
+            {
+                TranslateEnemyThroughWaypoints();
+            }
+        }
     }
 
-    void TranslateEnemy()
+    #region Standard movement
+    void TranslateEnemyThroughWaypoints()
     {
         _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
 
-        if (Vector3.Distance(_enemyTransform.position, _target.position) <= 0.2f) // if the enemy has reached the waypoint
+        
+        if (Vector3.Distance(_enemyTransform.position, _targetWp.position) <= 0.2f) // if the enemy has reached the waypoint
         {
             GetNextWaypoint();
         }
     }
-
     void GetNextWaypoint()
     {
-        _targetIdx++;
+        _targetWpIdx++;
 
-        if (_targetIdx < Waypoints.waypoints.Length)
+        if (_targetWpIdx < Waypoints.waypoints.Length)
         {
-            _target = Waypoints.waypoints[_targetIdx];
+            _targetWp = Waypoints.waypoints[_targetWpIdx];
 
-            CalculateDirection();
+            CalculateWaypointDirection();
         }
         else // the object has reached it's destination
         {
@@ -54,12 +73,40 @@ public class EnemyMovement
         }
     }
 
-    void CalculateDirection()
+    public void CalculateWaypointDirection()
     {
-        _dir = (_target.position - _enemyTransform.position).normalized; // calculate direction of movement
+        ObstacleReached = false;
+        _obstacleDetected = false;
 
-        _enemyTransform.LookAt(_target); // look in the direction of the target
+        _dir = (_targetWp.position - _enemyTransform.position).normalized; // calculate direction of movement
+
+        _enemyTransform.LookAt(_targetWp); // look in the direction of the target
     }
+
+    #endregion
+
+    #region Obstacle in range related movement
+    void TranslateEnemyToObstacle()
+    {
+        _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
+
+        if (Vector3.Distance(_enemyTransform.position, _obstacleTransform.position) <= _randomDistance ) // if the enemy has reached the waypoint
+        {
+            ObstacleReached = true;
+        }
+    }
+    public void CalculateObstacleDirection(Transform obstacleTransform)
+    {
+        _obstacleDetected = true;
+
+        _obstacleTransform = obstacleTransform;
+
+        _dir = (_obstacleTransform.position - _enemyTransform.position).normalized; // calculate direction of movement
+
+        _enemyTransform.LookAt(_obstacleTransform); // look in the direction of the target
+    }
+
+    #endregion
 
     public void UpdateSpeed(float speed)
     {

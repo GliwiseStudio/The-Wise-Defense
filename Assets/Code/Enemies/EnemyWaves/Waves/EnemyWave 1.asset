@@ -16,3 +16,4 @@ MonoBehaviour:
   - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
   <NumberOfEnemiesPerType>k__BackingField: 01000000
   <TimeBeforeThisWave>k__BackingField: 1
+  <TimeBetweenEnemies>k__BackingField: 1
