@@ -45,6 +45,8 @@ public class TowerController : MonoBehaviour, IBuff
 
         _buffController.OnBuffDamage += BuffDamage;
         _buffController.OnUnbuffDamage += UnbuffDamage;
+        _buffController.OnBuffFireRate += BuffFireRate;
+        _buffController.OnUnbuffFireRate += UnbuffFireRate;
     }
 
     private void OnDisable()
@@ -56,6 +58,8 @@ public class TowerController : MonoBehaviour, IBuff
 
         _buffController.OnBuffDamage -= BuffDamage;
         _buffController.OnUnbuffDamage -= UnbuffDamage;
+        _buffController.OnBuffFireRate += BuffFireRate;
+        _buffController.OnUnbuffFireRate += UnbuffFireRate;
     }
 
     private void PlayShootingAnimation()
@@ -75,13 +79,18 @@ public class TowerController : MonoBehaviour, IBuff
 
     private void Update()
     {
+        //QUITAR DE AQUÍ. ESTO ES PURA PRUEBA
         if(Input.GetKeyDown(KeyCode.P) && br)
         {
-            BuffKeyValue f = new BuffKeyValue("Damage", 200, 3f);
-            BuffKeyValue[] ff = new BuffKeyValue[1];
+            BuffKeyValue f = new BuffKeyValue("Damage", 80, 1f);
+            BuffKeyValue g = new BuffKeyValue("FireRate", -45, 3f);
+            BuffKeyValue[] ff = new BuffKeyValue[2];
             ff[0] = f;
+            ff[1] = g;
             Buff(ff);
         }
+        //HASTA AQUÍ
+
         _buffController.Update();
         _shootComponent.Update();
 
@@ -108,13 +117,23 @@ public class TowerController : MonoBehaviour, IBuff
         _buffController.AddBuffs(buffs);
     }
 
-    public void BuffDamage(int damage)
+    private void BuffDamage(int damage)
     {
         _shootComponent.BuffDamage(damage);
     }
 
-    public void UnbuffDamage()
+    private void UnbuffDamage()
     {
         _shootComponent.UnbuffDamage();
+    }
+
+    private void BuffFireRate(int buffPercentage)
+    {
+        _shootComponent.BuffFireRate(buffPercentage);
+    }
+
+    private void UnbuffFireRate()
+    {
+        _shootComponent.UnbuffFireRate();
     }
 }

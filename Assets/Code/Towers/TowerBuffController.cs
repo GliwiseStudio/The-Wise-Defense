@@ -7,6 +7,9 @@ public class TowerBuffController
     public event Action<int> OnBuffDamage;
     public event Action OnUnbuffDamage;
 
+    public event Action<int> OnBuffFireRate;
+    public event Action OnUnbuffFireRate;
+
     private IDictionary<string, BuffKeyValue> _activeBuffs;
     private ISet<string> _inactiveBuffKeys;
 
@@ -81,9 +84,10 @@ public class TowerBuffController
         switch (buff.Key)
         {
             case "FireRate":
+                OnBuffFireRate?.Invoke(buff.BuffPercentage);
                 break;
             case "Damage":
-                OnBuffDamage?.Invoke((int)buff.Value);
+                OnBuffDamage?.Invoke(buff.BuffPercentage);
                 break;
             case "Range":
                 break;
@@ -95,6 +99,7 @@ public class TowerBuffController
         switch (buffKey)
         {
             case "FireRate":
+                OnUnbuffFireRate?.Invoke();
                 break;
             case "Damage":
                 OnUnbuffDamage?.Invoke();

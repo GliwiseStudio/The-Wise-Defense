@@ -10,8 +10,11 @@ public class TowerShootComponent
     private float _lastShotTime = 0f;
     private string[] _targetLayerMasks;
 
-    private bool _isDamageBuffed;
-    private int _buffedDamage;
+    private bool _isDamageBuffed = false;
+    private int _buffedDamagePercentage;
+
+    private bool _isFireRateBuffed = false;
+    private int _buffedFireRatePercentage;
 
     public event Action OnShotPerformed;
 
@@ -32,7 +35,8 @@ public class TowerShootComponent
     {
         if(!_canShoot)
         {
-            if (Time.time - _lastShotTime >= _shootingConfiguration.FireRate)
+            float fireRate = GetFireRate();
+            if (Time.time - _lastShotTime >= fireRate)
             {
                 _canShoot = true;
             }
@@ -57,26 +61,36 @@ public class TowerShootComponent
 
     private int GetDamage()
     {
-        int returnedDamage = _shootingConfiguration.Damage;
+        return _shootingConfiguration.Damage + ((_shootingConfiguration.Damage * _buffedDamagePercentage) / 100);
+    }
 
-        if(_isDamageBuffed)
-        {
-            returnedDamage += _buffedDamage;
-        }
-
-        return returnedDamage;
+    private float GetFireRate()
+    {
+        return _shootingConfiguration.FireRate + ((_shootingConfiguration.FireRate * _buffedFireRatePercentage) / 100);
     }
 
     public void BuffDamage(int buffedDamage)
     {
         _isDamageBuffed = true;
-        _buffedDamage = buffedDamage;
+        _buffedDamagePercentage = buffedDamage;
     }
 
     public void UnbuffDamage()
     {
         _isDamageBuffed = false;
-        _buffedDamage = 0;
+        _buffedDamagePercentage = 0;
+    }
+
+    public void BuffFireRate(int buffedFireRate)
+    {
+        _isFireRateBuffed = true;
+        _buffedFireRatePercentage = buffedFireRate;
+    }
+
+    public void UnbuffFireRate()
+    {
+        _isFireRateBuffed = false;
+        _buffedFireRatePercentage = 0;
     }
 
     public bool CanShoot => _canShoot;
