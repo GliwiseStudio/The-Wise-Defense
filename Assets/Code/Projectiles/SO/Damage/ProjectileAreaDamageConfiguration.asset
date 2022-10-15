@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ProjectileAreaDamageConfiguration
   m_EditorClassIdentifier: 
   _radius: 5
-  _targetLayerMask: Enemies
+  _targetLayerMask: GroundEnemies

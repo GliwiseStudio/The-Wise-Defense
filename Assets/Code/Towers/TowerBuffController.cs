@@ -29,6 +29,7 @@ public class TowerBuffController
             buff.Value.DecreaseDuration(Time.deltaTime);
             if (!buff.Value.IsActive)
             {
+                Debug.Log("INACTIVE");
                 _inactiveBuffKeys.Add(buff.Key);
                 UnapplyBuff(buff.Key);
             }
@@ -70,6 +71,7 @@ public class TowerBuffController
             }
             else
             {
+                Debug.Log("BUFF");
                 _activeBuffs.Add(buff.Key, buff);
             }
 

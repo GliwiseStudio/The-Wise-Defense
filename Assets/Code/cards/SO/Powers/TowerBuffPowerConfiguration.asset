@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buffs:
   - _key: FireRate
-    _value: 0.5
-    _duration: 1
+    _buffPercentage: 50
+    _duration: 5

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4a1781db12d104b9a1b9c940fb5c64, type: 3}
   m_Name: CardCatapultSpawnPowerConfiguration
   m_EditorClassIdentifier: 
-  _towerPrefab: {fileID: 785808452757828262, guid: 74171c2dcbf563f449dc91f908211a5e,
+  _towerPrefab: {fileID: 6403114965393039258, guid: 9278fd89a1fc7ed4aa71442140197162,
     type: 3}

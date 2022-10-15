@@ -14,7 +14,7 @@ public class TowerConfigurationSO : ScriptableObject
 
     public float DetectionRange => _detectionRange;
     public string[] TargetLayerMask => _targetLayerMask;
-    public TowerShootingConfiguration ShootingConfiguration;
+    public TowerShootingConfiguration ShootingConfiguration => _shootingConfiguration;
     public TowerUpgradeList UpgradeList => _upgradeList;
     public TowerAudioConfiguration AudioConfiguration => _audioConfiguration;
     public ProjectileConfigurationSO ProjectileConfigurationSO => _projectileConfiguration;
