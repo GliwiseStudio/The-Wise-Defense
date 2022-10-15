@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private float _timeOfDeath;
     private bool _fightingStateChange = false;
     private bool _walkingStateChange = true;
+    private float _randomWaitTime;
 
     private EnemyHealth _enemyHealth;
     private EnemyMovement _enemyMovement;
@@ -42,6 +43,8 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
     private void Start()
     {
+        _randomWaitTime = Random.Range(0.0f, 1.5f);
+
         _speed = _config.Speed;
         _maxHealth = _config.MaxHealth;
         _detectionRange = _config.DetectionRange;
@@ -66,25 +69,19 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         if (_enemyHealth.GetEnemyState() == "alive")
         {
             _enemyHealth.Update();
+            _enemyMovement.Update();
 
             if (_targetTransform != null) // if there's an obstacle
             {
                 ObstacleDetected();
             }
-
-            else
+            else // no obstacles
             {
-                if (_fightingStateChange)
-                {
-                    PlayWalkingAnimation();
-                    _fightingStateChange = false;
-                    _walkingStateChange = true;
-                }
-
+                KeepWalking();
+                
+                // detect if there's an obstacle in range
                 _targetGameObject = _obstacleDetector.DetectTargetGameObject();
                 _targetTransform = _obstacleDetector.DetectTarget();
-                
-                _enemyMovement.Update();
             }
         }
         else
@@ -99,20 +96,44 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         }
     }
 
-    #region Obstacles related methods
+    private void KeepWalking()
+    {
+        if (_fightingStateChange)
+        {
+            PlayIdleAnimation();
+
+            if (Time.time - _lastDamagedTime >= _randomWaitTime)
+            {
+                _enemyMovement.CalculateWaypointDirection();
+
+                PlayWalkingAnimation();
+
+                _fightingStateChange = false;
+                _walkingStateChange = true;
+            }
+        }
+    }
+
+    #region DamageableObstacles related methods
 
     private void ObstacleDetected()
     {
         // obstacles don't move, so once it sees a target it's always in range
 
-        DamageControlUpdate();
-
         if (_walkingStateChange)
         {
-            PlayFightingAnimation();
-            _fightingStateChange = true;
-            _walkingStateChange = false;
+            _enemyMovement.CalculateObstacleDirection(_targetTransform);
+
+            if (_enemyMovement.ObstacleReached)
+            {
+                PlayFightingAnimation();
+
+                _fightingStateChange = true;
+                _walkingStateChange = false;
+            }
         }
+
+        DamageControlUpdate();
 
         if (_canDamage) // check if enough time has passed to damage the obstacle again
         {
@@ -135,7 +156,6 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
             
         }
     }
-
 
     private void DamageControlUpdate()
     {
@@ -210,6 +230,11 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private void PlayWalkingAnimation()
     {
         _animationsHandler.PlayAnimationState("Walking", 0.1f);
+    }
+
+    private void PlayIdleAnimation()
+    {
+        _animationsHandler.PlayAnimationState("Idle", 0.1f);
     }
 
     #endregion
