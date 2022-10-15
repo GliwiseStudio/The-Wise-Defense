@@ -47,6 +47,8 @@ public class TowerController : MonoBehaviour, IBuff
         _buffController.OnUnbuffDamage += UnbuffDamage;
         _buffController.OnBuffFireRate += BuffFireRate;
         _buffController.OnUnbuffFireRate += UnbuffFireRate;
+        _buffController.OnBuffDetectionRange += BuffDetectionRange;
+        _buffController.OnUnbuffDetectionRange += UnbuffDetectionRange;
     }
 
     private void OnDisable()
@@ -58,8 +60,10 @@ public class TowerController : MonoBehaviour, IBuff
 
         _buffController.OnBuffDamage -= BuffDamage;
         _buffController.OnUnbuffDamage -= UnbuffDamage;
-        _buffController.OnBuffFireRate += BuffFireRate;
-        _buffController.OnUnbuffFireRate += UnbuffFireRate;
+        _buffController.OnBuffFireRate -= BuffFireRate;
+        _buffController.OnUnbuffFireRate -= UnbuffFireRate;
+        _buffController.OnBuffDetectionRange += BuffDetectionRange;
+        _buffController.OnUnbuffDetectionRange += UnbuffDetectionRange;
     }
 
     private void PlayShootingAnimation()
@@ -135,5 +139,16 @@ public class TowerController : MonoBehaviour, IBuff
     private void UnbuffFireRate()
     {
         _shootComponent.UnbuffFireRate();
+    }
+
+    private void BuffDetectionRange(int buffPercentage)
+    {
+
+        _enemyDetector.SetRadius(_configuration.DetectionRange + ((_configuration.DetectionRange * buffPercentage) / 100));
+    }
+
+    private void UnbuffDetectionRange()
+    {
+        _enemyDetector.SetRadius(_configuration.DetectionRange);
     }
 }
