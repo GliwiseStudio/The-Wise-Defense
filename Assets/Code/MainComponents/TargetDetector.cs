@@ -11,7 +11,7 @@ public class TargetDetector
     public TargetDetector(Transform towerTransform, float detectionRadius, string targetLayerMaskString)
     {
         _transform = towerTransform;
-        _detectionRadius = detectionRadius;
+        SetRadius(detectionRadius);
         _targetLayerMaskName = new string[1];
         _targetLayerMaskName[0] = targetLayerMaskString;
     }
@@ -19,19 +19,19 @@ public class TargetDetector
     public TargetDetector(Transform towerTransform, float detectionRadius, string[] targetLayerMasksString)
     {
         _transform = towerTransform;
-        _detectionRadius = detectionRadius;
+        SetRadius(detectionRadius);
         _targetLayerMaskName = targetLayerMasksString;
     }
 
     public TargetDetector(float detectionRadius, string[] targetLayerMasksString)
     {
-        _detectionRadius = detectionRadius;
+        SetRadius(detectionRadius);
         _targetLayerMaskName = targetLayerMasksString;
     }
 
     public TargetDetector(float detectionRadius, string targetLayerMaskString)
     {
-        _detectionRadius = detectionRadius;
+        SetRadius(detectionRadius);
         _targetLayerMaskName = new string[1];
         _targetLayerMaskName[0] = targetLayerMaskString;
     }
@@ -54,7 +54,14 @@ public class TargetDetector
 
     public void SetRadius(float newRadius)
     {
-        _detectionRadius = newRadius;
+        if(newRadius == -1f)
+        {
+            _detectionRadius = Mathf.Infinity;
+        }
+        else
+        {
+            _detectionRadius = newRadius;
+        }
     }
 
     public Transform DetectTarget()
