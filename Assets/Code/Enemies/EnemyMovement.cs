@@ -14,7 +14,7 @@ public class EnemyMovement
     private bool _reachedEnd = false;
     private bool _obstacleDetected = false;
 
-    private float _randomDistance = Random.Range(0.1f, 1.5f);
+    private float _randomDistance = Random.Range(0.5f, 2f);
 
     public bool ObstacleReached = false;
 
@@ -51,7 +51,6 @@ public class EnemyMovement
     {
         _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
 
-        
         if (Vector3.Distance(_enemyTransform.position, _targetWp.position) <= 0.2f) // if the enemy has reached the waypoint
         {
             GetNextWaypoint();
@@ -90,10 +89,17 @@ public class EnemyMovement
     {
         _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
 
-        if (Vector3.Distance(_enemyTransform.position, _obstacleTransform.position) <= _randomDistance ) // if the enemy has reached the waypoint
+        Ray ray = new Ray(_enemyTransform.position, _dir);
+        if (Physics.Raycast(ray, _randomDistance))
         {
             ObstacleReached = true;
+            // The Ray hit something!
         }
+
+        //if (Vector3.Distance(_enemyTransform.position, _obstacleTransform.position) <= _randomDistance) // if the enemy has reached the waypoint
+        //{
+        //    ObstacleReached = true;
+        //}
     }
     public void CalculateObstacleDirection(Transform obstacleTransform)
     {
