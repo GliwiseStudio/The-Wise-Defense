@@ -70,7 +70,6 @@ public class Projectile : MonoBehaviour
         {
             IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
             _damager.ApplyDamage(_damage, damageableEnemy, other.transform);
-            Debug.Log("dd");
             DestroyProjectile();
         }
     }

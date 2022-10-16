@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b371a3b001340dc4c94f50ba790737e1, type: 3}
-  m_Name: TowerBuffPowerConfiguration
+  m_Name: TowerFireRateBuffPowerConfiguration
   m_EditorClassIdentifier: 
-  _buffs:
+  _buffsConfigurations:
   - _key: FireRate
-    _buffPercentage: 50
-    _duration: 5
+    _buffPercentage: -50
+    _duration: 3

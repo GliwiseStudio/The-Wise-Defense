@@ -1,37 +1,26 @@
-using System;
-using UnityEngine;
-
-[Serializable]
 public class BuffKeyValue
 {
-    [SerializeField] private string _key;
-    [SerializeField][Range(-100, 100)] private int _buffPercentage;
-    [SerializeField] private float _duration = 3f;
-    private float _durationLeft = -100f;
-    private bool _isActive = true;
+    private string _key;
+    private int _buffPercentage;
+    private float _duration;
+    private float _durationLeft;
+    private bool _isActive;
 
     public string Key => _key;
     public int BuffPercentage => _buffPercentage;
     public float Duration => _duration;
     public void DecreaseDuration(float decreaseValue)
     {
-        Debug.Log(_durationLeft);
         _durationLeft -= decreaseValue;
 
-        if(_durationLeft <= 0f)
+        if (_durationLeft <= 0f)
         {
             _durationLeft = 0f;
             _isActive = false;
         }
     }
-    public bool IsActive => _isActive;
 
-    public BuffKeyValue()
-    {
-        _durationLeft = _duration;
-        _isActive = true;
-        Debug.Log(_durationLeft);
-    }
+    public bool IsActive => _isActive;
 
     public BuffKeyValue(string key, int buffPercentage, float duration)
     {
