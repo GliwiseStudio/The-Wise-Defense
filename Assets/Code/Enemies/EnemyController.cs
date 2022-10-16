@@ -86,16 +86,11 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         }
         else
         {
-            if(_firstDeathCall == true)
-            {
-                _timeOfDeath = Time.time;
-                _firstDeathCall = false;
-            }
-
-            Dissolve();
+            EnemyDeath();
         }
     }
 
+    #region Movement
     private void KeepWalking()
     {
         if (_fightingStateChange)
@@ -113,6 +108,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
             }
         }
     }
+    #endregion
 
     #region DamageableObstacles related methods
 
@@ -169,7 +165,23 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     }
     #endregion
 
-    #region Death method
+    #region Death methods
+
+    private void EnemyDeath()
+    {
+        if (_firstDeathCall == true)
+        {
+            int DeadEnemyLayer = LayerMask.NameToLayer("DeadEnemy");
+            gameObject.layer = DeadEnemyLayer;
+
+            _timeOfDeath = Time.time;
+            _firstDeathCall = false;
+
+            Destroy(_slider.gameObject);
+        }
+
+        Dissolve();
+    }
     private void Dissolve()
     {
         if (Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second

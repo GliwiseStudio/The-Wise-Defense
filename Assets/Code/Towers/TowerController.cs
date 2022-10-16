@@ -13,6 +13,7 @@ public class TowerController : MonoBehaviour, IBuff
     private TargetDetector _enemyDetector;
     private TowerShootComponent _shootComponent;
     private Transform _targetTransform;
+    private GameObject _targetGameObject;
     private AnimationsHandler _animationsHandler;
     private AudioPlayer _audioPlayer;
     private TowerLevelUp _upgradeComponent;
@@ -84,7 +85,7 @@ public class TowerController : MonoBehaviour, IBuff
         _buffController.Update();
         _shootComponent.Update();
 
-        if (_targetTransform != null)
+        if (_targetTransform != null && _targetGameObject.layer != LayerMask.NameToLayer("DeadEnemy"))
         {
             if (_enemyDetector.IsTargetInRange(_targetTransform.position))
             {
@@ -98,6 +99,7 @@ public class TowerController : MonoBehaviour, IBuff
         }
         else
         {
+            _targetGameObject = _enemyDetector.DetectTargetGameObject();
             _targetTransform = _enemyDetector.DetectTarget();
         }
     }  
