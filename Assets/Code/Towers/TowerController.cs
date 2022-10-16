@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(AudioPlayer))]
 public class TowerController : MonoBehaviour, IBuff
 {
-    public bool br = false;
     [SerializeField] private TowerConfigurationSO _configuration;
     [SerializeField] private Transform _firingPointTransform;
 
@@ -83,18 +81,6 @@ public class TowerController : MonoBehaviour, IBuff
 
     private void Update()
     {
-        //QUITAR DE AQUÍ. ESTO ES PURA PRUEBA
-        if(Input.GetKeyDown(KeyCode.P) && br)
-        {
-            BuffKeyValue f = new BuffKeyValue("Damage", 80, 1f);
-            BuffKeyValue g = new BuffKeyValue("FireRate", -45, 3f);
-            BuffKeyValue[] ff = new BuffKeyValue[2];
-            ff[0] = f;
-            ff[1] = g;
-            Buff(ff);
-        }
-        //HASTA AQUÍ
-
         _buffController.Update();
         _shootComponent.Update();
 

@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df4a1781db12d104b9a1b9c940fb5c64, type: 3}
-  m_Name: CardCatapultSpawnPowerConfiguration
+  m_Script: {fileID: 11500000, guid: b371a3b001340dc4c94f50ba790737e1, type: 3}
+  m_Name: TowerRangeBuffPowerConfiguration
   m_EditorClassIdentifier: 
-  _towerPrefab: {fileID: 6403114965393039258, guid: 9278fd89a1fc7ed4aa71442140197162,
-    type: 3}
+  _buffsConfigurations:
+  - _key: Range
+    _buffPercentage: 50
+    _duration: 5

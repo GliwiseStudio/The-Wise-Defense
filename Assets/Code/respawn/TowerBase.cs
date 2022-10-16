@@ -17,7 +17,7 @@ public class TowerBase : MonoBehaviour
 
     public GameObject GetTower()
     {
-        if(!placeable)
+        if(placeable)
         {
             return null;
         }

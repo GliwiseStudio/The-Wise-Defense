@@ -66,12 +66,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.layer);
         if(other.gameObject.layer == LayerMask.NameToLayer("GroundEnemies"))
         {
             IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
             _damager.ApplyDamage(_damage, damageableEnemy, other.transform);
-
             DestroyProjectile();
         }
     }

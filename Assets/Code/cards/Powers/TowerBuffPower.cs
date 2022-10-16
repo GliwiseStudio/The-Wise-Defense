@@ -1,12 +1,11 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerBuffPower : ICardPower
 {
-    private readonly BuffKeyValue[] _buffs;
-    public TowerBuffPower(BuffKeyValue[] buffs)
+    private readonly BuffConfiguration[] _buffConfigurations;
+    public TowerBuffPower(BuffConfiguration[] buffConfigurations)
     {
-        _buffs = buffs;
+        _buffConfigurations = buffConfigurations;
     }
 
     public void Activate(GameObject gameobject, Transform transform)
@@ -22,6 +21,11 @@ public class TowerBuffPower : ICardPower
             return;
         }
 
+        BuffKeyValue[] _buffs = new BuffKeyValue[_buffConfigurations.Length];
+        for (int i = 0; i < _buffConfigurations.Length; i++)
+        {
+            _buffs[i] = new BuffKeyValue(_buffConfigurations[i].Key, _buffConfigurations[i].BuffPercentage, _buffConfigurations[i].Duration);
+        }
         towerGameObject.GetComponent<IBuff>().Buff(_buffs);
     }
 }

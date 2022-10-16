@@ -3,10 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Cards/Power/Tower Buff PowerConfiguration", fileName = "TowerBuffPowerConfiguration")]
 public class TowerBuffPowerConfigurationSO : CardPowerConfigurationSO
 {
-    [SerializeField] private BuffKeyValue[] _buffs;
+    [SerializeField] private BuffConfiguration[] _buffsConfigurations;
 
     protected override ICardPower InitializePower()
     {
-        return new TowerBuffPower(_buffs);
+        return new TowerBuffPower(_buffsConfigurations);
     }
 }
