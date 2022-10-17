@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee91a19e59907644999db73fab5baa5, type: 3}
   m_Name: CatapultTowerConfiguration
   m_EditorClassIdentifier: 
-  _detectionRange: 5
-  _targetLayerMask:
-  - GroundEnemies
-  _fireRate: 2
-  _damage: 80
+  _detectionConfiguration:
+    _detectionRange: 5
+    _targetLayerMask:
+    - GroundEnemies
+  _shootingConfiguration:
+    _fireRate: 0.8
+    _damage: 10
   _upgradeList:
-    _upgrades: []
+    _upgrades:
+    - _damage: 10
+      _range: 5
+      _fireRate: 0.5
+      _gameObject: {fileID: 0}
   _audioConfiguration:
     _shotSound: CannonShot
   _projectileConfiguration: {fileID: 11400000, guid: 4a23c228cd55880438575089dc3ec662,

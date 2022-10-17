@@ -5,7 +5,8 @@ public class TowerShootComponent
 {
     private readonly ProjectileSpawner _projectileSpawner;
     private readonly ProjectileConfigurationSO _projectileConfiguration;
-    private readonly TowerShootingConfiguration _shootingConfiguration;
+    private int _damage;
+    private float _firerate;
     private bool _canShoot = true;
     private float _lastShotTime = 0f;
     private string[] _targetLayerMasks;
@@ -18,10 +19,11 @@ public class TowerShootComponent
 
     public event Action OnShotPerformed;
 
-    public TowerShootComponent(ProjectileSpawner projectileSpawner, TowerShootingConfiguration shootingConfiguration, ProjectileConfigurationSO projectileConfiguration, string[] targetLayerMasks)
+    public TowerShootComponent(ProjectileSpawner projectileSpawner, int damage, float firerate, ProjectileConfigurationSO projectileConfiguration, string[] targetLayerMasks)
     {
         _projectileSpawner = projectileSpawner;
-        _shootingConfiguration = shootingConfiguration;
+        _damage = damage;
+        _firerate = firerate;
         _projectileConfiguration = projectileConfiguration;
         _targetLayerMasks = targetLayerMasks;
     }
@@ -61,12 +63,22 @@ public class TowerShootComponent
 
     private int GetDamage()
     {
-        return _shootingConfiguration.Damage + ((_shootingConfiguration.Damage * _buffedDamagePercentage) / 100);
+        return _damage + ((_damage * _buffedDamagePercentage) / 100);
+    }
+
+    public void SetDamage(int damage)
+    {
+        _damage = damage;
+    }
+
+    public void SetFirerate(float firerate)
+    {
+        _firerate = firerate;
     }
 
     private float GetFireRate()
     {
-        return _shootingConfiguration.FireRate + ((_shootingConfiguration.FireRate * _buffedFireRatePercentage) / 100);
+        return _firerate + ((_firerate * _buffedFireRatePercentage) / 100);
     }
 
     public void BuffDamage(int buffedDamage)
