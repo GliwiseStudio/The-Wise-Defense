@@ -9,4 +9,12 @@ public class TowerShootingConfiguration
 
     public float FireRate => _fireRate;
     public int Damage => _damage;
+    public void SetFirerate(float firerate)
+    {
+        _fireRate = firerate;
+    }
+    public void SetDamage(int damage)
+    {
+        _damage = damage;
+    }
 }

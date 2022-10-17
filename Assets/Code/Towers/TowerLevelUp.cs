@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class TowerLevelUp
 {
@@ -14,14 +12,9 @@ public class TowerLevelUp
         _upgradeList = upgradeList;
     }
 
-    public void Start()
-    {
-
-    }
-
     public void LevelUp()
     {
-        _currentLevel++;
         OnLevelUp?.Invoke(_upgradeList.GetUpgrade(_currentLevel));
+        _currentLevel++;
     }
 }

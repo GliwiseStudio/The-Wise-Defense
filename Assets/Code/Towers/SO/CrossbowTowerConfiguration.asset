@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee91a19e59907644999db73fab5baa5, type: 3}
   m_Name: CrossbowTowerConfiguration
   m_EditorClassIdentifier: 
-  _detectionRange: -1
-  _targetLayerMask:
-  - GroundEnemies
+  _detectionConfiguration:
+    _detectionRange: -1
+    _targetLayerMask:
+    - GroundEnemies
   _shootingConfiguration:
     _fireRate: 1.9
     _damage: 70
   _upgradeList:
-    _upgrades: []
+    _upgrades:
+    - _damage: 70
+      _range: -1
+      _fireRate: 1
+      _gameObject: {fileID: 0}
   _audioConfiguration:
     _shotSound: CannonShot
   _projectileConfiguration: {fileID: 11400000, guid: 9120b8f79c19876479d764281b8a244d,

@@ -23,16 +23,11 @@ public class TowerController : MonoBehaviour, IBuff
     {
         _buffController = new TowerBuffController();
         _headRotator = new TowerHeadRotator(transform);
-        _enemyDetector = new TargetDetector(transform, _configuration.DetectionRange, _configuration.TargetLayerMask);
-        _shootComponent = new TowerShootComponent(FindObjectOfType<ProjectileSpawner>(), _configuration.ShootingConfiguration, _configuration.ProjectileConfigurationSO, _configuration.TargetLayerMask);
+        _enemyDetector = new TargetDetector(transform, _configuration.DetectionConfiguration.DetectionRange, _configuration.DetectionConfiguration.TargetLayerMask);
+        _shootComponent = new TowerShootComponent(FindObjectOfType<ProjectileSpawner>(), _configuration.ShootingConfiguration.Damage, _configuration.ShootingConfiguration.FireRate, _configuration.ProjectileConfigurationSO, _configuration.DetectionConfiguration.TargetLayerMask);
         _animationsHandler = new AnimationsHandler(_animator);
         _upgradeComponent = new TowerLevelUp(_configuration.UpgradeList);
         _audioPlayer = GetComponent<AudioPlayer>();
-    }
-
-    private void Start()
-    {
-        _upgradeComponent.Start();
     }
 
     private void OnEnable()
@@ -77,7 +72,9 @@ public class TowerController : MonoBehaviour, IBuff
 
     private void LevelUp(TowerUpgrade upgrade)
     {
-
+        _shootComponent.SetDamage(upgrade.Damage);
+        _enemyDetector.SetRadius(upgrade.Range);
+        _shootComponent.SetFirerate(upgrade.FireRate);
     }
 
     private void Update()
@@ -132,11 +129,11 @@ public class TowerController : MonoBehaviour, IBuff
     private void BuffDetectionRange(int buffPercentage)
     {
 
-        _enemyDetector.SetRadius(_configuration.DetectionRange + ((_configuration.DetectionRange * buffPercentage) / 100));
+        _enemyDetector.SetRadius(_configuration.DetectionConfiguration.DetectionRange + ((_configuration.DetectionConfiguration.DetectionRange * buffPercentage) / 100));
     }
 
     private void UnbuffDetectionRange()
     {
-        _enemyDetector.SetRadius(_configuration.DetectionRange);
+        _enemyDetector.SetRadius(_configuration.DetectionConfiguration.DetectionRange);
     }
 }
