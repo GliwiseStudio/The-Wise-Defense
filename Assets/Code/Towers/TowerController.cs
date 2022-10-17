@@ -19,6 +19,11 @@ public class TowerController : MonoBehaviour, IBuff
     private TowerLevelUp _upgradeComponent;
     private TowerBuffController _buffController;
 
+    public string GetName()
+    {
+        return _configuration.Name;
+    }
+
     private void Awake()
     {
         _buffController = new TowerBuffController();
@@ -35,7 +40,7 @@ public class TowerController : MonoBehaviour, IBuff
         _shootComponent.OnShotPerformed += PlayShootingAnimation;
         _shootComponent.OnShotPerformed += PlayShootSound;
 
-        _upgradeComponent.OnLevelUp += LevelUp;
+        _upgradeComponent.OnLevelUp += ApplyLevelUp;
 
         _buffController.OnBuffDamage += BuffDamage;
         _buffController.OnUnbuffDamage += UnbuffDamage;
@@ -50,7 +55,7 @@ public class TowerController : MonoBehaviour, IBuff
         _shootComponent.OnShotPerformed -= PlayShootingAnimation;
         _shootComponent.OnShotPerformed -= PlayShootSound;
 
-        _upgradeComponent.OnLevelUp -= LevelUp;
+        _upgradeComponent.OnLevelUp -= ApplyLevelUp;
 
         _buffController.OnBuffDamage -= BuffDamage;
         _buffController.OnUnbuffDamage -= UnbuffDamage;
@@ -70,7 +75,12 @@ public class TowerController : MonoBehaviour, IBuff
         _audioPlayer.PlayAudio(_configuration.AudioConfiguration.ShotSound);
     }
 
-    private void LevelUp(TowerUpgrade upgrade)
+    public void LevelUp()
+    {
+        _upgradeComponent.LevelUp();
+    }
+
+    private void ApplyLevelUp(TowerUpgrade upgrade)
     {
         _shootComponent.SetDamage(upgrade.Damage);
         _enemyDetector.SetRadius(upgrade.Range);

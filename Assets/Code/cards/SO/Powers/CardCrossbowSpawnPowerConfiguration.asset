@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4a1781db12d104b9a1b9c940fb5c64, type: 3}
   m_Name: CardCrossbowSpawnPowerConfiguration
   m_EditorClassIdentifier: 
+  _towerName: Crossbow
   _towerPrefab: {fileID: 8865056815128896869, guid: 3ecacebfd31c2364a83132d181c70a12,
     type: 3}
