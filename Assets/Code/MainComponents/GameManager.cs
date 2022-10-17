@@ -27,10 +27,6 @@ public class GameManager : MonoBehaviour
         _instance = this;
     }
 
-    private void Update()
-    {
-    }
-
     #region Waves Management
     public void NextWave() // pause game and prepare for next wave, but not start it
     {

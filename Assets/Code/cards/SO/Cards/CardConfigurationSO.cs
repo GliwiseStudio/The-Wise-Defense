@@ -7,6 +7,8 @@ public class CardConfigurationSO : ScriptableObject
     [SerializeField] private GameObject _blueprintPrefab;
     [SerializeField] private string[] _spawnLayers;
 
+    public bool InGameCard;
+
     public GameObject BlueprintPrefab => _blueprintPrefab;
     public string[] SpawnLayers => _spawnLayers;
 }
