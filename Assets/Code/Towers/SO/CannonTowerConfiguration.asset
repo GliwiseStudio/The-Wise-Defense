@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee91a19e59907644999db73fab5baa5, type: 3}
   m_Name: CannonTowerConfiguration
   m_EditorClassIdentifier: 
+  _name: Cannon
   _detectionConfiguration:
     _detectionRange: 5
     _targetLayerMask:
@@ -23,7 +24,7 @@ MonoBehaviour:
     _upgrades:
     - _damage: 12
       _range: 5
-      _fireRate: 0.7
+      _fireRate: 0.3
       _gameObject: {fileID: 0}
   _audioConfiguration:
     _shotSound: CannonShot

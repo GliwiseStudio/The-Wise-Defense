@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4a1781db12d104b9a1b9c940fb5c64, type: 3}
   m_Name: CardCannonSpawnPowerConfiguration
   m_EditorClassIdentifier: 
+  _towerName: Cannon
   _towerPrefab: {fileID: 4467167284630660367, guid: 769a7724dffe903458bce70614299168,
     type: 3}

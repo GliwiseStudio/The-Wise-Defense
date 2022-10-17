@@ -3,25 +3,39 @@ using UnityEngine;
 public class TowerBase : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint;
-    private bool placeable = true;
-    private GameObject _tower;
+    private bool _hasATower = false;
+    private TowerController _tower;
 
-    public void Spawn(GameObject towerPrefab)
+    public bool HasATower => _hasATower;
+
+    public void SpawnTower(GameObject towerPrefab)
     {
-        if(placeable)
+        if (_hasATower)
         {
-            _tower = Instantiate(towerPrefab, _spawnPoint.position, Quaternion.identity);
-            placeable = false;
+            return;
         }
+
+        _tower = Instantiate(towerPrefab, _spawnPoint.position, Quaternion.identity).GetComponent<TowerController>();
+        _hasATower = true;
+    }
+
+    public void LevelUpTower(string towerName)
+    {
+        if(!_hasATower || _tower.GetName().CompareTo(towerName) != 0)
+        {
+            return;
+        }
+
+        _tower.LevelUp();
     }
 
     public GameObject GetTower()
     {
-        if(placeable)
+        if(_hasATower)
         {
             return null;
         }
 
-        return _tower;
+        return _tower.gameObject;
     }
 }

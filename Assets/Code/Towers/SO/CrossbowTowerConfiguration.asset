@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee91a19e59907644999db73fab5baa5, type: 3}
   m_Name: CrossbowTowerConfiguration
   m_EditorClassIdentifier: 
+  _name: Crossbow
   _detectionConfiguration:
     _detectionRange: -1
     _targetLayerMask:
