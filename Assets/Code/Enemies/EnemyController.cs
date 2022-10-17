@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _audioPlayer = GetComponent<AudioPlayer>();
 
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
-        _enemyMovement = new EnemyMovement(transform, _speed);
+        _enemyMovement = new EnemyMovement(transform, _speed, _obstaclesLayerMask);
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
         _animationsHandler = new AnimationsHandler(_animator);
     }
@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
             _enemyHealth.Update();
             _enemyMovement.Update();
 
-            if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer("DamageableObstacles")) // if there's an obstacle
+            if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
             {
                 ObstacleDetected();
             }
