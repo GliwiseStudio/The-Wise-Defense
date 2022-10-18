@@ -18,3 +18,5 @@ MonoBehaviour:
   _spawnLayers:
   - TowerBase
   InGameCard: 1
+  CardText: Range Buff
+  CardSprite: {fileID: 21300000, guid: 121ebae255124aa489244fc6d20d948d, type: 3}

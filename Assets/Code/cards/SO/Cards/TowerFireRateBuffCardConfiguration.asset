@@ -18,3 +18,5 @@ MonoBehaviour:
   _spawnLayers:
   - TowerBase
   InGameCard: 1
+  CardText: Fire Rate Buff
+  CardSprite: {fileID: 21300000, guid: e73101b73ffe17e4ea07a9ae5b580a4c, type: 3}

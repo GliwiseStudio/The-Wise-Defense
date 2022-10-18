@@ -18,3 +18,5 @@ MonoBehaviour:
   _spawnLayers:
   - TowerBase
   InGameCard: 1
+  CardText: TowerDamage
+  CardSprite: {fileID: 21300000, guid: 9fa6ca7cbc4d7de4ea334a536c19ed0c, type: 3}

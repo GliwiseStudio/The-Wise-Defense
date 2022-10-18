@@ -11,4 +11,7 @@ public class CardConfigurationSO : ScriptableObject
 
     public GameObject BlueprintPrefab => _blueprintPrefab;
     public string[] SpawnLayers => _spawnLayers;
+
+    public string CardText;
+    public Sprite CardSprite;
 }
