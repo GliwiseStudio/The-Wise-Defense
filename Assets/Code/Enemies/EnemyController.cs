@@ -43,7 +43,9 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
     private void Start()
     {
-        _randomWaitTime = Random.Range(0.0f, 1.5f);
+        GameManager.Instance.AddEnemy(); // add the enemy to the GameManager to keep track of it
+
+        _randomWaitTime = Random.Range(0.0f, 1f);
 
         _speed = _config.Speed;
         _maxHealth = _config.MaxHealth;
@@ -59,7 +61,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _audioPlayer = GetComponent<AudioPlayer>();
 
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
-        _enemyMovement = new EnemyMovement(transform, _speed);
+        _enemyMovement = new EnemyMovement(transform, _speed, _obstaclesLayerMask);
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
         _animationsHandler = new AnimationsHandler(_animator);
     }
@@ -71,7 +73,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
             _enemyHealth.Update();
             _enemyMovement.Update();
 
-            if (_targetTransform != null) // if there's an obstacle
+            if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
             {
                 ObstacleDetected();
             }
@@ -194,6 +196,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         }
         else // when a second has passed, destroy the gameObject
         {
+            GameManager.Instance.RemoveEnemy();
             Destroy(gameObject);
         }
     }

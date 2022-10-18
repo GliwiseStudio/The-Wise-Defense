@@ -10,20 +10,29 @@ public class EnemyMovement
     private Vector3 _dir;
     private Transform _targetWp; // next point on the way
     private Transform _obstacleTransform;
+    private GameObject _obstacleGameObject;
     private int _targetWpIdx = 0; // index of the target waypoint on the waypoints array
     private bool _reachedEnd = false;
     private bool _obstacleDetected = false;
 
-    private float _randomDistance = Random.Range(0.1f, 1.5f);
+    private float _randomDistance;
 
     public bool ObstacleReached = false;
 
-    public EnemyMovement(Transform enemyTransform, float speed)
+    private TargetDetector _obstacleDetector;
+    private string _obstaclesLayerMask;
+
+    public EnemyMovement(Transform enemyTransform, float speed, string obstaclesLayerMask)
     {
         _enemyTransform = enemyTransform;
         _speed = speed;
+        _obstaclesLayerMask = obstaclesLayerMask;
+
+        _randomDistance = Random.Range(0.2f, 2f);
 
         _targetWp = Waypoints.waypoints[_targetWpIdx]; // initialice target
+
+        _obstacleDetector = new TargetDetector(_enemyTransform, _randomDistance, _obstaclesLayerMask);
 
         CalculateWaypointDirection();
     }
@@ -51,7 +60,6 @@ public class EnemyMovement
     {
         _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
 
-        
         if (Vector3.Distance(_enemyTransform.position, _targetWp.position) <= 0.2f) // if the enemy has reached the waypoint
         {
             GetNextWaypoint();
@@ -90,20 +98,24 @@ public class EnemyMovement
     {
         _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
 
-        if (Vector3.Distance(_enemyTransform.position, _obstacleTransform.position) <= _randomDistance ) // if the enemy has reached the waypoint
+        if (_obstacleTransform != null && _obstacleGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
         {
             ObstacleReached = true;
+        }
+        else // no obstacles
+        {
+            // detect if there's an obstacle in range
+            _obstacleGameObject = _obstacleDetector.DetectTargetGameObject();
+            _obstacleTransform = _obstacleDetector.DetectTarget();
         }
     }
     public void CalculateObstacleDirection(Transform obstacleTransform)
     {
         _obstacleDetected = true;
 
-        _obstacleTransform = obstacleTransform;
+        _dir = (obstacleTransform.position - _enemyTransform.position).normalized; // calculate direction of movement
 
-        _dir = (_obstacleTransform.position - _enemyTransform.position).normalized; // calculate direction of movement
-
-        _enemyTransform.LookAt(_obstacleTransform); // look in the direction of the target
+        _enemyTransform.LookAt(obstacleTransform); // look in the direction of the target
     }
 
     #endregion
