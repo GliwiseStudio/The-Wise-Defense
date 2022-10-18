@@ -1,75 +1,67 @@
+using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.EventSystems;
 
-public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler
+public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private Button _button;
+    public event Action OnSuccesfullySpawned;
+
     private Image _cardImage;
-    private TextMeshProUGUI _cardText;
     private TargetDetector _spawnTargetDetector;
-    private TargetDetector _updateBlueprintPositionTargetDetector;
     private GameObject _blueprint;
-    private bool _isBlueprintSpawned;
+    private bool _isBlueprintSpawned = false;
+    private bool _isActive = false;
 
     [SerializeField] private CardConfigurationSO _cardConfiguration;
 
     private void Awake()
     {
-        _button = GetComponent<Button>();
         _cardImage = GetComponent<Image>();
-        _cardText = GetComponentInChildren<TextMeshProUGUI>();
-
-        //_cardText.SetText(_cardConfiguration.CardText);
-        //_cardImage.sprite = _cardConfiguration.CardSprite;
-
-        _spawnTargetDetector = new TargetDetector();//TODO PASARLE LAS CAPAS DE LA CONFIGURACIÓN
-        _updateBlueprintPositionTargetDetector = new TargetDetector("Ground");
+        _spawnTargetDetector = new TargetDetector();
+        Activate();
     }
 
-    private void OnEnable()
+    public void Activate()
     {
-        //_button.onClick.AddListener(SpawnBlueprint);
+        _isActive = true;
     }
 
-    private void OnDisable()
+    public void Deactivate()
     {
-        //_button.onClick.RemoveListener(SpawnBlueprint);
+        _isActive = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        SpawnBlueprint2();
+        if(!_isActive)
+        {
+            return;
+        }
+
+        SpawnBlueprint();
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("dd");
+        if(!_isActive)
+        {
+            return;
+        }
+
         DespawnBlueprint();
         if (CheckIfIsAbleToActivate())
         {
-            Activate();
+            ActivatePower();
+            OnSuccesfullySpawned?.Invoke();
         }
-    }
-    public void OnPointerMove(PointerEventData eventData)
-    {
-        UpdateBlueprintPosition();
     }
 
     private void SpawnBlueprint()
     {
-        GameObject blueprint = Instantiate(_cardConfiguration.BlueprintPrefab);
-        blueprint.GetComponent<CardBlueprint>().Initialize(_cardConfiguration);
-
-        // only use it once
-        _button.enabled = false;
-        GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
-    }
-
-    private void SpawnBlueprint2()
-    {
         _blueprint = Instantiate(_cardConfiguration.BlueprintPrefab);
+        _blueprint.GetComponent<CardBlueprint>().Initialize();
         _isBlueprintSpawned = true;
     }
 
@@ -81,11 +73,18 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
 
     private bool CheckIfIsAbleToActivate()
     {
+        if(_spawnTargetDetector.GetGameObjectFromClickInLayer() != null)
+        {
+            return true;
+        }
+
         return false;
     }
 
-    private void Activate()
+    private void ActivatePower()
     {
+        Assert.IsNotNull(_cardConfiguration, "Can't activate this card power because there is no CardConfiguration");
+
         Vector3 spawnPosition = _spawnTargetDetector.GetPositionFromClickInLayer();
 
         if (spawnPosition.Equals(new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity)))
@@ -95,38 +94,32 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
 
         GameObject go = _spawnTargetDetector.GetGameObjectFromClickInLayer();
 
-
         GameObject newGO = new GameObject();
         newGO.transform.position = spawnPosition;
 
         _cardConfiguration.cardPower.Power.Activate(go, newGO.transform);
     }
 
-    private void UpdateBlueprintPosition()
+    private void Reset()
     {
-        if (!_isBlueprintSpawned)
+        if(_isBlueprintSpawned)
         {
-            return;
+            DespawnBlueprint();
         }
 
-        Vector3 newPosition = _updateBlueprintPositionTargetDetector.GetPositionFromClickInLayer();
-
-        if (newPosition.Equals(new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity)))
-        {
-            return;
-        }
-
-        _blueprint.transform.position = newPosition;
+        _blueprint = null;
     }
 
     #region Getters/setters
     public void SetCardConfig(CardConfigurationSO cardConfig)
     {
+        Reset();
+
         _cardConfiguration = cardConfig;
-        _cardText.SetText(cardConfig.CardText);
-        _cardImage.sprite = cardConfig.CardSprite;
-        _spawnTargetDetector.SetTargetLayers(cardConfig.SpawnLayers);
+        _cardImage.sprite = _cardConfiguration.CardSprite;
+        _spawnTargetDetector.SetTargetLayers(_cardConfiguration.SpawnLayers);
     }
+
     public CardConfigurationSO GetCardConfig()
     {
         return _cardConfiguration;
