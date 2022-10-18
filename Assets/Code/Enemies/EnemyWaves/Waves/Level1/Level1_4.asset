@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe117501d7ebc0b4ea9bcad7c297eba0, type: 3}
-  m_Name: Level1_2
+  m_Name: Level1_4
   m_EditorClassIdentifier: 
   <EnemyTypesInWave>k__BackingField:
+  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
   - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
   - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
-  <NumberOfEnemiesPerType>k__BackingField: 010000000f000000
+  - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
+  <NumberOfEnemiesPerType>k__BackingField: 0a000000020000000a00000002000000
   <TimeBetweenEnemies>k__BackingField: 1
