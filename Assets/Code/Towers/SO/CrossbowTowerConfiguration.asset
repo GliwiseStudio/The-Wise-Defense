@@ -18,8 +18,8 @@ MonoBehaviour:
     _targetLayerMask:
     - GroundEnemies
   _shootingConfiguration:
-    _fireRate: 1.9
-    _damage: 70
+    _fireRate: 2
+    _damage: 50
   _upgradeList:
     _upgrades:
     - _damage: 70
