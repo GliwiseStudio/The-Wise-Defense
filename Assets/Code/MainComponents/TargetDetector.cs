@@ -6,7 +6,7 @@ public class TargetDetector
 {
     private Transform _transform;
     private float _detectionRadius;
-    private readonly string[] _targetLayerMaskName;
+    private string[] _targetLayerMaskName;
 
     public TargetDetector(Transform towerTransform, float detectionRadius, string targetLayerMaskString)
     {
@@ -47,6 +47,11 @@ public class TargetDetector
         _targetLayerMaskName = targetLayerMasksString;
     }
 
+    public TargetDetector()
+    {
+
+    }
+
     public void SetTransform(Transform transform)
     {
         _transform = transform;
@@ -62,6 +67,11 @@ public class TargetDetector
         {
             _detectionRadius = newRadius;
         }
+    }
+
+    public void SetTargetLayers(string[] layers)
+    {
+        _targetLayerMaskName = layers;
     }
 
     public Transform DetectTarget()
