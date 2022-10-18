@@ -3,49 +3,25 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public EnemyWave[] waves;
+    [SerializeField] private EnemyWave[] _waves;
+    [SerializeField] private Transform _spawnPoint;
+
     private EnemyWave _currentWave;
-    private int _currentWaveNumber = 0;
-
-    private float _timeBetweenWaves;
-
-    public Transform spawnPoint;
-
-    private bool _allWavesSpawned = false;
+    private int _currentWaveNumber = -1;
     
     private void Awake()
     {
-        _currentWave = waves[0];
-        _timeBetweenWaves = _currentWave.TimeBeforeThisWave;
+        _currentWave = _waves[0];
     }
 
     private void Update()
     {
-        if (_allWavesSpawned) // all waves have been spawned, no need to progress further down the code
+        if (GameManager.Instance.GetIsWaveActive() && _currentWaveNumber != GameManager.Instance.GetCurrentWave()) // only happens once per wave
         {
-            return;
-        }
-
-        if (Time.time >= _timeBetweenWaves) // temporarily for testing, later each wave will occur after the player has managed their cards
-        {
+            _currentWaveNumber = GameManager.Instance.GetCurrentWave();
+            _currentWave = _waves[_currentWaveNumber];
             StartCoroutine(SpawnWave());
-            IncWave();
-
-            _timeBetweenWaves = Time.time + _currentWave.TimeBeforeThisWave; // i'm not sure this will be necessary later (?)
         }
-    }
-
-    void IncWave()
-    {
-        _currentWaveNumber++;
-
-        if (_currentWaveNumber == waves.Length) 
-        {
-            _allWavesSpawned = true;
-            return;
-        }
-
-        _currentWave = waves[_currentWaveNumber];
     }
 
     IEnumerator SpawnWave()
@@ -56,7 +32,7 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int j = 0; j < currentWave.NumberOfEnemiesPerType[i]; j++)
             {
-                Instantiate(currentWave.EnemyTypesInWave[i], spawnPoint.position, spawnPoint.rotation);
+                Instantiate(currentWave.EnemyTypesInWave[i], _spawnPoint.position, _spawnPoint.rotation);
                 yield return new WaitForSeconds(currentWave.TimeBetweenEnemies); // time to wait between enemies spawning
             }
         }

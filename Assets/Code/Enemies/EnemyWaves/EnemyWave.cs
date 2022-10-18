@@ -10,8 +10,5 @@ public class EnemyWave : ScriptableObject
     public int[] NumberOfEnemiesPerType { get; private set; }
 
     [field: SerializeField]
-    public float TimeBeforeThisWave { get; private set; }
-
-    [field: SerializeField]
     public float TimeBetweenEnemies { get; private set; }
 }
