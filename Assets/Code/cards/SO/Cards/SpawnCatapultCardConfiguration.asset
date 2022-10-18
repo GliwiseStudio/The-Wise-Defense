@@ -17,3 +17,6 @@ MonoBehaviour:
     type: 3}
   _spawnLayers:
   - TowerBase
+  InGameCard: 0
+  CardText: Spawn Catapult
+  CardSprite: {fileID: 21300000, guid: 565e2742d9de94c48babff202df7dd1f, type: 3}

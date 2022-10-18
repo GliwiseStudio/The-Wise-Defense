@@ -17,3 +17,6 @@ MonoBehaviour:
     type: 3}
   _spawnLayers:
   - TowerBase
+  InGameCard: 0
+  CardText: Spawn crossbow
+  CardSprite: {fileID: 21300000, guid: 8e7e0fad3c4d8024f835c07c59508bda, type: 3}

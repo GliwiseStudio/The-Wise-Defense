@@ -64,7 +64,6 @@ public class ButtonsController : MonoBehaviour
         {
             int pos = Random.Range(0, _cardTypes.Cards.Length);
             _cards[i].SetCardConfig(_cardTypes.Cards[pos]); // random CardConfiguration
-            _btnImages[i + 1].sprite = _cardTypes.CardsSprite[pos]; // match UI sprite to the random chosen card
         }
     }
 

@@ -1,15 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Cards : MonoBehaviour
 {
-    [SerializeField] CardTypes _cardTypes;
     private Button _button;
-    private CardConfigurationSO _cardConfig;
+    private Image _cardImage;
+    private TextMeshProUGUI _cardText;
+
+    [SerializeField] private CardConfigurationSO _cardConfig;
 
     private void Awake()
     {
         _button = GetComponent<Button>();
+        _cardImage = GetComponent<Image>();
+        _cardText = GetComponentInChildren<TextMeshProUGUI>();
+
+        _cardText.SetText(_cardConfig.CardText);
+        _cardImage.sprite = _cardConfig.CardSprite;
     }
 
     private void OnEnable()
@@ -36,10 +44,13 @@ public class Cards : MonoBehaviour
     public void SetCardConfig(CardConfigurationSO cardConfig)
     {
         _cardConfig = cardConfig;
+        _cardText.SetText(cardConfig.CardText);
+        _cardImage.sprite = cardConfig.CardSprite;
     }
     public CardConfigurationSO GetCardConfig()
     {
         return _cardConfig;
     }
     #endregion
+
 }
