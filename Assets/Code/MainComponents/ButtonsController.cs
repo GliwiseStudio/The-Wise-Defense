@@ -19,7 +19,10 @@ public class ButtonsController : MonoBehaviour
         _btnImages = GetComponentsInChildren<Image>();
 
         _startButton = _buttons[0];
+    }
 
+    private void Start()
+    {
         SetCards();
         ManageOutOfGameCards();
     }
