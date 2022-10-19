@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Catapult
   _detectionConfiguration:
-    _detectionRange: 5
+    _detectionRange: 3
     _targetLayerMask:
     - GroundEnemies
   _shootingConfiguration:
