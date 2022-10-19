@@ -26,8 +26,7 @@ public class AreaDamagePower : ICardPower
         IReadOnlyList<Transform> objetives = _targetDetector.GetAllTargetsInRange();
         foreach (Transform t in objetives)
         {
-            //t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage); //DESCOMENTAR
-            Debug.Log("fhedfjkdj");
+            t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage);
         }
     }
 }
