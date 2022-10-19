@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleBase : MonoBehaviour
@@ -15,8 +13,8 @@ public class ObstacleBase : MonoBehaviour
         {
             return;
         }
-
-         Instantiate(obstaclePrefab, _spawnPoint.position, Quaternion.identity);
+        
+        Instantiate(obstaclePrefab, _spawnPoint.position, Quaternion.identity);
         _hasAObstacle = true;
     }
 }

@@ -96,7 +96,6 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         GameObject newGO = new GameObject();
         newGO.transform.position = spawnPosition;
-
         _cardConfiguration.cardPower.Power.Activate(go, newGO.transform);
     }
 
