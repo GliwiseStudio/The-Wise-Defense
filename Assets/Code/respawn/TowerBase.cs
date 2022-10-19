@@ -31,7 +31,7 @@ public class TowerBase : MonoBehaviour
 
     public GameObject GetTower()
     {
-        if(_hasATower)
+        if(!_hasATower)
         {
             return null;
         }
