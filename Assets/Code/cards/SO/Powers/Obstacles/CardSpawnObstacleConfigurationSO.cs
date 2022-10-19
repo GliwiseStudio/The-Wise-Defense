@@ -10,6 +10,6 @@ public class CardSpawnObstacleConfigurationSO : CardPowerConfigurationSO
 
     protected override ICardPower InitializePower()
     {
-        return new SpawnTowerPower(_obstaclePrefab, _obstacleName);
+        return new SpawnObstaclePower(_obstaclePrefab, _obstacleName);
     }
 }

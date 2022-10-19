@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4932cd5b88e3c424491afce185cc0aa6, type: 3}
-  m_Name: SpawnBarricadeCardConfiguration
+  m_Name: SpawnSlowdownAreaConfiguration
   m_EditorClassIdentifier: 
-  cardPower: {fileID: 11400000, guid: a338e8a3abf1e164e99a41b6cef66bff, type: 2}
-  _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
+  cardPower: {fileID: 11400000, guid: b39c02323af60bd42b45ed8243fb462d, type: 2}
+  _blueprintPrefab: {fileID: 6379108122978655020, guid: 09431546b753591459a704a64fff41ec,
     type: 3}
   _spawnLayers:
   - ObstacleBase
   InGameCard: 0
-  CardText: Spawn Barricade
-  CardSprite: {fileID: 21300000, guid: e73101b73ffe17e4ea07a9ae5b580a4c, type: 3}
+  CardText: Spawn slowdown
+  CardSprite: {fileID: 21300000, guid: ef977ab2c1dae6641beb162a98d06ab0, type: 3}

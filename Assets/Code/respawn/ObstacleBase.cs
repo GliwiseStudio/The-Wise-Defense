@@ -16,7 +16,7 @@ public class ObstacleBase : MonoBehaviour
             return;
         }
 
-         Instantiate(obstaclePrefab, _spawnPoint.position, Quaternion.identity);
+         Instantiate(obstaclePrefab, _spawnPoint.position, transform.rotation);
         _hasAObstacle = true;
     }
 }
