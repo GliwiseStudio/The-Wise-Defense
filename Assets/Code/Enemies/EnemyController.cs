@@ -124,21 +124,24 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
             if (_enemyMovement.ObstacleReached)
             {
-                PlayFightingAnimation();
+                //PlayFightingAnimation();
 
                 _fightingStateChange = true;
                 _walkingStateChange = false;
             }
         }
 
-        DamageControlUpdate();
-
-        if (_canDamage) // check if enough time has passed to damage the obstacle again
+        if (_fightingStateChange) // obstacle reached
         {
-            //PlayFightingAnimation();
-            _canDamage = false;
-            _lastDamagedTime = Time.time;
-            StartCoroutine(PlayDamage());
+            DamageControlUpdate();
+
+            if (_canDamage) // check if enough time has passed to damage the obstacle again
+            {
+                PlayFightingAnimation();
+                _canDamage = false;
+                _lastDamagedTime = Time.time;
+                StartCoroutine(PlayDamage());
+            }
         }
     }
 
@@ -151,7 +154,6 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
             IDamage obstacleInterface = _targetGameObject.GetComponent<IDamage>();
             obstacleInterface.ReceiveDamage(_damage);
-            
         }
     }
 

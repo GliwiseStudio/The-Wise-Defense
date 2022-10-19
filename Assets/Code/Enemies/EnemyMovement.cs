@@ -28,7 +28,7 @@ public class EnemyMovement
         _speed = speed;
         _obstaclesLayerMask = obstaclesLayerMask;
 
-        _randomDistance = Random.Range(0.2f, 2f);
+        _randomDistance = Random.Range(1f, 2f);
 
         _targetWp = Waypoints.waypoints[_targetWpIdx]; // initialice target
 
