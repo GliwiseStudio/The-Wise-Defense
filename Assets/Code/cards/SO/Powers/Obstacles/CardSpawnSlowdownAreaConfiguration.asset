@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c49efba43e22c1745ae4a5616dbdccdb, type: 3}
-  m_Name: CardSpawnPowerObstacleConfiguration
+  m_Name: CardSpawnSlowdownAreaConfiguration
   m_EditorClassIdentifier: 
-  _obstacleName: Barricade
-  _obstaclePrefab: {fileID: 1855269860831725814, guid: 6414b8f07e72d524c98ee584842248cf,
+  _obstacleName: Slowdown Area
+  _obstaclePrefab: {fileID: 8927358184915164631, guid: 3274388616353d147997aac3b3c8d3e7,
     type: 3}

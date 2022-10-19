@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49efba43e22c1745ae4a5616dbdccdb, type: 3}
+  m_Name: CardSpawnBarricadeConfiguration
+  m_EditorClassIdentifier: 
+  _obstacleName: Barricade
+  _obstaclePrefab: {fileID: 2872851837355551471, guid: 6414b8f07e72d524c98ee584842248cf,
+    type: 3}
