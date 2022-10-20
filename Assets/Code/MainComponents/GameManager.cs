@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    public event Action OnWaveFinished;
 
     [SerializeField] private int _numWaves = 5;
 
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     #region Waves Management
     public void NextWave() // pause game and prepare for next wave, but not start it
     {
+        OnWaveFinished?.Invoke();
         if (_currentWave < _numWaves)
         {
             PauseGame();

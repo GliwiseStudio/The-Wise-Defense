@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56366415552b1464ba63179534b6d9b9, type: 3}
+  m_Name: CardsSotrage
+  m_EditorClassIdentifier: 
+  _cards:
+  - {fileID: 5557281949540181382, guid: 3ca856e86561c1d4fbf181da60ac6ab3, type: 3}
+  - {fileID: 5557281949540181382, guid: d588dd1bf8b76784b9ebffa928e20011, type: 3}
+  - {fileID: 5557281949540181382, guid: ea4464ead2f25b04585f1a4a8a78d8d3, type: 3}
+  - {fileID: 5557281949540181382, guid: 3dde539cec7316a489d0d65b6a97c6df, type: 3}
