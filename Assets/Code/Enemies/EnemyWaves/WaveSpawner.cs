@@ -7,21 +7,21 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
 
     private EnemyWave _currentWave;
-    private int _currentWaveNumber = -1;
-    
-    private void Awake()
+
+    private void OnEnable()
     {
-        _currentWave = _waves[0];
+        GameManager.Instance.OnWaveStarted += StartWave;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        if (GameManager.Instance.GetIsWaveActive() && _currentWaveNumber != GameManager.Instance.GetCurrentWave()) // only happens once per wave
-        {
-            _currentWaveNumber = GameManager.Instance.GetCurrentWave();
-            _currentWave = _waves[_currentWaveNumber];
-            StartCoroutine(SpawnWave());
-        }
+        GameManager.Instance.OnWaveStarted -= StartWave;
+    }
+
+    private void StartWave()
+    {
+        _currentWave = _waves[GameManager.Instance.GetCurrentWave()];
+        StartCoroutine(SpawnWave());
     }
 
     IEnumerator SpawnWave()

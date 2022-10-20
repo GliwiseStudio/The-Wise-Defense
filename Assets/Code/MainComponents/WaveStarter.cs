@@ -6,7 +6,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class WaveStarter : MonoBehaviour
 {
-    public event Action OnWaveStart;
     private Button _startWaveButton;
 
     private void Awake()
@@ -27,6 +26,5 @@ public class WaveStarter : MonoBehaviour
     private void StartWave()
     {
         GameManager.Instance.StartWave();
-        OnWaveStart?.Invoke();
     }
 }

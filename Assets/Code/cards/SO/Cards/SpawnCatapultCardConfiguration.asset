@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpawnCatapultCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: 0389dd058fe57b64a9bb1dfde1b63ccd, type: 2}
-  _blueprintPrefab: {fileID: 6704589981316177330, guid: e398112c7cbce054d93822c9a9509cd7,
+  _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
     type: 3}
   _spawnLayers:
   - TowerBase

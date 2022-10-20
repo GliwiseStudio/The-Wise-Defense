@@ -5,11 +5,12 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public event Action OnWaveFinished;
+    public event Action OnWaveStarted;
 
     [SerializeField] private int _numWaves = 5;
 
     private int _currentWave = 0;
-    private bool _isWaveActive = false;
+    private bool _isWaveActive = false; //OBSOLETO
     private int _currentEnemies = 0;
     private int _currentTowers = 3;
 
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void StartWave() // called from the start button
     {
+        OnWaveStarted?.Invoke();
         UnpauseGame();
     }
 

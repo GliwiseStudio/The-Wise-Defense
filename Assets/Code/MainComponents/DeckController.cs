@@ -20,13 +20,13 @@ public class DeckController : MonoBehaviour
 
     private void OnEnable()
     {
-        _waveStarter.OnWaveStart += RemoveBeforeGameCards;
+        GameManager.Instance.OnWaveStarted += RemoveBeforeGameCards;
         GameManager.Instance.OnWaveFinished += GenerateDeck;
     }
 
     private void OnDisable()
     {
-        _waveStarter.OnWaveStart -= RemoveBeforeGameCards;
+        GameManager.Instance.OnWaveStarted -= RemoveBeforeGameCards;
         GameManager.Instance.OnWaveFinished -= GenerateDeck;
     }
 
