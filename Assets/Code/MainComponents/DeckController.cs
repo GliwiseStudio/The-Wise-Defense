@@ -8,12 +8,10 @@ public class DeckController : MonoBehaviour
     [SerializeField] private int _maximumCardsInDeck = 5;
     private List<Cards> _currentCards;
     private CardSpawner _cardSpawner;
-    private WaveStarter _waveStarter;
 
     private void Awake()
     {
         _cardSpawner = FindObjectOfType<CardSpawner>();
-        _waveStarter = FindObjectOfType<WaveStarter>(true);
         _currentCards = new List<Cards>(_maximumCardsInDeck);
         GenerateDeck();
     }
