@@ -19,7 +19,7 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void Awake()
     {
         _cardImage = GetComponent<Image>();
-        _spawnTargetDetector = new TargetDetector();
+        _spawnTargetDetector = new TargetDetector(_cardConfiguration.SpawnLayers);
         Activate();
     }
 
@@ -97,6 +97,11 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         GameObject newGO = new GameObject();
         newGO.transform.position = spawnPosition;
         _cardConfiguration.cardPower.Power.Activate(go, newGO.transform);
+    }
+
+    private void OnDestroy()
+    {
+        Reset();
     }
 
     private void Reset()

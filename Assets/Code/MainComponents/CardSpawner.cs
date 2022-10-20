@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class CardSpawner : MonoBehaviour
 {
-    void Start()
+    [SerializeField] private CardsStorage _cardsStorage;
+
+    public Cards Create()
     {
-        
+        Cards card = _cardsStorage.GetRandomCard();
+        return Instantiate(card);
     }
 
-    void Update()
+    public Cards CreateBeforeGameCard()
     {
-        
-    }
-
-    public GameObject Create()
-    {
-        return null;
+        Cards card = _cardsStorage.GetRandomBeforeGameCard();
+        return Instantiate(card);
     }
 }
