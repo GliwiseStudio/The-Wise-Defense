@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: SpawnBarricadeCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: a338e8a3abf1e164e99a41b6cef66bff, type: 2}
+  _activationSoundName: CannonShot
+  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
+    type: 3}
   _blueprintPrefab: {fileID: 5807383701995013567, guid: 8186984bcc327164cb41c9520f52a7aa,
     type: 3}
   _spawnLayers:
