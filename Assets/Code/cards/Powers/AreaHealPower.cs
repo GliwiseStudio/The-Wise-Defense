@@ -27,8 +27,7 @@ public class AreaHealPower : ICardPower
         IReadOnlyList<Transform> objetives = _targetDetector.GetAllTargetsInRange();
         foreach (Transform t in objetives)
         {
-            //t.gameObject.GetComponent<IHeal>().Heal(_health); //DESCOMENTAR
-            Debug.Log("fhedfjkdj");
+            t.gameObject.GetComponent<IHeal>().Heal(_health);
         }
     }
 }

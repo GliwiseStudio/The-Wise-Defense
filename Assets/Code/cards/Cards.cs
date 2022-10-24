@@ -4,6 +4,7 @@ using UnityEngine.Assertions;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[DisallowMultipleComponent]
 public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public event Action OnSuccesfullySpawned;
@@ -53,8 +54,12 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         DespawnBlueprint();
         if (CheckIfIsAbleToActivate())
         {
-            ActivatePower();
-            OnSuccesfullySpawned?.Invoke();
+            bool succesfullyActivated = ActivatePower();
+            if(succesfullyActivated)
+            {
+                PlayActivationSound();
+                OnSuccesfullySpawned?.Invoke();
+            }
         }
     }
 
@@ -81,7 +86,7 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         return false;
     }
 
-    private void ActivatePower()
+    private bool ActivatePower()
     {
         Assert.IsNotNull(_cardConfiguration, "Can't activate this card power because there is no CardConfiguration");
 
@@ -89,7 +94,7 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         if (spawnPosition.Equals(new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity)))
         {
-            return;
+            return false;
         }
 
         GameObject go = _spawnTargetDetector.GetGameObjectFromClickInLayer();
@@ -97,6 +102,19 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         GameObject newGO = new GameObject();
         newGO.transform.position = spawnPosition;
         _cardConfiguration.cardPower.Power.Activate(go, newGO.transform);
+
+        return true;
+    }
+
+    public void PlayActivationSound()
+    {
+        InstantiateActivationSoundPlayer();
+    }
+
+    private void InstantiateActivationSoundPlayer()
+    {
+        AudioPlayer audioPlayer = Instantiate(_cardConfiguration.AudioPlayerPrefab);
+        audioPlayer.PlayAudio(_cardConfiguration.ActivationSoundName);
     }
 
     private void OnDestroy()
