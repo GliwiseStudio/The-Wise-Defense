@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
-    public static Transform[] waypoints; // an array to store each waypoint on the way (a waypoint is basically a coordinate)
+    public Transform[] waypoints; // an array to store each waypoint on the way (a waypoint is basically a coordinate)
 
     private void Awake()
     {

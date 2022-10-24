@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private float _damageAnimTime;
     private float _hitTime;
 
+    private Waypoints _waypoints;
     private Slider _slider;
     private Camera _sceneCamera;
     private Transform _targetTransform;
@@ -41,7 +42,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
     #endregion
 
-    private void Start()
+    private void TheStart() // called when instanciated from the wave spawner
     {
         GameManager.Instance.AddEnemy(); // add the enemy to the GameManager to keep track of it
 
@@ -61,7 +62,7 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _audioPlayer = GetComponent<AudioPlayer>();
 
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
-        _enemyMovement = new EnemyMovement(transform, _speed, _obstaclesLayerMask);
+        _enemyMovement = new EnemyMovement(transform, _speed, _obstaclesLayerMask, _waypoints);
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
         _animationsHandler = new AnimationsHandler(_animator);
     }
@@ -252,6 +253,14 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private void PlayIdleAnimation()
     {
         _animationsHandler.PlayAnimationState("Idle", 0.1f);
+    }
+
+    #endregion
+
+    #region Setters
+    public void SetWaypoints(Waypoints waypoints)
+    {
+        _waypoints = waypoints;
     }
 
     #endregion
