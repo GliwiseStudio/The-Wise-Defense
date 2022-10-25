@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Linq;
 
 public class Projectile : MonoBehaviour
 {
     private Transform _transform;
-    private Transform _targetTransform;
+    private Collider _targetCollider;
     private float _speed = 3f;
     private int _damage = 10;
     private bool _isInitialized = false;
@@ -18,14 +19,14 @@ public class Projectile : MonoBehaviour
         _transform = this.transform;
     }
 
-    public void Initialize(ProjectileConfigurationSO configuration, float speed, Transform targetTransform, int damage, string[] targetLayerMasks)
+    public void Initialize(ProjectileConfigurationSO configuration, float speed, Collider targetCollider, int damage, string[] targetLayerMasks)
     {
         _configuration = configuration;
         _movement = _configuration.Movement;
         _damager = _configuration.Damager;
         _currentLifetime = _configuration.MaximumLifetime;
         _speed = speed;
-        _targetTransform = targetTransform;
+        _targetCollider = targetCollider;
         _damage = damage;
         _targetLayerMasks = targetLayerMasks;
 
@@ -45,7 +46,7 @@ public class Projectile : MonoBehaviour
 
     private void UpdateMovement()
     {
-        Vector3 newPosition = _movement.UpdateMovement(_transform, _targetTransform, _speed);
+        Vector3 newPosition = _movement.UpdateMovement(_transform, _targetCollider, _speed);
         ApplyMovement(newPosition);
     }
 
@@ -66,7 +67,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("GroundEnemies"))
+        if(_targetLayerMasks.Contains(LayerMask.LayerToName(other.gameObject.layer)))
         {
             IDamage damageableEnemy = other.gameObject.GetComponent<IDamage>();
             _damager.ApplyDamage(_damage, damageableEnemy, other.transform);

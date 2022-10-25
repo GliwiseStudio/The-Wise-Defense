@@ -13,7 +13,7 @@ public class ProjectileParabolicMovement : IProjectileMovement
         _trajectoryAnimationCurve = trajectoryAnimationCurve;
     }
 
-    public Vector3 UpdateMovement(Transform projectileTransform, Transform targetTransform, float speed)
+    public Vector3 UpdateMovement(Transform projectileTransform, Collider targetCollider, float speed)
     {
         if(!_hasMovementStarted)
         {
@@ -22,9 +22,9 @@ public class ProjectileParabolicMovement : IProjectileMovement
         }
 
         
-        if(targetTransform != null)
+        if(targetCollider != null)
         {
-            _endPosition = targetTransform.position;
+            _endPosition = targetCollider.bounds.center;
         }
 
         _currentTime += Time.deltaTime;
