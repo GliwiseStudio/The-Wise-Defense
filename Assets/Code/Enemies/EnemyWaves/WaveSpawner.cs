@@ -5,6 +5,7 @@ public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private EnemyWave[] _waves;
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private Waypoints _waypoints;
 
     private EnemyWave _currentWave;
 
@@ -32,7 +33,10 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int j = 0; j < currentWave.NumberOfEnemiesPerType[i]; j++)
             {
-                Instantiate(currentWave.EnemyTypesInWave[i], _spawnPoint.position, _spawnPoint.rotation);
+                GameObject enemy = Instantiate(currentWave.EnemyTypesInWave[i], _spawnPoint.position, _spawnPoint.rotation);
+                enemy.GetComponent<EnemyController>().SetWaypoints(_waypoints);
+                enemy.SendMessage("TheStart", _waypoints);
+
                 yield return new WaitForSeconds(currentWave.TimeBetweenEnemies); // time to wait between enemies spawning
             }
         }

@@ -17,20 +17,23 @@ public class EnemyMovement
 
     private float _randomDistance;
 
+    private Waypoints _waypoints;
+
     public bool ObstacleReached = false;
 
     private TargetDetector _obstacleDetector;
     private string _obstaclesLayerMask;
 
-    public EnemyMovement(Transform enemyTransform, float speed, string obstaclesLayerMask)
+    public EnemyMovement(Transform enemyTransform, float speed, string obstaclesLayerMask, Waypoints waypoints)
     {
         _enemyTransform = enemyTransform;
         _speed = speed;
         _obstaclesLayerMask = obstaclesLayerMask;
+        _waypoints = waypoints;
 
         _randomDistance = Random.Range(1f, 2f);
 
-        _targetWp = Waypoints.waypoints[_targetWpIdx]; // initialice target
+        _targetWp = _waypoints.waypoints[_targetWpIdx]; // initialice target
 
         _obstacleDetector = new TargetDetector(_enemyTransform, _randomDistance, _obstaclesLayerMask);
 
@@ -69,9 +72,9 @@ public class EnemyMovement
     {
         _targetWpIdx++;
 
-        if (_targetWpIdx < Waypoints.waypoints.Length)
+        if (_targetWpIdx < _waypoints.waypoints.Length)
         {
-            _targetWp = Waypoints.waypoints[_targetWpIdx];
+            _targetWp = _waypoints.waypoints[_targetWpIdx];
 
             CalculateWaypointDirection();
         }
