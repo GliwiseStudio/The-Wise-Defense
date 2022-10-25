@@ -17,6 +17,7 @@ MonoBehaviour:
     _detectionRange: -1
     _targetLayerMask:
     - GroundEnemies
+    - FlyingEnemies
   _shootingConfiguration:
     _fireRate: 3
     _damage: 50
