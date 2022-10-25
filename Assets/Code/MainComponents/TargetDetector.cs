@@ -96,6 +96,17 @@ public class TargetDetector
         return enemyFound.gameObject;
     }
 
+    public Collider DetectTargetCollider()
+    {
+        Collider enemyFound = FindNearest();
+        if (enemyFound == null)
+        {
+            return null;
+        }
+
+        return enemyFound;
+    }
+
     private Collider FindNearest()
     {
         Collider[] enemiesFound = Physics.OverlapSphere(_transform.position, _detectionRadius, LayerMask.GetMask(_targetLayerMaskName));

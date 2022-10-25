@@ -13,6 +13,7 @@ public class TowerController : MonoBehaviour, IBuff
     private TargetDetector _enemyDetector;
     private TowerShootComponent _shootComponent;
     private Transform _targetTransform;
+    private Collider _targetCollider;
     private GameObject _targetGameObject;
     private AnimationsHandler _animationsHandler;
     private AudioPlayer _audioPlayer;
@@ -97,7 +98,7 @@ public class TowerController : MonoBehaviour, IBuff
             if (_enemyDetector.IsTargetInRange(_targetTransform.position))
             {
                 _headRotator.Update(_targetTransform);
-                _shootComponent.Shoot(_firingPointTransform.position, transform.forward, _targetTransform);
+                _shootComponent.Shoot(_firingPointTransform.position, transform.forward, _targetCollider);
             }
             else
             {
@@ -108,6 +109,7 @@ public class TowerController : MonoBehaviour, IBuff
         {
             _targetGameObject = _enemyDetector.DetectTargetGameObject();
             _targetTransform = _enemyDetector.DetectTarget();
+            _targetCollider = _enemyDetector.DetectTargetCollider();
         }
     }  
 
