@@ -55,14 +55,14 @@ public class DeckController : MonoBehaviour
     private void GenerateCard()
     {
         Cards card = _cardSpawner.Create();
-        card.transform.SetParent(_deckHolderTransform);
+        card.transform.SetParent(_deckHolderTransform, false);
         _currentCards.Add(card);
     }
 
     private void GenerateBeforeGameCard()
     {
         Cards card = _cardSpawner.CreateBeforeGameCard();
-        card.transform.SetParent(_deckHolderTransform);
+        card.transform.SetParent(_deckHolderTransform, false);
         _currentCards.Add(card);
     }
 
