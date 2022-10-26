@@ -15,4 +15,4 @@ MonoBehaviour:
   _buffsConfigurations:
   - _key: FireRate
     _buffPercentage: -50
-    _duration: 3
+    _duration: 5
