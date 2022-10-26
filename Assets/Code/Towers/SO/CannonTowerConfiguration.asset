@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Cannon
   _detectionConfiguration:
-    _detectionRange: 5
+    _detectionRange: 4
     _targetLayerMask:
     - GroundEnemies
     - FlyingEnemies

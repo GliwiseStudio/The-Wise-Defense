@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buffsConfigurations:
   - _key: Damage
-    _buffPercentage: 40
-    _duration: 6.5
+    _buffPercentage: 50
+    _duration: 5
