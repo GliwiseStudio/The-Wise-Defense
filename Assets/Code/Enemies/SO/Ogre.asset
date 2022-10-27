@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ogre
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 1.5
-  <MaxHealth>k__BackingField: 600
+  <MaxHealth>k__BackingField: 500
   <DetectionRange>k__BackingField: 2
   <Damage>k__BackingField: 100
   <DamageAnimTime>k__BackingField: 1.37

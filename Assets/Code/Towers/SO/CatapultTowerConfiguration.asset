@@ -17,15 +17,18 @@ MonoBehaviour:
     _detectionRange: 2
     _targetLayerMask:
     - GroundEnemies
-    - FlyingEnemies
   _shootingConfiguration:
-    _fireRate: 1.5
+    _fireRate: 2
     _damage: 10
   _upgradeList:
     _upgrades:
-    - _damage: 10
-      _range: 5
-      _fireRate: 0.5
+    - _damage: 15
+      _range: 3
+      _fireRate: 1.5
+      _gameObject: {fileID: 0}
+    - _damage: 25
+      _range: 4
+      _fireRate: 1
       _gameObject: {fileID: 0}
   _audioConfiguration:
     _shotSound: CannonShot
