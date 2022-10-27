@@ -13,13 +13,13 @@ public class EnemyMovement
     private GameObject _obstacleGameObject;
     private int _targetWpIdx = 0; // index of the target waypoint on the waypoints array
     private bool _reachedEnd = false;
-    private bool _obstacleDetected = false;
 
     private float _randomDistance;
 
     private Waypoints _waypoints;
 
     public bool ObstacleReached = false;
+    public bool ObstacleDetected = false;
 
     private TargetDetector _obstacleDetector;
     private string _obstaclesLayerMask;
@@ -31,7 +31,7 @@ public class EnemyMovement
         _obstaclesLayerMask = obstaclesLayerMask;
         _waypoints = waypoints;
 
-        _randomDistance = Random.Range(1f, 2f);
+        _randomDistance = Random.Range(0.2f, 1f);
 
         _targetWp = _waypoints.waypoints[_targetWpIdx]; // initialice target
 
@@ -42,7 +42,7 @@ public class EnemyMovement
 
     public void Update()
     {
-        if (_obstacleDetected)
+        if (ObstacleDetected)
         {
             if (!ObstacleReached)
             {
@@ -84,11 +84,8 @@ public class EnemyMovement
         }
     }
 
-    public void CalculateWaypointDirection()
+    void CalculateWaypointDirection() // not necessary to be public, since, because the obstacles will always be on the path, we don't need to recalculate direction after fight
     {
-        ObstacleReached = false;
-        _obstacleDetected = false;
-
         _dir = (_targetWp.position - _enemyTransform.position).normalized; // calculate direction of movement
 
         _enemyTransform.LookAt(_targetWp); // look in the direction of the target
@@ -97,7 +94,13 @@ public class EnemyMovement
     #endregion
 
     #region Obstacle in range related movement
-    void TranslateEnemyToObstacle()
+
+    public void ResetObstacleDetectionState()
+    {
+        ObstacleReached = false;
+        ObstacleDetected = false;
+    }
+    public void TranslateEnemyToObstacle()
     {
         _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
 
@@ -112,6 +115,8 @@ public class EnemyMovement
             _obstacleTransform = _obstacleDetector.DetectTarget();
         }
     }
+
+    /* // Not necessary since the obstacles will always be on the path, in the same direction of the movement
     public void CalculateObstacleDirection(Transform obstacleTransform)
     {
         _obstacleDetected = true;
@@ -119,7 +124,7 @@ public class EnemyMovement
         _dir = (obstacleTransform.position - _enemyTransform.position).normalized; // calculate direction of movement
 
         _enemyTransform.LookAt(obstacleTransform); // look in the direction of the target
-    }
+    }*/
 
     #endregion
 

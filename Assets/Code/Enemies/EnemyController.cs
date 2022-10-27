@@ -30,8 +30,14 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     private Material[] _materials;
     private bool _firstDeathCall = true;
     private float _timeOfDeath;
+
+    private enum EnemyStates { walking, fighting, reaching }
+    private EnemyStates _enemyState = EnemyStates.walking;
+    //
     private bool _fightingStateChange = false;
     private bool _walkingStateChange = true;
+    //
+
     private float _randomWaitTime;
 
     private EnemyHealth _enemyHealth;
@@ -96,19 +102,26 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     #region Movement
     private void KeepWalking()
     {
-        if (_fightingStateChange)
+        if (_enemyState == EnemyStates.fighting) // the player was fighting when the obstacle dissapeared
         {
             PlayIdleAnimation();
 
-            if (Time.time - _lastDamagedTime >= _randomWaitTime)
+            if (Time.time - _lastDamagedTime >= _randomWaitTime) // wait a random time to keep walking
             {
-                _enemyMovement.CalculateWaypointDirection();
+                _enemyMovement.ResetObstacleDetectionState();
 
                 PlayWalkingAnimation();
 
-                _fightingStateChange = false;
-                _walkingStateChange = true;
+                _enemyState = EnemyStates.walking;
             }
+        }
+        else if (_enemyState == EnemyStates.reaching) // the player was still walking towards the obstacle when it dissapeared, so it never got to the fighting state
+        {
+            _enemyMovement.ResetObstacleDetectionState();
+
+            PlayWalkingAnimation();
+
+            _enemyState = EnemyStates.walking;
         }
     }
     #endregion
@@ -119,20 +132,22 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
     {
         // obstacles don't move, so once it sees a target it's always in range
 
-        if (_walkingStateChange)
+        if (_enemyState == EnemyStates.walking) // first time it enters the method after detecting an obstacle
         {
-            _enemyMovement.CalculateObstacleDirection(_targetTransform);
+            _enemyState = EnemyStates.reaching;
+            _enemyMovement.ObstacleDetected = true;
 
+        } 
+        
+        if (_enemyState == EnemyStates.reaching) // the enemy is walking towards the obstacle, but has not reached it yet
+        {
             if (_enemyMovement.ObstacleReached)
             {
-                //PlayFightingAnimation();
-
-                _fightingStateChange = true;
-                _walkingStateChange = false;
+                _enemyState = EnemyStates.fighting;
             }
         }
 
-        if (_fightingStateChange) // obstacle reached
+        if (_enemyState == EnemyStates.fighting) // obstacle reached
         {
             DamageControlUpdate();
 
