@@ -17,3 +17,4 @@ MonoBehaviour:
   _range: 10
   _targetLayerMasks:
   - GroundEnemies
+  - FlyingEnemies
