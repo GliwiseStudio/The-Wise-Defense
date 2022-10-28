@@ -102,7 +102,7 @@ public class EnemyMovement
     }
     public void TranslateEnemyToObstacle()
     {
-        _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
+        TranslateEnemyThroughWaypoints();
 
         if (_obstacleTransform != null && _obstacleGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
         {
