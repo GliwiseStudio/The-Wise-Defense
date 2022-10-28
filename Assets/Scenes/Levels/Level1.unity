@@ -2901,7 +2901,7 @@ PrefabInstance:
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
@@ -2973,7 +2973,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _waves.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: 15dc6b70f8ea7c74686ee1a46f2c455b,
+      objectReference: {fileID: 11400000, guid: 535820964364f414caf09a2d49f15422,
         type: 2}
     - target: {fileID: 2942789569256628977, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
@@ -3072,7 +3072,7 @@ PrefabInstance:
     - target: {fileID: 7542399590332164653, guid: 14baf5059b30c97409742513ff3054f1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70710784
       objectReference: {fileID: 0}
     - target: {fileID: 7542399590332164653, guid: 14baf5059b30c97409742513ff3054f1,
         type: 3}
@@ -3082,7 +3082,7 @@ PrefabInstance:
     - target: {fileID: 7542399590332164653, guid: 14baf5059b30c97409742513ff3054f1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: 7542399590332164653, guid: 14baf5059b30c97409742513ff3054f1,
         type: 3}
@@ -3097,7 +3097,7 @@ PrefabInstance:
     - target: {fileID: 7542399590332164653, guid: 14baf5059b30c97409742513ff3054f1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7542399590332164653, guid: 14baf5059b30c97409742513ff3054f1,
         type: 3}

@@ -27,7 +27,7 @@ MonoBehaviour:
       _range: -1
       _fireRate: 2.5
       _gameObject: {fileID: 0}
-    - _damage: 80
+    - _damage: 75
       _range: -1
       _fireRate: 2
       _gameObject: {fileID: 0}

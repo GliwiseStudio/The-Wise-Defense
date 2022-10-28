@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa836bbbe6157904799ecde9f0d1f985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowdownPercentage: 0.4
+  _slowdownPercentage: 0.6
   _targerLayerMask: GroundEnemies
 --- !u!54 &2387561362919302107
 Rigidbody:
