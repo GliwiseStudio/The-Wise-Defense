@@ -12441,6 +12441,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainUI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8950443508797926183, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 313
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950443508797926183, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 278
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950443508797926185, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 075ffdba785cd9e41a881c0438c7823e,
+        type: 3}
     - target: {fileID: 8950443508797926185, guid: 8003f352d0d61ef4a92b57baee9bffc7,
         type: 3}
       propertyPath: m_Color.b
@@ -12455,6 +12471,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950443509848626966, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_text
+      value: 'Start
+
+        wave'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950443509848626967, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8950443510247676225, guid: 8003f352d0d61ef4a92b57baee9bffc7,
         type: 3}
@@ -12531,6 +12559,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PreserveAspect
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141534465186553784, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 929.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141534465186553784, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -396.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8003f352d0d61ef4a92b57baee9bffc7, type: 3}
