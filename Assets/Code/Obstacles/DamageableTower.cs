@@ -11,13 +11,13 @@ public class DamageableTower : MonoBehaviour, IDamage, IHeal
     private float _timeOfDestruction;
     private bool _dissolveActivated = false;
 
-    private Material _mat;
+    private Material[] _materials;
 
     void Start()
     {
         _slider = GetComponentInChildren<Slider>();
         _sceneCamera = FindObjectOfType<Camera>();
-        _mat = GetComponent<Renderer>().material;
+        _materials = GetComponent<Renderer>().materials;
 
         _currentHealth = _maxHealth;
         _slider.value = 1;
@@ -64,7 +64,10 @@ public class DamageableTower : MonoBehaviour, IDamage, IHeal
         if (Time.time - _timeOfDestruction < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
         {
             float i = Time.time - _timeOfDestruction;
-            _mat.SetFloat("_DissolveProgress", i);
+            foreach (Material _mat in _materials)
+            {
+                _mat.SetFloat("_DissolveProgress", i);
+            }
         }
         else // when a second has passed, destroy the gameObject
         {

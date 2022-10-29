@@ -33,10 +33,6 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
     private enum EnemyStates { walking, fighting, reaching }
     private EnemyStates _enemyState = EnemyStates.walking;
-    //
-    private bool _fightingStateChange = false;
-    private bool _walkingStateChange = true;
-    //
 
     private float _randomWaitTime;
 
