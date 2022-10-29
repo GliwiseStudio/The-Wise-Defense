@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public event Action OnWin;
+    public event Action OnLoose;
     private static GameManager _instance;
     public event Action OnWaveFinished;
     public event Action OnWaveStarted;
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Game's over and you win !! :D");
+            OnWin?.Invoke();
         }
 
     }
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
         {
             // end game
             Debug.Log("Game ends and you loose :(");
+            OnLoose?.Invoke();
         }
     }
 
