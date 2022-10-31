@@ -4,6 +4,7 @@ using UnityEngine;
 public class UIMainMenuScreen : MonoBehaviour, UIScreen
 {
     [SerializeField] private string _name;
+    private MusicPlayer _musicPlayer;
 
     public GameObject GetGameObject()
     {
@@ -23,5 +24,8 @@ public class UIMainMenuScreen : MonoBehaviour, UIScreen
     public void Show()
     {
         gameObject.SetActive(true);
+        
+        _musicPlayer = FindObjectOfType<MusicPlayer>();
+        _musicPlayer.PlaySong("MainMenuMusic");
     }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9c34a4a7c18244980ad83ce87345c8, type: 3}
+  m_Name: AudioMixerGroupsStorage
+  m_EditorClassIdentifier: 
+  _audioMixerGroups:
+  - _name: Master
+    _audioMixerGroup: {fileID: 24300002, guid: d511b016f54978d449c113954538c167, type: 2}
+  - _name: Music
+    _audioMixerGroup: {fileID: 1154287031773571808, guid: d511b016f54978d449c113954538c167,
+      type: 2}
+  - _name: SoundEffects
+    _audioMixerGroup: {fileID: -2158400661481565825, guid: d511b016f54978d449c113954538c167,
+      type: 2}
+  - _name: UIEffects
+    _audioMixerGroup: {fileID: 2653214918334122617, guid: d511b016f54978d449c113954538c167,
+      type: 2}
