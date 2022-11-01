@@ -29,7 +29,7 @@ public class PlayFabManager : MonoBehaviour
                 // but because it is initiliaced on the first scene, and never destroyed
                 // this will only happen if you play a scene without following the 
                 // natural order of the build, hence, why shouldn't happen on the build, don't worry
-                Debug.LogError("PlayFabManager is null, don't worry, this error won't be on the build :)");
+                Debug.Log("PlayFabManager is null, don't worry, this error won't be on the build :)");
                 return null;
             }
             return _instance;
