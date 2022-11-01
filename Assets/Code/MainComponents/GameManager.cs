@@ -41,9 +41,7 @@ public class GameManager : MonoBehaviour
     private void Win()
     {
         Debug.Log("Game's over and you win !! :D");
-
-        
-
+        UpgradePlayFabInfo();
         OnWin?.Invoke();
     }
 
