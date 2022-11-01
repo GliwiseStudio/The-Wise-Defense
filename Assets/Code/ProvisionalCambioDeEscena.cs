@@ -6,6 +6,6 @@ public class ProvisionalCambioDeEscena : MonoBehaviour
 {
     public void CambiarEscenaProvisional()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
 }
