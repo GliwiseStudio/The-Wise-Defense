@@ -14,6 +14,10 @@ public class AudioPlayer : MonoBehaviour
         _audioMixerGroupController = FindObjectOfType<AudioMixerGroupController>();
 
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
         ConfigureAudioSource("Master");
     }
 

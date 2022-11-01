@@ -15,8 +15,8 @@ public class AudioMixerGroupController : MonoBehaviour
         return _audioMixerGroupStorage.GetAudioMixerGroupFromName(name);
     }
 
-    public void SetAudioMixerVolume(string name)
+    public void SetAudioMixerVolume(string name, float value)
     {
-
+        GetAudioMixerGroupFromName(name).audioMixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);
     }
 }
