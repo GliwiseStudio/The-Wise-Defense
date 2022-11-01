@@ -43,11 +43,7 @@ namespace PlayFab.Internal
             {
                 using (UnityWebRequest www = UnityWebRequest.Get(fullUrl))
                 {
-#if UNITY_2017_2_OR_NEWER
                     yield return www.SendWebRequest();
-#else
-                    yield return www.Send();
-#endif
 
                     if (!string.IsNullOrEmpty(www.error))
                         errorCallback(www.error);
@@ -70,22 +66,9 @@ namespace PlayFab.Internal
                     request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
                     request.SetRequestHeader("Content-Type", "application/json");
                 }
-
-
-#if UNITY_2017_2_OR_NEWER
-#if !UNITY_2019_1_OR_NEWER
-                request.chunkedTransfer = false; // can be removed after Unity's PUT will be more stable
-#endif
                 yield return request.SendWebRequest();
-#else
-                yield return request.Send();
-#endif
 
-#if UNITY_2020_1_OR_NEWER
                 if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-#else
-                if (request.isNetworkError || request.isHttpError)
-#endif
                 {
                     errorCallback(request.error);
                 }
@@ -114,7 +97,7 @@ namespace PlayFab.Internal
             var startTime = DateTime.UtcNow;
 #endif
 
-            using var www = new UnityWebRequest(reqContainer.FullUrl)
+            using UnityWebRequest www = new UnityWebRequest(reqContainer.FullUrl)
             {
                 uploadHandler = new UploadHandlerRaw(reqContainer.Payload),
                 downloadHandler = new DownloadHandlerBuffer(),
@@ -129,11 +112,7 @@ namespace PlayFab.Internal
                     Debug.LogWarning("Null header: " + headerPair.Key + " = " + headerPair.Value);
             }
 
-#if UNITY_2017_2_OR_NEWER
             yield return www.SendWebRequest();
-#else
-            yield return www.Send();
-#endif
 
 #if PLAYFAB_REQUEST_TIMING
             stopwatch.Stop();

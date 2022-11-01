@@ -1,18 +1,23 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
+using PlayFab;
+using PlayFab.ClientModels;
+using Newtonsoft.Json;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+ 
     public event Action OnWin;
     public event Action OnLoose;
-    private static GameManager _instance;
+    
     public event Action OnWaveFinished;
     public event Action OnWaveStarted;
 
     [SerializeField] private int _numWaves = 5;
-
+    
     private int _currentWave = 0;
-    private bool _isWaveActive = false; //OBSOLETO
     private int _currentEnemies = 0;
     private int _currentTowers = 3;
 
@@ -28,11 +33,60 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        PauseGame();
         _instance = this;
+        PauseGame();
     }
 
+    #region Win / Loose
+    private void Win()
+    {
+        Debug.Log("Game's over and you win !! :D");
+
+        
+
+        OnWin?.Invoke();
+    }
+
+    private void Loose()
+    {
+        Debug.Log("Game ends and you loose :(");
+        OnLoose?.Invoke();
+    }
+
+    #endregion
+
+    #region Manage game data to send to playfab
+    private void UpgradePlayFabInfo()
+    {
+        if (PlayFabManager.Instance != null) // it won't be null on build, but it's possible that it will be while tryhing levels on unity
+        {
+            bool _needToUpdateSavedData = false;
+            int currentLevel = PlayFabManager.Instance.CurrentLevel;
+
+            if (PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked == false)
+            {
+                PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
+                _needToUpdateSavedData = true;
+            }
+
+            if (PlayFabManager.Instance.UnlockedLevels[currentLevel].stars < _currentTowers)
+            {
+                PlayFabManager.Instance.UnlockedLevels[currentLevel].stars = _currentTowers; // new stars record
+                _needToUpdateSavedData = true;
+            }
+
+            if (_needToUpdateSavedData)
+            {
+                PlayFabManager.Instance.SendUnlockedLevels();
+            }
+        }
+        
+    }
+
+    #endregion
+
     #region Waves Management
+
     public void NextWave() // pause game and prepare for next wave, but not start it
     {
         OnWaveFinished?.Invoke();
@@ -44,8 +98,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game's over and you win !! :D");
-            OnWin?.Invoke();
+            // There are no more waves left, player wins
+            Win();
         }
 
     }
@@ -58,7 +112,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Keep track of resources (wave over/win/lose condition)
+    #region Keep track of resources
     public void AddEnemy()
     {
         _currentEnemies++;
@@ -82,9 +136,7 @@ public class GameManager : MonoBehaviour
         // check if there are any enemies left, if there aren't the game is over
         if (_currentTowers == 0)
         {
-            // end game
-            Debug.Log("Game ends and you loose :(");
-            OnLoose?.Invoke();
+            Loose();
         }
     }
 
@@ -93,22 +145,16 @@ public class GameManager : MonoBehaviour
     #region Pause/Unpause
     public void PauseGame()
     {
-        _isWaveActive = false;
         Time.timeScale = 0;
     }
 
     public void UnpauseGame()
     {
-        _isWaveActive = true;
         Time.timeScale = 1;
     }
     #endregion
 
     #region Getters
-    public bool GetIsWaveActive()
-    {
-        return _isWaveActive;
-    }
 
     public int GetCurrentWave()
     {

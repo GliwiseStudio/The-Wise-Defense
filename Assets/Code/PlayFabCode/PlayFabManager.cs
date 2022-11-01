@@ -1,72 +1,110 @@
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using UnityEngine.UI;
-using TMPro;
-using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 public class PlayFabManager : MonoBehaviour
 {
-    public TextMeshProUGUI messageText;
-    public TMP_InputField emailInput;
-    public TMP_InputField passwordInput;
+    private static PlayFabManager _instance;
 
-    public void RegisterButton()
+    // Player related variables
+    private static int _numberOfLevels = 15;
+    public List<Level> UnlockedLevels = new List<Level>();
+    public int CurrentLevel = 0;
+
+    public bool FirstDataGotten = false; // now it's not used, but I've created it to remember
+                                         // that in the future it should be used
+                                         // to check if the game has gotten the player data from PlayFab
+                                         // when login in, because it takes a second or so
+                                         // and only go to the level selection screen if it has
+
+    public static PlayFabManager Instance
     {
-        if (passwordInput.text.Length < 6)
+        get
         {
-            messageText.text = "Password too short, it must have at least six characters";
-            return;
+            if (_instance == null)
+            {
+                // this will happen if there is no instance of playfab manager
+                // but because it is initiliaced on the first scene, and never destroyed
+                // this will only happen if you play a scene without following the 
+                // natural order of the build, hence, why shouldn't happen on the build, don't worry
+                Debug.LogError("PlayFabManager is null, don't worry, this error won't be on the build :)");
+                return null;
+            }
+            return _instance;
         }
-        var request = new RegisterPlayFabUserRequest
+    }
+
+    private void Awake()
+    {
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void InitializeLevels() // initialize levels for new players
+    {
+        UnlockedLevels.Add(new Level(true, 0)); // the first level is always unlocked
+
+        for (int i = 1; i < _numberOfLevels; i++) // the rest aren't
         {
-            Email = emailInput.text,
-            Password = passwordInput.text,
-            RequireBothUsernameAndEmail = false
-        };
-
-        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSucces, OnError);
+            UnlockedLevels.Add(new Level(false, 0));
+        }
     }
 
-    public void LoginButton()
+    public void GetCurrentLevel(int currentLevel)
     {
-        var request = new LoginWithEmailAddressRequest
+        CurrentLevel = currentLevel;
+    }
+
+    #region Get/send data from/to PlayFab
+    public void GetUnlockedLevels()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataReceived, OnError);
+    }
+
+    public void SendUnlockedLevels()
+    {
+        UpdateUserDataRequest request = new UpdateUserDataRequest
         {
-            Email = emailInput.text,
-            Password = passwordInput.text
+            Data = new Dictionary<string, string>
+            {
+                {"UnlockedLevels", JsonConvert.SerializeObject(UnlockedLevels)}
+            }
         };
-
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
+        PlayFabClientAPI.UpdateUserData(request, OnDataSend, OnError);
     }
 
-    public void ResetPasswordButton()
+    private void OnDataReceived(GetUserDataResult result)
     {
-        var request = new SendAccountRecoveryEmailRequest
+        Debug.Log("Recieved characters data!");
+        if (result.Data != null && result.Data.ContainsKey("UnlockedLevels"))
         {
-            Email = emailInput.text,
-            TitleId = "39B81"
-        };
-
-        PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordReset, OnError);
+            UnlockedLevels = JsonConvert.DeserializeObject<List<Level>>(result.Data["UnlockedLevels"].Value);
+        }
     }
 
-    void OnPasswordReset(SendAccountRecoveryEmailResult result)
+    private void OnDataSend(UpdateUserDataResult obj)
     {
-        messageText.text = "Password reset mail sent!";
+        Debug.Log("data sended");
     }
 
-    void OnError(PlayFabError error)
+    private void OnError(PlayFabError obj)
     {
-        messageText.text = error.ErrorMessage;
+        Debug.Log("there was an error sending the data");
     }
 
-    void OnRegisterSucces(RegisterPlayFabUserResult result)
-    {
-        messageText.text = "Registered and logged in!";
-    }
+    #endregion
+}
 
-    void OnLoginSuccess(LoginResult result)
+public class Level
+{
+    public bool unlocked;
+    public int stars;
+
+    public Level(bool unlocked, int stars)
     {
-        messageText.text = "Logged in :) ";
+        this.unlocked = unlocked;
+        this.stars = stars;
     }
 }
