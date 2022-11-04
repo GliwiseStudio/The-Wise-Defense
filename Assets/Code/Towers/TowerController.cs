@@ -25,6 +25,11 @@ public class TowerController : MonoBehaviour, IBuff
         return _configuration.Name;
     }
 
+    public bool IsInMaximumLevel()
+    {
+        return _upgradeComponent.IsInMaximumLevel();
+    }
+
     private void Awake()
     {
         _buffController = new TowerBuffController();

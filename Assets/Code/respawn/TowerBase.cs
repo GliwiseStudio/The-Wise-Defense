@@ -21,7 +21,7 @@ public class TowerBase : MonoBehaviour
 
     public bool LevelUpTower(string towerName)
     {
-        if(!_hasATower || _tower.GetName().CompareTo(towerName) != 0)
+        if(!_hasATower || _tower.GetName().CompareTo(towerName) != 0 || _tower.IsInMaximumLevel())
         {
             return false; // don't activate power, because the tower's don't match
         }
