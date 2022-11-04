@@ -63,6 +63,8 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
         _animator = GetComponent<Animator>();
         _audioPlayer = GetComponent<AudioPlayer>();
 
+        _audioPlayer.ConfigureAudioSource("SoundEffects");
+
         _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
         _enemyMovement = new EnemyMovement(transform, _speed, _obstaclesLayerMask, _waypoints);
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
