@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour, IDamage, ISlowdown
+public class EnemyController : MonoBehaviour, IDamage, IDownStats
 {
     #region Variables
 
@@ -248,6 +248,34 @@ public class EnemyController : MonoBehaviour, IDamage, ISlowdown
 
         _damageAnimTime = _damageAnimTime * (1 - slowdownPercentage);
         _hitTime = _hitTime * (1 - slowdownPercentage);
+    }
+
+    public void ReceiveDamageReduction(float damageReductionPercentage)
+    {
+        _damage = (int)(_damage * (1 - damageReductionPercentage));
+    }
+
+    public void ReleaseDamageReduction(float damageReductionPercentage)
+    {
+        _damage = (int)(_damage / (1 - damageReductionPercentage));
+    }
+
+    public void ReceiveTimedDownStats(float slowdownPercentage, float damageReductionPercentage, float duration)
+    {
+        ReceiveSlowdown(slowdownPercentage);
+        ReceiveDamageReduction(damageReductionPercentage);
+        StartCoroutine(ReleaseTimedDownStats(slowdownPercentage, damageReductionPercentage, duration));
+    }
+
+    IEnumerator ReleaseTimedDownStats(float slowdownPercentage, float damageReductionPercentage, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        ReleaseSlowdown(slowdownPercentage);
+        ReleaseDamageReduction(damageReductionPercentage);
+    }
+    public void ReceiveTimedParalysis(float duration)
+    {
+        // still have to implement code
     }
 
     #endregion
