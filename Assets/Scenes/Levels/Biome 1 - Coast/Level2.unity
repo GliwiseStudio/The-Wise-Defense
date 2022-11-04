@@ -12498,6 +12498,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainUI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6515166746552856485, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8003f352d0d61ef4a92b57baee9bffc7, type: 3}
 --- !u!1001 &3742822123549962811
