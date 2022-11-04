@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: ReduceEnemiesStatsPowerConfiguration
   m_EditorClassIdentifier: 
   _prefab: {fileID: 6704589981316177330, guid: e398112c7cbce054d93822c9a9509cd7, type: 3}
-  _speed: 30
-  _damage: 30
+  _speedReductionPercentage: 0.505
+  _damageReductionPercentage: 0.51
+  _duration: 3
   _range: 5
-  _targetLayerMasks: []
+  _targetLayerMasks:
+  - GroundEnemies
+  - FlyingEnemies

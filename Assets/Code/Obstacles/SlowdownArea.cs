@@ -9,7 +9,7 @@ public class SlowdownArea : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(_targerLayerMask))
         {
-            ISlowdown enemy = other.gameObject.GetComponent<ISlowdown>();
+            IDownStats enemy = other.gameObject.GetComponent<IDownStats>();
             enemy.ReceiveSlowdown(_slowdownPercentage);
         }
     }
@@ -18,7 +18,7 @@ public class SlowdownArea : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(_targerLayerMask))
         {
-            ISlowdown enemy = other.gameObject.GetComponent<ISlowdown>();
+            IDownStats enemy = other.gameObject.GetComponent<IDownStats>();
             enemy.ReleaseSlowdown(_slowdownPercentage);
         }
     }

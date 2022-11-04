@@ -5,15 +5,15 @@ using UnityEngine;
 public class AreaParalyzePower : ICardPower
 {
     private readonly GameObject _prefab;
-    private readonly int _speed = 30;
     private readonly float _range = 5f;
+    private readonly float _duration = 3f;
     private readonly string[] _targetLayerMasks;
     private readonly TargetDetector _targetDetector;
 
-    public AreaParalyzePower(GameObject prefab, int speed, float range, string[] targetLayerMasks)
+    public AreaParalyzePower(GameObject prefab, float duration, float range, string[] targetLayerMasks)
     {
         _prefab = prefab;
-        _speed = speed;
+        _duration = duration;
         _range = range;
         _targetLayerMasks = targetLayerMasks;
         _targetDetector = new TargetDetector(_range, _targetLayerMasks);
@@ -27,8 +27,7 @@ public class AreaParalyzePower : ICardPower
         IReadOnlyList<Transform> objetives = _targetDetector.GetAllTargetsInRange();
         foreach (Transform t in objetives)
         {
-            //Here comes the method for slowdown enemies. This is for damage -->
-            //t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage);
+            t.gameObject.GetComponent<IDownStats>().ReceiveTimedParalysis(_duration);
         }
 
         return true; // this power always activates
