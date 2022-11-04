@@ -19,14 +19,15 @@ public class TowerBase : MonoBehaviour
         _hasATower = true;
     }
 
-    public void LevelUpTower(string towerName)
+    public bool LevelUpTower(string towerName)
     {
         if(!_hasATower || _tower.GetName().CompareTo(towerName) != 0)
         {
-            return;
+            return false; // don't activate power, because the tower's don't match
         }
 
         _tower.LevelUp();
+        return true; // the towers match, activate power
     }
 
     public GameObject GetTower()

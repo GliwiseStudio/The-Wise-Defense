@@ -11,17 +11,19 @@ public class SpawnTowerPower : ICardPower
         _towerName = towerName;
     }
 
-    public void Activate(GameObject go, Transform transform)
+    public bool Activate(GameObject go, Transform transform)
     {
         TowerBase respawn = go.GetComponent<TowerBase>();
 
         if(respawn.HasATower)
         {
-            respawn.LevelUpTower(_towerName);
+            bool leveledUp = respawn.LevelUpTower(_towerName);
+            return leveledUp;
         }
         else
         {
             respawn.SpawnTower(_towerPrefab);
+            return true; // power activated
         }
     }
 }

@@ -19,7 +19,7 @@ public class AreaHealPower : ICardPower
         _targetDetector = new TargetDetector(_range, _targetLayerMasks);
     }
 
-    public void Activate(GameObject gameobject, Transform transform)
+    public bool Activate(GameObject gameobject, Transform transform)
     {
         GameObject.Instantiate(_prefab, transform.position, Quaternion.identity);
         _targetDetector.SetTransform(transform.transform);
@@ -29,5 +29,7 @@ public class AreaHealPower : ICardPower
         {
             t.gameObject.GetComponent<IHeal>().Heal(_health);
         }
+
+        return true; // this power always activates
     }
 }
