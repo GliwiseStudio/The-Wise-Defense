@@ -19,7 +19,7 @@ public class AreaParalyzePower : ICardPower
         _targetDetector = new TargetDetector(_range, _targetLayerMasks);
     }
 
-    public void Activate(GameObject gameobject, Transform transform)
+    public bool Activate(GameObject gameobject, Transform transform)
     {
         GameObject.Instantiate(_prefab, transform.position, Quaternion.identity);
         _targetDetector.SetTransform(transform.transform);
@@ -30,5 +30,7 @@ public class AreaParalyzePower : ICardPower
             //Here comes the method for slowdown enemies. This is for damage -->
             //t.gameObject.GetComponent<IDamage>().ReceiveDamage(_damage);
         }
+
+        return true; // this power always activates
     }
 }

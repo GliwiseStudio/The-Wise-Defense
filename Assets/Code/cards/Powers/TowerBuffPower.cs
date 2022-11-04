@@ -8,7 +8,7 @@ public class TowerBuffPower : ICardPower
         _buffConfigurations = buffConfigurations;
     }
 
-    public void Activate(GameObject gameobject, Transform transform)
+    public bool Activate(GameObject gameobject, Transform transform)
     {
         TowerBase towerBase = gameobject.GetComponent<TowerBase>();
         GameObject towerGameObject = towerBase.GetTower();
@@ -18,7 +18,7 @@ public class TowerBuffPower : ICardPower
 #if UNITY_EDITOR
             Debug.LogWarning("There is no tower in the selected TowerBase. Aborting Spell activation...");
 #endif
-            return;
+            return false; // there is no tower, don't activate power
         }
 
         BuffKeyValue[] _buffs = new BuffKeyValue[_buffConfigurations.Length];
@@ -27,5 +27,6 @@ public class TowerBuffPower : ICardPower
             _buffs[i] = new BuffKeyValue(_buffConfigurations[i].Key, _buffConfigurations[i].BuffPercentage, _buffConfigurations[i].Duration);
         }
         towerGameObject.GetComponent<IBuff>().Buff(_buffs);
+        return true; // power activated
     }
 }
