@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaParalyzePower : ICardPower
+public class ReduceEnemiesStatsPower : ICardPower
 {
     private readonly GameObject _prefab;
-    private readonly float _range = 5f;
-    private readonly float _duration = 3f;
+    private readonly float _speedReductionPercentage;
+    private readonly float _damageReductionPercentage;
+    private readonly float _duration;
+    private readonly float _range;
     private readonly string[] _targetLayerMasks;
     private readonly TargetDetector _targetDetector;
 
-    public AreaParalyzePower(GameObject prefab, float duration, float range, string[] targetLayerMasks)
+    public ReduceEnemiesStatsPower(GameObject prefab, float speedReductionPercentage, float damageReductionPercentage, float duration, float range, string[] targetLayerMasks)
     {
         _prefab = prefab;
+        _speedReductionPercentage = speedReductionPercentage;
+        _damageReductionPercentage = damageReductionPercentage;
         _duration = duration;
         _range = range;
         _targetLayerMasks = targetLayerMasks;
@@ -27,9 +31,8 @@ public class AreaParalyzePower : ICardPower
         IReadOnlyList<Transform> objetives = _targetDetector.GetAllTargetsInRange();
         foreach (Transform t in objetives)
         {
-            t.gameObject.GetComponent<IDownStats>().ReceiveTimedParalysis(_duration);
+            t.gameObject.GetComponent<IDownStats>().ReceiveTimedDownStats(_speedReductionPercentage, _damageReductionPercentage, _duration);
         }
-
-        return true; // this power always activates
+        return true;
     }
 }
