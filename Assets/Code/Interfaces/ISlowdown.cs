@@ -1,6 +1,1 @@
-public interface ISlowdown
-{
-    public void ReceiveSlowdown(float slowdown);
-
-    public void ReleaseSlowdown(float slowdown);
-}
+// this script is no longer used and should be deleted

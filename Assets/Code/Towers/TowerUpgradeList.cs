@@ -7,6 +7,7 @@ using UnityEngine.Assertions;
 public class TowerUpgradeList
 {
     [SerializeField] private List<TowerUpgrade> _upgrades;
+    public int MaximumLevel => _upgrades.Count;
 
     public TowerUpgradeList()
     {

@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 [DisallowMultipleComponent]
 public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public event Action OnSuccesfullySpawned;
-
     private Image _cardImage;
     private TargetDetector _spawnTargetDetector;
     private GameObject _blueprint;
@@ -58,7 +56,7 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if(succesfullyActivated)
             {
                 PlayActivationSound();
-                OnSuccesfullySpawned?.Invoke();
+                gameObject.SetActive(false);
             }
         }
     }
@@ -101,9 +99,9 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         GameObject newGO = new GameObject();
         newGO.transform.position = spawnPosition;
-        _cardConfiguration.cardPower.Power.Activate(go, newGO.transform);
+        bool activated = _cardConfiguration.cardPower.Power.Activate(go, newGO.transform);
 
-        return true;
+        return activated;
     }
 
     public void PlayActivationSound()

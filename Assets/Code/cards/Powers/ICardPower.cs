@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface ICardPower
 {
-    public void Activate(GameObject gameobject, Transform transform);
+    public bool Activate(GameObject gameobject, Transform transform);
 }
