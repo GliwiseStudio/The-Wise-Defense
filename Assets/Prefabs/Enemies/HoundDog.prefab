@@ -182,7 +182,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3619536313809780481, guid: cce47b3025d4db845a18d14c5eb10d06, type: 3}
+  - {fileID: 2100000, guid: 3118d734d8640504abcc65223a436802, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -870,6 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: d4b6751fa63186c42b2a201c56e215f2, type: 2}
+  _summonedEnemy: {fileID: 0}
 --- !u!82 &9079264493663093120
 AudioSource:
   m_ObjectHideFlags: 0
