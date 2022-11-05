@@ -123,6 +123,11 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
                 _enemyState = EnemyStates.walking;
             }
+
+            if(_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy no longer fighting
+            {
+                gameObject.layer = LayerMask.NameToLayer("DeadEnemy"); // change layer back to be indetectable
+            }
         }
         else if (_enemyState == EnemyStates.reaching) // the player was still walking towards the obstacle when it dissapeared, so it never got to the fighting state
         {
@@ -131,6 +136,11 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             PlayWalkingAnimation();
 
             _enemyState = EnemyStates.walking;
+
+            if (_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy no longer fighting
+            {
+                gameObject.layer = LayerMask.NameToLayer("DeadEnemy"); // change layer back to be indetectable
+            }
         }
     }
     #endregion
@@ -153,6 +163,11 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             if (_enemyMovement.ObstacleReached)
             {
                 _enemyState = EnemyStates.fighting;
+
+                if (_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy is fighting
+                {
+                    gameObject.layer = LayerMask.NameToLayer("GroundEnemies"); // change layer to be detectable by weapons
+                }
             }
         }
 
