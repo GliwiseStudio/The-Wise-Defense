@@ -7,7 +7,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     #region Variables
 
     [SerializeField] private EnemyConfiguration _config;
-    
+    [SerializeField] private GameObject _summonedEnemy; // will only be used by summoner enemy
+
     private string _obstaclesLayerMask = "DamageableObstacles";
 
     private float _speed;
@@ -16,8 +17,11 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     private int _damage;
     private float _damageAnimTime;
     private float _hitTime;
+    private EnemyTypes.EnemyTypesEnum _enemyType;
+    private int _summonerTime; // will only be used by summoner enemy
 
     private Waypoints _waypoints;
+    private Transform _spawnPoint; // will be used by summoner enemy to spawn more enemies
     private Slider _slider;
     private Camera _sceneCamera;
     private Transform _targetTransform;
@@ -56,6 +60,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _damage = _config.Damage;
         _damageAnimTime = _config.DamageAnimTime;
         _hitTime = _config.HitTime;
+        _enemyType = _config.EnemyType;
+        _summonerTime = _config.SummonerTime;
 
         _sceneCamera = FindObjectOfType<Camera>();
         _slider = GetComponentInChildren<Slider>();
@@ -69,6 +75,11 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _enemyMovement = new EnemyMovement(transform, _speed, _obstaclesLayerMask, _waypoints);
         _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
         _animationsHandler = new AnimationsHandler(_animator);
+
+        if(_enemyType == EnemyTypes.EnemyTypesEnum.summoner)
+        {
+            StartCoroutine(SummonEnemies());
+        }
     }
 
     private void Update()
@@ -299,11 +310,26 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     #endregion
 
     #region Setters
-    public void SetWaypoints(Waypoints waypoints)
+    public void SetWaypointsAndSpawnPoint(Waypoints waypoints, Transform spawnPoint)
     {
         _waypoints = waypoints;
+        _spawnPoint = spawnPoint;
     }
 
+    #endregion
+
+    #region Enemy type particular methods
+    IEnumerator SummonEnemies()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_summonerTime);
+
+            GameObject enemy = Instantiate(_summonedEnemy, _spawnPoint.position, _spawnPoint.rotation);
+            enemy.GetComponent<EnemyController>().SetWaypointsAndSpawnPoint(_waypoints, _spawnPoint);
+            enemy.SendMessage("TheStart", _waypoints);
+        }
+    }
     #endregion
 
 }

@@ -34,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
             for (int j = 0; j < currentWave.NumberOfEnemiesPerType[i]; j++)
             {
                 GameObject enemy = Instantiate(currentWave.EnemyTypesInWave[i], _spawnPoint.position, _spawnPoint.rotation);
-                enemy.GetComponent<EnemyController>().SetWaypoints(_waypoints);
+                enemy.GetComponent<EnemyController>().SetWaypointsAndSpawnPoint(_waypoints, _spawnPoint);
                 enemy.SendMessage("TheStart", _waypoints);
 
                 yield return new WaitForSeconds(currentWave.TimeBetweenEnemies); // time to wait between enemies spawning
