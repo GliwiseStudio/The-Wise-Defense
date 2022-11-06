@@ -100,7 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slowdownPercentage: 0.6
-  _targerLayerMask: GroundEnemies
+  _targerLayerMasks:
+  - GroundEnemies
+  - GroundEnemyHoundDog
+  - GroundEnemyArmored
 --- !u!54 &2387561362919302107
 Rigidbody:
   m_ObjectHideFlags: 0

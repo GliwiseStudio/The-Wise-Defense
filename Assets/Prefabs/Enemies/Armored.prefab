@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 139957852109080459}
   - component: {fileID: 3904508541201918996}
   - component: {fileID: 4935884960689872739}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Armored
   m_TagString: Untagged
   m_Icon: {fileID: 0}

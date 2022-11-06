@@ -126,7 +126,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
             if(_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy no longer fighting
             {
-                gameObject.layer = LayerMask.NameToLayer("DeadEnemy"); // change layer back to be indetectable
+                gameObject.layer = LayerMask.NameToLayer("GroundEnemyArmored"); // change layer back to be indetectable
             }
         }
         else if (_enemyState == EnemyStates.reaching) // the player was still walking towards the obstacle when it dissapeared, so it never got to the fighting state
@@ -139,7 +139,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
             if (_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy no longer fighting
             {
-                gameObject.layer = LayerMask.NameToLayer("DeadEnemy"); // change layer back to be indetectable
+                gameObject.layer = LayerMask.NameToLayer("GroundEnemyArmored"); // change layer back to be indetectable
             }
         }
     }
