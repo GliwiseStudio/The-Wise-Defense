@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TrialsWave
   m_EditorClassIdentifier: 
   <EnemyTypesInWave>k__BackingField:
-  - {fileID: 7559755150847883683, guid: fbb9e8ab20da1d64cb5784eed8cdcdec, type: 3}
+  - {fileID: 174737596418059273, guid: d93ac2a5027b88741a6a2ebfad4cf5ab, type: 3}
   <NumberOfEnemiesPerType>k__BackingField: 01000000
   <TimeBetweenEnemies>k__BackingField: 0
