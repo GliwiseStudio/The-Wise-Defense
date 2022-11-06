@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     private float _hitTime;
     private EnemyTypes.EnemyTypesEnum _enemyType;
     private int _summonerTime; // will only be used by summoner enemy
+    private int _bomberDeathDamage; // will only be used by bomber enemy
 
     private Waypoints _waypoints;
     private Transform _spawnPoint; // will be used by summoner enemy to spawn more enemies
@@ -62,6 +64,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _hitTime = _config.HitTime;
         _enemyType = _config.EnemyType;
         _summonerTime = _config.SummonerTime;
+        _bomberDeathDamage = _config.BomberDeathDamage;
 
         _sceneCamera = FindObjectOfType<Camera>();
         _slider = GetComponentInChildren<Slider>();
@@ -222,6 +225,11 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             _firstDeathCall = false;
 
             Destroy(_slider.gameObject);
+
+            if (_enemyType == EnemyTypes.EnemyTypesEnum.bomber)
+            {
+                BomberDeath();
+            }
         }
 
         Dissolve();
@@ -343,6 +351,15 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             GameObject enemy = Instantiate(_summonedEnemy, _spawnPoint.position, _spawnPoint.rotation);
             enemy.GetComponent<EnemyController>().SetWaypointsAndSpawnPoint(_waypoints, _spawnPoint);
             enemy.SendMessage("TheStart", _waypoints);
+        }
+    }
+
+    private void BomberDeath()
+    {
+        IReadOnlyList<Transform> obstacles = _obstacleDetector.GetAllTargetsInRange();
+        foreach (Transform obstacle in obstacles)
+        {
+            obstacle.gameObject.GetComponent<IDamage>().ReceiveDamage(_bomberDeathDamage);
         }
     }
     #endregion
