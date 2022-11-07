@@ -26,6 +26,9 @@ public class EnemyConfiguration : ScriptableObject
 
     [field: SerializeField]
     public int SummonerTime { get; private set; }
+
+    [field: SerializeField]
+    public int BomberDeathDamage { get; private set; }
 }
 
 public class EnemyTypes{

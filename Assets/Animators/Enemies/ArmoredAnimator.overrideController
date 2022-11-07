@@ -6,12 +6,12 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DogAnimator
+  m_Name: ArmoredAnimator
   m_Controller: {fileID: 9100000, guid: 9bd65b472ed58ad40821cd6e237667b1, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: af597191c48a86e4ca2dd90da8ff1f24, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: a4fbb517194b3604babc51166784162c, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: cd38cb2fe48c0ab43a6b461cc7855b74, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 08183200f92cdfd4ca4a75e74d7f1004, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0adacac22d56de341915879e80f0fc32, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 8ffdd6c092e06af45bfee25979f64965, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: a217021c9875b834c853904e21a134f7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1883d2bbebb94274eaaab765ea986e58, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cd38cb2fe48c0ab43a6b461cc7855b74, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 48c10352b6404dc4cbe603a063b0ee47, type: 2}

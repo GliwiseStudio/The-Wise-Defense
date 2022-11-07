@@ -1,13 +1,14 @@
 using UnityEngine;
+using System.Linq;
 
 public class SlowdownArea : MonoBehaviour
 {
     [SerializeField][Range(0.1f, 0.9f)] private float _slowdownPercentage;
-    [SerializeField] private string _targerLayerMask = "Enemies";
+    [SerializeField] private string[] _targerLayerMasks;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer(_targerLayerMask))
+        if (_targerLayerMasks.Contains(LayerMask.LayerToName(other.gameObject.layer)))
         {
             IDownStats enemy = other.gameObject.GetComponent<IDownStats>();
             enemy.ReceiveSlowdown(_slowdownPercentage);
@@ -16,7 +17,7 @@ public class SlowdownArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer(_targerLayerMask))
+        if (_targerLayerMasks.Contains(LayerMask.LayerToName(other.gameObject.layer)))
         {
             IDownStats enemy = other.gameObject.GetComponent<IDownStats>();
             enemy.ReleaseSlowdown(_slowdownPercentage);
