@@ -356,6 +356,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     private void BomberDeath()
     {
+        GetComponentInChildren<ParticleSystem>().Play(true);
+
         IReadOnlyList<Transform> obstacles = _obstacleDetector.GetAllTargetsInRange();
         foreach (Transform obstacle in obstacles)
         {
