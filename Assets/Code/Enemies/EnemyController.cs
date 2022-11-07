@@ -191,7 +191,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     IEnumerator PlayDamage()
     {
         yield return new WaitForSeconds(_hitTime);
-        if(_targetTransform != null)
+        if(_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask))
         {
             _audioPlayer.PlayAudio("Punch");
 
@@ -356,6 +356,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     private void BomberDeath()
     {
+        GetComponentInChildren<ParticleSystem>().Play(true);
+
         IReadOnlyList<Transform> obstacles = _obstacleDetector.GetAllTargetsInRange();
         foreach (Transform obstacle in obstacles)
         {

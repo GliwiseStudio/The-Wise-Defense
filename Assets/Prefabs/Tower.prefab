@@ -428,8 +428,8 @@ GameObject:
   - component: {fileID: 3490658806892297907}
   - component: {fileID: 567053492127559958}
   - component: {fileID: 2322277875064538588}
-  - component: {fileID: 8640842988431014087}
   - component: {fileID: 4070974438913018482}
+  - component: {fileID: 771614010130299260}
   m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
@@ -505,19 +505,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8640842988431014087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4267898540876309513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a81a5c79aaf8a4996f1a2d968e7487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 500
 --- !u!65 &4070974438913018482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -531,3 +518,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.281702, y: 2.532247, z: 1.3553443}
   m_Center: {x: 0.016148686, y: 1.2658298, z: 0.046061873}
+--- !u!114 &771614010130299260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267898540876309513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04484698cc23b2d42a2c1d2acfdca97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 500

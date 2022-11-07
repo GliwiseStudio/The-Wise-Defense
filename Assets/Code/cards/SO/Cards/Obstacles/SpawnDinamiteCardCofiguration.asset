@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4932cd5b88e3c424491afce185cc0aa6, type: 3}
+  m_Name: SpawnDinamiteCardCofiguration
+  m_EditorClassIdentifier: 
+  cardPower: {fileID: 11400000, guid: adad4757a398e8d498cce203df82cb7e, type: 2}
+  _activationSoundName: TowerCardActivation
+  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
+    type: 3}
+  _blueprintPrefab: {fileID: 162114738547951605, guid: c592bc1a22bc65f428316340c78de8f5,
+    type: 3}
+  _spawnLayers:
+  - ObstacleBase
+  InGameCard: 0
+  CardText: Explosive barricade
+  CardSprite: {fileID: 0}
