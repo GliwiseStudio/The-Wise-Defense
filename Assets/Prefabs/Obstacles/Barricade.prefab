@@ -112,6 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _osbtacleType: 1
+  _dinamiteDamage: 0
+  _detectionRange: 2
+  _enemyLayers: []
 --- !u!1 &4506757923371622417
 GameObject:
   m_ObjectHideFlags: 0

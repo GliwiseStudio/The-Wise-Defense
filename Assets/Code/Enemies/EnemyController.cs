@@ -191,7 +191,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     IEnumerator PlayDamage()
     {
         yield return new WaitForSeconds(_hitTime);
-        if(_targetTransform != null)
+        if(_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask))
         {
             _audioPlayer.PlayAudio("Punch");
 
