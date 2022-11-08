@@ -8,6 +8,10 @@ public interface IDownStats
 
     public void ReleaseDamageReduction(float damageReduction);
 
+    public void ReceiveDamageOnLoop(int damage, float time);
+
+    public void StopDamageLoop();
+
     public void ReceiveTimedDownStats(float slowdown, float damageReduction, float duration);
 
     public void ReceiveTimedParalysis(float duration);

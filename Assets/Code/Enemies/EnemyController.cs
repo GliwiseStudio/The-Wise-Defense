@@ -29,13 +29,13 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     private Transform _targetTransform;
     private GameObject _targetGameObject;
     private Animator _animator;
+    private Material[] _materials;
 
     private bool _canDamage = true;
     private float _lastDamagedTime;
-
-    private Material[] _materials;
     private bool _firstDeathCall = true;
     private float _timeOfDeath;
+    private bool _onDamageLoop = false;
 
     private enum EnemyStates { walking, fighting, reaching }
     private EnemyStates _enemyState = EnemyStates.walking;
@@ -98,7 +98,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             }
             else // no obstacles
             {
-                KeepWalking();
+                if (_enemyState != EnemyStates.walking)
+                    KeepWalking();
                 
                 // detect if there's an obstacle in range
                 _targetGameObject = _obstacleDetector.DetectTargetGameObject();
@@ -132,11 +133,9 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
                 gameObject.layer = LayerMask.NameToLayer("GroundEnemyArmored"); // change layer back to be indetectable
             }
         }
-        else if (_enemyState == EnemyStates.reaching) // the player was still walking towards the obstacle when it dissapeared, so it never got to the fighting state
+        else // if the enemy is neither walking nor fighting, it was still walking towards the obstacle when it dissapeared
         {
             _enemyMovement.ResetObstacleDetectionState();
-
-            PlayWalkingAnimation();
 
             _enemyState = EnemyStates.walking;
 
@@ -191,7 +190,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     IEnumerator PlayDamage()
     {
         yield return new WaitForSeconds(_hitTime);
-        if(_targetTransform != null)
+        if(_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask))
         {
             _audioPlayer.PlayAudio("Punch");
 
@@ -312,6 +311,42 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         // still have to implement code
     }
 
+    public void ReceiveDamageOnLoop(int damage, float time)
+    {
+        _onDamageLoop = true;
+        StartCoroutine(DamageLoop(damage, time));
+    }
+
+    public void StopDamageLoop()
+    {
+        _onDamageLoop = false;
+    }
+
+    IEnumerator DamageLoop(int damage, float time)
+    {
+        while (_onDamageLoop)
+        {
+            ReceiveDamage(damage);
+            _audioPlayer.PlayAudio("Poison");
+            StartCoroutine(ChangeEnemyColor());
+            yield return new WaitForSeconds(time);
+        }
+    }
+
+    IEnumerator ChangeEnemyColor()
+    {
+        foreach (Material mat in _materials)
+        {
+            mat.SetColor("_MultiplyColor", new Color32(143, 0, 254, 1));
+        }
+        yield return new WaitForSeconds(0.25f);
+
+        foreach (Material mat in _materials)
+        {
+            mat.SetColor("_MultiplyColor", new Color32(255, 255, 255, 1));
+        }
+    }
+
     #endregion
 
     #region AnimationsHandler methods
@@ -356,6 +391,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     private void BomberDeath()
     {
+        GetComponentInChildren<ParticleSystem>().Play(true);
+
         IReadOnlyList<Transform> obstacles = _obstacleDetector.GetAllTargetsInRange();
         foreach (Transform obstacle in obstacles)
         {

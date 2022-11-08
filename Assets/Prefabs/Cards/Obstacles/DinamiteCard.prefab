@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5557281949540181377}
   - component: {fileID: 5557281949540181382}
   m_Layer: 5
-  m_Name: SwampCard
+  m_Name: DinamiteCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ef977ab2c1dae6641beb162a98d06ab0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e73101b73ffe17e4ea07a9ae5b580a4c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,4 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b5f54cd5045d949956facfccf9748b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardConfiguration: {fileID: 11400000, guid: 6d5e55848805ec246a11ebedf3674e42, type: 2}
+  _cardConfiguration: {fileID: 11400000, guid: 6ffdda5953532d5428acbb50ef00874c, type: 2}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5557281949540181377}
   - component: {fileID: 5557281949540181382}
   m_Layer: 5
-  m_Name: BarricadeCard
+  m_Name: ToxicCloudCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 5557281949540181376}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -134,4 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b5f54cd5045d949956facfccf9748b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardConfiguration: {fileID: 11400000, guid: 0b0e5b727fcdcbd45ac2aba40ea0417a, type: 2}
+  _cardConfiguration: {fileID: 11400000, guid: ac073a7c90d2b144a8f2ce7a8d49e7af, type: 2}
