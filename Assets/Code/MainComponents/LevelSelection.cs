@@ -24,25 +24,52 @@ public class LevelSelection : MonoBehaviour
         if (_unlocked)
         {
             _lockedImage.gameObject.SetActive(false);
-            _starsImage.gameObject.SetActive(true);
 
-            int starsUnlocked = PlayFabManager.Instance.UnlockedLevels[_levelNumber].stars;
-            switch (starsUnlocked)
+            if (PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel)
             {
-                case 0:
-                    _starsImage.sprite = _starSprites[0];
-                    break;
-                case 1:
-                    _starsImage.sprite = _starSprites[1];
-                    break;
-                case 2:
-                    _starsImage.sprite = _starSprites[2];
-                    break;
-                case 3:
-                    _starsImage.sprite = _starSprites[3];
-                    break;
+                
             }
+            else
+            {
+                _starsImage.gameObject.SetActive(true);
 
+                int starsUnlocked = PlayFabManager.Instance.UnlockedLevels[_levelNumber].stars;
+                switch (starsUnlocked)
+                {
+                    case 0:
+                        _starsImage.sprite = _starSprites[0];
+                        break;
+                    case 1:
+                        _starsImage.sprite = _starSprites[1];
+                        break;
+                    case 2:
+                        _starsImage.sprite = _starSprites[2];
+                        break;
+                    case 3:
+                        _starsImage.sprite = _starSprites[3];
+                        break;
+                }
+            }
+        }
+    }
+
+    public void OnClick()
+    {
+        if (PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel)
+        {
+            PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel = false;
+            PlayFabManager.Instance.SendUnlockedLevels();
+
+            DialogueTrigger _levelDialogue = gameObject.GetComponent<DialogueTrigger>();
+            Debug.Log(_levelDialogue);
+            if (_levelDialogue != null)
+            {
+                _levelDialogue.TriggerDialogue(this);
+            }
+        }
+        else
+        {
+            GoToLevel();
         }
     }
 

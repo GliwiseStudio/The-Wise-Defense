@@ -43,6 +43,6 @@ public class ProvisionalGanarOPerder : MonoBehaviour
 
     public void CargarMenu()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

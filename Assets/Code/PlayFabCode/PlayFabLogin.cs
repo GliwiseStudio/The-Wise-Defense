@@ -75,10 +75,8 @@ public class PlayFabLogin : MonoBehaviour
 
     void OnLoginSuccess(LoginResult result)
     {
-        messageText.text = "Logged in :) ";
+        messageText.text = "Logged in :) Loading player data... ";
 
         PlayFabManager.Instance.GetUnlockedLevels();
-
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

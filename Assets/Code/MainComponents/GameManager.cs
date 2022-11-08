@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour
             if (PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked == false)
             {
                 PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
+                PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].newLevel = true;
+                PlayFabManager.Instance.LastUnlockedLevel = currentLevel + 1;
                 _needToUpdateSavedData = true;
             }
 
@@ -78,7 +80,6 @@ public class GameManager : MonoBehaviour
                 PlayFabManager.Instance.SendUnlockedLevels();
             }
         }
-        
     }
 
     #endregion

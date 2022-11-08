@@ -1124,7 +1124,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ecc948c9c86847444aa3e2a5e948b408,
+      objectReference: {fileID: 11400000, guid: d1cfd39f8ebe84a498e072cb4dec74db,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
@@ -4031,7 +4031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3e898138f8a92458ac551144dbeb2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numWaves: 9
+  _numWaves: 0
 --- !u!4 &1859996737
 Transform:
   m_ObjectHideFlags: 0
