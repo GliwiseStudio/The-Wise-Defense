@@ -359,6 +359,9 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         }
     }
 
+    #endregion
+
+    #region Color Change
     public void ChangeEnemyColor(Color32 color)
     {
         foreach (Material mat in _materials)
@@ -375,7 +378,6 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
         ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
     }
-
     #endregion
 
     #region AnimationsHandler methods
