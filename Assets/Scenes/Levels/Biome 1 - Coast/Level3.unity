@@ -6635,5 +6635,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8152273163933488962, guid: 10547fabd7396274a8e5e6be2676fe5a,
+        type: 3}
+      propertyPath: _cardsStorage
+      value: 
+      objectReference: {fileID: 11400000, guid: c0a8ae12afdad99429044c763e277450,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10547fabd7396274a8e5e6be2676fe5a, type: 3}
