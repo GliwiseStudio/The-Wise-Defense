@@ -5,21 +5,41 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [DisallowMultipleComponent]
-public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
     private Image _cardImage;
     private TargetDetector _spawnTargetDetector;
     private GameObject _blueprint;
     private bool _isBlueprintSpawned = false;
     private bool _isActive = false;
+    private bool _isMouseOutOfTheCard = true;
 
     [SerializeField] private CardConfigurationSO _cardConfiguration;
+    [SerializeField] private DiscardButtonUI _discardButtonUI;
+    private DeckController _deckController;
 
     private void Awake()
     {
         _cardImage = GetComponent<Image>();
+        _deckController = FindObjectOfType<DeckController>();
         _spawnTargetDetector = new TargetDetector(_cardConfiguration.SpawnLayers);
+        _discardButtonUI.Hide();
         Activate();
+    }
+
+    private void OnEnable()
+    {
+        _discardButtonUI.OnButtonClicked += DestroyAndReplace;
+    }
+
+    private void OnDisable()
+    {
+        _discardButtonUI.OnButtonClicked -= DestroyAndReplace;
+    }
+
+    private void DestroyAndReplace()
+    {
+        _deckController.ReplaceCard(this);
     }
 
     public void Activate()
@@ -50,15 +70,46 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
 
         DespawnBlueprint();
-        if (CheckIfIsAbleToActivate())
+        if(_isMouseOutOfTheCard)
         {
-            bool succesfullyActivated = ActivatePower();
-            if(succesfullyActivated)
+            if (CheckIfIsAbleToActivate())
             {
-                PlayActivationSound();
-                gameObject.SetActive(false);
+                bool succesfullyActivated = ActivatePower();
+                if (succesfullyActivated)
+                {
+                    PlayActivationSound();
+                    gameObject.SetActive(false);
+                }
             }
         }
+        else
+        {
+            if(_deckController.IsAbleToActivateDiscardButton())
+            {
+                ActivateDiscardButton();
+            }
+        }
+    }
+
+    private void ActivateDiscardButton()
+    {
+        Debug.Log("Discard");
+        _discardButtonUI.Show();
+    }
+
+    public void HideDiscardButton()
+    {
+        _discardButtonUI.Hide();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _isMouseOutOfTheCard = true;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _isMouseOutOfTheCard = false;
     }
 
     private void SpawnBlueprint()
