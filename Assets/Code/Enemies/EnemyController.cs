@@ -36,6 +36,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     private bool _firstDeathCall = true;
     private float _timeOfDeath;
     private bool _onDamageLoop = false;
+    private bool _paralized = false;
 
     private enum EnemyStates { walking, fighting, reaching }
     private EnemyStates _enemyState = EnemyStates.walking;
@@ -87,28 +88,31 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     private void Update()
     {
-        if (_enemyHealth.GetEnemyState() == "alive")
+        if (!_paralized)
         {
-            _enemyHealth.Update();
-            _enemyMovement.Update();
+            if (_enemyHealth.GetEnemyState() == "alive")
+            {
+                _enemyHealth.Update();
+                _enemyMovement.Update();
 
-            if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
-            {
-                ObstacleDetected();
+                if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
+                {
+                    ObstacleDetected();
+                }
+                else // no obstacles
+                {
+                    if (_enemyState != EnemyStates.walking)
+                        KeepWalking();
+
+                    // detect if there's an obstacle in range
+                    _targetGameObject = _obstacleDetector.DetectTargetGameObject();
+                    _targetTransform = _obstacleDetector.DetectTarget();
+                }
             }
-            else // no obstacles
+            else
             {
-                if (_enemyState != EnemyStates.walking)
-                    KeepWalking();
-                
-                // detect if there's an obstacle in range
-                _targetGameObject = _obstacleDetector.DetectTargetGameObject();
-                _targetTransform = _obstacleDetector.DetectTarget();
+                EnemyDeath();
             }
-        }
-        else
-        {
-            EnemyDeath();
         }
     }
 
@@ -306,9 +310,31 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         ReleaseSlowdown(slowdownPercentage);
         ReleaseDamageReduction(damageReductionPercentage);
     }
+
     public void ReceiveTimedParalysis(float duration)
     {
-        // still have to implement code
+        // paralize enemy, change it's color to yellow and play idle animation
+        _paralized = true;
+        ChangeEnemyColor(new Color32(0, 201, 254, 1)); // color aqua
+        PlayIdleAnimation();
+
+        // start coroutine to release the paralysis
+        StartCoroutine(ReleaseParalysis(duration));
+    }
+
+    IEnumerator ReleaseParalysis(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        // after a few seconds, stop paralysis, change color back to normal, and continue normal animations
+        _paralized = false;
+
+        ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
+
+        if (_enemyState == EnemyStates.walking)
+        {
+            PlayWalkingAnimation();
+        }
     }
 
     public void ReceiveDamageOnLoop(int damage, float time)
@@ -328,23 +354,26 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         {
             ReceiveDamage(damage);
             _audioPlayer.PlayAudio("Poison");
-            StartCoroutine(ChangeEnemyColor());
+            StartCoroutine(TimedChangeEnemyColor(new Color32(143, 0, 254, 1))); // color purple
             yield return new WaitForSeconds(time);
         }
     }
 
-    IEnumerator ChangeEnemyColor()
+    public void ChangeEnemyColor(Color32 color)
     {
         foreach (Material mat in _materials)
         {
-            mat.SetColor("_MultiplyColor", new Color32(143, 0, 254, 1));
+            mat.SetColor("_MultiplyColor", color);
         }
+    }
+
+    IEnumerator TimedChangeEnemyColor(Color32 color)
+    {
+        ChangeEnemyColor(color);
+
         yield return new WaitForSeconds(0.25f);
 
-        foreach (Material mat in _materials)
-        {
-            mat.SetColor("_MultiplyColor", new Color32(255, 255, 255, 1));
-        }
+        ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
     }
 
     #endregion

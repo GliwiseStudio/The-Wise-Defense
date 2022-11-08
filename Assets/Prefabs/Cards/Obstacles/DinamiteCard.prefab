@@ -135,3 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardConfiguration: {fileID: 11400000, guid: 6ffdda5953532d5428acbb50ef00874c, type: 2}
+  _discardButtonUI: {fileID: 3999005820690752026, guid: 33c6376eaafe3154794ac2233baa2639,
+    type: 3}
