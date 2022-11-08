@@ -3,6 +3,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -11,14 +12,11 @@ public class PlayFabManager : MonoBehaviour
     // Player related variables
     private static int _numberOfLevels = 15;
     public List<Level> UnlockedLevels = new List<Level>();
+    public int LastUnlockedLevel = 0;
     public int CurrentLevel = 0;
 
-    public bool FirstDataGotten = false; // now it's not used, but I've created it to remember
-                                         // that in the future it should be used
-                                         // to check if the game has gotten the player data from PlayFab
-                                         // when login in, because it takes a second or so
-                                         // and only go to the level selection screen if it has
-
+    private bool _firstDataGotten = false; // to go to MainMenu once the player has gotten the data
+                                           // from PlayFab when login in, because it takes a second or so
     public static PlayFabManager Instance
     {
         get
@@ -44,11 +42,11 @@ public class PlayFabManager : MonoBehaviour
 
     public void InitializeLevels() // initialize levels for new players
     {
-        UnlockedLevels.Add(new Level(true, 0)); // the first level is always unlocked
+        UnlockedLevels.Add(new Level(true, true, 0)); // the first level is always unlocked
 
         for (int i = 1; i < _numberOfLevels; i++) // the rest aren't
         {
-            UnlockedLevels.Add(new Level(false, 0));
+            UnlockedLevels.Add(new Level(false, false, 0));
         }
     }
 
@@ -69,7 +67,8 @@ public class PlayFabManager : MonoBehaviour
         {
             Data = new Dictionary<string, string>
             {
-                {"UnlockedLevels", JsonConvert.SerializeObject(UnlockedLevels)}
+                {"UnlockedLevels", JsonConvert.SerializeObject(UnlockedLevels)},
+                {"LastUnlockedLevel", LastUnlockedLevel.ToString() }
             }
         };
         PlayFabClientAPI.UpdateUserData(request, OnDataSend, OnError);
@@ -77,10 +76,16 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnDataReceived(GetUserDataResult result)
     {
+        if(_firstDataGotten == false)
+        {
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            _firstDataGotten = true;
+        }
         Debug.Log("Recieved characters data!");
         if (result.Data != null && result.Data.ContainsKey("UnlockedLevels"))
         {
             UnlockedLevels = JsonConvert.DeserializeObject<List<Level>>(result.Data["UnlockedLevels"].Value);
+            LastUnlockedLevel = int.Parse(result.Data["LastUnlockedLevel"].Value);
         }
     }
 
@@ -100,11 +105,13 @@ public class PlayFabManager : MonoBehaviour
 public class Level
 {
     public bool unlocked;
+    public bool newLevel;
     public int stars;
 
-    public Level(bool unlocked, int stars)
+    public Level(bool unlocked, bool newLevel, int stars)
     {
         this.unlocked = unlocked;
+        this.newLevel = newLevel;
         this.stars = stars;
     }
 }
