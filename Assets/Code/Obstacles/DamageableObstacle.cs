@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,7 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
     private float _currentHealth;
     private float _timeOfDestruction;
     private bool _dissolveActivated = false;
+    private bool _isInvulnerable = false;
 
     private Renderer[] _renderers;
 
@@ -70,7 +72,6 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
             {
                 foreach (Material mat in renderer.materials)
                 {
-                    Debug.Log(mat.GetFloat("_DissolveProgress"));
                     mat.SetFloat("_DissolveProgress", i);
                 }
             }
@@ -85,19 +86,6 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
         }
     }
 
-    #region Interface methods
-    public void ReceiveDamage(int damageAmount)
-    {
-        _currentHealth -= damageAmount;
-
-        if (_currentHealth <= 0)
-        {
-            DestroyObstacle();
-            return;
-        }
-
-        _slider.value = _currentHealth / _maxHealth;
-    }
     private void DinamiteExplosion()
     {
         GetComponentInChildren<ParticleSystem>().Play(true);
@@ -113,6 +101,23 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
 
     #endregion
 
+    #region Interface methods
+    public void ReceiveDamage(int damageAmount)
+    {
+        if (!_isInvulnerable)
+        {
+            _currentHealth -= damageAmount;
+
+            if (_currentHealth <= 0)
+            {
+                DestroyObstacle();
+                return;
+            }
+
+            _slider.value = _currentHealth / _maxHealth;
+        }
+    }
+
     public void Heal(int healAmount)
     {
         _currentHealth += healAmount;
@@ -123,6 +128,36 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
         }
 
         _slider.value = _currentHealth / _maxHealth;
+    }
+
+    public void BecomeInvulnerable(float duration)
+    {
+        _isInvulnerable = true;
+        ChangeObstacleColor(new Color32(0, 254, 111, 1));
+        StartCoroutine(ReleaseInvulnerabilty(duration));
+
+    }
+
+    IEnumerator ReleaseInvulnerabilty(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _isInvulnerable = false;
+        ChangeObstacleColor(new Color32(255, 255, 255, 1)); // change color back to normal
+    }
+
+    #endregion
+
+    #region Color Change
+    public void ChangeObstacleColor(Color32 color)
+    {
+
+        foreach (Renderer renderer in _renderers)
+        {
+            foreach (Material mat in renderer.materials)
+            {
+                mat.SetColor("_MultiplyColor", color);
+            }
+        }
     }
     #endregion
 }
