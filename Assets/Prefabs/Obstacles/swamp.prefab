@@ -104,6 +104,9 @@ MonoBehaviour:
   - GroundEnemies
   - GroundEnemyHoundDog
   - GroundEnemyArmored
+  _damageEnemies: 0
+  _damage: 10
+  _time: 0.5
 --- !u!54 &2387561362919302107
 Rigidbody:
   m_ObjectHideFlags: 0

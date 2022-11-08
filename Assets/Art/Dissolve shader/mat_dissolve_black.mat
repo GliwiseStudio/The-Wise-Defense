@@ -36,7 +36,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DissolveProgress: 0
-    - _EdgeWidth: 0.01
+    - _EdgeWidth: 0.0171
     - _Metallic: 0
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -44,6 +44,7 @@ Material:
     m_Colors:
     - _EdgeColor: {r: 0.9339623, g: 0, b: 0.1163031, a: 0}
     - _MainColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0}
+    - _MultiplyColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7176059297974041026
 MonoBehaviour:
