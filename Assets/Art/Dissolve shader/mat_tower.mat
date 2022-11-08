@@ -57,4 +57,5 @@ Material:
     m_Colors:
     - _EdgeColor: {r: 0, g: 1.6470588, b: 1.8666667, a: 0}
     - _MainColor: {r: 0.8726415, g: 1, b: 1, a: 0}
+    - _MultiplyColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
