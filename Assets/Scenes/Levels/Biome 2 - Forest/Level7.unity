@@ -1257,7 +1257,7 @@ PrefabInstance:
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.size
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
@@ -1275,61 +1275,61 @@ PrefabInstance:
         type: 3}
       propertyPath: _waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: d1cfd39f8ebe84a498e072cb4dec74db,
+      objectReference: {fileID: 11400000, guid: b8d43d89c563742428dda0494859bab6,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: a18b6da3e226b1e40a01765917b6ead4,
+      objectReference: {fileID: 11400000, guid: 1a2210261f9cf354e88ca1db2b51c611,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 6a83c675320f7f54a826e2ff112fd037,
+      objectReference: {fileID: 11400000, guid: 56f91a1011bae004497b615ca77dcddc,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 6ae2905486e23b248bd0b21263ca0215,
+      objectReference: {fileID: 11400000, guid: b3f6c860c23bf35438eb64a236568858,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 00a53c048f047ba47995d8adcac57b75,
+      objectReference: {fileID: 11400000, guid: 660bec085727cea40b0c4735ad1d930c,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 7b27139f5e616fd418abd3b3944f7ee8,
+      objectReference: {fileID: 11400000, guid: 48113cb23368b204ba3fd8fd12161e3c,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 86f0116fe6e5d80438eb7cfd454f2cdf,
+      objectReference: {fileID: 11400000, guid: 32a8b847f7c514e47b1bc32a485731f3,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[7]
       value: 
-      objectReference: {fileID: 11400000, guid: 5d1390a23548588428f30bf31cdc7d1a,
+      objectReference: {fileID: 11400000, guid: 99e0a1aee7eba6a41961faaa56fc0e54,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[8]
       value: 
-      objectReference: {fileID: 11400000, guid: 6bf2cec692457054e974722c9821bd5e,
+      objectReference: {fileID: 11400000, guid: 708eaf775e823484e9abcc0f676b440c,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: 535820964364f414caf09a2d49f15422,
+      objectReference: {fileID: 11400000, guid: 897f559a56e466045b299dddf0e4b82f,
         type: 2}
     - target: {fileID: 2942789569256628977, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
@@ -6403,5 +6403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8152273163933488962, guid: 10547fabd7396274a8e5e6be2676fe5a,
+        type: 3}
+      propertyPath: _cardsStorage
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f9726a518f74a146ac668158b42989f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10547fabd7396274a8e5e6be2676fe5a, type: 3}

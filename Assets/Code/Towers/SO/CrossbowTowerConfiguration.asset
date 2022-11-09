@@ -29,7 +29,7 @@ MonoBehaviour:
       _gameObject: {fileID: 0}
     - _damage: 70
       _range: -1
-      _fireRate: 2.5
+      _fireRate: 2.25
       _gameObject: {fileID: 0}
   _audioConfiguration:
     _shotSound: CannonShot

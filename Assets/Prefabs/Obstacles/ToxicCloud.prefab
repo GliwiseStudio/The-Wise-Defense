@@ -98,12 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa836bbbe6157904799ecde9f0d1f985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowdownPercentage: 0.4
+  _slowdownPercentage: 0.5
   _targerLayerMasks:
   - FlyingEnemies
   _damageEnemies: 1
   _damage: 5
-  _time: 0.75
+  _time: 0.5
 --- !u!65 &6171006369377409478
 BoxCollider:
   m_ObjectHideFlags: 0
