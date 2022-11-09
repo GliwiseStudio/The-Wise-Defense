@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 6704589981316177330, guid: e398112c7cbce054d93822c9a9509cd7, type: 3}
   _damage: 80
-  _range: 10
+  _range: 5
   _targetLayerMasks:
   - GroundEnemies
   - FlyingEnemies

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Armored
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 2
-  <MaxHealth>k__BackingField: 100
+  <MaxHealth>k__BackingField: 60
   <DetectionRange>k__BackingField: 2
-  <Damage>k__BackingField: 100
+  <Damage>k__BackingField: 40
   <DamageAnimTime>k__BackingField: 2
   <HitTime>k__BackingField: 0.3
   <EnemyType>k__BackingField: 2
   <SummonerTime>k__BackingField: 0
+  <BomberDeathDamage>k__BackingField: 0
