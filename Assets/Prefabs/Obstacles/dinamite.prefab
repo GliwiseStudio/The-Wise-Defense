@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04484698cc23b2d42a2c1d2acfdca97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 150
   _osbtacleType: 2
   _dinamiteDamage: 100
   _detectionRange: 2
