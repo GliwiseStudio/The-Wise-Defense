@@ -29,6 +29,12 @@ public class EnemyConfiguration : ScriptableObject
 
     [field: SerializeField]
     public int BomberDeathDamage { get; private set; }
+
+    [field: SerializeField]
+    public string _audioMixerChannel = "SoundEffects";
+
+    [HideInInspector]
+    public string AudioMixerChannel => _audioMixerChannel;
 }
 
 public class EnemyTypes{

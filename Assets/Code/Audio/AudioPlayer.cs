@@ -16,11 +16,6 @@ public class AudioPlayer : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        ConfigureAudioSource("Master");
-    }
-
     public void ConfigureAudioSource(string audioMixerName = "Master")
     {
         _audioSource.playOnAwake = false;

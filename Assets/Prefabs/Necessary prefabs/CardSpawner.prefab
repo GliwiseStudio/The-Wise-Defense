@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bf51fa60860154f936a7c2aeefb3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardsStorage: {fileID: 11400000, guid: 4cdbb051785928743b4bfaafc9215791, type: 2}
+  _templateCardPrefab: {fileID: 5557281949540181382, guid: b9fb59e499a42f743a79530871d33cb5,
+    type: 3}
+  _cardsStorage: {fileID: 11400000, guid: a10fe32a4af6b76478dd40a7376d18fe, type: 2}

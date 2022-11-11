@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4932cd5b88e3c424491afce185cc0aa6, type: 3}
+  m_Name: SwampCardConfiguration
+  m_EditorClassIdentifier: 
+  cardPower: {fileID: 11400000, guid: b39c02323af60bd42b45ed8243fb462d, type: 2}
+  _activationSoundName: CannonShot
+  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
+    type: 3}
+  _blueprintPrefab: {fileID: 6379108122978655020, guid: 09431546b753591459a704a64fff41ec,
+    type: 3}
+  _spawnLayers:
+  - ObstacleBase
+  InGameCard: 0
+  CardText: Spawn slowdown
+  CardSprite: {fileID: 21300000, guid: ef977ab2c1dae6641beb162a98d06ab0, type: 3}

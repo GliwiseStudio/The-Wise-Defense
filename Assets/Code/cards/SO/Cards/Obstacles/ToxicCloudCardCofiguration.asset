@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4932cd5b88e3c424491afce185cc0aa6, type: 3}
+  m_Name: ToxicCloudCardCofiguration
+  m_EditorClassIdentifier: 
+  cardPower: {fileID: 11400000, guid: f2d05ead8383e5a4dac3ac657ed0d080, type: 2}
+  _activationSoundName: TowerCardActivation
+  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
+    type: 3}
+  _blueprintPrefab: {fileID: 2758063702460782593, guid: f36abc3bf25d55e4f860f0d80ea11815,
+    type: 3}
+  _spawnLayers:
+  - ObstacleBase
+  InGameCard: 0
+  CardText: Slowdown area for flying enemies
+  CardSprite: {fileID: 0}

@@ -18,11 +18,13 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     [SerializeField] private DiscardButtonUI _discardButtonUI;
     private DeckController _deckController;
 
-    private void Awake()
+    private void Initialize()
     {
         _cardImage = GetComponent<Image>();
         _deckController = FindObjectOfType<DeckController>();
         _spawnTargetDetector = new TargetDetector(_cardConfiguration.SpawnLayers);
+        _spawnTargetDetector.SetTargetLayers(_cardConfiguration.SpawnLayers);
+        _cardImage.sprite = _cardConfiguration.CardSprite;
         _discardButtonUI.Hide();
         Activate();
     }
@@ -163,7 +165,9 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     private void InstantiateActivationSoundPlayer()
     {
         AudioPlayer audioPlayer = Instantiate(_cardConfiguration.AudioPlayerPrefab);
+        audioPlayer.ConfigureAudioSource(_cardConfiguration.AudioMixerChannel);
         audioPlayer.PlayAudio(_cardConfiguration.ActivationSoundName);
+        Debug.Log("Djdisusduifhiu");
     }
 
     private void OnDestroy()
@@ -187,8 +191,7 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
         Reset();
 
         _cardConfiguration = cardConfig;
-        _cardImage.sprite = _cardConfiguration.CardSprite;
-        _spawnTargetDetector.SetTargetLayers(_cardConfiguration.SpawnLayers);
+        Initialize();
     }
 
     public CardConfigurationSO GetCardConfig()

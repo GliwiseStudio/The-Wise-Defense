@@ -18,9 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PickLevel.unity
     guid: 923b1dc7a92df304eb7856bc640c3f85
   - enabled: 1
-    path: Assets/Scenes/Levels/Biome 1 - Coast/Level2.unity
+    path: Assets/Scenes/Levels/Biome 1 - Coast/Level1.unity
     guid: ab0006d0a290ba3438ade6779f1327d9
   - enabled: 1
-    path: Assets/Scenes/Levels/Biome 1 - Coast/Level1 - Tutorial.unity
+    path: Assets/Scenes/Levels/Biome 1 - Coast/Level0.unity
     guid: 3a5845826401e8f4dbec62080e5558b7
   m_configObjects: {}
