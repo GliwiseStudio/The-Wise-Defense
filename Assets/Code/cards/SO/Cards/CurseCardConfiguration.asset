@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: CurseCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: 6ce305cff50ea2448a9b03d33e7d23bd, type: 2}
-  _activationSoundName: 
-  _audioPlayerPrefab: {fileID: 0}
+  _activationSoundName: CannonShot
   _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
     type: 3}
   _spawnLayers:
   - Ground
+  _audioMixerChannel: SoundEffects
   InGameCard: 1
   CardText: Curse Card
   CardSprite: {fileID: 21300000, guid: 121ebae255124aa489244fc6d20d948d, type: 3}

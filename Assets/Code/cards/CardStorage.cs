@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Cards/Cards Storage Official", fileName = "CardsSotrage")]
-public class CardStorageOfficial : ScriptableObject
+[CreateAssetMenu(menuName = "ScriptableObjects/Cards/Cards Storage", fileName = "CardsSotrage")]
+public class CardStorage : ScriptableObject
 {
     [SerializeField] private List<CardConfigurationSO> _configurations;
 

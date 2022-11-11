@@ -3,13 +3,12 @@ using UnityEngine;
 public class CardSpawner : MonoBehaviour
 {
     [SerializeField] private Cards _templateCardPrefab;
-    [SerializeField] private CardStorageOfficial _cardsStorage;
+    private CardStorage _cardsStorage;
 
-    //public Cards Create()
-    //{
-    //    Cards card = _cardsStorage.GetRandomCard();
-    //    return Instantiate(card);
-    //}
+    public void SetCardsStorage(CardStorage cardStorage)
+    {
+        _cardsStorage = cardStorage;
+    }
 
     public Cards Create()
     {
@@ -17,12 +16,6 @@ public class CardSpawner : MonoBehaviour
         card.SetCardConfig(_cardsStorage.GetRandomCard());
         return card;
     }
-
-    //public Cards CreateBeforeGameCard()
-    //{
-    //    Cards card = _cardsStorage.GetRandomBeforeGameCard();
-    //    return Instantiate(card);
-    //}
 
     public Cards CreateBeforeGameCard()
     {

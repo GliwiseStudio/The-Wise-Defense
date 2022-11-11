@@ -14,8 +14,9 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     private bool _isActive = false;
     private bool _isMouseOutOfTheCard = true;
 
-    [SerializeField] private CardConfigurationSO _cardConfiguration;
+    private CardConfigurationSO _cardConfiguration;
     [SerializeField] private DiscardButtonUI _discardButtonUI;
+    [SerializeField] private AudioPlayer _audioPlayerPrefab;
     private DeckController _deckController;
 
     private void Initialize()
@@ -164,10 +165,9 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
 
     private void InstantiateActivationSoundPlayer()
     {
-        AudioPlayer audioPlayer = Instantiate(_cardConfiguration.AudioPlayerPrefab);
+        AudioPlayer audioPlayer = Instantiate(_audioPlayerPrefab);
         audioPlayer.ConfigureAudioSource(_cardConfiguration.AudioMixerChannel);
         audioPlayer.PlayAudio(_cardConfiguration.ActivationSoundName);
-        Debug.Log("Djdisusduifhiu");
     }
 
     private void OnDestroy()

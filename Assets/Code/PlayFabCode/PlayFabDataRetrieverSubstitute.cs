@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayFabDataRetrieverSubstitute : MonoBehaviour, IDataRetriever
+public class PlayFabDataRetrieverSubstitute : MonoBehaviour
 {
     [SerializeField] private int _levelIndex = 1;
 

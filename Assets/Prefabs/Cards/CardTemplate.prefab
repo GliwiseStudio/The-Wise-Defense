@@ -137,6 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfiguration: {fileID: 0}
   _discardButtonUI: {fileID: 6073864786407514582}
+  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
+    type: 3}
 --- !u!1001 &7148867702662038476
 PrefabInstance:
   m_ObjectHideFlags: 0
