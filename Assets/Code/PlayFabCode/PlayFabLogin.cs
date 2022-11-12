@@ -70,7 +70,7 @@ public class PlayFabLogin : MonoBehaviour
         PlayFabManager.Instance.InitializeLevels();
         PlayFabManager.Instance.SendUnlockedLevels();
 
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     void OnLoginSuccess(LoginResult result)
