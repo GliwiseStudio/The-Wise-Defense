@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: ToxicCloudCardCofiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: f2d05ead8383e5a4dac3ac657ed0d080, type: 2}
-  _activationSoundName: TowerCardActivation
-  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
-    type: 3}
+  _activationSoundName: Poison
   _blueprintPrefab: {fileID: 2758063702460782593, guid: f36abc3bf25d55e4f860f0d80ea11815,
     type: 3}
   _spawnLayers:
   - ObstacleBase
+  _audioMixerChannel: SoundEffects
   InGameCard: 0
   CardText: Slowdown area for flying enemies
   CardSprite: {fileID: 0}

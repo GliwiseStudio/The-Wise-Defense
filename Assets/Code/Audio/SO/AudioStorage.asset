@@ -23,3 +23,29 @@ MonoBehaviour:
     _audio: {fileID: 8300000, guid: 47a37791c734c6e4f820975c4c7286cb, type: 3}
   - _name: Poison
     _audio: {fileID: 8300000, guid: f13da878d2a05fe43b414525309ae090, type: 3}
+  - _name: AerialTrap
+    _audio: {fileID: 8300000, guid: 708324f0bdee8c64881e9c9e120861c1, type: 3}
+  - _name: ArrowRain
+    _audio: {fileID: 8300000, guid: 9dfe41aa0edee16458b947694736c39a, type: 3}
+  - _name: Barricade
+    _audio: {fileID: 8300000, guid: 997a8fd84bab7e3408e45b7d2b9da003, type: 3}
+  - _name: BlessingsForTurrets
+    _audio: {fileID: 8300000, guid: 2d3b9b48467c7f74985e3f35507d6eaf, type: 3}
+  - _name: Cure
+    _audio: {fileID: 8300000, guid: aa2439f3dd4acc74085ac6a1e5583a99, type: 3}
+  - _name: Curse
+    _audio: {fileID: 8300000, guid: 55bc3b1e29cb0164c8fe5d14243cc17d, type: 3}
+  - _name: DestroyTower
+    _audio: {fileID: 8300000, guid: f73227e5e267f0640af3219efecd0090, type: 3}
+  - _name: ExplosiveBarrel
+    _audio: {fileID: 8300000, guid: e2e8b372b5baf2f43810db2d2ccc4e94, type: 3}
+  - _name: Invulnerability
+    _audio: {fileID: 8300000, guid: e3e2f75f7fc15f4458bd9717dcfff3fa, type: 3}
+  - _name: Pulse
+    _audio: {fileID: 8300000, guid: 684e70cd61b1faa4baa5ef490ff5f53d, type: 3}
+  - _name: RockRain
+    _audio: {fileID: 8300000, guid: a6453a56b1025a342ae9139fdff8a610, type: 3}
+  - _name: StartWave
+    _audio: {fileID: 8300000, guid: 8964cc95195c5ad4dad742a828f6acd4, type: 3}
+  - _name: Swamp
+    _audio: {fileID: 8300000, guid: 982b1ba72ce945a4590edbbd6da4c798, type: 3}
