@@ -2778,6 +2778,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 663ec55f9256a08418d1812e56c2a294, type: 2}
   - {fileID: 11400000, guid: ac073a7c90d2b144a8f2ce7a8d49e7af, type: 2}
   - {fileID: 11400000, guid: 9d1e629fd6a739344bec231343f29cdc, type: 2}
+--- !u!114 &1448879090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448879088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0056472f583b9b248b7d6819a969e003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogueManager: {fileID: 766818985}
+  _sentences:
+  - Greetings, I am pleased to meet you again.
+  - The journey was tough, but thanks to you, we have finally reconquered the coast.
+  - But do not celebrate just yet, we still have a long way to go if we want to defeat
+    this monsters once and for all.
+  - Take care as you approach the forest, you are yet to meet all the dangers out
+    there.
 --- !u!1001 &1464552072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3440,6 +3460,32 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1723163787}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1723163789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738942664297849101, guid: 02f5d856d51fcaf4586eb7e5a3479ade,
+    type: 3}
+  m_PrefabInstance: {fileID: 1723163787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1723163790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723163789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0056472f583b9b248b7d6819a969e003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogueManager: {fileID: 766818985}
+  _sentences:
+  - Once again you have managed to surpass my expectations. I thought we were going
+    to be stuck on those forests forever, but I can begin to see the end at the light
+    of the tunnels.
+  - Or maybe that light is just the sun reflecting on the snow...
+  - Anyway, good luck as you aproach the last part of this journey. Do not loose
+    hope, we are almost there.
 --- !u!1001 &1801318571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3605,8 +3651,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueManager: {fileID: 766818985}
   _sentences:
-  - Hello
-  - Goodbye
+  - 'Greetings, I am King Hermenegildo II, ruler of the Wise Kingdom.
+
+    I have
+    been meaning to talk to you about urgent matters concerning not only the state
+    of the Kingdom, but the fate of humanity.'
+  - As you may know, our world has been infected by monsters and Wise Kingdom is,
+    as far as we know, the last piece of humanity left.
+  - I have decided to put an end to this and reconquer what is rightfully ours.
+  - I hope I can count on you to help me through this journey, and that, together,
+    we can save Wise Kingdom from the tirany of the monsters.
 --- !u!114 &1801318575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4012,6 +4066,28 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2063150714}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2063150716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738942664297849101, guid: 02f5d856d51fcaf4586eb7e5a3479ade,
+    type: 3}
+  m_PrefabInstance: {fileID: 2063150714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2063150717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063150716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0056472f583b9b248b7d6819a969e003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogueManager: {fileID: 766818985}
+  _sentences:
+  - "This is our last stop, if you manage to defeat all the monsters, Wise Kingdom
+    will be free, once and for all. \nMay the odds be in your favor. "
 --- !u!1 &2073155501
 GameObject:
   m_ObjectHideFlags: 0
