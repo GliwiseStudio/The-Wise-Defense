@@ -19,6 +19,10 @@ public class DeckController : MonoBehaviour
     {
         _cardSpawner = FindObjectOfType<CardSpawner>();
         _currentCards = new List<Cards>(_maximumCardsInDeck);
+    }
+
+    private void Start()
+    {
         GenerateDeck();
     }
 

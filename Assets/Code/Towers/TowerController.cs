@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(AudioPlayer))]
@@ -39,6 +40,11 @@ public class TowerController : MonoBehaviour, IBuff
         _animationsHandler = new AnimationsHandler(_animator);
         _upgradeComponent = new TowerLevelUp(_configuration.UpgradeList);
         _audioPlayer = GetComponent<AudioPlayer>();
+    }
+
+    private void Start()
+    {
+        _audioPlayer.ConfigureAudioSource(_configuration.AudioConfiguration.AudioMixerChannel);
     }
 
     private void OnEnable()

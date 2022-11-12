@@ -18,3 +18,6 @@ MonoBehaviour:
   <Damage>k__BackingField: 100
   <DamageAnimTime>k__BackingField: 1.37
   <HitTime>k__BackingField: 0.87
+  <EnemyType>k__BackingField: 0
+  <SummonerTime>k__BackingField: 0
+  <BomberDeathDamage>k__BackingField: 0

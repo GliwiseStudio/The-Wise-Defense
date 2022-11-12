@@ -18,7 +18,7 @@ MonoBehaviour:
   - _name: Punch
     _audio: {fileID: 8300000, guid: 2754ac05646b0e34898c49f3556ace78, type: 3}
   - _name: TowerCardActivation
-    _audio: {fileID: 8300000, guid: 8aa05a56ea754fd4195f84f186cbe9f0, type: 3}
+    _audio: {fileID: 8300000, guid: 689a720b36d5541468ba8e5c8a65e351, type: 3}
   - _name: MainMenuMusic
     _audio: {fileID: 8300000, guid: 47a37791c734c6e4f820975c4c7286cb, type: 3}
   - _name: Poison

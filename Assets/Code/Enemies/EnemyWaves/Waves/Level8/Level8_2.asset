@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe117501d7ebc0b4ea9bcad7c297eba0, type: 3}
+  m_Name: Level8_2
+  m_EditorClassIdentifier: 
+  <EnemyTypesInWave>k__BackingField:
+  - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
+  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
+  - {fileID: 7559755150847883683, guid: fbb9e8ab20da1d64cb5784eed8cdcdec, type: 3}
+  - {fileID: 4795414889176324589, guid: 6afcce8d60ede254586b6a87d1c036d2, type: 3}
+  <NumberOfEnemiesPerType>k__BackingField: 01000000080000000200000001000000
+  <TimeBetweenEnemies>k__BackingField: 1
