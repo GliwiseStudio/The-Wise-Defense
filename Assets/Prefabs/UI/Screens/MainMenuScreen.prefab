@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 522911420221298269}
   - component: {fileID: 522911420221298270}
   - component: {fileID: 522911420221298271}
+  - component: {fileID: 3038219866245055442}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -122,6 +123,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3038219866245055442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522911420221298265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a5b230ed883bc4786da72f9f2e1aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screenNameToSwitch: Credits
 --- !u!1 &522911420307674540
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.063, y: -30}
+  m_AnchoredPosition: {x: 2, y: -30}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &522911420524247142
