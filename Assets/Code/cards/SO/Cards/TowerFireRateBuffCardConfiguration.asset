@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: TowerFireRateBuffCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: 66a9dba482fad6a4ab63dcebf4064de1, type: 2}
-  _activationSoundName: CannonShot
-  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
-    type: 3}
+  _activationSoundName: BlessingsForTurrets
   _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
     type: 3}
   _spawnLayers:
   - TowerBase
+  _audioMixerChannel: SoundEffects
   InGameCard: 1
   CardText: Fire Rate Buff
-  CardSprite: {fileID: 21300000, guid: e73101b73ffe17e4ea07a9ae5b580a4c, type: 3}
+  CardSprite: {fileID: 21300000, guid: 9fa6ca7cbc4d7de4ea334a536c19ed0c, type: 3}
