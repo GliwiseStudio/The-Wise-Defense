@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        _currentLevelSelection.GoToLevel();
+        gameObject.SetActive(false);
+        _currentLevelSelection.ShowCardsNext(); // after the dialogue, the game shows the unlocked cards
     }
 }

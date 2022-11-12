@@ -55,17 +55,43 @@ public class LevelSelection : MonoBehaviour
 
     public void OnClick()
     {
-        if (PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel)
+        if (_unlocked)
         {
-            PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel = false;
-            PlayFabManager.Instance.SendUnlockedLevels();
-
-            DialogueTrigger _levelDialogue = gameObject.GetComponent<DialogueTrigger>();
-            Debug.Log(_levelDialogue);
-            if (_levelDialogue != null)
+            if (PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel) // clicked in a new level for the first time
             {
-                _levelDialogue.TriggerDialogue(this);
+                PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel = false; // no longer a new level
+                PlayFabManager.Instance.SendUnlockedLevels(); // send that information
+
+                // if the level has dialogue trigger the dialogue
+                DialogueTrigger _levelDialogue = gameObject.GetComponent<DialogueTrigger>();
+                if (_levelDialogue != null)
+                {
+                    _levelDialogue.TriggerDialogue(this);
+                }
+                else // there was no dialogue, but maybe there are new unlocked cards
+                {
+                    // if the level has new unlocked cards
+                    UnlockedCardsTrigger _levelUnlockedCards = gameObject.GetComponent<UnlockedCardsTrigger>();
+                    if (_levelUnlockedCards != null)
+                    {
+                        _levelUnlockedCards.TriggerUnlockedCards(this);
+                    }
+                }
             }
+            else // already unlocked the level previously, go to level straight away
+            {
+                GoToLevel();
+            }
+        }
+    }
+
+    public void ShowCardsNext()
+    {
+        // if the level has new unlocked cards
+        UnlockedCardsTrigger _levelUnlockedCards = gameObject.GetComponent<UnlockedCardsTrigger>();
+        if (_levelUnlockedCards != null)
+        {
+            _levelUnlockedCards.TriggerUnlockedCards(this);
         }
         else
         {
