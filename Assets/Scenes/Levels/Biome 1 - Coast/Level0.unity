@@ -818,6 +818,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e30dfa5de6e5f41864ed6964da75b0, type: 3}
+--- !u!4 &307422808 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3556777757304277758, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2100271399432809642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &362776387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f8f47015c2d71bf4788db0c0936589df,
@@ -1106,7 +1112,7 @@ PrefabInstance:
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
@@ -1124,13 +1130,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: d1cfd39f8ebe84a498e072cb4dec74db,
+      objectReference: {fileID: 11400000, guid: 0e77a2d2f5f41824b914971446a77da0,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
       propertyPath: _waves.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: a18b6da3e226b1e40a01765917b6ead4,
+      objectReference: {fileID: 11400000, guid: cc8164cfd83fbcc4a8d52417c386a791,
         type: 2}
     - target: {fileID: 2942789569256628976, guid: ec739b9d885342645b133e5005295e47,
         type: 3}
@@ -2912,6 +2918,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1303871563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6064157134065142778, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1454073210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1303871566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4235861904886894211, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1454073210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303871563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3441875672f274e9134140735540b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1303871569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303871563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fce63f40d7edda4ea3ceab0b8547360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sentences:
+  - You have done well this first round, but do not count your chickens before they
+    hatch, the enemies become fiercer each round.
+  - Oh! There is one little thing I forgot to tell you. You can upgrade a weapon
+    already placed on a base by dragging the same weapon card to that base. You may
+    upgrade each weapon up to two times.
 --- !u!1001 &1310914466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3368,6 +3410,226 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14baf5059b30c97409742513ff3054f1, type: 3}
+--- !u!1001 &1454073210
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 307422808}
+    m_Modifications:
+    - target: {fileID: 6064157133483917404, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1303871566}
+    - target: {fileID: 6064157133483917404, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157133483917404, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TutorialDialogueManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 702
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.935364
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.185547
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142777, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142778, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_Name
+      value: KingSpeechTutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134065142778, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[0]
+      value: Welcome back, I am deeply grateful that you have decided to join me
+        in this adventure. Since this is your first time fighting againts these monsters
+        I will do my best to help you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[1]
+      value: These monsters are fierce. You must stop them before they destroy all
+        my towers.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[2]
+      value: My team can grant you five cards each round to fight against them. Resources
+        are scarce, so they will be picked randomly, but do not worry, I assure you
+        that you will always have at least one weapon to fight them.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[3]
+      value: You may change some of them by clicking on the card and clicking the
+        "Discard" button, but be canny, you can only do so limited times each round.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[4]
+      value: You can use the weapons and obstacles cards before the enemies come,
+        the rest of them will be reserved for when the battle has started.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[5]
+      value: My subjects have been developing some high tech weapons to destroy the
+        evil beigns. You can use them dragging the card to the red weapons bases
+        on the map.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[6]
+      value: There are also hurdles that will hinder the monster on their way. Drag
+        them to the grey obstacle bases on the path.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[7]
+      value: 'Once you have wisely placed the weapons and obstacles, you may fight
+        the enemies pressing the "Start Wave"
+
+        button.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[8]
+      value: Once the wave starts, you may use the remaining cards, they will give
+        you some perks during the battle. Just drag them to where you most need them.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[9]
+      value: I hear enemies coming, but I think you will be ready to face them. May
+        fortune favor you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341480083156369622, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341480083156369622, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[0]
+      value: You did well, but it will not always be this easy. The enemies get more
+        fierce each round.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d4a1029dd028c8e4e981f843ec8f17a6, type: 3}
 --- !u!1001 &1464525088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4174,7 +4436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3e898138f8a92458ac551144dbeb2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numWaves: 0
+  _numWaves: 2
+  _currentTowers: 1
 --- !u!4 &1859996737
 Transform:
   m_ObjectHideFlags: 0
