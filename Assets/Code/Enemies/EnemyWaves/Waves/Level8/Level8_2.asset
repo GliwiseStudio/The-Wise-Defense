@@ -15,7 +15,7 @@ MonoBehaviour:
   <EnemyTypesInWave>k__BackingField:
   - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
   - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
-  - {fileID: 7559755150847883683, guid: fbb9e8ab20da1d64cb5784eed8cdcdec, type: 3}
   - {fileID: 4795414889176324589, guid: 6afcce8d60ede254586b6a87d1c036d2, type: 3}
-  <NumberOfEnemiesPerType>k__BackingField: 01000000080000000200000001000000
+  - {fileID: 7371109563016554201, guid: a5d45baadeb7f5f468c4d8417cae982f, type: 3}
+  <NumberOfEnemiesPerType>k__BackingField: 01000000080000000300000001000000
   <TimeBetweenEnemies>k__BackingField: 1
