@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353de407368a48b45b9b50a0a7525d6c, type: 3}
   m_Name: Level4Configuration
   m_EditorClassIdentifier: 
-  _levelCardStorage: {fileID: 11400000, guid: a10fe32a4af6b76478dd40a7376d18fe, type: 2}
+  _levelCardStorage: {fileID: 11400000, guid: d7f5d72a637f48546a46166edf7e36a9, type: 2}
