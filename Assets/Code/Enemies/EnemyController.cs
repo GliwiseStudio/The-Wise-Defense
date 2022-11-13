@@ -53,7 +53,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     private void TheStart() // called when instanciated from the wave spawner
     {
-        GameManager.Instance.AddEnemy(); // add the enemy to the GameManager to keep track of it
+        if (GameManager.Instance != null)
+            GameManager.Instance.AddEnemy(); // add the enemy to the GameManager to keep track of it
 
         _randomWaitTime = Random.Range(0.0f, 1f);
 
@@ -249,7 +250,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         }
         else // when a second has passed, destroy the gameObject
         {
-            GameManager.Instance.RemoveEnemy();
+            if (GameManager.Instance != null)
+                GameManager.Instance.RemoveEnemy();
             Destroy(gameObject);
         }
     }

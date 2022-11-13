@@ -16,17 +16,23 @@ public class GameManager : MonoBehaviour
     public event Action OnWaveStarted;
 
     [SerializeField] private int _numWaves = 5;
-    
+    [SerializeField] private int _currentTowers = 3;
+
     private int _currentWave = 0;
     private int _currentEnemies = 0;
-    private int _currentTowers = 3;
 
     public static GameManager Instance
     {
         get
         {
-            if (_instance == null)
-                Debug.LogError("Game Manager is Null!! Fix this!! ");
+            // not a problem because:
+            // this happens when the gameManager is destroyed when loading a new screen, and other gameobjects being destroyed try to unsubscribe from it's events after it
+            // but it is not a problem, because it is the event owner (gameManager) who is destroyed, so the other gameObjects don't really need to unsubscribe anyway
+            // you should unsubscribe if you destroy the subscriber and the event owner lives on, because otherwise the delegates still point to the subscriber
+            //if (_instance == null)
+            //{
+            //    Debug.Log("Game Manager is Null");
+            //}
             return _instance;
         }
     }
@@ -34,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        PauseGame();
+        // PauseGame(); // deprecated, only actively pausing the game will pause it now.
     }
 
     #region Win / Loose
@@ -86,12 +92,12 @@ public class GameManager : MonoBehaviour
 
     #region Waves Management
 
-    public void NextWave() // pause game and prepare for next wave, but not start it
+    public void NextWave() // prepare for next wave, but not start it
     {
-        OnWaveFinished?.Invoke();
-        if (_currentWave < _numWaves)
+        if (_currentWave+1 < _numWaves)
         {
-            PauseGame();
+            OnWaveFinished?.Invoke();
+            //PauseGame(); // deprecated, time will only be paused when actively pausing the game
             _currentWave++;
             _currentEnemies = 0;
         }
@@ -106,7 +112,7 @@ public class GameManager : MonoBehaviour
     public void StartWave() // called from the start button
     {
         OnWaveStarted?.Invoke();
-        UnpauseGame();
+        //UnpauseGame(); // deprecated, time will only be paused when actively pausing the game
     }
 
     #endregion
@@ -132,7 +138,7 @@ public class GameManager : MonoBehaviour
     {
         _currentTowers--;
 
-        // check if there are any enemies left, if there aren't the game is over
+        // check if there are any towers left, if there aren't the game is over
         if (_currentTowers == 0)
         {
             Loose();
