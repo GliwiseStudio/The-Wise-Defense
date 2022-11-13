@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe117501d7ebc0b4ea9bcad7c297eba0, type: 3}
-  m_Name: Level8_4
+  m_Name: Level7_3
   m_EditorClassIdentifier: 
   <EnemyTypesInWave>k__BackingField:
   - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
   - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
-  - {fileID: 4795414889176324589, guid: 6afcce8d60ede254586b6a87d1c036d2, type: 3}
+  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
+  - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
   - {fileID: 3550209492034018514, guid: 93e5d8e29beb6394097c5a7bc7ffb55b, type: 3}
-  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
-  - {fileID: 7371109563016554201, guid: a5d45baadeb7f5f468c4d8417cae982f, type: 3}
-  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
-  <NumberOfEnemiesPerType>k__BackingField: 050000000100000001000000050000000f000000010000000a000000
+  <NumberOfEnemiesPerType>k__BackingField: 0300000001000000050000000100000003000000
   <TimeBetweenEnemies>k__BackingField: 0.75

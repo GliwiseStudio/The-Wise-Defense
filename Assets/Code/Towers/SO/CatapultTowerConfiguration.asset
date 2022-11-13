@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Catapult
   _detectionConfiguration:
-    _detectionRange: 2
+    _detectionRange: 3
     _targetLayerMask:
     - GroundEnemies
   _shootingConfiguration:
@@ -32,5 +32,6 @@ MonoBehaviour:
       _gameObject: {fileID: 0}
   _audioConfiguration:
     _shotSound: CannonShot
+    _audioMixerChannel: SoundEffects
   _projectileConfiguration: {fileID: 11400000, guid: 4a23c228cd55880438575089dc3ec662,
     type: 2}
