@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 255148909513853823, guid: a0f02a9e742388748b2705e7f37d6c1e, type: 3}
   - {fileID: 4795414889176324589, guid: 6afcce8d60ede254586b6a87d1c036d2, type: 3}
   - {fileID: 7371109563016554201, guid: a5d45baadeb7f5f468c4d8417cae982f, type: 3}
-  <NumberOfEnemiesPerType>k__BackingField: 0100000008000000010000000300000001000000
+  <NumberOfEnemiesPerType>k__BackingField: 0100000008000000010000000100000001000000
   <TimeBetweenEnemies>k__BackingField: 1
