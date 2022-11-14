@@ -19,7 +19,7 @@ MonoBehaviour:
     - GroundEnemies
   _shootingConfiguration:
     _fireRate: 2
-    _damage: 10
+    _damage: 12
   _upgradeList:
     _upgrades:
     - _damage: 15
