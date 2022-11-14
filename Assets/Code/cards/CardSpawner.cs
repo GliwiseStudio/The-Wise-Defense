@@ -17,10 +17,10 @@ public class CardSpawner : MonoBehaviour
         return card;
     }
 
-    public Cards CreateBeforeGameCard()
+    public Cards CreateRandomCardFromType(CardType type)
     {
         Cards card = Instantiate(_templateCardPrefab);
-        card.SetCardConfig(_cardsStorage.GetRandomBeforeGameCard());
+        card.SetCardConfig(_cardsStorage.GetRandomCardFromType(type));
         return card;
     }
 }

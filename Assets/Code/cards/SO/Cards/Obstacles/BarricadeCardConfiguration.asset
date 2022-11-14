@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BarricadeCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: a338e8a3abf1e164e99a41b6cef66bff, type: 2}
+  _cardType: 2
   _activationSoundName: Barricade
   _blueprintPrefab: {fileID: 5807383701995013567, guid: 8186984bcc327164cb41c9520f52a7aa,
     type: 3}

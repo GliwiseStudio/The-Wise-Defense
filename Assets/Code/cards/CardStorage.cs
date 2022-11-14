@@ -13,14 +13,14 @@ public class CardStorage : ScriptableObject
         return _configurations[randomIndex];
     }
 
-    public CardConfigurationSO GetRandomBeforeGameCard()
+    public CardConfigurationSO GetRandomCardFromType(CardType type)
     {
-        List<CardConfigurationSO> beforeGameCards = _configurations.FindAll(delegate (CardConfigurationSO card)
+        List<CardConfigurationSO> cardsOfType = _configurations.FindAll(delegate (CardConfigurationSO card)
         {
-            return !card.InGameCard;
+            return (card.CardType.CompareTo(type) == 0);
         });
 
-        int randomIndex = Random.Range(0, beforeGameCards.Count);
-        return beforeGameCards[randomIndex];
+        int randomIndex = Random.Range(0, cardsOfType.Count);
+        return cardsOfType[randomIndex];
     }
 }

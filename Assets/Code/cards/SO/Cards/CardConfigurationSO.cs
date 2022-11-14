@@ -4,6 +4,7 @@ using UnityEngine;
 public class CardConfigurationSO : ScriptableObject
 {
     public CardPowerConfigurationSO cardPower;
+    [SerializeField] private CardType _cardType = CardType.None;
     [SerializeField] private string _activationSoundName;
     [SerializeField] private GameObject _blueprintPrefab;
     [SerializeField] private string[] _spawnLayers;
@@ -11,6 +12,7 @@ public class CardConfigurationSO : ScriptableObject
 
     public bool InGameCard;
 
+    public CardType CardType => _cardType;
     public string ActivationSoundName => _activationSoundName;
     public GameObject BlueprintPrefab => _blueprintPrefab;
     public string[] SpawnLayers => _spawnLayers;

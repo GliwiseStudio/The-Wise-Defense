@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SwampCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: b39c02323af60bd42b45ed8243fb462d, type: 2}
+  _cardType: 2
   _activationSoundName: Swamp
   _blueprintPrefab: {fileID: 6379108122978655020, guid: 09431546b753591459a704a64fff41ec,
     type: 3}
