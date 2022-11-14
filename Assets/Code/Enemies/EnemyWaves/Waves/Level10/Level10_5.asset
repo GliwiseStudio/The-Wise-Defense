@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe117501d7ebc0b4ea9bcad7c297eba0, type: 3}
-  m_Name: Level8_6
+  m_Name: Level10_5
   m_EditorClassIdentifier: 
   <EnemyTypesInWave>k__BackingField:
-  - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
   - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
-  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
-  - {fileID: 3550209492034018514, guid: 93e5d8e29beb6394097c5a7bc7ffb55b, type: 3}
   - {fileID: 7559755150847883683, guid: fbb9e8ab20da1d64cb5784eed8cdcdec, type: 3}
-  - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
-  - {fileID: 7371109563016554201, guid: a5d45baadeb7f5f468c4d8417cae982f, type: 3}
   - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
-  - {fileID: 3550209492034018514, guid: 93e5d8e29beb6394097c5a7bc7ffb55b, type: 3}
+  - {fileID: 255148909513853823, guid: a0f02a9e742388748b2705e7f37d6c1e, type: 3}
   - {fileID: 4795414889176324589, guid: 6afcce8d60ede254586b6a87d1c036d2, type: 3}
-  - {fileID: 8683087205353351800, guid: 81fe4158380c5d943b02d76ad4d75012, type: 3}
+  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
   - {fileID: 7371109563016554201, guid: a5d45baadeb7f5f468c4d8417cae982f, type: 3}
-  <NumberOfEnemiesPerType>k__BackingField: 0200000007000000020000000500000003000000010000000100000005000000030000000200000001000000
+  - {fileID: 3550209492034018514, guid: 93e5d8e29beb6394097c5a7bc7ffb55b, type: 3}
+  - {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554, type: 3}
+  - {fileID: 255148909513853823, guid: a0f02a9e742388748b2705e7f37d6c1e, type: 3}
+  <NumberOfEnemiesPerType>k__BackingField: 0a000000030000000a00000001000000030000000f000000010000000a0000000f00000001000000
   <TimeBetweenEnemies>k__BackingField: 0.5
