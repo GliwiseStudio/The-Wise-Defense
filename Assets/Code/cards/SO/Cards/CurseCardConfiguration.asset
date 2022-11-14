@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CurseCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: 6ce305cff50ea2448a9b03d33e7d23bd, type: 2}
+  _cardType: 3
   _activationSoundName: Curse
   _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
     type: 3}

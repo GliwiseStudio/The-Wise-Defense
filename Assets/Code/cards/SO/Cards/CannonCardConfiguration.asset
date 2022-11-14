@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: CannonCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: dce944127dfc54d43b6871605b593273, type: 2}
+  _cardType: 1
   _activationSoundName: TowerCardActivation
-  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
-    type: 3}
   _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
     type: 3}
   _spawnLayers:
   - TowerBase
+  _audioMixerChannel: SoundEffects
   InGameCard: 0
   CardText: Spawn cannon
   CardSprite: {fileID: 21300000, guid: d275c79f517b4234a92f285c37aa02d6, type: 3}

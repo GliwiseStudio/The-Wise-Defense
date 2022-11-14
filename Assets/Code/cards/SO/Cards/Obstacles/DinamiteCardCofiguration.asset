@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DinamiteCardCofiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: adad4757a398e8d498cce203df82cb7e, type: 2}
+  _cardType: 2
   _activationSoundName: ExplosiveBarrel
   _blueprintPrefab: {fileID: 162114738547951605, guid: c592bc1a22bc65f428316340c78de8f5,
     type: 3}

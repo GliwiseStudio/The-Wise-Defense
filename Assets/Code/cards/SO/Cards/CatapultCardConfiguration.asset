@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: CatapultCardConfiguration
   m_EditorClassIdentifier: 
   cardPower: {fileID: 11400000, guid: 0389dd058fe57b64a9bb1dfde1b63ccd, type: 2}
+  _cardType: 1
   _activationSoundName: TowerCardActivation
-  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
-    type: 3}
   _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
     type: 3}
   _spawnLayers:
   - TowerBase
+  _audioMixerChannel: SoundEffects
   InGameCard: 0
   CardText: Spawn Catapult
   CardSprite: {fileID: 21300000, guid: 565e2742d9de94c48babff202df7dd1f, type: 3}

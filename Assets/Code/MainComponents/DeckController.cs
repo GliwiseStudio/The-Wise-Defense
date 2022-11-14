@@ -9,7 +9,7 @@ public class DeckController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _discardPerRoundTextComponent;
     [SerializeField] private Transform _deckHolderTransform;
     [SerializeField] private int _maximumCardsInDeck = 5;
-    [SerializeField] private int _minimumBeforeCardsInDeckGenerator = 1;
+    [SerializeField] private int _minimumTurretCardsInDeckGenerator = 1;
     [SerializeField] private int _maximumDiscardsPerRound = 2;
     private int _currentDiscards;
     private List<Cards> _currentCards;
@@ -45,8 +45,8 @@ public class DeckController : MonoBehaviour
 
         ClearDeck();
 
-        GenerateBeforeGameCard();
-        for (int i = _minimumBeforeCardsInDeckGenerator; i < _maximumCardsInDeck; i++)
+        GenerateObligatoryTurretCards();
+        for (int i = _minimumTurretCardsInDeckGenerator; i < _maximumCardsInDeck; i++)
         {
             GenerateCard();
         }
@@ -72,21 +72,20 @@ public class DeckController : MonoBehaviour
         _currentCards.Add(card);
     }
 
-    private void GenerateBeforeGameCard()
+    private void GenerateObligatoryTurretCards()
     {
-        if (_minimumBeforeCardsInDeckGenerator > _maximumCardsInDeck)
+        if (_minimumTurretCardsInDeckGenerator > _maximumCardsInDeck)
         {
-            _minimumBeforeCardsInDeckGenerator = _maximumCardsInDeck;
+            _minimumTurretCardsInDeckGenerator = _maximumCardsInDeck;
 #if UNITY_EDITOR
-            Debug.LogWarning($"[DeckController at GenerateBeforeGameCard]: The minimum Before-Game cards number is higher than the maximum cards in deck ({_minimumBeforeCardsInDeckGenerator} > {_maximumCardsInDeck}). Correct it. Using 0 so far");
+            Debug.LogWarning($"[DeckController at GenerateObligatoryTurretCards]: The minimum Turret cards number is higher than the maximum cards in deck ({_minimumTurretCardsInDeckGenerator} > {_maximumCardsInDeck}). Correct it. Using 0 so far");
 #endif
-            _minimumBeforeCardsInDeckGenerator = 0;
+            _minimumTurretCardsInDeckGenerator = 0;
             return;
         }
-        for (int i = 0; i < _minimumBeforeCardsInDeckGenerator; i++)
+        for (int i = 0; i < _minimumTurretCardsInDeckGenerator; i++)
         {
-            Debug.Log("Before game card");
-            Cards card = _cardSpawner.CreateBeforeGameCard();
+            Cards card = _cardSpawner.CreateRandomCardFromType(CardType.Turret);
             card.transform.SetParent(_deckHolderTransform, false);
             _currentCards.Add(card);
         }
