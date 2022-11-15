@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee91a19e59907644999db73fab5baa5, type: 3}
+  m_Name: HwachaTowerConfiguration
+  m_EditorClassIdentifier: 
+  _name: Hwacha
+  _detectionConfiguration:
+    _detectionRange: 4
+    _targetLayerMask:
+    - FlyingEnemies
+  _shootingConfiguration:
+    _fireRate: 1
+    _damage: 20
+  _upgradeList:
+    _upgrades:
+    - _damage: 25
+      _range: 4
+      _fireRate: 0.75
+      _gameObject: {fileID: 0}
+    - _damage: 35
+      _range: 4
+      _fireRate: 0.5
+      _gameObject: {fileID: 0}
+  _audioConfiguration:
+    _shotSound: CannonShot
+    _audioMixerChannel: SoundEffects
+  _projectileConfiguration: {fileID: 11400000, guid: a6d524c09e554a04ca2b0281acd9d500,
+    type: 2}
