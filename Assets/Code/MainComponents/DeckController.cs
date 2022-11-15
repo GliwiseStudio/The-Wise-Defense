@@ -12,6 +12,7 @@ public class DeckController : MonoBehaviour
     [SerializeField] private int _minimumTurretCardsInDeckGenerator = 1;
     [SerializeField] private int _maximumDiscardsPerRound = 2;
     private int _currentDiscards;
+    private bool _isAbleToDiscardCards = true;
     private List<Cards> _currentCards;
     private CardSpawner _cardSpawner;
 
@@ -28,14 +29,38 @@ public class DeckController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnWaveStarted += RemoveBeforeGameCards;
-        GameManager.Instance.OnWaveFinished += GenerateDeck;
+        SubscribeToOnWaveStartedEvents();
+        SubscribeToOnWaveFinishedEvents();
     }
 
     private void OnDisable()
     {
+        UnsubscribeToOnWaveStartedEvents();
+        UnsubscribeToOnWaveFinishedEvents();
+    }
+
+    private void SubscribeToOnWaveStartedEvents()
+    {
+        GameManager.Instance.OnWaveStarted += RemoveBeforeGameCards;
+        GameManager.Instance.OnWaveStarted += DisableDiscardCards;
+    }
+
+    private void UnsubscribeToOnWaveStartedEvents()
+    {
         GameManager.Instance.OnWaveStarted -= RemoveBeforeGameCards;
+        GameManager.Instance.OnWaveStarted -= DisableDiscardCards;
+    }
+
+    private void SubscribeToOnWaveFinishedEvents()
+    {
+        GameManager.Instance.OnWaveFinished += GenerateDeck;
+        GameManager.Instance.OnWaveFinished += EnableDiscardCards;
+    }
+
+    private void UnsubscribeToOnWaveFinishedEvents()
+    {
         GameManager.Instance.OnWaveFinished -= GenerateDeck;
+        GameManager.Instance.OnWaveFinished -= EnableDiscardCards;
     }
 
     public void GenerateDeck()
@@ -133,9 +158,19 @@ public class DeckController : MonoBehaviour
         GenerateCard();
     }
 
+    private void EnableDiscardCards()
+    {
+        _isAbleToDiscardCards = true;
+    }
+
+    private void DisableDiscardCards()
+    {
+        _isAbleToDiscardCards = false;
+    }
+
     public bool IsAbleToActivateDiscardButton()
     {
-        if(_currentDiscards == 0)
+        if (_currentDiscards == 0 || !_isAbleToDiscardCards)
         {
             return false;
         }
