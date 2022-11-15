@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 880be15d4d001ac41942bd7d3f8ce355, type: 3}
-  m_Name: CardsSotrageLevel9 (FALTA TORRETA)
+  m_Name: CardsSotrageLevel9
   m_EditorClassIdentifier: 
   _configurations:
   - {fileID: 11400000, guid: 1367a7fa06667f74795b66f5d71f3e94, type: 2}
@@ -29,3 +29,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ffdda5953532d5428acbb50ef00874c, type: 2}
   - {fileID: 11400000, guid: aa95de95e77d22d4e8ce08cec85204c1, type: 2}
   - {fileID: 11400000, guid: 48bfb8344d670164287a236a8a1328ab, type: 2}
+  - {fileID: 11400000, guid: 4ad05678dda79dd41932e9add8f89891, type: 2}
