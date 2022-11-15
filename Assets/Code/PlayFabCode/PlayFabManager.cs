@@ -12,8 +12,9 @@ public class PlayFabManager : MonoBehaviour
     // Player related variables
     private static int _numberOfLevels = 15;
     public List<Level> UnlockedLevels = new List<Level>();
-    public int LastUnlockedLevel = 0;
-    public int CurrentLevel = 0;
+    private int _lastUnlockedLevel = 0;
+    private int _currentLevel = 0;
+    private int _currentStars = 0;
 
     private bool _firstDataGotten = false; // to go to MainMenu once the player has gotten the data
                                            // from PlayFab when login in, because it takes a second or so
@@ -50,10 +51,39 @@ public class PlayFabManager : MonoBehaviour
         }
     }
 
-    public void GetCurrentLevel(int currentLevel)
+    #region Getters/setters
+
+    public void SetCurrentLevel(int currentLevel)
     {
-        CurrentLevel = currentLevel;
+        _currentLevel = currentLevel;
     }
+
+    public int GetCurrentLevel()
+    {
+        return _currentLevel;
+    }
+
+    public void SetLastUnlockedLevel(int lastUnlockedLevel)
+    {
+        _lastUnlockedLevel = lastUnlockedLevel;
+    }
+
+    public int GetLastUnlockedLevel()
+    {
+        return _lastUnlockedLevel;
+    }
+
+    public int GetCurrentStars()
+    {
+        return _currentStars;
+    }
+
+    public void SetCurrentStars(int currentStars)
+    {
+        _currentStars = currentStars;
+    }
+
+    #endregion
 
     #region Get/send data from/to PlayFab
     public void GetUnlockedLevels()
@@ -68,7 +98,7 @@ public class PlayFabManager : MonoBehaviour
             Data = new Dictionary<string, string>
             {
                 {"UnlockedLevels", JsonConvert.SerializeObject(UnlockedLevels)},
-                {"LastUnlockedLevel", LastUnlockedLevel.ToString() }
+                {"LastUnlockedLevel", _lastUnlockedLevel.ToString() }
             }
         };
         PlayFabClientAPI.UpdateUserData(request, OnDataSend, OnError);
@@ -85,7 +115,7 @@ public class PlayFabManager : MonoBehaviour
         if (result.Data != null && result.Data.ContainsKey("UnlockedLevels"))
         {
             UnlockedLevels = JsonConvert.DeserializeObject<List<Level>>(result.Data["UnlockedLevels"].Value);
-            LastUnlockedLevel = int.Parse(result.Data["LastUnlockedLevel"].Value);
+            _lastUnlockedLevel = int.Parse(result.Data["LastUnlockedLevel"].Value);
         }
     }
 

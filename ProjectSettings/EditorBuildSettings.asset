@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Biome 3 - Snow/Level14.unity
     guid: 27ab966850a2fb94a8667e44094e6cb7
+  - enabled: 1
+    path: Assets/Scenes/GameOver/GameOver.unity
+    guid: 83505b39ae33f8b4fa7e1a19e1ae025b
   m_configObjects: {}
