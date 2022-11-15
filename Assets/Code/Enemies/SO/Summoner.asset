@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Summoner
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 1
-  <MaxHealth>k__BackingField: 200
+  <MaxHealth>k__BackingField: 120
   <DetectionRange>k__BackingField: 2
   <Damage>k__BackingField: 5
   <DamageAnimTime>k__BackingField: 2
