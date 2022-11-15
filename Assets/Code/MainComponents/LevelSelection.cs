@@ -25,11 +25,7 @@ public class LevelSelection : MonoBehaviour
         {
             _lockedImage.gameObject.SetActive(false);
 
-            if (PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel)
-            {
-                
-            }
-            else
+            if (!PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel)
             {
                 _starsImage.gameObject.SetActive(true);
 
@@ -101,7 +97,7 @@ public class LevelSelection : MonoBehaviour
 
     public void GoToLevel()
     {
-        PlayFabManager.Instance.GetCurrentLevel(_levelNumber);
+        PlayFabManager.Instance.SetCurrentLevel(_levelNumber);
         SceneManager.LoadScene(_levelSceneName, LoadSceneMode.Single);
     }
 }

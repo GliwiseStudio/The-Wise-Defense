@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,15 +47,32 @@ public class GameManager : MonoBehaviour
     #region Win / Loose
     private void Win()
     {
+        if (PlayFabManager.Instance != null) // to show them on the game over screen
+        {
+            PlayFabManager.Instance.SetCurrentStars(_currentTowers);
+        }
+
         Debug.Log("Game's over and you win !! :D");
-        UpgradePlayFabInfo();
-        OnWin?.Invoke();
+
+        UpgradePlayFabInfo(); // check if you need to upgrade playfab info
+
+        OnWin?.Invoke(); // deprecated
+
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 
     private void Loose()
     {
+        if (PlayFabManager.Instance != null) // to show them on the game over screen
+        {
+            PlayFabManager.Instance.SetCurrentStars(_currentTowers);
+        }
+
         Debug.Log("Game ends and you loose :(");
-        OnLoose?.Invoke();
+
+        OnLoose?.Invoke(); // deprecated
+
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 
     #endregion
@@ -65,13 +83,13 @@ public class GameManager : MonoBehaviour
         if (PlayFabManager.Instance != null) // it won't be null on build, but it's possible that it will be while tryhing levels on unity
         {
             bool _needToUpdateSavedData = false;
-            int currentLevel = PlayFabManager.Instance.CurrentLevel;
+            int currentLevel = PlayFabManager.Instance.GetCurrentLevel();
 
             if (PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked == false)
             {
                 PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
                 PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].newLevel = true;
-                PlayFabManager.Instance.LastUnlockedLevel = currentLevel + 1;
+                PlayFabManager.Instance.SetLastUnlockedLevel(currentLevel + 1);
                 _needToUpdateSavedData = true;
             }
 

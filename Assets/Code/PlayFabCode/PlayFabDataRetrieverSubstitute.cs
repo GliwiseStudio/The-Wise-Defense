@@ -8,7 +8,7 @@ public class PlayFabDataRetrieverSubstitute : MonoBehaviour
     {
         if (PlayFabManager.Instance != null)
         {
-            return PlayFabManager.Instance.LastUnlockedLevel;
+            return PlayFabManager.Instance.GetLastUnlockedLevel();
         }
         else
         {
