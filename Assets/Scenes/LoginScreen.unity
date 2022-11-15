@@ -1817,6 +1817,7 @@ GameObject:
   - component: {fileID: 1200047420}
   - component: {fileID: 1200047419}
   - component: {fileID: 1200047418}
+  - component: {fileID: 1200047421}
   m_Layer: 5
   m_Name: MailInputField
   m_TagString: Untagged
@@ -1981,6 +1982,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200047416}
   m_CullTransparentMesh: 1
+--- !u!114 &1200047421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200047416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &1506988563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,6 +2007,7 @@ GameObject:
   - component: {fileID: 1506988567}
   - component: {fileID: 1506988566}
   - component: {fileID: 1506988565}
+  - component: {fileID: 1506988568}
   m_Layer: 5
   m_Name: PasswordInputField
   m_TagString: Untagged
@@ -2157,6 +2172,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506988563}
   m_CullTransparentMesh: 1
+--- !u!114 &1506988568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506988563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &1573578073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,8 +2574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a451c8b0afcd2f4f8746079e256a59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LastUnlockedLevel: 0
   CurrentLevel: 0
-  FirstDataGotten: 0
 --- !u!4 &1858826783
 Transform:
   m_ObjectHideFlags: 0
