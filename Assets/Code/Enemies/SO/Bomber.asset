@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Bomber
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 4.5
-  <MaxHealth>k__BackingField: 50
+  <MaxHealth>k__BackingField: 40
   <DetectionRange>k__BackingField: 2
   <Damage>k__BackingField: 10
   <DamageAnimTime>k__BackingField: 2
   <HitTime>k__BackingField: 1
   <EnemyType>k__BackingField: 3
   <SummonerTime>k__BackingField: 0
-  <BomberDeathDamage>k__BackingField: 150
+  <BomberDeathDamage>k__BackingField: 100
+  _audioMixerChannel: SoundEffects
