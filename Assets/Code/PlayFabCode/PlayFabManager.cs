@@ -112,10 +112,15 @@ public class PlayFabManager : MonoBehaviour
             _firstDataGotten = true;
         }
         Debug.Log("Recieved characters data!");
-        if (result.Data != null && result.Data.ContainsKey("UnlockedLevels"))
+        if (result.Data != null && result.Data.ContainsKey("UnlockedLevels") && result.Data.ContainsKey("LastUnlockedLevel"))
         {
             UnlockedLevels = JsonConvert.DeserializeObject<List<Level>>(result.Data["UnlockedLevels"].Value);
             _lastUnlockedLevel = int.Parse(result.Data["LastUnlockedLevel"].Value);
+        }
+        else
+        {
+            InitializeLevels();
+            SendUnlockedLevels();
         }
     }
 
