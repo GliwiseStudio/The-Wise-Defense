@@ -18,9 +18,11 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     [SerializeField] private DiscardButtonUI _discardButtonUI;
     [SerializeField] private AudioPlayer _audioPlayerPrefab;
     private DeckController _deckController;
+    private CardStatsVisualizer _statsVisualizer;
 
     private void Initialize()
     {
+        _statsVisualizer = new CardStatsVisualizer(GetComponentInChildren<CardStatsHolderUI>());
         _cardImage = GetComponent<Image>();
         _deckController = FindObjectOfType<DeckController>();
         _spawnTargetDetector = new TargetDetector(_cardConfiguration.SpawnLayers);

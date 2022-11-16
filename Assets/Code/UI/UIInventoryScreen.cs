@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIInventoryScreen : MonoBehaviour, UIScreen
 {
@@ -12,12 +13,15 @@ public class UIInventoryScreen : MonoBehaviour, UIScreen
     [SerializeField] private GameObject _cardVisualizerObject;
     [SerializeField] private Image _cardVisualizerImage;
     [SerializeField] private Button _cardVisualizerGoBackButton;
+    [SerializeField] private TextMeshProUGUI _cardVisualizerNameText;
+    [SerializeField] private TextMeshProUGUI _cardVisualizerDescriptionText;
     private InventoryController _inventoryController;
 
     private void Awake()
     {
         PlayFabDataRetrieverSubstitute dataRetriever = FindObjectOfType<PlayFabDataRetrieverSubstitute>();
-        _inventoryController = new InventoryController(dataRetriever, _numberOfCardsPerRow, _inventoryCardRowsHolder, _inventoryRowPrefab, _levelConfigurationStorage, _inventoryScrollRect, _cardVisualizerObject, _cardVisualizerImage);
+        _inventoryController = new InventoryController(dataRetriever, _numberOfCardsPerRow, _inventoryCardRowsHolder, _inventoryRowPrefab, _levelConfigurationStorage, _inventoryScrollRect, _cardVisualizerObject,
+            _cardVisualizerImage, _cardVisualizerNameText, _cardVisualizerDescriptionText);
     }
 
     public GameObject GetGameObject()
