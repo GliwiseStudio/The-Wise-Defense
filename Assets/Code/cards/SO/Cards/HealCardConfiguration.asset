@@ -20,6 +20,8 @@ MonoBehaviour:
   _spawnLayers:
   - Ground
   _audioMixerChannel: SoundEffects
-  InGameCard: 1
-  CardText: ' Heal Card'
+  _description: Restores some of the health of all the obstacles and towers within
+    range.
+  _name: Heal spell
   CardSprite: {fileID: 21300000, guid: b45c5d391805ee84a9db11efea4e8ce3, type: 3}
+  InGameCard: 1

@@ -20,6 +20,8 @@ MonoBehaviour:
   _spawnLayers:
   - TowerBase
   _audioMixerChannel: SoundEffects
-  InGameCard: 0
-  CardText: Spawn crossbow
+  _description: Turret with infinite range that deals great damage, but has very
+    little fire rate. Ideal to place on the far end of the map.
+  _name: Crossbow
   CardSprite: {fileID: 21300000, guid: 8e7e0fad3c4d8024f835c07c59508bda, type: 3}
+  InGameCard: 0

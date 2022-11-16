@@ -102,7 +102,6 @@ MonoBehaviour:
   _slowdownPercentage: 0.5
   _targerLayerMasks:
   - GroundEnemies
-  - GroundEnemyHoundDog
   - GroundEnemyArmored
   _damageEnemies: 0
   _damage: 10

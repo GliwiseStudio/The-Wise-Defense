@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: RockRainPowerConfiguration
   m_EditorClassIdentifier: 
   _prefab: {fileID: 6704589981316177330, guid: e398112c7cbce054d93822c9a9509cd7, type: 3}
-  _velocity: 30
+  _duration: 3
   _range: 5
   _targetLayerMasks:
   - GroundEnemies
+  - FlyingEnemies
+  - GroundEnemyArmored

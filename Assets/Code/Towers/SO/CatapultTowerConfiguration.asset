@@ -17,6 +17,7 @@ MonoBehaviour:
     _detectionRange: 3
     _targetLayerMask:
     - GroundEnemies
+    - GroundEnemyHoundDog
   _shootingConfiguration:
     _fireRate: 2
     _damage: 12

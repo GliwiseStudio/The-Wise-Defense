@@ -20,7 +20,7 @@ MonoBehaviour:
   _spawnLayers:
   - Ground
   _audioMixerChannel: SoundEffects
-  _description: "Esta carta est\xE1 paqu\xEDsima BRRRRR"
-  _name: Arrow Rain
+  _description: Deals damage to all enemies within range.
+  _name: Arrow rain
   CardSprite: {fileID: 21300000, guid: acf0a08a0ed023b45939e2b371c91936, type: 3}
   InGameCard: 1

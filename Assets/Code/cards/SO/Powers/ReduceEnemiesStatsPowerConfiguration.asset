@@ -20,3 +20,4 @@ MonoBehaviour:
   _targetLayerMasks:
   - GroundEnemies
   - FlyingEnemies
+  - GroundEnemyArmored
