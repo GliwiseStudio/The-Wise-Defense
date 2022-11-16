@@ -20,6 +20,7 @@ MonoBehaviour:
   _spawnLayers:
   - Ground
   _audioMixerChannel: SoundEffects
-  InGameCard: 1
-  CardText: Curse Card
+  _description: Makes enemies slower and reduces their damage for a few seconds.
+  _name: Curse spell
   CardSprite: {fileID: 21300000, guid: fd0176ae35e8e5f43b0098355ae929b2, type: 3}
+  InGameCard: 1

@@ -160,7 +160,6 @@ MonoBehaviour:
   - GroundEnemies
   - FlyingEnemies
   - GroundEnemyHoundDog
-  - GroundEnemyArmored
 --- !u!1 &670803898941882701
 GameObject:
   m_ObjectHideFlags: 0

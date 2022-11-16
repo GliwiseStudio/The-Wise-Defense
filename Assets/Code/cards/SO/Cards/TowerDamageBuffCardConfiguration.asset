@@ -20,6 +20,7 @@ MonoBehaviour:
   _spawnLayers:
   - TowerBase
   _audioMixerChannel: SoundEffects
-  InGameCard: 1
-  CardText: TowerDamage
+  _description: The selected turret deals more damage for a few seconds.
+  _name: Damage blessing
   CardSprite: {fileID: 21300000, guid: b57993ddfad679046b90589a3fa7f515, type: 3}
+  InGameCard: 1
