@@ -13,6 +13,8 @@ public class TowerController : MonoBehaviour, IBuff
 
     [SerializeField] private List<GameObject> _visualsUpgrades;
 
+    [SerializeField] private GameObject _rangeCylinder;
+
     private TowerHeadRotator _headRotator;
     private TargetDetector _enemyDetector;
     private TowerShootComponent _shootComponent;
@@ -24,6 +26,8 @@ public class TowerController : MonoBehaviour, IBuff
     private TowerLevelUp _upgradeComponent;
     private TowerBuffController _buffController;
     private TowerVisualSwitcher _visualsSwitcher;
+
+    private float _trueCurrentDetectionRange;
 
     public string GetName()
     {
@@ -45,6 +49,13 @@ public class TowerController : MonoBehaviour, IBuff
         _upgradeComponent = new TowerLevelUp(_configuration.UpgradeList);
         _audioPlayer = GetComponent<AudioPlayer>();
         _visualsSwitcher = new TowerVisualSwitcher(_visualsUpgrades, _animationsHandler);
+
+        _trueCurrentDetectionRange = _configuration.DetectionConfiguration.DetectionRange; // current detection range
+
+        if (_rangeCylinder != null) {
+            _rangeCylinder.transform.localScale = new Vector3(2 * _trueCurrentDetectionRange, 1, 2 * _trueCurrentDetectionRange); // range cylinder scales is double the detection range
+            _rangeCylinder.SetActive(false);
+        }
     }
 
     private void Start()
@@ -103,6 +114,12 @@ public class TowerController : MonoBehaviour, IBuff
         _shootComponent.SetDamage(upgrade.Damage);
         _enemyDetector.SetRadius(upgrade.Range);
         _shootComponent.SetFirerate(upgrade.FireRate);
+
+        _trueCurrentDetectionRange = upgrade.Range; // new range to use
+
+        if (_rangeCylinder != null)
+            _rangeCylinder.transform.localScale = new Vector3(2 * _trueCurrentDetectionRange, 1, 2 * _trueCurrentDetectionRange); // change rage cylinder back
+
     }
 
     private void Update()
@@ -157,12 +174,32 @@ public class TowerController : MonoBehaviour, IBuff
 
     private void BuffDetectionRange(int buffPercentage)
     {
+        float newRadius = _trueCurrentDetectionRange + ((_trueCurrentDetectionRange * buffPercentage) / 100);
 
-        _enemyDetector.SetRadius(_configuration.DetectionConfiguration.DetectionRange + ((_configuration.DetectionConfiguration.DetectionRange * buffPercentage) / 100));
+        _enemyDetector.SetRadius(newRadius);
+
+        if (_rangeCylinder != null)
+            _rangeCylinder.transform.localScale = new Vector3(2 * newRadius, 1, 2 * newRadius); // change rage cylinder to match buffered range
+
     }
 
     private void UnbuffDetectionRange()
     {
-        _enemyDetector.SetRadius(_configuration.DetectionConfiguration.DetectionRange);
+        _enemyDetector.SetRadius(_trueCurrentDetectionRange);
+
+        if (_rangeCylinder != null)
+            _rangeCylinder.transform.localScale = new Vector3(2 * _trueCurrentDetectionRange, 1, 2 * _trueCurrentDetectionRange); // change rage cylinder back
+    }
+
+    private void OnMouseDown()
+    {
+        if (_rangeCylinder != null)
+            _rangeCylinder.SetActive(true);
+    }
+
+    private void OnMouseUp()
+    {
+        if (_rangeCylinder != null)
+            _rangeCylinder.SetActive(false);
     }
 }
