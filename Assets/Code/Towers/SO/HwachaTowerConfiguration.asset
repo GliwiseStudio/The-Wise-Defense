@@ -22,14 +22,14 @@ MonoBehaviour:
     _damage: 10
   _upgradeList:
     _upgrades:
-    - _damage: 15
+    - _level: 2
+      _damage: 15
       _range: 4
       _fireRate: 0.25
-      _gameObject: {fileID: 0}
-    - _damage: 20
+    - _level: 3
+      _damage: 20
       _range: 4
       _fireRate: 0.25
-      _gameObject: {fileID: 0}
   _audioConfiguration:
     _shotSound: CannonShot
     _audioMixerChannel: SoundEffects
