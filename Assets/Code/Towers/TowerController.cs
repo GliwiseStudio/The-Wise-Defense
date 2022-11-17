@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -10,6 +11,8 @@ public class TowerController : MonoBehaviour, IBuff
 
     [SerializeField] private Animator _animator;
 
+    [SerializeField] private List<GameObject> _visualsUpgrades;
+
     private TowerHeadRotator _headRotator;
     private TargetDetector _enemyDetector;
     private TowerShootComponent _shootComponent;
@@ -20,6 +23,7 @@ public class TowerController : MonoBehaviour, IBuff
     private AudioPlayer _audioPlayer;
     private TowerLevelUp _upgradeComponent;
     private TowerBuffController _buffController;
+    private TowerVisualSwitcher _visualsSwitcher;
 
     public string GetName()
     {
@@ -40,6 +44,7 @@ public class TowerController : MonoBehaviour, IBuff
         _animationsHandler = new AnimationsHandler(_animator);
         _upgradeComponent = new TowerLevelUp(_configuration.UpgradeList);
         _audioPlayer = GetComponent<AudioPlayer>();
+        _visualsSwitcher = new TowerVisualSwitcher(_visualsUpgrades, _animationsHandler);
     }
 
     private void Start()
@@ -94,6 +99,7 @@ public class TowerController : MonoBehaviour, IBuff
 
     private void ApplyLevelUp(TowerUpgrade upgrade)
     {
+        _visualsSwitcher.SwitchVisuals(upgrade.Level);
         _shootComponent.SetDamage(upgrade.Damage);
         _enemyDetector.SetRadius(upgrade.Range);
         _shootComponent.SetFirerate(upgrade.FireRate);
