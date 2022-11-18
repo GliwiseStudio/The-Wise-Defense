@@ -133,9 +133,12 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
 
     private void SpawnBlueprint()
     {
-        _blueprint = Instantiate(_cardConfiguration.BlueprintPrefab);
-        _blueprint.GetComponent<CardBlueprint>().Initialize();
-        _isBlueprintSpawned = true;
+        if (!_isBlueprintSpawned)
+        {
+            _blueprint = Instantiate(_cardConfiguration.BlueprintPrefab);
+            _blueprint.GetComponent<CardBlueprint>().Initialize();
+            _isBlueprintSpawned = true;
+        }
     }
 
     private void DespawnBlueprint()
