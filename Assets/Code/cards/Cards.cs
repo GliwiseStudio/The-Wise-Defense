@@ -20,6 +20,9 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     private DeckController _deckController;
     private CardStatsVisualizer _statsVisualizer;
 
+    private bool _gameStarted = false; // cards can only instantiate when the game hasn't started
+                                       // hence why this will be false until noticed otherwise
+
     private void Initialize()
     {
         _statsVisualizer = new CardStatsVisualizer(GetComponentInChildren<CardStatsHolderUI>());
@@ -27,7 +30,14 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
         _deckController = FindObjectOfType<DeckController>();
         _spawnTargetDetector = new TargetDetector(_cardConfiguration.SpawnLayers);
         _spawnTargetDetector.SetTargetLayers(_cardConfiguration.SpawnLayers);
+
         _cardImage.sprite = _cardConfiguration.CardSprite;
+
+        if (this.GetCardConfig().InGameCard) // when instantiated (before wave starts) the inGameCard has a different color
+        {
+            _cardImage.color = new Color32(138, 138, 138, 255);
+        }
+
         _discardButtonUI.Hide();
         Activate();
     }
@@ -64,7 +74,8 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
             return;
         }
 
-        SpawnBlueprint();
+        if (!this.GetCardConfig().InGameCard || _gameStarted)
+            SpawnBlueprint();
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -77,13 +88,16 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
         DespawnBlueprint();
         if(_isMouseOutOfTheCard)
         {
-            if (CheckIfIsAbleToActivate())
+            if (!this.GetCardConfig().InGameCard || _gameStarted)
             {
-                bool succesfullyActivated = ActivatePower();
-                if (succesfullyActivated)
+                if (CheckIfIsAbleToActivate())
                 {
-                    PlayActivationSound();
-                    gameObject.SetActive(false);
+                    bool succesfullyActivated = ActivatePower();
+                    if (succesfullyActivated)
+                    {
+                        PlayActivationSound();
+                        gameObject.SetActive(false);
+                    }
                 }
             }
         }
@@ -199,6 +213,12 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     public CardConfigurationSO GetCardConfig()
     {
         return _cardConfiguration;
+    }
+
+    public void GameStartedNotice() // to notify the in game cards that the wave has started, so they are able to do things :)
+    {
+        _gameStarted = true;
+        _cardImage.color = new Color32(255, 255, 255, 255); // change color backk
     }
     #endregion
 
