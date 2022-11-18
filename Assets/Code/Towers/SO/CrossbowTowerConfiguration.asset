@@ -33,7 +33,7 @@ MonoBehaviour:
       _range: -1
       _fireRate: 2.25
   _audioConfiguration:
-    _shotSound: CannonShot
+    _shotSound: CrossbowShot
     _audioMixerChannel: SoundEffects
   _projectileConfiguration: {fileID: 11400000, guid: 9120b8f79c19876479d764281b8a244d,
     type: 2}

@@ -32,7 +32,7 @@ MonoBehaviour:
       _range: 3
       _fireRate: 1.5
   _audioConfiguration:
-    _shotSound: CannonShot
+    _shotSound: CatapultShot
     _audioMixerChannel: SoundEffects
   _projectileConfiguration: {fileID: 11400000, guid: 4a23c228cd55880438575089dc3ec662,
     type: 2}
