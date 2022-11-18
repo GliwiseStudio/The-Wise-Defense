@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(AudioPlayer))]
@@ -13,7 +14,13 @@ public class TowerController : MonoBehaviour, IBuff
 
     [SerializeField] private List<GameObject> _visualsUpgrades;
 
+    [Header("Visual help for players")]
     [SerializeField] private GameObject _rangeCylinder;
+    [SerializeField] private Image _buffIconDamage;
+    [SerializeField] private Image _buffIconFireRate;
+    [SerializeField] private Image _buffIconRange;
+    [SerializeField] private Transform _buffIconParent;
+    [SerializeField] private Canvas _buffIconsCanvas;
 
     private TowerHeadRotator _headRotator;
     private TargetDetector _enemyDetector;
@@ -28,6 +35,12 @@ public class TowerController : MonoBehaviour, IBuff
     private TowerVisualSwitcher _visualsSwitcher;
 
     private float _trueCurrentDetectionRange;
+    private List<Image> _buffIcons;
+    private bool _damageBuffed = false;
+    private bool _rangeBuffed = false;
+    private bool _fireRateBuffed = false;
+
+    private Camera _camera;
 
     public string GetName()
     {
@@ -49,6 +62,8 @@ public class TowerController : MonoBehaviour, IBuff
         _upgradeComponent = new TowerLevelUp(_configuration.UpgradeList);
         _audioPlayer = GetComponent<AudioPlayer>();
         _visualsSwitcher = new TowerVisualSwitcher(_visualsUpgrades, _animationsHandler);
+        _buffIcons = new List<Image>();
+        _camera = FindObjectOfType<Camera>();
 
         _trueCurrentDetectionRange = _configuration.DetectionConfiguration.DetectionRange; // current detection range
 
@@ -145,6 +160,8 @@ public class TowerController : MonoBehaviour, IBuff
             _targetTransform = _enemyDetector.DetectTarget();
             _targetCollider = _enemyDetector.DetectTargetCollider();
         }
+
+        _buffIconsCanvas.gameObject.transform.LookAt(_camera.transform);
     }  
 
     public void Buff(BuffKeyValue[] buffs)
@@ -155,21 +172,50 @@ public class TowerController : MonoBehaviour, IBuff
     private void BuffDamage(int damage)
     {
         _shootComponent.BuffDamage(damage);
+
+        Debug.Log(_buffIconDamage);
+        if (!_damageBuffed)
+        {
+            _buffIconDamage = Instantiate(_buffIconDamage);
+            _buffIconDamage.transform.SetParent(_buffIconParent, false);
+            _buffIcons.Add(_buffIconDamage);
+
+            _damageBuffed = true;
+        }
     }
 
     private void UnbuffDamage()
     {
         _shootComponent.UnbuffDamage();
+
+        _buffIcons.Remove(_buffIconDamage);
+        Destroy(_buffIconDamage.gameObject);
+        _damageBuffed = false;
     }
 
     private void BuffFireRate(int buffPercentage)
     {
         _shootComponent.BuffFireRate(buffPercentage);
+
+
+        if (!_fireRateBuffed)
+        {
+            _buffIconFireRate = Instantiate(_buffIconFireRate);
+            _buffIconFireRate.transform.SetParent(_buffIconParent, false);
+            _buffIcons.Add(_buffIconFireRate);
+
+            _fireRateBuffed = true;
+        }
     }
 
     private void UnbuffFireRate()
     {
         _shootComponent.UnbuffFireRate();
+
+        _buffIcons.Remove(_buffIconFireRate);
+        Destroy(_buffIconFireRate.gameObject);
+
+        _fireRateBuffed = false;
     }
 
     private void BuffDetectionRange(int buffPercentage)
@@ -181,6 +227,14 @@ public class TowerController : MonoBehaviour, IBuff
         if (_rangeCylinder != null)
             _rangeCylinder.transform.localScale = new Vector3(2 * newRadius, 1, 2 * newRadius); // change rage cylinder to match buffered range
 
+        if (!_rangeBuffed)
+        {
+            _buffIconRange = Instantiate(_buffIconRange);
+            _buffIconRange.transform.SetParent(_buffIconParent, false);
+            _buffIcons.Add(_buffIconRange);
+
+            _rangeBuffed = true;
+        }
     }
 
     private void UnbuffDetectionRange()
@@ -189,6 +243,10 @@ public class TowerController : MonoBehaviour, IBuff
 
         if (_rangeCylinder != null)
             _rangeCylinder.transform.localScale = new Vector3(2 * _trueCurrentDetectionRange, 1, 2 * _trueCurrentDetectionRange); // change rage cylinder back
+
+        _buffIcons.Remove(_buffIconRange);
+        Destroy(_buffIconRange.gameObject);
+        _rangeBuffed = false;
     }
 
     private void OnMouseDown()
