@@ -93,7 +93,7 @@ Transform:
   m_GameObject: {fileID: 8865056815128896869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5753362, y: 1.5753362, z: 1.5753362}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8187640685870090349}
@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 7682226668595850524}
   - {fileID: 2019754547565401328}
   - {fileID: 4669751531022070754}
+  _rangeCylinder: {fileID: 0}
 --- !u!82 &359753306730112460
 AudioSource:
   m_ObjectHideFlags: 0
@@ -387,6 +388,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: crossbowThirdModel
       objectReference: {fileID: 0}
+    - target: {fileID: 8968910524851513880, guid: f621bfbc90e78584d969065b770de1ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f621bfbc90e78584d969065b770de1ab, type: 3}
 --- !u!1 &4669751531022070754 stripped
@@ -412,6 +418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: crossbowSecondModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176348654136851742, guid: 86d34a29b72ffba4c8115565fa8f82f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6844658671314118564, guid: 86d34a29b72ffba4c8115565fa8f82f5,
         type: 3}
