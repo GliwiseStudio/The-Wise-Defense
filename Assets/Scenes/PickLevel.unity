@@ -3168,7 +3168,7 @@ MonoBehaviour:
     to be stuck on those forests forever, but I can begin to see the end at the light
     of the tunnels.
   - Or maybe that light is just the sun reflecting on the snow...
-  - Anyway, good luck as you aproach the last part of this journey. Do not loose
+  - Anyway, good luck as you approach the last part of this journey. Do not loose
     hope, we are almost there.
 --- !u!1001 &1801318571
 PrefabInstance:
@@ -3399,9 +3399,9 @@ MonoBehaviour:
     as far as we know, the last piece of humanity left.
   - I have decided to put an end to this and reconquer what is rightfully ours.
   - 'If you decide to join me, I will lend you all my resources. They are in constant
-    development, so you will recieve new resources as my subjects finish them. '
+    development, so you will receive new resources as my subjects finish them. '
   - I hope I can count on you to help me through this journey, and that, together,
-    we can save Wise Kingdom from the tirany of the monsters.
+    we can save Wise Kingdom from the tyranny of the monsters.
 --- !u!114 &1801318575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3849,6 +3849,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2119588384}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2119588386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738942664297849101, guid: 02f5d856d51fcaf4586eb7e5a3479ade,
+    type: 3}
+  m_PrefabInstance: {fileID: 2119588384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2119588387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119588386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e207241bf323d448ddaadcf6330b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardsManager: {fileID: 1650910059}
+  _cards:
+  - {fileID: 11400000, guid: 4ad05678dda79dd41932e9add8f89891, type: 2}
 --- !u!1001 &6064157133353398623
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class DeckController : MonoBehaviour
     [SerializeField] private int _maximumCardsInDeck = 5;
     [SerializeField] private int _minimumTurretCardsInDeckGenerator = 1;
     [SerializeField] private int _maximumDiscardsPerRound = 2;
+
     private int _currentDiscards;
     private bool _isAbleToDiscardCards = true;
     private List<Cards> _currentCards;
@@ -129,7 +130,13 @@ public class DeckController : MonoBehaviour
             {
                 RemoveCard(i);
             }
+            else
+            {
+                _currentCards[i].GameStartedNotice();
+            }
         }
+
+        DeactivateDiscardButton(); // hide the discard button if it was still active, because once the wave is started, the player cannot discard
     }
 
     private bool IsBeforeGameCard(Cards card)
@@ -175,12 +182,17 @@ public class DeckController : MonoBehaviour
             return false;
         }
 
+        DeactivateDiscardButton();
+
+        return true;
+    }
+
+    public void DeactivateDiscardButton()
+    {
         foreach (Cards card in _currentCards)
         {
             card.HideDiscardButton();
         }
-
-        return true;
     }
 
     private void SetDiscardText()

@@ -55,7 +55,7 @@ MonoBehaviour:
   _discardPerRoundTextComponent: {fileID: 1029185016527611201}
   _deckHolderTransform: {fileID: 6995204330615834029}
   _maximumCardsInDeck: 5
-  _minimumBeforeCardsInDeckGenerator: 1
+  _minimumTurretCardsInDeckGenerator: 1
   _maximumDiscardsPerRound: 2
 --- !u!1 &5830368064330509134
 GameObject:

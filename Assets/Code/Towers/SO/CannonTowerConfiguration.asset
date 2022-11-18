@@ -26,11 +26,11 @@ MonoBehaviour:
     _upgrades:
     - _level: 2
       _damage: 25
-      _range: 6
+      _range: 4
       _fireRate: 0.75
     - _level: 3
       _damage: 35
-      _range: 8
+      _range: 4
       _fireRate: 0.5
   _audioConfiguration:
     _shotSound: CannonShot
