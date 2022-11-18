@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class UIInGameScreen : MonoBehaviour, UIScreen
+public class UIPauseScreen : MonoBehaviour, UIScreen
 {
     [SerializeField] private string _name;
 
@@ -23,6 +25,6 @@ public class UIInGameScreen : MonoBehaviour, UIScreen
     {
         gameObject.SetActive(true);
 
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 }

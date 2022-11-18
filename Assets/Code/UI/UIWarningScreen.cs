@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class UIInGameScreen : MonoBehaviour, UIScreen
+public class UIWarningScreen : MonoBehaviour
 {
     [SerializeField] private string _name;
 
@@ -22,7 +24,5 @@ public class UIInGameScreen : MonoBehaviour, UIScreen
     public void Show()
     {
         gameObject.SetActive(true);
-
-        Time.timeScale = 1;
     }
 }
