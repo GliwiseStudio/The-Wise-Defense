@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public event Action OnWaveFinished;
     public event Action OnWaveStarted;
 
-    [SerializeField] private int _numWaves = 5;
+    [SerializeField] private int _totalWaves = 10;
     [SerializeField] private int _currentTowers = 3;
 
     private int _currentWave = 0;
@@ -112,12 +112,11 @@ public class GameManager : MonoBehaviour
 
     public void NextWave() // prepare for next wave, but not start it
     {
-        if (_currentWave+1 < _numWaves)
+        if (_currentWave+1 < _totalWaves)
         {
-            OnWaveFinished?.Invoke();
-            //PauseGame(); // deprecated, time will only be paused when actively pausing the game
             _currentWave++;
             _currentEnemies = 0;
+            OnWaveFinished?.Invoke();
         }
         else
         {
@@ -130,7 +129,6 @@ public class GameManager : MonoBehaviour
     public void StartWave() // called from the start button
     {
         OnWaveStarted?.Invoke();
-        //UnpauseGame(); // deprecated, time will only be paused when actively pausing the game
     }
 
     #endregion
@@ -175,13 +173,18 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-    #endregion
+    #endregion // deprecated
 
     #region Getters
 
     public int GetCurrentWave()
     {
         return _currentWave;
+    }
+
+    public int GetTotalWaves()
+    {
+        return _totalWaves;
     }
     #endregion
 }

@@ -4525,7 +4525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3e898138f8a92458ac551144dbeb2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numWaves: 2
+  _totalWaves: 2
   _currentTowers: 1
 --- !u!4 &1859996737
 Transform:
