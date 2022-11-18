@@ -94,7 +94,7 @@ Transform:
   m_GameObject: {fileID: 6403114965393039258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.235175, y: 1.235175, z: 1.235175}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5943408748453573266}
@@ -337,6 +337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: catapultSecondModel
       objectReference: {fileID: 0}
+    - target: {fileID: 6304057997015049075, guid: 1ec01f1519a61e24c862d96a3255ad27,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6644872089242876361, guid: 1ec01f1519a61e24c862d96a3255ad27,
         type: 3}
       propertyPath: m_RootOrder
@@ -417,6 +422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: catapultThirdModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037316623751213737, guid: 2c84faa9c56850d4ca94177029fde947,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7701791445313923091, guid: 2c84faa9c56850d4ca94177029fde947,
         type: 3}

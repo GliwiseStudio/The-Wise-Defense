@@ -3768,7 +3768,7 @@ PrefabInstance:
     - target: {fileID: 1106807513329208242, guid: 02da3dc7a154c5245b52fb7f2c52a467,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1106807513329208242, guid: 02da3dc7a154c5245b52fb7f2c52a467,
         type: 3}
@@ -4022,7 +4022,7 @@ PrefabInstance:
     - target: {fileID: 1106807513329208242, guid: 02da3dc7a154c5245b52fb7f2c52a467,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.41
+      value: -12.72443
       objectReference: {fileID: 0}
     - target: {fileID: 1106807513329208242, guid: 02da3dc7a154c5245b52fb7f2c52a467,
         type: 3}
@@ -4888,7 +4888,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4913,14 +4913,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227190660}
-  m_LocalRotation: {x: 0.14841458, y: -0.8502942, z: 0.33074674, w: 0.38154888}
+  m_LocalRotation: {x: 0.14704847, y: -0.85147214, z: 0.3277023, w: 0.3820775}
   m_LocalPosition: {x: 12.9, y: 12.2, z: 8.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 42.51, y: -131.666, z: 0}
+  m_LocalEulerAnglesHint: {x: 42.1, y: -131.666, z: 0}
 --- !u!114 &1227190664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6445,7 +6445,7 @@ PrefabInstance:
     - target: {fileID: 1106807513329208242, guid: 02da3dc7a154c5245b52fb7f2c52a467,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1106807513329208242, guid: 02da3dc7a154c5245b52fb7f2c52a467,
         type: 3}
@@ -6630,6 +6630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numWaves: 9
+  _currentTowers: 3
 --- !u!4 &1859996737
 Transform:
   m_ObjectHideFlags: 0
@@ -7860,7 +7861,7 @@ PrefabInstance:
     - target: {fileID: 6515166746552856485, guid: 8003f352d0d61ef4a92b57baee9bffc7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8003f352d0d61ef4a92b57baee9bffc7, type: 3}

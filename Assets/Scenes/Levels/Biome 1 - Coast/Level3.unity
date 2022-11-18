@@ -4963,7 +4963,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 54.6
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4988,14 +4988,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227190660}
-  m_LocalRotation: {x: 0.14841458, y: -0.8502942, z: 0.33074674, w: 0.38154888}
-  m_LocalPosition: {x: 12.9, y: 12.2, z: 8.8}
+  m_LocalRotation: {x: 0.17277497, y: -0.8261956, z: 0.35581598, w: 0.40117908}
+  m_LocalPosition: {x: 11.5, y: 11.9, z: 7.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 42.51, y: -131.666, z: 0}
+  m_LocalEulerAnglesHint: {x: 46.6, y: -128.2, z: 0}
 --- !u!114 &1227190664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8827,10 +8827,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainUI Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6515166746552856485, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+    - target: {fileID: 2100271399069664669, guid: 8003f352d0d61ef4a92b57baee9bffc7,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515166746552856485, guid: 8003f352d0d61ef4a92b57baee9bffc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8003f352d0d61ef4a92b57baee9bffc7, type: 3}
