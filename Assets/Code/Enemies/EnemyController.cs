@@ -303,6 +303,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     {
         ReceiveSlowdown(slowdownPercentage);
         ReceiveDamageReduction(damageReductionPercentage);
+        ChangeEnemyColor(new Color32(254, 9, 0, 1)); // color red
         StartCoroutine(ReleaseTimedDownStats(slowdownPercentage, damageReductionPercentage, duration));
     }
 
@@ -311,13 +312,14 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         yield return new WaitForSeconds(duration);
         ReleaseSlowdown(slowdownPercentage);
         ReleaseDamageReduction(damageReductionPercentage);
+        ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
     }
 
     public void ReceiveTimedParalysis(float duration)
     {
         // paralize enemy, change it's color to yellow and play idle animation
         _paralized = true;
-        ChangeEnemyColor(new Color32(0, 201, 254, 1)); // color aqua
+        ChangeEnemyColor(new Color32(254, 224, 0, 1)); // color yellow
         PlayIdleAnimation();
 
         // start coroutine to release the paralysis
