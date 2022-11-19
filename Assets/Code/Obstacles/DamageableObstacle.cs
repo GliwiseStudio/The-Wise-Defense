@@ -133,9 +133,8 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
     public void BecomeInvulnerable(float duration)
     {
         _isInvulnerable = true;
-        ChangeObstacleColor(new Color32(0, 254, 111, 1));
+        ChangeObstacleColor(new Color32(0, 122, 254, 1)); // blue color
         StartCoroutine(ReleaseInvulnerabilty(duration));
-
     }
 
     IEnumerator ReleaseInvulnerabilty(float duration)
