@@ -183,9 +183,9 @@ public class TowerController : MonoBehaviour, IBuff
         Debug.Log(_buffIconDamage);
         if (!_damageBuffed)
         {
-            _buffIconDamage = Instantiate(_buffIconDamage);
-            _buffIconDamage.transform.SetParent(_buffIconParent, false);
-            _buffIcons.Add(_buffIconDamage);
+            Image buffIcon = Instantiate(_buffIconDamage);
+            buffIcon.transform.SetParent(_buffIconParent, false);
+            _buffIcons.Add(buffIcon);
 
             _damageBuffed = true;
         }
@@ -195,9 +195,17 @@ public class TowerController : MonoBehaviour, IBuff
     {
         _shootComponent.UnbuffDamage();
 
-        _buffIcons.Remove(_buffIconDamage);
-        Destroy(_buffIconDamage.gameObject);
-        _damageBuffed = false;
+        for(int i = 0; i < _buffIcons.Count; i++)
+        {
+            if (_buffIcons[i].sprite == _buffIconDamage.sprite)
+            {
+                Destroy(_buffIcons[i].gameObject);
+                _buffIcons.RemoveAt(i);
+
+                _damageBuffed = false;
+                break;
+            }
+        }
     }
 
     private void BuffFireRate(int buffPercentage)
@@ -207,9 +215,9 @@ public class TowerController : MonoBehaviour, IBuff
 
         if (!_fireRateBuffed)
         {
-            _buffIconFireRate = Instantiate(_buffIconFireRate);
-            _buffIconFireRate.transform.SetParent(_buffIconParent, false);
-            _buffIcons.Add(_buffIconFireRate);
+            Image buffIcon = Instantiate(_buffIconFireRate);
+            buffIcon.transform.SetParent(_buffIconParent, false);
+            _buffIcons.Add(buffIcon);
 
             _fireRateBuffed = true;
         }
@@ -219,10 +227,17 @@ public class TowerController : MonoBehaviour, IBuff
     {
         _shootComponent.UnbuffFireRate();
 
-        _buffIcons.Remove(_buffIconFireRate);
-        Destroy(_buffIconFireRate.gameObject);
-
-        _fireRateBuffed = false;
+        for (int i = 0; i < _buffIcons.Count; i++)
+        {
+            if (_buffIcons[i].sprite == _buffIconFireRate.sprite)
+            {
+                Destroy(_buffIcons[i].gameObject);
+                _buffIcons.RemoveAt(i);
+                
+                _fireRateBuffed = false;
+                break;
+            }
+        }
     }
 
     private void BuffDetectionRange(int buffPercentage)
@@ -236,9 +251,9 @@ public class TowerController : MonoBehaviour, IBuff
 
         if (!_rangeBuffed)
         {
-            _buffIconRange = Instantiate(_buffIconRange);
-            _buffIconRange.transform.SetParent(_buffIconParent, false);
-            _buffIcons.Add(_buffIconRange);
+            Image buffIcon = Instantiate(_buffIconRange);
+            buffIcon.transform.SetParent(_buffIconParent, false);
+            _buffIcons.Add(buffIcon);
 
             _rangeBuffed = true;
         }
@@ -251,9 +266,17 @@ public class TowerController : MonoBehaviour, IBuff
         if (_rangeCylinder != null)
             SetRangeCylinderScale();
 
-        _buffIcons.Remove(_buffIconRange);
-        Destroy(_buffIconRange.gameObject);
-        _rangeBuffed = false;
+        for (int i = 0; i < _buffIcons.Count; i++)
+        {
+            if (_buffIcons[i].sprite == _buffIconRange.sprite)
+            {
+                Destroy(_buffIcons[i].gameObject);
+                _buffIcons.RemoveAt(i);
+
+                _rangeBuffed = false;
+                break;
+            }
+        }
     }
 
     private void OnMouseDown()
