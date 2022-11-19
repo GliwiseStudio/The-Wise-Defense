@@ -42,6 +42,8 @@ public class TowerController : MonoBehaviour, IBuff
 
     private Camera _camera;
 
+    private ParticleSystem _particlesLevelUp;
+
     public string GetName()
     {
         return _configuration.Name;
@@ -64,6 +66,7 @@ public class TowerController : MonoBehaviour, IBuff
         _visualsSwitcher = new TowerVisualSwitcher(_visualsUpgrades, _animationsHandler);
         _buffIcons = new List<Image>();
         _camera = FindObjectOfType<Camera>();
+        _particlesLevelUp = GetComponentInChildren<ParticleSystem>();
 
         _trueCurrentDetectionRange = _configuration.DetectionConfiguration.DetectionRange; // current detection range
 
@@ -136,6 +139,8 @@ public class TowerController : MonoBehaviour, IBuff
 
         if (_rangeCylinder != null)
             _rangeCylinder.transform.localScale = new Vector3(2 * _trueCurrentDetectionRange, 1, 2 * _trueCurrentDetectionRange); // change rage cylinder back
+
+        _particlesLevelUp.Play();
 
     }
 
