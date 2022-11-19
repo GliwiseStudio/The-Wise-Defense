@@ -55,7 +55,7 @@ MonoBehaviour:
     _audio: {fileID: 8300000, guid: ec154a4189f63b04ea28ecf56a80e9dc, type: 3}
   - _name: CrossbowShot
     _audio: {fileID: 8300000, guid: adb9f8bc3e0ec3d4089c1f4bc892caef, type: 3}
-  - _name: LevelUpTurrets
+  - _name: LevelUpTower
     _audio: {fileID: 8300000, guid: cb7bab9076f16e448aa2be69a34ba21b, type: 3}
   - _name: InGameMusic
     _audio: {fileID: 8300000, guid: f9eedbb10e87d44439a420546ee7978b, type: 3}

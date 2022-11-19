@@ -125,6 +125,7 @@ public class TowerController : MonoBehaviour, IBuff
 
     private void ApplyLevelUp(TowerUpgrade upgrade)
     {
+        _audioPlayer.PlayAudio(_configuration.AudioConfiguration.LevelUpSound);
         _visualsSwitcher.SwitchVisuals(upgrade.Level);
         _shootComponent.SetDamage(upgrade.Damage);
         _enemyDetector.SetRadius(upgrade.Range);
