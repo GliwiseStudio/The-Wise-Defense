@@ -14,13 +14,14 @@ public class InventoryController
     private readonly int _numberOfCardsPerRow;
     private readonly LevelConfigurationStorage _levelConfigurationsStorage;
     private readonly ScrollRect _scrollRect;
+    private readonly InventoryCard _cardInventoryVisualizer;
     private readonly GameObject _cardVisualizerObject;
     private readonly Image _visualizerCardImage;
     private readonly TextMeshProUGUI _visualizerCardNameText;
     private readonly TextMeshProUGUI _visualizerCardDescriptionText;
 
     public InventoryController(PlayFabDataRetrieverSubstitute dataRetriever, int numberOfCardsPerRow, RectTransform cardRowsHolder, CardsInventoryRow rowPrefab, LevelConfigurationStorage levelConfigurationsStorage,
-        ScrollRect scrollRect, GameObject cardVisualizerObject, Image visualizerCardImage, TextMeshProUGUI visualizerCardNameText, TextMeshProUGUI visualizerCardDescriptionText)
+        ScrollRect scrollRect, InventoryCard cardInventoryVisualizer, GameObject cardVisualizerObject, Image visualizerCardImage, TextMeshProUGUI visualizerCardNameText, TextMeshProUGUI visualizerCardDescriptionText)
     {
         _dataRetriever = dataRetriever;
         _numberOfCardsPerRow = numberOfCardsPerRow;
@@ -28,6 +29,7 @@ public class InventoryController
         _rowPrefab = rowPrefab;
         _levelConfigurationsStorage = levelConfigurationsStorage;
         _scrollRect = scrollRect;
+        _cardInventoryVisualizer = cardInventoryVisualizer;
         _cardVisualizerObject = cardVisualizerObject;
         _visualizerCardImage = visualizerCardImage;
         _visualizerCardNameText = visualizerCardNameText;
@@ -109,6 +111,7 @@ public class InventoryController
         _visualizerCardNameText.text = configuration.CardName;
         _visualizerCardDescriptionText.text = configuration.Description;
         ShowCardVisualizer();
+        _cardInventoryVisualizer.Initialize(configuration, this);
     }
 
     private void ShowCardVisualizer()
@@ -119,5 +122,6 @@ public class InventoryController
     public void HideCardVisualizer()
     {
         _cardVisualizerObject.SetActive(false);
+
     }
 }

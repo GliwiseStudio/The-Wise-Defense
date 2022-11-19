@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Cards/CardConfiguration", fileName = "CardConfiguration")]
@@ -11,7 +12,7 @@ public class CardConfigurationSO : ScriptableObject
     [SerializeField] private string _audioMixerChannel = "SoundEffects";
     [SerializeField] [TextArea] private string _description;
     [SerializeField] private string _name;
-
+    [SerializeField] private List<CardStatConfiguration> _stats;
     public Sprite CardSprite;
 
 
@@ -23,4 +24,5 @@ public class CardConfigurationSO : ScriptableObject
     public string AudioMixerChannel => _audioMixerChannel;
     public string CardName => _name;
     public string Description => _description;
+    public List<CardStatConfiguration> Stats => _stats;
 }

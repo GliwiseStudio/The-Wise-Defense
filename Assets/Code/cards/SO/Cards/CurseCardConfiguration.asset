@@ -22,5 +22,14 @@ MonoBehaviour:
   _audioMixerChannel: SoundEffects
   _description: Makes enemies slower and reduces their damage for a few seconds.
   _name: Curse spell
+  _stats:
+  - _name: 7
+    _value: 50
+  - _name: 5
+    _value: 50
+  - _name: 6
+    _value: 4
+  - _name: 1
+    _value: 5
   CardSprite: {fileID: 21300000, guid: fd0176ae35e8e5f43b0098355ae929b2, type: 3}
   InGameCard: 1

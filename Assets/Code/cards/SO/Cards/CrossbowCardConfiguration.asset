@@ -23,5 +23,12 @@ MonoBehaviour:
   _description: Turret with infinite range that deals great damage, but has very
     little fire rate. Ideal to place on the far end of the map.
   _name: Crossbow
+  _stats:
+  - _name: 0
+    _value: 50
+  - _name: 1
+    _value: -1
+  - _name: 4
+    _value: 3
   CardSprite: {fileID: 21300000, guid: 8e7e0fad3c4d8024f835c07c59508bda, type: 3}
   InGameCard: 0

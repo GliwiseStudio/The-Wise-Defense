@@ -22,5 +22,12 @@ MonoBehaviour:
   _audioMixerChannel: SoundEffects
   _description: Turret with high fire rate but low damage. Only affects flying enemies.
   _name: Hwacha
+  _stats:
+  - _name: 0
+    _value: 10
+  - _name: 1
+    _value: 4
+  - _name: 4
+    _value: 0.5
   CardSprite: {fileID: 21300000, guid: c8b0e15b4fed9344aa9d5f93b88e6612, type: 3}
   InGameCard: 0

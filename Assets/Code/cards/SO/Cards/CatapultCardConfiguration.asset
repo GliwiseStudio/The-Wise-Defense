@@ -23,5 +23,12 @@ MonoBehaviour:
   _description: Turret with the least fire range, but it deals damage to every ground
     enemy within its impact area. Doesn't affect flying enemies.
   _name: Catapult
+  _stats:
+  - _name: 0
+    _value: 12
+  - _name: 1
+    _value: 3
+  - _name: 4
+    _value: 2
   CardSprite: {fileID: 21300000, guid: 565e2742d9de94c48babff202df7dd1f, type: 3}
   InGameCard: 0
