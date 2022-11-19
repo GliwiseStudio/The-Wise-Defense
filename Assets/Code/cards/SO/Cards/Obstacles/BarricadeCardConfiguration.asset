@@ -20,6 +20,10 @@ MonoBehaviour:
   _spawnLayers:
   - ObstacleBase
   _audioMixerChannel: SoundEffects
-  InGameCard: 0
-  CardText: Spawn Barricade
+  _description: 
+  _name: Barricade
+  _stats:
+  - _name: 2
+    _value: 250
   CardSprite: {fileID: 21300000, guid: e73101b73ffe17e4ea07a9ae5b580a4c, type: 3}
+  InGameCard: 0

@@ -20,6 +20,12 @@ MonoBehaviour:
   _spawnLayers:
   - ObstacleBase
   _audioMixerChannel: SoundEffects
-  InGameCard: 0
-  CardText: Slowdown area for flying enemies
+  _description: 
+  _name: 
+  _stats:
+  - _name: 5
+    _value: 50
+  - _name: 0
+    _value: 5
   CardSprite: {fileID: 21300000, guid: 7d8d33eb84bccc64aa334cb8f69abb07, type: 3}
+  InGameCard: 0

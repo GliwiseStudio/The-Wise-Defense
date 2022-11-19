@@ -22,5 +22,10 @@ MonoBehaviour:
   _audioMixerChannel: SoundEffects
   _description: Deals damage to all enemies.
   _name: Pulse spell
+  _stats:
+  - _name: 0
+    _value: 60
+  - _name: 1
+    _value: -1
   CardSprite: {fileID: 21300000, guid: 8965ea459b9a72749bafac57dd3e210b, type: 3}
   InGameCard: 1

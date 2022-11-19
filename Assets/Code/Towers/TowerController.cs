@@ -68,6 +68,7 @@ public class TowerController : MonoBehaviour, IBuff
         _trueCurrentDetectionRange = _configuration.DetectionConfiguration.DetectionRange; // current detection range
 
         if (_rangeCylinder != null) {
+            _rangeCylinder.transform.SetParent(null);
             SetRangeCylinderScale();
             _rangeCylinder.SetActive(false);
         }
@@ -264,6 +265,6 @@ public class TowerController : MonoBehaviour, IBuff
 
     private void SetRangeCylinderScale()
     {
-        _rangeCylinder.transform.localScale = new Vector3(1.5f * _trueCurrentDetectionRange, 1, 1.5f * _trueCurrentDetectionRange); // range cylinder scales is double the detection range
+        _rangeCylinder.transform.localScale = new Vector3(2 * _trueCurrentDetectionRange, 1, 2 * _trueCurrentDetectionRange); // range cylinder scales is double the detection range
     }
 }

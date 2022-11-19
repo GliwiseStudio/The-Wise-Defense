@@ -20,6 +20,12 @@ MonoBehaviour:
   _spawnLayers:
   - ObstacleBase
   _audioMixerChannel: SoundEffects
-  InGameCard: 0
-  CardText: Explosive barricade
+  _description: 
+  _name: 
+  _stats:
+  - _name: 0
+    _value: 100
+  - _name: 2
+    _value: 150
   CardSprite: {fileID: 21300000, guid: 2919b7d2f8fdf1f46955155c838d2bfd, type: 3}
+  InGameCard: 0

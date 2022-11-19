@@ -22,5 +22,12 @@ MonoBehaviour:
   _audioMixerChannel: SoundEffects
   _description: Paralyzes all enemies within range for a few seconds.
   _name: Rock rain spell
+  _stats:
+  - _name: 5
+    _value: 100
+  - _name: 6
+    _value: 3
+  - _name: 1
+    _value: 5
   CardSprite: {fileID: 21300000, guid: e86fd65b4eadf1842929f3e340fdf6fa, type: 3}
   InGameCard: 1

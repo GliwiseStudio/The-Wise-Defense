@@ -8,13 +8,13 @@ public class CardStatUI : MonoBehaviour
     [SerializeField] private Image _imageComponent;
     [SerializeField] private TextMeshProUGUI _textComponent;
 
-    public void SetValue(int value)
+    public void SetValue(string value)
     {
-        _textComponent.text = value.ToString();
+        _textComponent.text = value;
     }
 
-    public void SetValue(float value)
+    public void SetSprite(Sprite sprite)
     {
-        _textComponent.text = value.ToString();
+        _imageComponent.sprite = sprite;
     }
 }
