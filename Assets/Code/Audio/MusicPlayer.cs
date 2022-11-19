@@ -5,6 +5,8 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     private AudioPlayer _audioPlayer;
+    [SerializeField] private bool _callAutomatically = true;
+    [SerializeField] private string _songName;
 
     private void Awake()
     {
@@ -13,7 +15,12 @@ public class MusicPlayer : MonoBehaviour
 
     private void Start()
     {
-        _audioPlayer.ConfigureAudioSource("Music");
+        _audioPlayer.ConfigureAudioSource("Music", true);
+
+        if (_callAutomatically)
+        {
+            PlaySong(_songName);
+        }
     }
 
     public void PlaySong(string songName)

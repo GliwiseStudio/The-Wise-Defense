@@ -16,9 +16,10 @@ public class AudioPlayer : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void ConfigureAudioSource(string audioMixerName = "Master")
+    public void ConfigureAudioSource(string audioMixerName = "Master", bool loop = false)
     {
         _audioSource.playOnAwake = false;
+        _audioSource.loop = loop;
         _audioSource.outputAudioMixerGroup = _audioMixerGroupController.GetAudioMixerGroupFromName(audioMixerName);
     }
 

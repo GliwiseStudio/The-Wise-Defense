@@ -20,7 +20,7 @@ MonoBehaviour:
   - _name: TowerCardActivation
     _audio: {fileID: 8300000, guid: 689a720b36d5541468ba8e5c8a65e351, type: 3}
   - _name: MainMenuMusic
-    _audio: {fileID: 8300000, guid: 47a37791c734c6e4f820975c4c7286cb, type: 3}
+    _audio: {fileID: 8300000, guid: e6834385cffba2f49914bb336c504d89, type: 3}
   - _name: Poison
     _audio: {fileID: 8300000, guid: f13da878d2a05fe43b414525309ae090, type: 3}
   - _name: AerialTrap
@@ -57,3 +57,9 @@ MonoBehaviour:
     _audio: {fileID: 8300000, guid: adb9f8bc3e0ec3d4089c1f4bc892caef, type: 3}
   - _name: LevelUpTurrets
     _audio: {fileID: 8300000, guid: cb7bab9076f16e448aa2be69a34ba21b, type: 3}
+  - _name: InGameMusic
+    _audio: {fileID: 8300000, guid: f9eedbb10e87d44439a420546ee7978b, type: 3}
+  - _name: VictoryMusic
+    _audio: {fileID: 8300000, guid: 2c0d83933f32db847a670db56d0a1088, type: 3}
+  - _name: DefeatMusic
+    _audio: {fileID: 8300000, guid: a70a726f4693cbb4487febd50f3e1f88, type: 3}
