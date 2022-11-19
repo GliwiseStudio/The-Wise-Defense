@@ -34,6 +34,7 @@ MonoBehaviour:
       _fireRate: 0.5
   _audioConfiguration:
     _shotSound: CannonShot
+    _levelUpSound: LevelUpTower
     _audioMixerChannel: SoundEffects
   _projectileConfiguration: {fileID: 11400000, guid: a6d524c09e554a04ca2b0281acd9d500,
     type: 2}

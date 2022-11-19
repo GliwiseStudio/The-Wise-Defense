@@ -33,6 +33,7 @@ MonoBehaviour:
       _fireRate: 1.5
   _audioConfiguration:
     _shotSound: CatapultShot
+    _levelUpSound: LevelUpTower
     _audioMixerChannel: SoundEffects
   _projectileConfiguration: {fileID: 11400000, guid: 4a23c228cd55880438575089dc3ec662,
     type: 2}

@@ -34,6 +34,7 @@ MonoBehaviour:
       _fireRate: 2.25
   _audioConfiguration:
     _shotSound: CrossbowShot
+    _levelUpSound: LevelUpTower
     _audioMixerChannel: SoundEffects
   _projectileConfiguration: {fileID: 11400000, guid: 9120b8f79c19876479d764281b8a244d,
     type: 2}
