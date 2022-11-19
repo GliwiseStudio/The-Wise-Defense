@@ -22,5 +22,12 @@ MonoBehaviour:
   _audioMixerChannel: SoundEffects
   _description: Basic turret. Attacks every enemy within range.
   _name: Cannon
+  _stats:
+  - _name: 0
+    _value: 20
+  - _name: 1
+    _value: 4
+  - _name: 4
+    _value: 1
   CardSprite: {fileID: 21300000, guid: d275c79f517b4234a92f285c37aa02d6, type: 3}
   InGameCard: 0

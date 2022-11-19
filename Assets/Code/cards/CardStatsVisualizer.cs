@@ -11,7 +11,8 @@ public class CardStatsVisualizer
         _statsHolderUI = statsHolderUI;
     }
 
-    public void LoadStats(CardConfigurationSO cardConfiguration)
+    public void LoadStats(IReadOnlyList<CardStatConfiguration> stats)
     {
+        _statsHolderUI.SetStats(stats);
     }
 }

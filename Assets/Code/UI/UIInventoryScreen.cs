@@ -10,6 +10,7 @@ public class UIInventoryScreen : MonoBehaviour, UIScreen
     [SerializeField] private CardsInventoryRow _inventoryRowPrefab;
     [SerializeField] private LevelConfigurationStorage _levelConfigurationStorage;
     [SerializeField] private ScrollRect _inventoryScrollRect;
+    [SerializeField] private InventoryCard _cardInventoryVisualizer;
     [SerializeField] private GameObject _cardVisualizerObject;
     [SerializeField] private Image _cardVisualizerImage;
     [SerializeField] private Button _cardVisualizerGoBackButton;
@@ -20,8 +21,8 @@ public class UIInventoryScreen : MonoBehaviour, UIScreen
     private void Awake()
     {
         PlayFabDataRetrieverSubstitute dataRetriever = FindObjectOfType<PlayFabDataRetrieverSubstitute>();
-        _inventoryController = new InventoryController(dataRetriever, _numberOfCardsPerRow, _inventoryCardRowsHolder, _inventoryRowPrefab, _levelConfigurationStorage, _inventoryScrollRect, _cardVisualizerObject,
-            _cardVisualizerImage, _cardVisualizerNameText, _cardVisualizerDescriptionText);
+        _inventoryController = new InventoryController(dataRetriever, _numberOfCardsPerRow, _inventoryCardRowsHolder, _inventoryRowPrefab, _levelConfigurationStorage, _inventoryScrollRect, _cardInventoryVisualizer,
+            _cardVisualizerObject, _cardVisualizerImage, _cardVisualizerNameText, _cardVisualizerDescriptionText);
     }
 
     public GameObject GetGameObject()

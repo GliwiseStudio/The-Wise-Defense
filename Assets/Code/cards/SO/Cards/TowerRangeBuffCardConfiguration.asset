@@ -22,5 +22,10 @@ MonoBehaviour:
   _audioMixerChannel: SoundEffects
   _description: The selected turret affects enemies on a bigger area for a few seconds.
   _name: Range blessing
+  _stats:
+  - _name: 11
+    _value: 50
+  - _name: 6
+    _value: 5
   CardSprite: {fileID: 21300000, guid: df4893508d450e04f98e80f111f69822, type: 3}
   InGameCard: 1

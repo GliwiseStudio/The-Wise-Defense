@@ -1,15 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CardStatsHolderUI : MonoBehaviour
 {
-    [SerializeField] private CardStatUI _damageStat;
-    [SerializeField] private CardStatUI _firerateStat;
-    [SerializeField] private CardStatUI _rangeStat;
+    [SerializeField] private List<CardStatUI> _stats;
+    private IconsStorage _iconsStorage;
 
-    public void SetStats(int damageValue, float firerateValue, float rangeValue)
+    private void Awake()
     {
-        _damageStat.SetValue(damageValue);
-        _firerateStat.SetValue(firerateValue);
-        _rangeStat.SetValue(rangeValue);
+        _iconsStorage = FindObjectOfType<IconsStorage>();
+    }
+
+    public void SetStats(IReadOnlyList<CardStatConfiguration> stats)
+    {
+        foreach (CardStatUI statUI in _stats)
+        {
+            statUI.gameObject.SetActive(false);
+        }
+
+        Sprite sprite;
+        for (int i = 0; i < stats.Count; i++)
+        {
+            sprite = _iconsStorage.GetSpriteFromCardStatType(stats[i].Name);
+            _stats[i].SetSprite(sprite);
+            _stats[i].SetValue(stats[i].Value.ToString());
+            _stats[i].gameObject.SetActive(true);
+        }
     }
 }

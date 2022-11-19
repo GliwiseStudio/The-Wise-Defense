@@ -26,6 +26,7 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     private void Initialize()
     {
         _statsVisualizer = new CardStatsVisualizer(GetComponentInChildren<CardStatsHolderUI>());
+        _statsVisualizer.LoadStats(_cardConfiguration.Stats);
         _cardImage = GetComponent<Image>();
         _deckController = FindObjectOfType<DeckController>();
         _spawnTargetDetector = new TargetDetector(_cardConfiguration.SpawnLayers);
