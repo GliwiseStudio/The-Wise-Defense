@@ -9,19 +9,24 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private GameObject _winGamePanel;
     [SerializeField] private GameObject _looseGamePanel;
     [SerializeField] private Animator _kingAnimator;
+    private MusicPlayer _musicPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        _musicPlayer = FindObjectOfType<MusicPlayer>();
         int starsUnlocked = PlayFabManager.Instance.GetCurrentStars();
 
         if (starsUnlocked == 0) // Lost game
         {
+            _musicPlayer.PlaySong("DefeatMusic");
             _looseGamePanel.SetActive(true);
             _winGamePanel.SetActive(false);
             _kingAnimator.Play("KingCrying");
         }
         else // Won game
         {
+            _musicPlayer.PlaySong("VictoryMusic");
             _looseGamePanel.SetActive(false);
             _winGamePanel.SetActive(true);
             _kingAnimator.Play("KingVictory");

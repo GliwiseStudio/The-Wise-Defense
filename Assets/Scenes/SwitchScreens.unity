@@ -716,6 +716,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 557103199}
     m_Modifications:
+    - target: {fileID: 522911420221298264, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420221298264, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420221298264, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420221298264, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420474613326, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420474613326, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420474613326, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420474613326, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420861433716, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420861433716, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420861433716, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 522911420861433716, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 522911422155735832, guid: 2e83a60a92cd5764b85e772d6341461f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -799,7 +859,7 @@ PrefabInstance:
     - target: {fileID: 522911422155735832, guid: 2e83a60a92cd5764b85e772d6341461f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 522911422155735832, guid: 2e83a60a92cd5764b85e772d6341461f,
         type: 3}
@@ -826,14 +886,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 522911422155735833, guid: 2e83a60a92cd5764b85e772d6341461f,
+    - target: {fileID: 2490948928162082144, guid: 2e83a60a92cd5764b85e772d6341461f,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1303860152022889707, guid: 2e83a60a92cd5764b85e772d6341461f,
+    - target: {fileID: 2490948928162082144, guid: 2e83a60a92cd5764b85e772d6341461f,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490948928162082144, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490948928162082144, guid: 2e83a60a92cd5764b85e772d6341461f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1254,6 +1324,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6642797640475326752, guid: fb35e7868587b794bb37ef80690334aa,
+        type: 3}
+      propertyPath: _songName
+      value: MainMenuMusic
+      objectReference: {fileID: 0}
     - target: {fileID: 6642797640475326753, guid: fb35e7868587b794bb37ef80690334aa,
         type: 3}
       propertyPath: m_Name

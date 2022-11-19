@@ -24,8 +24,5 @@ public class UIMainMenuScreen : MonoBehaviour, UIScreen
     public void Show()
     {
         gameObject.SetActive(true);
-        
-        _musicPlayer = FindObjectOfType<MusicPlayer>();
-        _musicPlayer.PlaySong("MainMenuMusic");
     }
 }

@@ -3960,6 +3960,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6642797640475326752, guid: fb35e7868587b794bb37ef80690334aa,
+        type: 3}
+      propertyPath: _songName
+      value: InGameMusic
+      objectReference: {fileID: 0}
     - target: {fileID: 6642797640475326753, guid: fb35e7868587b794bb37ef80690334aa,
         type: 3}
       propertyPath: m_Name
@@ -6019,7 +6024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3e898138f8a92458ac551144dbeb2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numWaves: 9
+  _totalWaves: 10
   _currentTowers: 3
 --- !u!4 &1859996737
 Transform:
