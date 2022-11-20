@@ -15,7 +15,7 @@ MonoBehaviour:
   cardPower: {fileID: 11400000, guid: 8dd2a6f0c5ff2c64287e68b84c1f7291, type: 2}
   _cardType: 1
   _activationSoundName: TowerCardActivation
-  _blueprintPrefab: {fileID: 9153715105516971691, guid: 0bb47c8ec751db74788c9e5136a31e46,
+  _blueprintPrefab: {fileID: 8865056815128896869, guid: a51e69a426003754e90fe732addda02a,
     type: 3}
   _spawnLayers:
   - TowerBase
