@@ -20,8 +20,10 @@ MonoBehaviour:
   _spawnLayers:
   - ObstacleBase
   _audioMixerChannel: SoundEffects
-  _description: 
-  _name: 
+  _description: When enemies encounter this obstacle on their path, they must destroy
+    it in order to continue. When destroyed, it explodes, dealing great damage on
+    the surrounding area.
+  _name: Dinamite
   _stats:
   - _name: 0
     _value: 100

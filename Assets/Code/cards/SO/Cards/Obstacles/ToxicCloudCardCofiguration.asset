@@ -20,8 +20,9 @@ MonoBehaviour:
   _spawnLayers:
   - ObstacleBase
   _audioMixerChannel: SoundEffects
-  _description: 
-  _name: 
+  _description: Reduces the speed of flying enemies and deals damage every few seconds
+    while they cross throught it.
+  _name: Toxic cloud
   _stats:
   - _name: 5
     _value: 50

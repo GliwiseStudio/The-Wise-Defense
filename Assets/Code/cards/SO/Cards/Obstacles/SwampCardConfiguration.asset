@@ -20,8 +20,8 @@ MonoBehaviour:
   _spawnLayers:
   - ObstacleBase
   _audioMixerChannel: SoundEffects
-  _description: 
-  _name: 
+  _description: Reduces the speed of ground enemies while they cross throught it.
+  _name: Swamp
   _stats:
   - _name: 5
     _value: 50

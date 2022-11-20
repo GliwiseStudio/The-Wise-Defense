@@ -20,7 +20,8 @@ MonoBehaviour:
   _spawnLayers:
   - ObstacleBase
   _audioMixerChannel: SoundEffects
-  _description: 
+  _description: When enemies encounter this obstacle on their path, they must destroy
+    it in order to continue.
   _name: Barricade
   _stats:
   - _name: 2
