@@ -10,4 +10,4 @@ Cuenta con todos los niveles desbloquedados:
 3. [Contenido y controles prototipo Alpha](https://drive.google.com/file/d/1aslx6GUZamZUSQbzM-uiAM9Yawkqkrab/view?usp=sharing)
 4. [LinkTree](https://linktr.ee/gliwisestudio)
 5. [Portfolio](https://gliwisestudio.github.io/portfolio.github.io/)
-6. [Newest (página para reportar bugs)] (https://the-wise-defense.nolt.io/newest)
+6. [Newest (página para reportar bugs)](https://the-wise-defense.nolt.io/newest)
