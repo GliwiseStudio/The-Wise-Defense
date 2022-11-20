@@ -3022,6 +3022,10 @@ MonoBehaviour:
   - Oh! There is one little thing I forgot to tell you. You can upgrade a weapon
     already placed on a base by dragging the same weapon card to that base. You may
     upgrade each weapon up to two times.
+  - Another useful hack is that, if you click on a positioned turret on the map,
+    it will visually show its range.
+  - Good luck on this last round of the battle. May we meet again further along the
+    road.
 --- !u!1001 &1310914466
 PrefabInstance:
   m_ObjectHideFlags: 0
