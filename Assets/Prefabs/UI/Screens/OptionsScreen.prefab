@@ -2771,7 +2771,7 @@ GameObject:
   - component: {fileID: 7854535684218683978}
   - component: {fileID: 7854535684218683959}
   - component: {fileID: 7854535684218683976}
-  - component: {fileID: 7854535684218683977}
+  - component: {fileID: 3408675934288921532}
   m_Layer: 5
   m_Name: OptionsScreen
   m_TagString: Untagged
@@ -2840,7 +2840,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7854535684218683977
+--- !u!114 &3408675934288921532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2849,7 +2849,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7854535684218683979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4533659bad10be4588126489418fa88, type: 3}
+  m_Script: {fileID: 11500000, guid: c61136fe5952561408dbb4ae71b5acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Options
