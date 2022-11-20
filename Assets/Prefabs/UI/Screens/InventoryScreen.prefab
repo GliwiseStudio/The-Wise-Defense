@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1905019519619296450}
   m_HandleRect: {fileID: 1305513793214106938}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0.7
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1736,6 +1736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CardStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005616199881061918, guid: 9f958f12c19c72945b459f641a5afee5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5332598378681971996, guid: 9f958f12c19c72945b459f641a5afee5,
         type: 3}
