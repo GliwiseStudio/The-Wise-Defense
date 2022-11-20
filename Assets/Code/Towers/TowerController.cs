@@ -16,9 +16,7 @@ public class TowerController : MonoBehaviour, IBuff
 
     [Header("Visual help for players")]
     [SerializeField] private GameObject _rangeCylinder;
-    [SerializeField] private Image _buffIconDamage;
-    [SerializeField] private Image _buffIconFireRate;
-    [SerializeField] private Image _buffIconRange;
+    [SerializeField] private Image _buffIconTemplate;
     [SerializeField] private Transform _buffIconParent;
     [SerializeField] private Canvas _buffIconsCanvas;
 
@@ -41,6 +39,8 @@ public class TowerController : MonoBehaviour, IBuff
     private bool _fireRateBuffed = false;
 
     private Camera _camera;
+
+    private IconsStorage _iconStorage;
 
     private ParticleSystem _particlesLevelUp;
 
@@ -67,6 +67,7 @@ public class TowerController : MonoBehaviour, IBuff
         _buffIcons = new List<Image>();
         _camera = FindObjectOfType<Camera>();
         _particlesLevelUp = GetComponentInChildren<ParticleSystem>();
+        _iconStorage = FindObjectOfType<IconsStorage>();
 
         _trueCurrentDetectionRange = _configuration.DetectionConfiguration.DetectionRange; // current detection range
 
@@ -180,10 +181,10 @@ public class TowerController : MonoBehaviour, IBuff
     {
         _shootComponent.BuffDamage(damage);
 
-        Debug.Log(_buffIconDamage);
         if (!_damageBuffed)
         {
-            Image buffIcon = Instantiate(_buffIconDamage);
+            Image buffIcon = Instantiate(_buffIconTemplate);
+            buffIcon.sprite = _iconStorage.GetSpriteFromCardStatType(CardStatType.DamageBuff);
             buffIcon.transform.SetParent(_buffIconParent, false);
             _buffIcons.Add(buffIcon);
 
@@ -197,7 +198,7 @@ public class TowerController : MonoBehaviour, IBuff
 
         for(int i = 0; i < _buffIcons.Count; i++)
         {
-            if (_buffIcons[i].sprite == _buffIconDamage.sprite)
+            if (_buffIcons[i].sprite == _iconStorage.GetSpriteFromCardStatType(CardStatType.DamageBuff))
             {
                 Destroy(_buffIcons[i].gameObject);
                 _buffIcons.RemoveAt(i);
@@ -215,7 +216,8 @@ public class TowerController : MonoBehaviour, IBuff
 
         if (!_fireRateBuffed)
         {
-            Image buffIcon = Instantiate(_buffIconFireRate);
+            Image buffIcon = Instantiate(_buffIconTemplate);
+            buffIcon.sprite = _iconStorage.GetSpriteFromCardStatType(CardStatType.FireRateBuff);
             buffIcon.transform.SetParent(_buffIconParent, false);
             _buffIcons.Add(buffIcon);
 
@@ -229,7 +231,7 @@ public class TowerController : MonoBehaviour, IBuff
 
         for (int i = 0; i < _buffIcons.Count; i++)
         {
-            if (_buffIcons[i].sprite == _buffIconFireRate.sprite)
+            if (_buffIcons[i].sprite == _iconStorage.GetSpriteFromCardStatType(CardStatType.FireRateBuff))
             {
                 Destroy(_buffIcons[i].gameObject);
                 _buffIcons.RemoveAt(i);
@@ -251,7 +253,8 @@ public class TowerController : MonoBehaviour, IBuff
 
         if (!_rangeBuffed)
         {
-            Image buffIcon = Instantiate(_buffIconRange);
+            Image buffIcon = Instantiate(_buffIconTemplate);
+            buffIcon.sprite = _iconStorage.GetSpriteFromCardStatType(CardStatType.RangeBuff);
             buffIcon.transform.SetParent(_buffIconParent, false);
             _buffIcons.Add(buffIcon);
 
@@ -268,7 +271,7 @@ public class TowerController : MonoBehaviour, IBuff
 
         for (int i = 0; i < _buffIcons.Count; i++)
         {
-            if (_buffIcons[i].sprite == _buffIconRange.sprite)
+            if (_buffIcons[i].sprite == _iconStorage.GetSpriteFromCardStatType(CardStatType.RangeBuff))
             {
                 Destroy(_buffIcons[i].gameObject);
                 _buffIcons.RemoveAt(i);
