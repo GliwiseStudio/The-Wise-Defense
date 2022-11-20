@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4753395062307740593}
   - component: {fileID: 3610866041207922525}
   m_Layer: 5
-  m_Name: BuffIconFireRate
+  m_Name: BuffIconTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 24303d512c378e94e946f66ba742a234, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3550c6921cf8cd42b2187d549ecf583, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

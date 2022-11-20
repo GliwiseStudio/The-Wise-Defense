@@ -228,11 +228,7 @@ MonoBehaviour:
   - {fileID: 4844670250106584693}
   - {fileID: 5261785508543203449}
   _rangeCylinder: {fileID: 8804599318447983274}
-  _buffIconDamage: {fileID: 3610866041207922525, guid: 38e8d39a98b9d3848aa2d3dc3128a007,
-    type: 3}
-  _buffIconFireRate: {fileID: 3610866041207922525, guid: de09e842db3a387449d65e9dc5a26921,
-    type: 3}
-  _buffIconRange: {fileID: 3610866041207922525, guid: 4eb2e3a13678a3c43abff92d53b3bfb6,
+  _buffIconTemplate: {fileID: 3610866041207922525, guid: 38e8d39a98b9d3848aa2d3dc3128a007,
     type: 3}
   _buffIconParent: {fileID: 2156150894628062087}
   _buffIconsCanvas: {fileID: 3226920962878472309}
