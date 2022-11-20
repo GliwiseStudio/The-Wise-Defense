@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e5b8202d184ec42869e96e4a4f6f60, type: 3}
   m_Name: AreaHealPowerConfiguration
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6704589981316177330, guid: e398112c7cbce054d93822c9a9509cd7, type: 3}
+  _prefab: {fileID: 5386435734404110423, guid: 6ed2436fcb712814d9d8996bb8f2b8b9, type: 3}
   _health: 150
   _range: 10
+  _color: {r: 0.12785566, g: 1, b: 0, a: 0}
   _targetLayerMasks:
   - DamageableObstacles

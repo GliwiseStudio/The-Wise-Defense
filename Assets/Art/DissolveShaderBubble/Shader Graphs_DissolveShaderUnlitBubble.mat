@@ -36,7 +36,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DissolveEdgeThickness: 0.0314
-    - _DissolveProgress: 0
+    - _DissolveProgress: 0.18
     - _DissolveStartHeight: 0
     - _QueueControl: 0
     - _QueueOffset: 0

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7840a0dc7f1f14abccf2c03538f641, type: 3}
   m_Name: ArrowRainPowerConfiguration
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6704589981316177330, guid: e398112c7cbce054d93822c9a9509cd7, type: 3}
+  _prefab: {fileID: 5386435734404110423, guid: 6ed2436fcb712814d9d8996bb8f2b8b9, type: 3}
   _damage: 80
   _range: 5
+  _color: {r: 1, g: 0.5589782, b: 0, a: 0}
   _targetLayerMasks:
   - GroundEnemies
   - FlyingEnemies
