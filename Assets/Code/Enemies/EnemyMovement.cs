@@ -61,13 +61,25 @@ public class EnemyMovement
     #region Standard movement
     void TranslateEnemyThroughWaypoints()
     {
-        _enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
+        // --- this way, the enemies do not pass the waypoint if the fps drop ---
+        var movementThisFrame = _speed * Time.deltaTime;
+        _enemyTransform.position = Vector3.MoveTowards(_enemyTransform.position, _targetWp.position, movementThisFrame);
 
-        if (Vector3.Distance(_enemyTransform.position, _targetWp.position) <= 0.2f) // if the enemy has reached the waypoint
+        if (Vector3.Distance(_enemyTransform.position, _targetWp.position) == 0f) // if the enemy has reached the waypoint
         {
             GetNextWaypoint();
         }
+
+        // --- this had problems with fps drops ---
+
+        //_enemyTransform.Translate(_dir * _speed * Time.deltaTime, Space.World); // translate the enemy across that direction, ensuring that the movement speed is only dependant of the speed attribute
+
+        //if (Vector3.Distance(_enemyTransform.position, _targetWp.position) <= 0.2f) // if the enemy has reached the waypoint
+        //{
+        //    GetNextWaypoint();
+        //}
     }
+
     void GetNextWaypoint()
     {
         _targetWpIdx++;
