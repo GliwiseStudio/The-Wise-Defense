@@ -89,9 +89,9 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     private void Update()
     {
-        if (!_paralized)
+        if (_enemyHealth.GetEnemyState() == "alive")
         {
-            if (_enemyHealth.GetEnemyState() == "alive")
+            if (!_paralized) // if enemy is paralized do not execute movement
             {
                 _enemyHealth.Update();
                 _enemyMovement.Update();
@@ -110,11 +110,12 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
                     _targetTransform = _obstacleDetector.DetectTarget();
                 }
             }
-            else
-            {
-                EnemyDeath();
-            }
         }
+        else
+        {
+            EnemyDeath();
+        }
+        
     }
 
     #region Movement
@@ -195,7 +196,11 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     IEnumerator PlayDamage()
     {
         yield return new WaitForSeconds(_hitTime);
-        if(_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask))
+
+        // check that: the enemy is still alive, and not dead but dissolving
+        // the obstacle still exits, it hasn't already been destroyed
+        // if the obstacle exits, it is still damageable, and not dissolving
+        if(_enemyHealth.GetEnemyState() == "alive" && _targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask))
         {
             _audioPlayer.PlayAudio("Punch");
 
