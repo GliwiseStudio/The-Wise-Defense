@@ -47,7 +47,7 @@ public class PlayFabLogin : MonoBehaviour
         var request = new SendAccountRecoveryEmailRequest
         {
             Email = emailInput.text,
-            TitleId = "39B81"
+            TitleId = "40A3E"
         };
 
         PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordReset, OnError);
@@ -67,8 +67,8 @@ public class PlayFabLogin : MonoBehaviour
     {
         messageText.text = "Registered and logged in!";
 
-        PlayFabManager.Instance.InitializeLevels();
-        PlayFabManager.Instance.SendUnlockedLevels();
+        LevelsManager.Instance.InitializeLevels();
+        LevelsManager.Instance.SendUnlockedLevelsToPlayfab();
 
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
@@ -77,6 +77,7 @@ public class PlayFabLogin : MonoBehaviour
     {
         messageText.text = "Logged in :) Loading player data... ";
 
-        PlayFabManager.Instance.GetUnlockedLevels();
+        LevelsManager.Instance.SetPlayerLogged(true); // player has succesfully logged in
+        LevelsManager.Instance.GetUnlockedLevelsFromPlayfab();
     }
 }

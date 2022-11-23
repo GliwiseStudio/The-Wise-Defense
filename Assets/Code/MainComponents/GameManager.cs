@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
     #region Win / Loose
     private void Win()
     {
-        if (PlayFabManager.Instance != null) // to show them on the game over screen
+        if (LevelsManager.Instance != null) // to show them on the game over screen
         {
-            PlayFabManager.Instance.SetCurrentStars(_currentTowers);
+            LevelsManager.Instance.SetCurrentStars(_currentTowers);
         }
 
         Debug.Log("Game's over and you win !! :D");
@@ -63,9 +63,9 @@ public class GameManager : MonoBehaviour
 
     private void Loose()
     {
-        if (PlayFabManager.Instance != null) // to show them on the game over screen
+        if (LevelsManager.Instance != null) // to show them on the game over screen
         {
-            PlayFabManager.Instance.SetCurrentStars(_currentTowers);
+            LevelsManager.Instance.SetCurrentStars(_currentTowers);
         }
 
         Debug.Log("Game ends and you loose :(");
@@ -77,31 +77,31 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Manage game data to send to playfab
+    #region Manage game levels data (and send to playfab if player is logged)
     private void UpgradePlayFabInfo()
     {
-        if (PlayFabManager.Instance != null) // it won't be null on build, but it's possible that it will be while tryhing levels on unity
+        if (LevelsManager.Instance != null) // it won't be null on build, but it's possible that it will be while tryhing levels on unity
         {
             bool _needToUpdateSavedData = false;
-            int currentLevel = PlayFabManager.Instance.GetCurrentLevel();
+            int currentLevel = LevelsManager.Instance.GetCurrentLevel();
 
-            if (PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked == false)
+            if (LevelsManager.Instance.UnlockedLevels[currentLevel + 1].unlocked == false)
             {
-                PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
-                PlayFabManager.Instance.UnlockedLevels[currentLevel + 1].newLevel = true;
-                PlayFabManager.Instance.SetLastUnlockedLevel(currentLevel + 1);
+                LevelsManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
+                LevelsManager.Instance.UnlockedLevels[currentLevel + 1].newLevel = true;
+                LevelsManager.Instance.SetLastUnlockedLevel(currentLevel + 1);
                 _needToUpdateSavedData = true;
             }
 
-            if (PlayFabManager.Instance.UnlockedLevels[currentLevel].stars < _currentTowers)
+            if (LevelsManager.Instance.UnlockedLevels[currentLevel].stars < _currentTowers)
             {
-                PlayFabManager.Instance.UnlockedLevels[currentLevel].stars = _currentTowers; // new stars record
+                LevelsManager.Instance.UnlockedLevels[currentLevel].stars = _currentTowers; // new stars record
                 _needToUpdateSavedData = true;
             }
 
-            if (_needToUpdateSavedData)
+            if (_needToUpdateSavedData && LevelsManager.Instance.GetPlayerLogged()) // if the player is logged in, and the data has changed
             {
-                PlayFabManager.Instance.SendUnlockedLevels();
+                LevelsManager.Instance.SendUnlockedLevelsToPlayfab();
             }
         }
     }

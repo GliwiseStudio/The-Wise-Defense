@@ -6,9 +6,9 @@ public class PlayFabDataRetrieverSubstitute : MonoBehaviour
 
     public int GetLastLevelIndex()
     {
-        if (PlayFabManager.Instance != null)
+        if (LevelsManager.Instance != null)
         {
-            return PlayFabManager.Instance.GetLastUnlockedLevel();
+            return LevelsManager.Instance.GetLastUnlockedLevel();
         }
         else
         {

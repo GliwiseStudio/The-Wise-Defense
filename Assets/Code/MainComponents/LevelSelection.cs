@@ -14,7 +14,7 @@ public class LevelSelection : MonoBehaviour
 
     private void Start()
     {
-        _unlocked = PlayFabManager.Instance.UnlockedLevels[_levelNumber].unlocked;
+        _unlocked = LevelsManager.Instance.UnlockedLevels[_levelNumber].unlocked;
 
         SetLevelState();
     }
@@ -25,11 +25,11 @@ public class LevelSelection : MonoBehaviour
         {
             _lockedImage.gameObject.SetActive(false);
 
-            if (!PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel)
+            if (!LevelsManager.Instance.UnlockedLevels[_levelNumber].newLevel)
             {
                 _starsImage.gameObject.SetActive(true);
 
-                int starsUnlocked = PlayFabManager.Instance.UnlockedLevels[_levelNumber].stars;
+                int starsUnlocked = LevelsManager.Instance.UnlockedLevels[_levelNumber].stars;
                 switch (starsUnlocked)
                 {
                     case 0:
@@ -53,10 +53,14 @@ public class LevelSelection : MonoBehaviour
     {
         if (_unlocked)
         {
-            if (PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel) // clicked in a new level for the first time
+            if (LevelsManager.Instance.UnlockedLevels[_levelNumber].newLevel) // clicked in a new level for the first time
             {
-                PlayFabManager.Instance.UnlockedLevels[_levelNumber].newLevel = false; // no longer a new level
-                PlayFabManager.Instance.SendUnlockedLevels(); // send that information
+                LevelsManager.Instance.UnlockedLevels[_levelNumber].newLevel = false; // no longer a new level
+
+                if (LevelsManager.Instance.GetPlayerLogged()) // if the player is logged in
+                {
+                    LevelsManager.Instance.SendUnlockedLevelsToPlayfab(); // send that information
+                }
 
                 // if the level has dialogue trigger the dialogue
                 DialogueTrigger _levelDialogue = gameObject.GetComponent<DialogueTrigger>();
@@ -97,7 +101,7 @@ public class LevelSelection : MonoBehaviour
 
     public void GoToLevel()
     {
-        PlayFabManager.Instance.SetCurrentLevel(_levelNumber);
+        LevelsManager.Instance.SetCurrentLevel(_levelNumber);
         SceneManager.LoadScene(_levelSceneName, LoadSceneMode.Single);
     }
 }
