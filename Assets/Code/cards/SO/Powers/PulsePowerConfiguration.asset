@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PulsePowerConfiguration
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5386435734404110423, guid: 6ed2436fcb712814d9d8996bb8f2b8b9, type: 3}
-  _damage: 60
+  _damage: 175
   _range: 5000
   _color: {r: 0, g: 0, b: 0, a: 0}
   _targetLayerMasks:
