@@ -15,7 +15,7 @@ public class GameOverUI : MonoBehaviour
     void Start()
     {
         _musicPlayer = FindObjectOfType<MusicPlayer>();
-        int starsUnlocked = PlayFabManager.Instance.GetCurrentStars();
+        int starsUnlocked = LevelsManager.Instance.GetCurrentStars();
 
         if (starsUnlocked == 0) // Lost game
         {
@@ -31,7 +31,7 @@ public class GameOverUI : MonoBehaviour
             _winGamePanel.SetActive(true);
             _kingAnimator.Play("KingVictory");
 
-            if (PlayFabManager.Instance.GetCurrentLevel() == 0)
+            if (LevelsManager.Instance.GetCurrentLevel() == 0)
             {
                 starsUnlocked = 3; // Because the tutorial only has one tower
             }

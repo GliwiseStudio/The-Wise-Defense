@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class UIWarningScreen : MonoBehaviour
+public class UIBasicScreen : MonoBehaviour, UIScreen
 {
     [SerializeField] private string _name;
-
     public GameObject GetGameObject()
     {
         return this.gameObject;

@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 
-public class PlayFabManager : MonoBehaviour
+public class LevelsManager: MonoBehaviour
 {
-    private static PlayFabManager _instance;
+    private static LevelsManager _instance;
+
+    // Registered or not
+    private bool _playerLogged;
 
     // Player related variables
     private static int _numberOfLevels = 15;
@@ -18,7 +21,7 @@ public class PlayFabManager : MonoBehaviour
 
     private bool _firstDataGotten = false; // to go to MainMenu once the player has gotten the data
                                            // from PlayFab when login in, because it takes a second or so
-    public static PlayFabManager Instance
+    public static LevelsManager Instance
     {
         get
         {
@@ -83,15 +86,24 @@ public class PlayFabManager : MonoBehaviour
         _currentStars = currentStars;
     }
 
+    public bool GetPlayerLogged()
+    {
+        return _playerLogged;
+    }
+
+    public void SetPlayerLogged(bool playerLogged)
+    {
+        _playerLogged = playerLogged;
+    }
     #endregion
 
     #region Get/send data from/to PlayFab
-    public void GetUnlockedLevels()
+    public void GetUnlockedLevelsFromPlayfab()
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataReceived, OnError);
     }
 
-    public void SendUnlockedLevels()
+    public void SendUnlockedLevelsToPlayfab()
     {
         UpdateUserDataRequest request = new UpdateUserDataRequest
         {
@@ -120,7 +132,7 @@ public class PlayFabManager : MonoBehaviour
         else
         {
             InitializeLevels();
-            SendUnlockedLevels();
+            SendUnlockedLevelsToPlayfab();
         }
     }
 
