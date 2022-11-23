@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 150
   _osbtacleType: 2
-  _dinamiteDamage: 100
+  _dinamiteDamage: 350
   _detectionRange: 2
   _enemyLayers:
   - GroundEnemies

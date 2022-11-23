@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AreaHealPowerConfiguration
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5386435734404110423, guid: 6ed2436fcb712814d9d8996bb8f2b8b9, type: 3}
-  _health: 150
+  _health: 250
   _range: 10
   _color: {r: 0.12785566, g: 1, b: 0, a: 0}
   _targetLayerMasks:
