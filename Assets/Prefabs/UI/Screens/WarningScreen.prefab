@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 443995411197703618}
   - component: {fileID: 462462092039744790}
   - component: {fileID: 5834416257442703152}
-  - component: {fileID: 5977508378000879810}
+  - component: {fileID: 5311631475237256802}
   m_Layer: 5
   m_Name: WarningScreen
   m_TagString: Untagged
@@ -431,7 +431,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5977508378000879810
+--- !u!114 &5311631475237256802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -440,10 +440,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3457799396927978960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53fbf6b1f45c4f7439a1fa7cae893aaa, type: 3}
+  m_Script: {fileID: 11500000, guid: a2ca56cf6cb676d47b29aa8d84f07595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: WarningLeave
+  _name: Warning Leave
 --- !u!1 &7178810315918346258
 GameObject:
   m_ObjectHideFlags: 0

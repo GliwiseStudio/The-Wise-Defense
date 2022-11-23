@@ -3251,6 +3251,11 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -67.08433
       objectReference: {fileID: 0}
+    - target: {fileID: 5311631475237256802, guid: cc6499fa50f69ad42841eafe6dd01488,
+        type: 3}
+      propertyPath: _name
+      value: Guest Warning
+      objectReference: {fileID: 0}
     - target: {fileID: 5977508378000879810, guid: cc6499fa50f69ad42841eafe6dd01488,
         type: 3}
       propertyPath: _name
