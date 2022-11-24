@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
                 _needToUpdateSavedData = true;
             }
 
-            if (_needToUpdateSavedData && LevelsManager.Instance.GetPlayerLogged()) // if the player is logged in, and the data has changed
+            if (_needToUpdateSavedData && !LevelsManager.Instance.GetIsPlayingAsGuest()) // if the player is not a guest, and the data has changed
             {
                 LevelsManager.Instance.SendUnlockedLevelsToPlayfab();
             }
