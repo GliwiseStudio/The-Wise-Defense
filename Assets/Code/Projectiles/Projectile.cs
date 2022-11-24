@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     private IProjectileDamager _damager;
     private float _currentLifetime;
     private string[] _targetLayerMasks;
+    private Vector3 _targetLastPosition = Vector3.zero;
 
     private void Awake()
     {
@@ -46,7 +47,19 @@ public class Projectile : MonoBehaviour
 
     private void UpdateMovement()
     {
-        Vector3 newPosition = _movement.UpdateMovement(_transform, _targetCollider, _speed);
+        if(_targetCollider != null)
+        {
+            _targetLastPosition = _targetCollider.bounds.center;
+        }
+
+        Vector3 newPosition = _movement.UpdateMovement(_transform.position, _targetLastPosition, _speed);
+
+        if(newPosition == _transform.position)
+        {
+            DestroyProjectile();
+            return;
+        }
+
         ApplyMovement(newPosition);
     }
 
