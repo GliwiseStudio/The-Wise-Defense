@@ -10,7 +10,7 @@ public class CardSpawner : MonoBehaviour
         _cardsStorage = cardStorage;
     }
 
-    public Cards Create()
+    public Cards CreateRandomCard()
     {
         Cards card = Instantiate(_templateCardPrefab);
         card.SetCardConfig(_cardsStorage.GetRandomCard());
@@ -21,6 +21,13 @@ public class CardSpawner : MonoBehaviour
     {
         Cards card = Instantiate(_templateCardPrefab);
         card.SetCardConfig(_cardsStorage.GetRandomCardFromType(type));
+        return card;
+    }
+
+    public Cards CreateRandomCardExcluding(CardConfigurationSO excludedCardConfiguration)
+    {
+        Cards card = Instantiate(_templateCardPrefab);
+        card.SetCardConfig(_cardsStorage.GetRandomCardExcluding(excludedCardConfiguration));
         return card;
     }
 }
