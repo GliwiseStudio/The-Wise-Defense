@@ -23,4 +23,15 @@ public class CardStorage : ScriptableObject
         int randomIndex = Random.Range(0, cardsOfType.Count);
         return cardsOfType[randomIndex];
     }
+
+    public CardConfigurationSO GetRandomCardExcluding(CardConfigurationSO excludedCardConfiguration)
+    {
+        List<CardConfigurationSO> cardsOfType = _configurations.FindAll(delegate (CardConfigurationSO card)
+        {
+            return (card.CardName.CompareTo(excludedCardConfiguration.CardName) != 0);
+        });
+
+        int randomIndex = Random.Range(0, cardsOfType.Count);
+        return cardsOfType[randomIndex];
+    }
 }

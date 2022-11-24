@@ -93,9 +93,21 @@ public class DeckController : MonoBehaviour
 
     private void GenerateCard()
     {
-        Cards card = _cardSpawner.Create();
-        card.transform.SetParent(_deckHolderTransform, false);
-        _currentCards.Add(card);
+        Cards card = _cardSpawner.CreateRandomCard();
+        ConfigureGeneratedCard(card);
+    }
+
+    private void GenerateRandomCardExcludedFrom(Cards excludedCard)
+    {
+        Cards card = _cardSpawner.CreateRandomCardExcluding(excludedCard.GetCardConfig());
+        ConfigureGeneratedCard(card);
+    }
+
+    private Cards ConfigureGeneratedCard(Cards generatedCard)
+    {
+        generatedCard.transform.SetParent(_deckHolderTransform, false);
+        _currentCards.Add(generatedCard);
+        return generatedCard;
     }
 
     private void GenerateObligatoryTurretCards()
@@ -162,7 +174,7 @@ public class DeckController : MonoBehaviour
         SetDiscardText();
         Destroy(cardToDelete.gameObject);
         _currentCards.Remove(cardToDelete);
-        GenerateCard();
+        GenerateRandomCardExcludedFrom(cardToDelete);
     }
 
     private void EnableDiscardCards()
