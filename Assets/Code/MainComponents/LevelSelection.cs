@@ -57,7 +57,7 @@ public class LevelSelection : MonoBehaviour
             {
                 LevelsManager.Instance.UnlockedLevels[_levelNumber].newLevel = false; // no longer a new level
 
-                if (LevelsManager.Instance.GetPlayerLogged()) // if the player is logged in
+                if (LevelsManager.Instance.GetIsPlayingAsGuest()) // if the player is logged in
                 {
                     LevelsManager.Instance.SendUnlockedLevelsToPlayfab(); // send that information
                 }

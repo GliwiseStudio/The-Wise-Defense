@@ -10,7 +10,7 @@ public class LevelsManager: MonoBehaviour
     private static LevelsManager _instance;
 
     // Registered or not
-    private bool _playerLogged;
+    private bool _isPlayingAsGuest;
 
     // Player related variables
     private static int _numberOfLevels = 15;
@@ -19,8 +19,6 @@ public class LevelsManager: MonoBehaviour
     private int _currentLevel = 0;
     private int _currentStars = 0;
 
-    private bool _firstDataGotten = false; // to go to MainMenu once the player has gotten the data
-                                           // from PlayFab when login in, because it takes a second or so
     public static LevelsManager Instance
     {
         get
@@ -86,14 +84,14 @@ public class LevelsManager: MonoBehaviour
         _currentStars = currentStars;
     }
 
-    public bool GetPlayerLogged()
+    public bool GetIsPlayingAsGuest()
     {
-        return _playerLogged;
+        return _isPlayingAsGuest;
     }
 
-    public void SetPlayerLogged(bool playerLogged)
+    public void SetIsPlayingAsGuest(bool isPlayingAsGuest)
     {
-        _playerLogged = playerLogged;
+        _isPlayingAsGuest = isPlayingAsGuest;
     }
     #endregion
 
@@ -118,11 +116,6 @@ public class LevelsManager: MonoBehaviour
 
     private void OnDataReceived(GetUserDataResult result)
     {
-        if(_firstDataGotten == false)
-        {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
-            _firstDataGotten = true;
-        }
         Debug.Log("Recieved characters data!");
         if (result.Data != null && result.Data.ContainsKey("UnlockedLevels") && result.Data.ContainsKey("LastUnlockedLevel"))
         {
@@ -133,6 +126,18 @@ public class LevelsManager: MonoBehaviour
         {
             InitializeLevels();
             SendUnlockedLevelsToPlayfab();
+        }
+
+        // to go to MainMenu once the player has gotten the data
+        // from PlayFab when login in, because it takes a second or so
+        if (_isPlayingAsGuest) // it accessed through the main screen
+        {
+            _isPlayingAsGuest = false; // logged in
+            FindObjectOfType<UIScreenController>().SwitchToPreviousScreen();
+        }
+        else
+        {
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
     }
 

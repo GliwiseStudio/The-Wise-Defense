@@ -22,13 +22,12 @@ public class PlayAsGuestBtn : MonoBehaviour
     }
     private void GoToScene()
     {
-        Time.timeScale = 1; // leaving the pause menu, so unpause
         SceneManager.LoadScene(_sceneName, LoadSceneMode.Single);
     }
 
     private void PlayAsGuest()
     {
-        LevelsManager.Instance.SetPlayerLogged(false); // player hasn't logged in, he's playing as a guest
+        LevelsManager.Instance.SetIsPlayingAsGuest(true); // player hasn't logged in, he's playing as a guest
         LevelsManager.Instance.InitializeLevels(); // create the levels for the first time
 
         GoToScene(); // go to game screen
