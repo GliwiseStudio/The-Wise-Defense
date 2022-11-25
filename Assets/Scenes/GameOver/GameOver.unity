@@ -559,7 +559,7 @@ RectTransform:
   m_GameObject: {fileID: 350784746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.3689, y: 5.2443666, z: 3.3689}
+  m_LocalScale: {x: 1.2137253, y: 1.8894063, z: 1.2137253}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 247298089}
@@ -568,7 +568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233, y: -257}
+  m_AnchoredPosition: {x: 93, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &350784748
@@ -1603,7 +1603,6 @@ GameObject:
   - component: {fileID: 1529626118}
   - component: {fileID: 1529626121}
   - component: {fileID: 1529626120}
-  - component: {fileID: 1529626119}
   m_Layer: 5
   m_Name: Panel Win Game
   m_TagString: Untagged
@@ -1633,18 +1632,6 @@ RectTransform:
   m_AnchoredPosition: {x: 29.00003, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1529626119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529626117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bed752992d72154fb6d20aa5e228cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1529626120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1731,7 +1718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
