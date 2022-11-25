@@ -56,10 +56,11 @@ public class LevelSelection : MonoBehaviour
             if (LevelsManager.Instance.UnlockedLevels[_levelNumber].newLevel) // clicked in a new level for the first time
             {
                 LevelsManager.Instance.UnlockedLevels[_levelNumber].newLevel = false; // no longer a new level
+                LevelsManager.Instance.SetLastUnlockedLevel(_levelNumber); // new level unlocked
 
-                if (LevelsManager.Instance.GetIsPlayingAsGuest()) // if the player is logged in
+                if (!LevelsManager.Instance.GetIsPlayingAsGuest()) // if the player is not a guest (so logged in to playfab)
                 {
-                    LevelsManager.Instance.SendUnlockedLevelsToPlayfab(); // send that information
+                    LevelsManager.Instance.SendUnlockedLevelsToPlayfab(); // send that information to playfab
                 }
 
                 // if the level has dialogue trigger the dialogue

@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
             {
                 LevelsManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
                 LevelsManager.Instance.UnlockedLevels[currentLevel + 1].newLevel = true;
-                LevelsManager.Instance.SetLastUnlockedLevel(currentLevel + 1);
+                //LevelsManager.Instance.SetLastUnlockedLevel(currentLevel + 1); // now this is done when the player has entered the new unlocked level
                 _needToUpdateSavedData = true;
             }
 
