@@ -15,7 +15,7 @@ public class LevelsManager: MonoBehaviour
     // Player related variables
     private static int _numberOfLevels = 15;
     public List<Level> UnlockedLevels = new List<Level>();
-    private int _lastUnlockedLevel = 0;
+    private int _lastUnlockedLevel = 15; // this is to get the card configuration of no levels unlocked (levels go from 0 to 14)
     private int _currentLevel = 0;
     private int _currentStars = 0;
 
