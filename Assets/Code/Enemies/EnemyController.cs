@@ -227,6 +227,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     {
         if (_firstDeathCall == true)
         {
+            _animator.SetFloat("Speed", 0);
+
             int DeadEnemyLayer = LayerMask.NameToLayer("DeadEnemy");
             gameObject.layer = DeadEnemyLayer;
 
