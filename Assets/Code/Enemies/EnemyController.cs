@@ -40,6 +40,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     private bool _paralized = false;
     private bool _timedDown = false;
 
+    private GameObject _currentSlowdownObstacle = null;
+
     private enum EnemyStates { walking, fighting, reaching }
     private EnemyStates _enemyState = EnemyStates.walking;
 
@@ -257,6 +259,12 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         {
             if (GameManager.Instance != null)
                 GameManager.Instance.RemoveEnemy();
+
+            if (_currentSlowdownObstacle != null) // if it was inside of a slowdown obstacle when it died, remove it from the list
+            {
+                _currentSlowdownObstacle.gameObject.GetComponent<IRemove>().RemoveFromList(gameObject);
+            }
+
             Destroy(gameObject);
         }
     }
@@ -290,6 +298,16 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
         _damageAnimTime = _damageAnimTime * (1 - slowdownPercentage);
         _hitTime = _hitTime * (1 - slowdownPercentage);
+    }
+
+    public void SetSlowdownObject(GameObject currentSlowdownObstacle)
+    {
+        _currentSlowdownObstacle = currentSlowdownObstacle;
+    }
+
+    public void RemoveSlowdownObject()
+    {
+        _currentSlowdownObstacle = null;
     }
 
     public void ReceiveDamageReduction(float damageReductionPercentage)
