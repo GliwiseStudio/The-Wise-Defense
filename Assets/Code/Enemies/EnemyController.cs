@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     private string _obstaclesLayerMask = "DamageableObstacles";
 
+    private float _animSpeed;
     private float _speed;
     private float _maxHealth;
     private float _detectionRange;
@@ -37,6 +38,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     private float _timeOfDeath;
     private bool _onDamageLoop = false;
     private bool _paralized = false;
+    private bool _timedDown = false;
 
     private enum EnemyStates { walking, fighting, reaching }
     private EnemyStates _enemyState = EnemyStates.walking;
@@ -72,6 +74,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _slider = GetComponentInChildren<Slider>();
         _materials = GetComponentInChildren<Renderer>().materials;
         _animator = GetComponent<Animator>();
+        _animSpeed = _animator.GetFloat("Speed");
         _audioPlayer = GetComponent<AudioPlayer>();
 
         _audioPlayer.ConfigureAudioSource(_config.AudioMixerChannel);
@@ -144,11 +147,6 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             _enemyMovement.ResetObstacleDetectionState();
 
             _enemyState = EnemyStates.walking;
-
-            if (_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy no longer fighting
-            {
-                gameObject.layer = LayerMask.NameToLayer("GroundEnemyArmored"); // change layer back to be indetectable
-            }
         }
     }
     #endregion
@@ -200,7 +198,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         // check that: the enemy is still alive, and not dead but dissolving
         // the obstacle still exits, it hasn't already been destroyed
         // if the obstacle exits, it is still damageable, and not dissolving
-        if(_enemyHealth.GetEnemyState() == "alive" && _targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask))
+        if(_enemyHealth.GetEnemyState() == "alive" && _targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask) && !_paralized)
         {
             _audioPlayer.PlayAudio("Punch");
 
@@ -275,9 +273,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _speed = _speed * (1 - slowdownPercentage);
         _enemyMovement.UpdateSpeed(_speed);
 
-        float animSpeed = _animator.GetFloat("Speed");
-        animSpeed = animSpeed * (1 - slowdownPercentage);
-        _animator.SetFloat("Speed", animSpeed);
+        _animSpeed = _animSpeed * (1 - slowdownPercentage);
+        _animator.SetFloat("Speed", _animSpeed);
 
         _damageAnimTime = _damageAnimTime / ( 1 - slowdownPercentage);
         _hitTime = _hitTime / (1 - slowdownPercentage);
@@ -288,9 +285,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _speed = _speed / (1 - slowdownPercentage);
         _enemyMovement.UpdateSpeed(_speed);
 
-        float animSpeed = _animator.GetFloat("Speed");
-        animSpeed = animSpeed / (1 - slowdownPercentage);
-        _animator.SetFloat("Speed", animSpeed);
+        _animSpeed = _animSpeed / (1 - slowdownPercentage);
+        _animator.SetFloat("Speed", _animSpeed);
 
         _damageAnimTime = _damageAnimTime * (1 - slowdownPercentage);
         _hitTime = _hitTime * (1 - slowdownPercentage);
@@ -308,6 +304,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     public void ReceiveTimedDownStats(float slowdownPercentage, float damageReductionPercentage, float duration)
     {
+        _timedDown = true;
         ReceiveSlowdown(slowdownPercentage);
         ReceiveDamageReduction(damageReductionPercentage);
         ChangeEnemyColor(new Color32(254, 9, 0, 1)); // color red
@@ -317,17 +314,28 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     IEnumerator ReleaseTimedDownStats(float slowdownPercentage, float damageReductionPercentage, float duration)
     {
         yield return new WaitForSeconds(duration);
+
+        _timedDown = false;
         ReleaseSlowdown(slowdownPercentage);
         ReleaseDamageReduction(damageReductionPercentage);
-        ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
+
+        if (!_paralized)
+        {
+            ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
+        }
+        else
+        {
+            ChangeEnemyColor(new Color32(254, 224, 0, 1)); // color yellow
+        }
+        
     }
 
     public void ReceiveTimedParalysis(float duration)
     {
-        // paralize enemy, change it's color to yellow and play idle animation
+        // paralize enemy, change it's color to yellow and set animation speed to 0
         _paralized = true;
         ChangeEnemyColor(new Color32(254, 224, 0, 1)); // color yellow
-        PlayIdleAnimation();
+        _animator.SetFloat("Speed", 0);
 
         // start coroutine to release the paralysis
         StartCoroutine(ReleaseParalysis(duration));
@@ -339,12 +347,15 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
         // after a few seconds, stop paralysis, change color back to normal, and continue normal animations
         _paralized = false;
+        _animator.SetFloat("Speed", _animSpeed);
 
-        ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
-
-        if (_enemyState == EnemyStates.walking)
+        if (!_timedDown)
         {
-            PlayWalkingAnimation();
+            ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
+        }
+        else
+        {
+            ChangeEnemyColor(new Color32(254, 9, 0, 1)); // color red
         }
     }
 
