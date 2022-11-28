@@ -1,8 +1,14 @@
+using UnityEngine;
+
 public interface IDownStats
 {
     public void ReceiveSlowdown(float slowdown);
 
     public void ReleaseSlowdown(float slowdown);
+
+    public void SetSlowdownObject(GameObject gameObject);
+
+    public void RemoveSlowdownObject();
 
     public void ReceiveDamageReduction(float damageReduction);
 
