@@ -1411,7 +1411,7 @@ PrefabInstance:
     - target: {fileID: 3516983032484814203, guid: c2b03d9db69cb6545a1b130da1e4b9c6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.72
+      value: 13.2
       objectReference: {fileID: 0}
     - target: {fileID: 3516983032484814203, guid: c2b03d9db69cb6545a1b130da1e4b9c6,
         type: 3}
@@ -5650,6 +5650,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4070974438913018482, guid: 2c7dc64dc55e97a42971312bcfe4fa65,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.7566986
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070974438913018482, guid: 2c7dc64dc55e97a42971312bcfe4fa65,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.008646503
+      objectReference: {fileID: 0}
     - target: {fileID: 4267898540876309513, guid: 2c7dc64dc55e97a42971312bcfe4fa65,
         type: 3}
       propertyPath: m_Name
@@ -6016,7 +6026,7 @@ PrefabInstance:
     - target: {fileID: 3516983032484814203, guid: c2b03d9db69cb6545a1b130da1e4b9c6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.89
+      value: 12.89
       objectReference: {fileID: 0}
     - target: {fileID: 3516983032484814203, guid: c2b03d9db69cb6545a1b130da1e4b9c6,
         type: 3}
@@ -6563,6 +6573,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070974438913018482, guid: 2c7dc64dc55e97a42971312bcfe4fa65,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.7192832
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070974438913018482, guid: 2c7dc64dc55e97a42971312bcfe4fa65,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.010061204
       objectReference: {fileID: 0}
     - target: {fileID: 4267898540876309513, guid: 2c7dc64dc55e97a42971312bcfe4fa65,
         type: 3}
@@ -7128,7 +7148,7 @@ PrefabInstance:
     - target: {fileID: 3516983032484814203, guid: c2b03d9db69cb6545a1b130da1e4b9c6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.08
+      value: -12.35
       objectReference: {fileID: 0}
     - target: {fileID: 3516983032484814203, guid: c2b03d9db69cb6545a1b130da1e4b9c6,
         type: 3}

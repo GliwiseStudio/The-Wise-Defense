@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slowdownPercentage: 0.5
+  _maxEnemiesAllowed: 80
   _targerLayerMasks:
   - GroundEnemies
   - GroundEnemyArmored
