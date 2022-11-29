@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HoundDog
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 4
-  <MaxHealth>k__BackingField: 40
+  <MaxHealth>k__BackingField: 60
   <DetectionRange>k__BackingField: 2
   <Damage>k__BackingField: 20
   <DamageAnimTime>k__BackingField: 2

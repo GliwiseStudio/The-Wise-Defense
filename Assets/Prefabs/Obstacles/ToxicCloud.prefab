@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slowdownPercentage: 0.5
+  _maxEnemiesAllowed: 30
   _targerLayerMasks:
   - FlyingEnemies
   _damageEnemies: 1
