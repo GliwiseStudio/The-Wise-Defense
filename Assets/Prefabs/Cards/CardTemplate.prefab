@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _discardButtonUI: {fileID: 6073864786407514582}
-  _audioPlayerPrefab: {fileID: 5560031414222347609, guid: 26e6d9c94a028a341bc17394c180ae99,
+  _audioPlayerPrefab: {fileID: 8006334712554306955, guid: e18ad8676604f834387fe275881e8d99,
     type: 3}
 --- !u!1001 &7148867702662038476
 PrefabInstance:
