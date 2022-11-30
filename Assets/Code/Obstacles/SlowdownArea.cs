@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections;
 
-public class SlowdownArea : MonoBehaviour, IRemove
+public class SlowdownArea : MonoBehaviour, IRemove, IHeal
 {
     [SerializeField][Range(0.1f, 0.9f)] private float _slowdownPercentage;
     
@@ -19,6 +20,7 @@ public class SlowdownArea : MonoBehaviour, IRemove
     private float _enemiesAllowed;
     private Slider _slider;
     private Camera _sceneCamera;
+    private bool _isInvulnerable = false;
 
     private void Start()
     {
@@ -45,7 +47,11 @@ public class SlowdownArea : MonoBehaviour, IRemove
             }
 
             _enemiesList.Add(other.gameObject);
-            UpdateSlider();
+
+            if (!_isInvulnerable)
+            {
+                UpdateSlider();
+            }
         }
     }
 
@@ -64,11 +70,6 @@ public class SlowdownArea : MonoBehaviour, IRemove
 
             _enemiesList.Remove(other.gameObject);
         }
-    }
-
-    public void RemoveFromList(GameObject enemy)
-    {
-        _enemiesList.Remove(enemy);
     }
 
     private void DestroyObstacle()
@@ -91,10 +92,71 @@ public class SlowdownArea : MonoBehaviour, IRemove
             return;
         }
 
-        Debug.Log(_enemiesAllowed);
-        Debug.Log(_maxEnemiesAllowed);
+        _slider.value = _enemiesAllowed / _maxEnemiesAllowed;
+    }
+
+    #region Interfaces
+    public void RemoveFromList(GameObject enemy)
+    {
+        _enemiesList.Remove(enemy);
+    }
+
+    public void Heal(int healAmount)
+    {
+        _enemiesAllowed += healAmount;
+
+        if (_enemiesAllowed > _maxEnemiesAllowed)
+        {
+            _enemiesAllowed = _maxEnemiesAllowed;
+        }
 
         _slider.value = _enemiesAllowed / _maxEnemiesAllowed;
-        Debug.Log(_slider.value);
     }
+
+    public bool FullHeal()
+    {
+        if (_enemiesAllowed == _maxEnemiesAllowed)
+        {
+            return false;
+        }
+        else
+        {
+            _enemiesAllowed = _maxEnemiesAllowed;
+            _slider.value = _enemiesAllowed / _maxEnemiesAllowed;
+            return true;
+        }
+    }
+
+    public void BecomeInvulnerable(float duration)
+    {
+        _isInvulnerable = true;
+        //ChangeObstacleColor(new Color32(0, 122, 254, 1)); // blue color
+        StartCoroutine(ReleaseInvulnerabilty(duration));
+    }
+
+    IEnumerator ReleaseInvulnerabilty(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _isInvulnerable = false;
+        //ChangeObstacleColor(new Color32(255, 255, 255, 1)); // change color back to normal
+    }
+    #endregion
+
+    // i'd have to change the material to the ones with the dissolve shader
+    //#region Color Change
+    //public void ChangeObstacleColor(Color32 color)
+    //{
+
+    //    foreach (Renderer renderer in _renderers)
+    //    {
+    //        foreach (Material mat in renderer.materials)
+    //        {
+    //            mat.SetColor("_MultiplyColor", color);
+    //        }
+    //    }
+    //}
+    //#endregion
+
 }
+
+
