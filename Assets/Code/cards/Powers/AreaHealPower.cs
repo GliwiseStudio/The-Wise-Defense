@@ -5,16 +5,16 @@ using UnityEngine;
 public class AreaHealPower : ICardPower
 {
     private readonly GameObject _prefab;
-    private readonly int _health = 30;
+    private readonly float _healPercentage = 30;
     private readonly float _range = 5f;
     private readonly Color _color;
     private readonly string[] _targetLayerMasks;
     private readonly TargetDetector _targetDetector;
 
-    public AreaHealPower(GameObject prefab, int health, float range, Color color, string[] targetLayerMasks)
+    public AreaHealPower(GameObject prefab, float healPercentage, float range, Color color, string[] targetLayerMasks)
     {
         _prefab = prefab;
-        _health = health;
+        _healPercentage = healPercentage;
         _range = range;
         _color = color;
         _targetLayerMasks = targetLayerMasks;
@@ -35,7 +35,7 @@ public class AreaHealPower : ICardPower
         IReadOnlyList<Transform> objetives = _targetDetector.GetAllTargetsInRange();
         foreach (Transform t in objetives)
         {
-            t.gameObject.GetComponent<IHeal>().Heal(_health);
+            t.gameObject.GetComponent<IHeal>().Heal(_healPercentage);
         }
 
         return true; // this power always activates
