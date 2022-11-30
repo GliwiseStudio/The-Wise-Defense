@@ -1,6 +1,6 @@
 public interface IHeal
 {
-    public void Heal(int health);
+    public void Heal(float healPercentage);
 
     public bool FullHeal();
 

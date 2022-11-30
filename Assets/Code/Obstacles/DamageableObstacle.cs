@@ -118,9 +118,12 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
         }
     }
 
-    public void Heal(int healAmount)
+    public void Heal(float healPercentage)
     {
-        _currentHealth += healAmount;
+        Debug.Log("here:" + _currentHealth);
+        _currentHealth += _maxHealth * healPercentage;
+
+        Debug.Log("after:" + _currentHealth);
 
         if (_currentHealth > _maxHealth)
         {

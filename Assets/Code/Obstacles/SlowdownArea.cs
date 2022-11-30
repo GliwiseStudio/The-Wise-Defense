@@ -101,9 +101,9 @@ public class SlowdownArea : MonoBehaviour, IRemove, IHeal
         _enemiesList.Remove(enemy);
     }
 
-    public void Heal(int healAmount)
+    public void Heal(float healPercentage)
     {
-        _enemiesAllowed += healAmount;
+        _enemiesAllowed += _maxEnemiesAllowed * healPercentage;
 
         if (_enemiesAllowed > _maxEnemiesAllowed)
         {
