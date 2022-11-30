@@ -130,6 +130,20 @@ public class DamageableObstacle : MonoBehaviour, IDamage, IHeal
         _slider.value = _currentHealth / _maxHealth;
     }
 
+    public bool FullHeal()
+    {
+        if(_currentHealth == _maxHealth)
+        {
+            return false;
+        }
+        else
+        {
+            _currentHealth = _maxHealth;
+            _slider.value = _currentHealth / _maxHealth;
+            return true;
+        }
+    }
+
     public void BecomeInvulnerable(float duration)
     {
         _isInvulnerable = true;

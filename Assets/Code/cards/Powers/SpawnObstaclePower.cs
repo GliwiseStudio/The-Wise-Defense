@@ -17,11 +17,11 @@ public class SpawnObstaclePower : ICardPower
 
         if (respawn.HasAnObstacle)
         {
-            return false; // there is an obstacle already in the base, don't activate power
+            return respawn.HealObstacle(_obstacleName); // if the obstacle is full health don't use card, otherwise use it and heal it
         }
         else
         {
-            respawn.SpawnObstacle(_obstaclePrefab);
+            respawn.SpawnObstacle(_obstaclePrefab, _obstacleName);
             return true; // power activated
         }
     }
