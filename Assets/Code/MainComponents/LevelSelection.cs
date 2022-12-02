@@ -77,6 +77,14 @@ public class LevelSelection : MonoBehaviour
                     {
                         _levelUnlockedCards.TriggerUnlockedCards(this);
                     }
+                    else // there were no new cards, but maybe there are new unlocked enemies
+                    {
+                        UnlockedEnemiesTrigger _levelUnlockedEnemies = gameObject.GetComponent<UnlockedEnemiesTrigger>();
+                        if (_levelUnlockedEnemies != null)
+                        {
+                            _levelUnlockedEnemies.TriggerUnlockedCards(this);
+                        }
+                    }
                 }
             }
             else // already unlocked the level previously, go to level straight away
@@ -93,6 +101,20 @@ public class LevelSelection : MonoBehaviour
         if (_levelUnlockedCards != null)
         {
             _levelUnlockedCards.TriggerUnlockedCards(this);
+        }
+        else
+        {
+            ShowEnemiesNext();
+        }
+    }
+
+    public void ShowEnemiesNext()
+    {
+        // if the level has new unlocked enemies
+        UnlockedEnemiesTrigger _levelUnlockedEnemies = gameObject.GetComponent<UnlockedEnemiesTrigger>();
+        if (_levelUnlockedEnemies != null)
+        {
+            _levelUnlockedEnemies.TriggerUnlockedCards(this);
         }
         else
         {
