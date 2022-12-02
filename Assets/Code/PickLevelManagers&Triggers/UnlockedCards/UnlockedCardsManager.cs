@@ -52,6 +52,7 @@ public class UnlockedCardsManager : MonoBehaviour
 
     private void EndShow()
     {
-        _currentLevelSelection.GoToLevel(); // after showing the unlocked cards, go to level screen
+        gameObject.SetActive(false);
+        _currentLevelSelection.ShowEnemiesNext(); // after showing the unlocked cards, show the unlocked enemies
     }
 }
