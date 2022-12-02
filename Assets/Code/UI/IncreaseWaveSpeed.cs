@@ -9,6 +9,8 @@ public class IncreaseWaveSpeed : MonoBehaviour
 {
     private bool _activateWaveSpeed = false;
     private Button _button;
+    public GameObject textx1;
+    public GameObject textx2;
 
     private void Awake()
     {
@@ -44,10 +46,14 @@ public class IncreaseWaveSpeed : MonoBehaviour
         if(_activateWaveSpeed == false)
         {
             Time.timeScale = 1;
+            textx1.SetActive(true);
+            textx2.SetActive(false);
         }
         else
         {
             Time.timeScale = 2;
+            textx1.SetActive(false);
+            textx2.SetActive(true);
         }
     }
 }
