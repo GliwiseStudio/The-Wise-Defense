@@ -50,6 +50,11 @@ public class EnemyMovement
         ObstacleReached = false;
         ObstacleDetected = false;
 
+        // reset other parameters
+        _targetWpIdx = 0;
+        _obstacleTransform = null;
+        _obstacleGameObject = null;
+
         //_randomDistance = Random.Range(0.2f, 1f);
 
         _targetWp = _waypoints.waypoints[_targetWpIdx]; // initialice target
