@@ -136,8 +136,19 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
     {
         if (!_isBlueprintSpawned)
         {
-            _blueprint = Instantiate(_cardConfiguration.BlueprintPrefab);
+            _blueprint = Instantiate(_cardConfiguration.BlueprintPrefab, new Vector3(0,-100,0), Quaternion.identity);
             _blueprint.GetComponent<CardBlueprint>().Initialize();
+
+            if (_cardConfiguration.CardType == CardType.Spell) // if its a spell, set range and color of the spell blueprint
+            {
+                foreach(CardStatConfiguration stat in _cardConfiguration.Stats)
+                {
+                    if(stat.Name == CardStatType.Range)
+                    {
+                        _blueprint.GetComponent<CardBlueprint>().SetRange(stat.Value, _cardConfiguration.Color);
+                    }
+                }
+            }
             _isBlueprintSpawned = true;
         }
     }

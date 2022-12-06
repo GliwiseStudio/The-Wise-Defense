@@ -13,6 +13,7 @@ public class CardConfigurationSO : ScriptableObject
     [SerializeField] [TextArea] private string _description;
     [SerializeField] private string _name;
     [SerializeField] private List<CardStatConfiguration> _stats;
+    [SerializeField] private Color _color;
     public Sprite CardSprite;
 
 
@@ -25,4 +26,6 @@ public class CardConfigurationSO : ScriptableObject
     public string CardName => _name;
     public string Description => _description;
     public List<CardStatConfiguration> Stats => _stats;
+
+    public Color Color => _color;
 }

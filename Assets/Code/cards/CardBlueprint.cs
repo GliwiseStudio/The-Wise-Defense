@@ -32,4 +32,16 @@ public class CardBlueprint : MonoBehaviour
 
         transform.position = newPosition;
     }
+
+    #region setters
+    public void SetRange(float range, Color color)
+    {
+        if(range < 100)
+        {
+            gameObject.transform.localScale = new Vector3(2 * range, 1, 2 * range); // change rage cylinder back
+            Debug.Log(gameObject.GetComponent<Renderer>().material.GetColor("_Color"));
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", color);
+        }
+    }
+    #endregion
 }

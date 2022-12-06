@@ -28,5 +28,6 @@ MonoBehaviour:
     _value: 150
   - _name: 1
     _value: 10
+  _color: {r: 0.12941177, g: 1, b: 0, a: 0}
   CardSprite: {fileID: 21300000, guid: b45c5d391805ee84a9db11efea4e8ce3, type: 3}
   InGameCard: 1
