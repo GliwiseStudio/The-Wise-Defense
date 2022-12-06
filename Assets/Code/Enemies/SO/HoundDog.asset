@@ -18,7 +18,8 @@ MonoBehaviour:
   <Damage>k__BackingField: 20
   <DamageAnimTime>k__BackingField: 2
   <HitTime>k__BackingField: 1
-  <EnemyType>k__BackingField: 0
+  <LayerName>k__BackingField: GroundEnemyHoundDog
+  <EnemyType>k__BackingField: 4
   <SummonerTime>k__BackingField: 0
   <BomberDeathDamage>k__BackingField: 0
   _audioMixerChannel: SoundEffects

@@ -19,7 +19,7 @@ MonoBehaviour:
   <DamageAnimTime>k__BackingField: 2
   <HitTime>k__BackingField: 1
   <LayerName>k__BackingField: FlyingEnemies
-  <EnemyType>k__BackingField: 1
+  <EnemyType>k__BackingField: 5
   <SummonerTime>k__BackingField: 2
   <BomberDeathDamage>k__BackingField: 0
   _audioMixerChannel: SoundEffects

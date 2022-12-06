@@ -554,4 +554,11 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
     }
     #endregion
 
+
+    #region Getters
+    public EnemyTypes.EnemyTypesEnum GetEnemyType()
+    {
+        return _config.EnemyType;
+    }
+    #endregion
 }

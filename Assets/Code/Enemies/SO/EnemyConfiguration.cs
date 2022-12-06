@@ -42,5 +42,5 @@ public class EnemyConfiguration : ScriptableObject
 
 public class EnemyTypes
 {
-    public enum EnemyTypesEnum { basic, summoner, armored, bomber };
+    public enum EnemyTypesEnum { orc, ogre, dragon, whale, houndDog, summoner, armored, bomber };
 }

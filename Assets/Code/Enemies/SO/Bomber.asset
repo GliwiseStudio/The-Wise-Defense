@@ -18,7 +18,8 @@ MonoBehaviour:
   <Damage>k__BackingField: 10
   <DamageAnimTime>k__BackingField: 2
   <HitTime>k__BackingField: 1
-  <EnemyType>k__BackingField: 3
+  <LayerName>k__BackingField: GroundEnemies
+  <EnemyType>k__BackingField: 7
   <SummonerTime>k__BackingField: 0
   <BomberDeathDamage>k__BackingField: 100
   _audioMixerChannel: SoundEffects
