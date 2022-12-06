@@ -5,19 +5,27 @@ public class EnemyHealth
 {
     private readonly float _maxHealth;
     private Slider _slider;
-    private readonly Camera _sceneCamera;
+    private Camera _sceneCamera;
 
     private float _currentHealth;
     private bool _isEnemyDead = false;
 
-    public EnemyHealth(float maxHealth, Slider slider, Camera sceneCamera)
+    public EnemyHealth(float maxHealth, Slider slider)
     {
         _maxHealth = maxHealth;
         _slider = slider;
-        _sceneCamera = sceneCamera;
+        //_sceneCamera = sceneCamera;
 
         _currentHealth = _maxHealth;
         _slider.value = 1;
+    }
+
+    public void Reset(Camera sceneCamera)
+    {
+        _sceneCamera = sceneCamera;
+        _currentHealth = _maxHealth;
+        _slider.value = 1;
+        _isEnemyDead = false;
     }
 
     public void Update()

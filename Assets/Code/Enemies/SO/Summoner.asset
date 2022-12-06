@@ -18,6 +18,7 @@ MonoBehaviour:
   <Damage>k__BackingField: 5
   <DamageAnimTime>k__BackingField: 2
   <HitTime>k__BackingField: 1
+  <LayerName>k__BackingField: FlyingEnemies
   <EnemyType>k__BackingField: 1
   <SummonerTime>k__BackingField: 2
   <BomberDeathDamage>k__BackingField: 0

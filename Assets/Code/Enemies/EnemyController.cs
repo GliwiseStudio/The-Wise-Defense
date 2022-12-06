@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour, IDamage, IDownStats
+public class EnemyController : RecyclableObject, IDamage, IDownStats
 {
     #region Variables
 
-    [SerializeField] private EnemyConfiguration _config;
+    public EnemyConfiguration _config;
     [SerializeField] private GameObject _summonedEnemy; // will only be used by summoner enemy
 
     private string _obstaclesLayerMask = "DamageableObstacles";
@@ -53,15 +53,23 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
     private AnimationsHandler _animationsHandler;
     private AudioPlayer _audioPlayer;
 
+    private bool _started = false;
+
     #endregion
 
-    private void TheStart() // called when instanciated from the wave spawner
+    private void Awake() // called when instanciated for the first time
     {
-        if (GameManager.Instance != null)
-            GameManager.Instance.AddEnemy(); // add the enemy to the GameManager to keep track of it
-
+        // this are only assigned once, at the start
         _randomWaitTime = Random.Range(0.0f, 1f);
 
+
+        _slider = GetComponentInChildren<Slider>();
+        _materials = GetComponentInChildren<Renderer>().materials;
+        _animator = GetComponent<Animator>();
+        _animSpeed = 1;
+        _animator.SetFloat("Speed", _animSpeed);
+
+        // config variables (always the same because they are dependant of the enemy type)
         _speed = _config.Speed;
         _maxHealth = _config.MaxHealth;
         _detectionRange = _config.DetectionRange;
@@ -71,56 +79,140 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _enemyType = _config.EnemyType;
         _summonerTime = _config.SummonerTime;
         _bomberDeathDamage = _config.BomberDeathDamage;
+        gameObject.layer = LayerMask.NameToLayer(_config.LayerName);
 
-        _sceneCamera = FindObjectOfType<Camera>();
-        _slider = GetComponentInChildren<Slider>();
-        _materials = GetComponentInChildren<Renderer>().materials;
-        _animator = GetComponent<Animator>();
-        _animSpeed = _animator.GetFloat("Speed");
+        // created just once, then we'll need to reset them
+        _enemyHealth = new EnemyHealth(_maxHealth, _slider);
+        _enemyMovement = new EnemyMovement(transform, _obstaclesLayerMask);
+        _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask); // not necessary to reset, it's passed parameters don't change
+        _animationsHandler = new AnimationsHandler(_animator); // not necessary to reset, it's passed parameters don't change
+        Debug.Log(_enemyHealth);
+    }
+
+    private void Start()
+    {
         _audioPlayer = GetComponent<AudioPlayer>();
-
         _audioPlayer.ConfigureAudioSource(_config.AudioMixerChannel);
+    }
 
-        _enemyHealth = new EnemyHealth(_maxHealth, _slider, _sceneCamera);
-        _enemyMovement = new EnemyMovement(transform, _speed, _obstaclesLayerMask, _waypoints);
-        _obstacleDetector = new TargetDetector(transform, _detectionRange, _obstaclesLayerMask);
-        _animationsHandler = new AnimationsHandler(_animator);
+    #region Listeners
 
-        if(_enemyType == EnemyTypes.EnemyTypesEnum.summoner)
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+        {
+            //GameManager.Instance.OnEndScene += ResetEnemy;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+        {
+            //GameManager.Instance.OnEndScene -= ResetEnemy;
+        }
+    }
+
+    #endregion
+
+    #region Recyclable object related methods
+
+    public override void Init() { }
+    private void ResetEnemy()
+    {
+        Recycle();
+    }
+
+    public override void Release()
+    {
+        // reset speed
+        _speed = _config.Speed;
+        _animSpeed = 1;
+        _animator.SetFloat("Speed", _animSpeed);
+
+        // reset layer
+        gameObject.layer = LayerMask.NameToLayer(_config.LayerName);
+
+        // reset seen obstacle
+        _targetGameObject = null;
+        _targetTransform = null;
+
+        // reset booleans to init state
+        _started = false;
+        _canDamage = true;
+        _firstDeathCall = true;
+        _onDamageLoop = false;
+        _paralized = false;
+        _timedDown = false;
+
+        // reset slider
+        _slider.gameObject.SetActive(true);
+
+        // reset enemyState
+        _enemyState = EnemyStates.walking;
+
+        // reset materials
+        foreach (Material _mat in _materials)
+        {
+            _mat.SetFloat("_DissolveProgress", 0);
+        }
+    }
+
+    #endregion
+
+    public void Initialize(Waypoints waypoints, Transform spawnPoint)
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.AddEnemy(); // add the enemy to the GameManager to keep track of it
+
+        _waypoints = waypoints;
+        _spawnPoint = spawnPoint;
+
+        // reset other scripts
+        Debug.Log(_enemyHealth);
+        _sceneCamera = FindObjectOfType<Camera>();
+        _enemyHealth.Reset(_sceneCamera);
+        _enemyMovement.Reset(_speed, _waypoints);
+
+        if (_enemyType == EnemyTypes.EnemyTypesEnum.summoner)
         {
             StartCoroutine(SummonEnemies());
         }
+
+        _started = true;
     }
 
     private void Update()
     {
-        if (_enemyHealth.GetEnemyState() == "alive")
+        if (_started)
         {
-            if (!_paralized) // if enemy is paralized do not execute movement
+            if (_enemyHealth.GetEnemyState() == "alive")
             {
-                _enemyHealth.Update();
-                _enemyMovement.Update();
-
-                if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
+                if (!_paralized) // if enemy is paralized do not execute movement
                 {
-                    ObstacleDetected();
-                }
-                else // no obstacles
-                {
-                    if (_enemyState != EnemyStates.walking)
-                        KeepWalking();
+                    _enemyHealth.Update();
+                    _enemyMovement.Update();
 
-                    // detect if there's an obstacle in range
-                    _targetGameObject = _obstacleDetector.DetectTargetGameObject();
-                    _targetTransform = _obstacleDetector.DetectTarget();
+                    if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
+                    {
+                        ObstacleDetected();
+                    }
+                    else // no obstacles
+                    {
+                        if (_enemyState != EnemyStates.walking)
+                            KeepWalking();
+
+                        // detect if there's an obstacle in range
+                        _targetGameObject = _obstacleDetector.DetectTargetGameObject();
+                        _targetTransform = _obstacleDetector.DetectTarget();
+                    }
                 }
             }
+            else
+            {
+                EnemyDeath();
+            }
         }
-        else
-        {
-            EnemyDeath();
-        }
-        
     }
 
     #region Movement
@@ -139,7 +231,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
                 _enemyState = EnemyStates.walking;
             }
 
-            if(_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy no longer fighting
+            if (_enemyType == EnemyTypes.EnemyTypesEnum.armored) // armored enemy no longer fighting
             {
                 gameObject.layer = LayerMask.NameToLayer("GroundEnemyArmored"); // change layer back to be indetectable
             }
@@ -164,8 +256,8 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             _enemyState = EnemyStates.reaching;
             _enemyMovement.ObstacleDetected = true;
 
-        } 
-        
+        }
+
         if (_enemyState == EnemyStates.reaching) // the enemy is walking towards the obstacle, but has not reached it yet
         {
             if (_enemyMovement.ObstacleReached)
@@ -200,7 +292,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         // check that: the enemy is still alive, and not dead but dissolving
         // the obstacle still exits, it hasn't already been destroyed
         // if the obstacle exits, it is still damageable, and not dissolving
-        if(_enemyHealth.GetEnemyState() == "alive" && _targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask) && !_paralized)
+        if (_enemyHealth.GetEnemyState() == "alive" && _targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask) && !_paralized)
         {
             _audioPlayer.PlayAudio("Punch");
 
@@ -235,7 +327,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
             _timeOfDeath = Time.time;
             _firstDeathCall = false;
 
-            Destroy(_slider.gameObject);
+            _slider.gameObject.SetActive(false);
 
             if (_enemyType == EnemyTypes.EnemyTypesEnum.bomber)
             {
@@ -250,7 +342,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         if (Time.time - _timeOfDeath < 1) // makes Progress property of shader go from 1 to 0 in the span of 1 second
         {
             float i = Time.time - _timeOfDeath;
-            foreach(Material _mat in _materials)
+            foreach (Material _mat in _materials)
             {
                 _mat.SetFloat("_DissolveProgress", i);
             }
@@ -265,7 +357,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
                 _currentSlowdownObstacle.gameObject.GetComponent<IRemove>().RemoveFromList(gameObject);
             }
 
-            Destroy(gameObject);
+            ResetEnemy();
         }
     }
     #endregion
@@ -284,7 +376,7 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         _animSpeed = _animSpeed * (1 - slowdownPercentage);
         _animator.SetFloat("Speed", _animSpeed);
 
-        _damageAnimTime = _damageAnimTime / ( 1 - slowdownPercentage);
+        _damageAnimTime = _damageAnimTime / (1 - slowdownPercentage);
         _hitTime = _hitTime / (1 - slowdownPercentage);
     }
 
@@ -345,7 +437,6 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         {
             ChangeEnemyColor(new Color32(254, 224, 0, 1)); // color yellow
         }
-        
     }
 
     public void ReceiveTimedParalysis(float duration)
@@ -438,15 +529,6 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
 
     #endregion
 
-    #region Setters
-    public void SetWaypointsAndSpawnPoint(Waypoints waypoints, Transform spawnPoint)
-    {
-        _waypoints = waypoints;
-        _spawnPoint = spawnPoint;
-    }
-
-    #endregion
-
     #region Enemy type particular methods
     IEnumerator SummonEnemies()
     {
@@ -454,9 +536,9 @@ public class EnemyController : MonoBehaviour, IDamage, IDownStats
         {
             yield return new WaitForSeconds(_summonerTime);
 
-            GameObject enemy = Instantiate(_summonedEnemy, _spawnPoint.position, _spawnPoint.rotation);
-            enemy.GetComponent<EnemyController>().SetWaypointsAndSpawnPoint(_waypoints, _spawnPoint);
-            enemy.SendMessage("TheStart", _waypoints);
+            //EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
+
+            //spawner.Spawn(_spawnPoint, _waypoints);
         }
     }
 
