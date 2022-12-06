@@ -9,10 +9,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
- 
-    public event Action OnWin;
-    public event Action OnLoose;
-    
+
+    public event Action OnEndScene; // to tell enemy that a scene has finished
+
     public event Action OnWaveFinished;
     public event Action OnWaveStarted;
 
@@ -41,7 +40,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        // PauseGame(); // deprecated, only actively pausing the game will pause it now.
+    }
+
+    public void InvokeEndSceneEvent()
+    {
+        OnEndScene?.Invoke();
     }
 
     #region Win / Loose
@@ -56,8 +59,6 @@ public class GameManager : MonoBehaviour
 
         UpgradePlayFabInfo(); // check if you need to upgrade playfab info
 
-        OnWin?.Invoke(); // deprecated
-
         SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 
@@ -68,9 +69,9 @@ public class GameManager : MonoBehaviour
             LevelsManager.Instance.SetCurrentStars(_currentTowers);
         }
 
-        Debug.Log("Game ends and you loose :(");
+        InvokeEndSceneEvent(); // to get rid of all remaining enemies
 
-        OnLoose?.Invoke(); // deprecated
+        Debug.Log("Game ends and you loose :(");
 
         SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void NextWave() // prepare for next wave, but not start it
     {
-        if (_currentWave+1 < _totalWaves)
+        if (_currentWave + 1 < _totalWaves)
         {
             _currentWave++;
             _currentEnemies = 0;
@@ -163,7 +164,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Pause/Unpause
+    #region Pause/Unpause // deprecated
     public void PauseGame()
     {
         Time.timeScale = 0;

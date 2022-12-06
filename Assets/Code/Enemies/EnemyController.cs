@@ -101,7 +101,7 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
     {
         if (GameManager.Instance != null)
         {
-            //GameManager.Instance.OnEndScene += ResetEnemy;
+            GameManager.Instance.OnEndScene += ResetEnemy;
         }
     }
 
@@ -109,7 +109,7 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
     {
         if (GameManager.Instance != null)
         {
-            //GameManager.Instance.OnEndScene -= ResetEnemy;
+            GameManager.Instance.OnEndScene -= ResetEnemy;
         }
     }
 
