@@ -156,6 +156,8 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
         {
             _mat.SetFloat("_DissolveProgress", 0);
         }
+
+        ChangeEnemyColor(new Color32(255, 255, 255, 1)); // color white
     }
 
     #endregion
@@ -553,7 +555,6 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
         }
     }
     #endregion
-
 
     #region Getters
     public EnemyTypes.EnemyTypesEnum GetEnemyType()

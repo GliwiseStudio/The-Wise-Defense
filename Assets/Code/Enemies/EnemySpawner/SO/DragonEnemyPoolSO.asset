@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51d6bece764d7f4189179a35d352e9e, type: 3}
   m_Name: DragonEnemyPoolSO
   m_EditorClassIdentifier: 
-  <EnemyPrefab>k__BackingField: {fileID: 4428537387849291102, guid: 38b99461b36ff1a4ab3dfbcc117e9554,
+  <EnemyRecyclableObject>k__BackingField: {fileID: 8613266968316606826, guid: 93e5d8e29beb6394097c5a7bc7ffb55b,
     type: 3}
-  <EnemyRecyclableObject>k__BackingField: {fileID: 3581552043498022923, guid: 38b99461b36ff1a4ab3dfbcc117e9554,
-    type: 3}
-  <MaxPoolObjects>k__BackingField: 30
+  <MaxPoolObjects>k__BackingField: 20
