@@ -23,6 +23,8 @@ public class RestartLevel : MonoBehaviour
 
     private void ReloadScene()
     {
+        GameManager.Instance.InvokeEndSceneEvent(); // to get rid of the remaining enemies
+
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
     }

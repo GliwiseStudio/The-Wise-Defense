@@ -8,6 +8,12 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private Waypoints _waypoints;
 
     private EnemyWave _currentWave;
+    private EnemySpawner _enemySpawner;
+
+    private void Awake()
+    {
+        _enemySpawner = FindObjectOfType<EnemySpawner>();
+    }
 
     private void OnEnable()
     {
@@ -33,9 +39,10 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int j = 0; j < currentWave.NumberOfEnemiesPerType[i]; j++)
             {
-                GameObject enemy = Instantiate(currentWave.EnemyTypesInWave[i], _spawnPoint.position, _spawnPoint.rotation);
-                enemy.GetComponent<EnemyController>().SetWaypointsAndSpawnPoint(_waypoints, _spawnPoint);
-                enemy.SendMessage("TheStart", _waypoints);
+                //GameObject enemy = Instantiate(currentWave.EnemyTypesInWave[i], _spawnPoint.position, _spawnPoint.rotation);
+                //enemy.GetComponent<EnemyController>().SetWaypointsAndSpawnPoint(_waypoints, _spawnPoint);
+                //enemy.SendMessage("TheStart", _waypoints);
+                _enemySpawner.Spawn(currentWave.EnemyTypesInWave[i].GetComponent<EnemyController>().GetEnemyType(), _spawnPoint, _waypoints);
 
                 yield return new WaitForSeconds(currentWave.TimeBetweenEnemies); // time to wait between enemies spawning
             }

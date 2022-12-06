@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyConfiguration", menuName = "ScriptableObjects/EnemyConfiguration", order = 1)]
 public class EnemyConfiguration : ScriptableObject
 {
-    [field: SerializeField] 
+    [field: SerializeField]
     public float Speed { get; private set; }
 
     [field: SerializeField]
@@ -22,6 +22,9 @@ public class EnemyConfiguration : ScriptableObject
     public float HitTime { get; private set; }
 
     [field: SerializeField]
+    public string LayerName { get; private set; }
+
+    [field: SerializeField]
     public EnemyTypes.EnemyTypesEnum EnemyType { get; private set; }
 
     [field: SerializeField]
@@ -37,6 +40,7 @@ public class EnemyConfiguration : ScriptableObject
     public string AudioMixerChannel => _audioMixerChannel;
 }
 
-public class EnemyTypes{
-    public enum EnemyTypesEnum { basic, summoner, armored, bomber};
+public class EnemyTypes
+{
+    public enum EnemyTypesEnum { orc, ogre, dragon, whale, houndDog, summoner, armored, bomber };
 }
