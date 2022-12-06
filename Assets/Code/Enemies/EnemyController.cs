@@ -55,6 +55,8 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
 
     private bool _started = false;
 
+    private EnemySpawner _enemySpawner;
+
     #endregion
 
     private void Awake() // called when instanciated for the first time
@@ -178,6 +180,7 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
 
         if (_enemyType == EnemyTypes.EnemyTypesEnum.summoner)
         {
+            _enemySpawner = FindObjectOfType<EnemySpawner>();
             StartCoroutine(SummonEnemies());
         }
 
@@ -538,9 +541,7 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
         {
             yield return new WaitForSeconds(_summonerTime);
 
-            //EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
-
-            //spawner.Spawn(_spawnPoint, _waypoints);
+            _enemySpawner.Spawn(EnemyTypes.EnemyTypesEnum.orc, _spawnPoint, _waypoints);
         }
     }
 
