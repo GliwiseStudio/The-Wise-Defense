@@ -200,7 +200,15 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
 
                     if (_targetTransform != null && _targetGameObject.layer == LayerMask.NameToLayer(_obstaclesLayerMask)) // if there's an obstacle
                     {
-                        ObstacleDetected();
+                        if (_obstacleDetector.IsTargetInRange(_targetTransform.position))
+                        {
+                            ObstacleDetected();
+                        }
+                        else
+                        {
+                            _targetTransform = null;
+                            _targetGameObject = null;
+                        }
                     }
                     else // no obstacles
                     {
@@ -254,8 +262,6 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
 
     private void ObstacleDetected()
     {
-        // obstacles don't move, so once it sees a target it's always in range
-
         if (_enemyState == EnemyStates.walking) // first time it enters the method after detecting an obstacle
         {
             _enemyState = EnemyStates.reaching;
