@@ -145,7 +145,16 @@ public class Cards : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoi
                 {
                     if(stat.Name == CardStatType.Range)
                     {
-                        _blueprint.GetComponent<CardBlueprint>().SetRange(stat.Value, _cardConfiguration.Color);
+                        _blueprint.GetComponent<CardBlueprint>().SetSpellRange(stat.Value, _cardConfiguration.Color);
+                    }
+                }
+            } else if(_cardConfiguration.CardType == CardType.Turret) // if its a spell, set range and color of the spell blueprint
+            {
+                foreach (CardStatConfiguration stat in _cardConfiguration.Stats)
+                {
+                    if (stat.Name == CardStatType.Range)
+                    {
+                        _blueprint.GetComponent<CardBlueprint>().SetTurretRange(stat.Value);
                     }
                 }
             }

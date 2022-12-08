@@ -34,13 +34,23 @@ public class CardBlueprint : MonoBehaviour
     }
 
     #region setters
-    public void SetRange(float range, Color color)
+    public void SetSpellRange(float range, Color color)
     {
         if(range < 100)
         {
-            gameObject.transform.localScale = new Vector3(2 * range, 1, 2 * range); // change rage cylinder back
+            gameObject.transform.SetParent(null);
+            gameObject.transform.localScale = new Vector3(2 * range, 1, 2 * range); // change range cylinder
             Debug.Log(gameObject.GetComponent<Renderer>().material.GetColor("_Color"));
             gameObject.GetComponent<Renderer>().material.SetColor("_Color", color);
+        }
+    }
+
+    public void SetTurretRange(float range)
+    {
+        Debug.Log(range);
+        if (gameObject.GetComponentInChildren<TurretBlueprintRange>() != null)
+        {
+            gameObject.GetComponentInChildren<TurretBlueprintRange>().SetRange(range);
         }
     }
     #endregion
