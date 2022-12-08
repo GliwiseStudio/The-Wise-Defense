@@ -2956,11 +2956,13 @@ MonoBehaviour:
   _sentences:
   - You have done well this first round, but do not count your chickens before they
     hatch, the enemies become fiercer each round.
-  - Oh! There is one little thing I forgot to tell you. You can upgrade a weapon
-    already placed on a base by dragging the same weapon card to that base. You may
-    upgrade each weapon up to two times.
-  - Another useful hack is that, if you click on a positioned turret on the map,
-    it will visually show its range.
+  - Oh! There is one little thing I forgot to tell you. You can <b>upgrade a weapon</b>
+    already placed on a base <b>by dragging the same weapon card to that base</b>.
+    You may upgrade each weapon up to two times.
+  - Another useful hack is that, if you <b>click on a positioned turret on the map</b>,
+    it will visually show its <b>range</b>.
+  - You can also <b>heal your placed obstacles</b> by dragging the same obstacle
+    card to its place on the map.
   - Good luck on this last round of the battle. May we meet again further along the
     road.
 --- !u!1001 &1310914466
@@ -3454,13 +3456,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6064157133483917405, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1679
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157133483917405, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1679
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157133483917405, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1679
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157133483917405, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 787
       objectReference: {fileID: 0}
     - target: {fileID: 6064157133483917405, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -176
+      value: 356
       objectReference: {fileID: 0}
     - target: {fileID: 6064157133518448815, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
@@ -3630,6 +3647,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6064157134772233969, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
+      propertyPath: m_lineSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134772233969, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_wordSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134772233969, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: m_characterSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064157134772233969, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
       propertyPath: m_HorizontalAlignment
       value: 8
       objectReference: {fileID: 0}
@@ -3648,7 +3680,7 @@ PrefabInstance:
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
@@ -3660,58 +3692,65 @@ PrefabInstance:
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[1]
-      value: These monsters are fierce. You must stop them before they destroy all
+      value: This monsters are fierce. You must stop them before they destroy all
         my towers.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[2]
-      value: My team can grant you five cards each round to fight against them. Resources
-        are scarce, so they will be picked randomly, but do not worry, I assure you
-        that you will always have at least one weapon to fight them.
+      value: My team can grant you <b>five cards each round</b> to fight against
+        them. Resources are scarce, so they will be <b>picked randomly</b>, but do
+        not worry, I assure you that you will always have at least one weapon to
+        fight them.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[3]
       value: You may change some of them by clicking on the card and clicking the
-        "Discard" button, but be canny, you can only do so limited times each round.
+        <b>"Discard" button</b>, but be canny, you can only do so <b>limited times</b>
+        each round.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[4]
-      value: You can use the weapons and obstacles cards before the enemies come,
+      value: You can <b>use the weapon and obstacle cards before the enemies come</b>,
         the rest of them will be reserved for when the battle has started.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[5]
-      value: My subjects have been developing some high tech weapons to destroy the
-        evil beigns. You can use them dragging the card to the red weapons bases
+      value: My subjects have been developing some high tech <b>weapons</b> to destroy
+        the evil beigns. To use them, <b>drag the card to the red weapons bases</b>
         on the map.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[6]
-      value: There are also hurdles that will hinder the monster on their way. Drag
-        them to the grey obstacle bases on the path.
+      value: There are also <b>hurdles</b> that will hinder the monster on their
+        way. <b>Drag them to the wooden obstacle bases</b> on the path.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[7]
-      value: 'Once you have wisely placed the weapons and obstacles, you may fight
-        the enemies pressing the "Start Wave"
-
-        button.'
+      value: Once you have wisely placed the weapons and obstacles, you may fight
+        the enemies pressing the <b>"Start Wave" button</b>.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[8]
-      value: Once the wave starts, you may use the remaining cards, they will give
-        you some perks during the battle. Just drag them to where you most need them.
+      value: Once the wave starts, you may <b>use the remaining cards</b>, they will
+        give you some perks during the battle. Just drag them to where you most need
+        them.
       objectReference: {fileID: 0}
     - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
         type: 3}
       propertyPath: _sentences.Array.data[9]
+      value: <b>If you regret picking up a spell</b>, you can always <b>return it
+        to its card before releasing it</b>, that way you will not waste it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094890749178498026, guid: d4a1029dd028c8e4e981f843ec8f17a6,
+        type: 3}
+      propertyPath: _sentences.Array.data[10]
       value: I hear enemies coming, but I think you will be ready to face them. May
         fortune favor you.
       objectReference: {fileID: 0}
