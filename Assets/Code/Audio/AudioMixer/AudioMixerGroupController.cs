@@ -19,4 +19,13 @@ public class AudioMixerGroupController : MonoBehaviour
     {
         GetAudioMixerGroupFromName(groupName).audioMixer.SetFloat(parameterName, Mathf.Log10(value) * 20);
     }
+
+    public float GetAudioMixerVolume(string groupName, string parameterName)
+    {
+        float db = -1f;
+        GetAudioMixerGroupFromName(groupName).audioMixer.GetFloat(parameterName, out db);
+
+        float result = Mathf.Pow(10, db / 20);
+        return result;
+    }
 }
