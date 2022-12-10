@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: a72072b6b07f3f34f80d9a9961e8882e, type: 2}
+  _summonedEnemy: {fileID: 0}
 --- !u!95 &8613266968316606869
 Animator:
   serializedVersion: 4
@@ -536,7 +537,7 @@ Animator:
   m_Controller: {fileID: 22100000, guid: 77911e2b86688354292cbbcd6940a9f1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
