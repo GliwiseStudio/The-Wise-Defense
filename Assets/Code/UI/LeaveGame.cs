@@ -23,6 +23,8 @@ public class LeaveGame : MonoBehaviour
     }
     private void GoToScene()
     {
+        GameManager.Instance.InvokeEndSceneEvent(); // to get rid of the remaining enemies
+
         Time.timeScale = 1; // leaving the pause menu, so unpause
         SceneManager.LoadScene(_sceneName, LoadSceneMode.Single);
     }
