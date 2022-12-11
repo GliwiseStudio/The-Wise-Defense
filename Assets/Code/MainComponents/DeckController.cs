@@ -70,8 +70,18 @@ public class DeckController : MonoBehaviour
         SetDiscardText();
 
         ClearDeck();
+        
+        if (GameManager.Instance.GetCurrentWave() <= 5)
+        {
+            _minimumTurretCardsInDeckGenerator = 2;
+        }
+        else
+        {
+            _minimumTurretCardsInDeckGenerator = 1;
+        }
 
         GenerateObligatoryTurretCards();
+
         for (int i = _minimumTurretCardsInDeckGenerator; i < _maximumCardsInDeck; i++)
         {
             GenerateCard();
