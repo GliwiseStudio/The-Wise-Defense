@@ -4841,9 +4841,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueManager: {fileID: 766818985}
   _sentences:
-  - Once again you have managed to surpass my expectations. I thought we were going
-    to be stuck on those forests forever, but I can begin to see the end at the light
-    of the tunnels.
+  - Once again you have managed to surpass my expectations. I thought we would be
+    stuck on those forests forever, but I can begin to see the end at the light of
+    the tunnels.
   - Or maybe that light is just the sun reflecting on the snow...
   - Anyway, good luck as you approach the last part of this journey. Do not loose
     hope, we are almost there.
@@ -5263,7 +5263,7 @@ MonoBehaviour:
   - I have decided to put an end to this and reconquer what is rightfully ours.
   - 'If you decide to join me, I will lend you all my resources. They are in constant
     development, so you will receive new resources as my subjects finish them. '
-  - I hope I can count on you to help me through this journey, and that, together,
+  - I hope I can count on you to help me through this journey, and then, together,
     we can save Wise Kingdom from the tyranny of the monsters.
 --- !u!114 &1801318575
 MonoBehaviour:

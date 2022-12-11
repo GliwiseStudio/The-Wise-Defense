@@ -85,13 +85,17 @@ public class GameManager : MonoBehaviour
         {
             bool _needToUpdateSavedData = false;
             int currentLevel = LevelsManager.Instance.GetCurrentLevel();
-
-            if (LevelsManager.Instance.UnlockedLevels[currentLevel + 1].unlocked == false)
+            Debug.Log("Current level number:" + currentLevel);
+            Debug.Log("Count number: " + (LevelsManager.Instance.UnlockedLevels.Count - 1));
+            if(currentLevel != (LevelsManager.Instance.UnlockedLevels.Count-1)) // if not on the last level
             {
-                LevelsManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
-                LevelsManager.Instance.UnlockedLevels[currentLevel + 1].newLevel = true;
-                //LevelsManager.Instance.SetLastUnlockedLevel(currentLevel + 1); // now this is done when the player has entered the new unlocked level
-                _needToUpdateSavedData = true;
+                if (LevelsManager.Instance.UnlockedLevels[currentLevel + 1].unlocked == false)
+                {
+                    LevelsManager.Instance.UnlockedLevels[currentLevel + 1].unlocked = true; // new unlocked level
+                    LevelsManager.Instance.UnlockedLevels[currentLevel + 1].newLevel = true;
+                    //LevelsManager.Instance.SetLastUnlockedLevel(currentLevel + 1); // now this is done when the player has entered the new unlocked level
+                    _needToUpdateSavedData = true;
+                }
             }
 
             if (LevelsManager.Instance.UnlockedLevels[currentLevel].stars < _currentTowers)
