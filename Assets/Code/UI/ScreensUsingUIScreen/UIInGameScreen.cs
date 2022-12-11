@@ -3,6 +3,7 @@ using UnityEngine;
 public class UIInGameScreen : MonoBehaviour, UIScreen
 {
     [SerializeField] private string _name;
+    private bool _firstTime = true;
 
     public GameObject GetGameObject()
     {
@@ -23,6 +24,15 @@ public class UIInGameScreen : MonoBehaviour, UIScreen
     {
         gameObject.SetActive(true);
 
-        Time.timeScale = 1;
+        if (_firstTime)
+        {
+            _firstTime = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = FindObjectOfType<IncreaseWaveSpeed>().GetSpeed();
+        }
+        
     }
 }
