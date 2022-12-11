@@ -17,10 +17,10 @@ public class CardSpawner : MonoBehaviour
         return card;
     }
 
-    public Cards CreateRandomCardFromType(CardType type)
+    public Cards CreateRandomCardFromType(CardType type, bool excludeOnlyAirTargets = false)
     {
         Cards card = Instantiate(_templateCardPrefab);
-        card.SetCardConfig(_cardsStorage.GetRandomCardFromType(type));
+        card.SetCardConfig(_cardsStorage.GetRandomCardFromType(type, excludeOnlyAirTargets));
         return card;
     }
 
@@ -28,6 +28,13 @@ public class CardSpawner : MonoBehaviour
     {
         Cards card = Instantiate(_templateCardPrefab);
         card.SetCardConfig(_cardsStorage.GetRandomCardExcluding(excludedCardConfiguration));
+        return card;
+    }
+
+    public Cards GetRandomCardExcludingOnlyAirTargets()
+    {
+        Cards card = Instantiate(_templateCardPrefab);
+        card.SetCardConfig(_cardsStorage.GetRandomCardExcludingOnlyAirTargets());
         return card;
     }
 }

@@ -13,11 +13,18 @@ public class CardStorage : ScriptableObject
         return _configurations[randomIndex];
     }
 
-    public CardConfigurationSO GetRandomCardFromType(CardType type)
+    public CardConfigurationSO GetRandomCardFromType(CardType type, bool excludeOnlyAirTarget = false)
     {
         List<CardConfigurationSO> cardsOfType = _configurations.FindAll(delegate (CardConfigurationSO card)
         {
-            return (card.CardType.CompareTo(type) == 0);
+            if(excludeOnlyAirTarget)
+            {
+                return (card.CardType.CompareTo(type) == 0 && !card.HasOnlyAirTargets);
+            }
+            else
+            {
+                return (card.CardType.CompareTo(type) == 0);
+            }
         });
 
         int randomIndex = Random.Range(0, cardsOfType.Count);
@@ -33,5 +40,16 @@ public class CardStorage : ScriptableObject
 
         int randomIndex = Random.Range(0, cardsOfType.Count);
         return cardsOfType[randomIndex];
+    }
+
+    public CardConfigurationSO GetRandomCardExcludingOnlyAirTargets()
+    {
+        List<CardConfigurationSO> cards = _configurations.FindAll(delegate (CardConfigurationSO card)
+        {
+            return (!card.HasOnlyAirTargets);
+        });
+
+        int randomIndex = Random.Range(0, cards.Count);
+        return cards[randomIndex];
     }
 }

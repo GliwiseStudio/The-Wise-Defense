@@ -28,5 +28,7 @@ MonoBehaviour:
     _value: 50
   - _name: 0
     _value: 5
+  _color: {r: 0, g: 0, b: 0, a: 0}
+  _hasOnlyAirTargets: 1
   CardSprite: {fileID: 21300000, guid: 7d8d33eb84bccc64aa334cb8f69abb07, type: 3}
   InGameCard: 0

@@ -103,7 +103,16 @@ public class DeckController : MonoBehaviour
 
     private void GenerateCard()
     {
-        Cards card = _cardSpawner.CreateRandomCard();
+        Cards card = null;
+        if(LevelsManager.Instance.GetCurrentLevel() < 5)
+        {
+            card = _cardSpawner.GetRandomCardExcludingOnlyAirTargets();
+        }
+        else
+        {
+            card = _cardSpawner.CreateRandomCard();
+        }
+
         ConfigureGeneratedCard(card);
     }
 
@@ -133,7 +142,16 @@ public class DeckController : MonoBehaviour
         }
         for (int i = 0; i < _minimumTurretCardsInDeckGenerator; i++)
         {
-            Cards card = _cardSpawner.CreateRandomCardFromType(CardType.Turret);
+            Cards card = null;
+            if (LevelsManager.Instance.GetCurrentLevel() < 5)
+            {
+                card = _cardSpawner.CreateRandomCardFromType(CardType.Turret, true);
+            }
+            else
+            {
+                card = _cardSpawner.CreateRandomCardFromType(CardType.Turret);
+            }
+
             card.transform.SetParent(_deckHolderTransform, false);
             _currentCards.Add(card);
         }

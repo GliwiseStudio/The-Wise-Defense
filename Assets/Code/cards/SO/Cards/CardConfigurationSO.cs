@@ -14,6 +14,7 @@ public class CardConfigurationSO : ScriptableObject
     [SerializeField] private string _name;
     [SerializeField] private List<CardStatConfiguration> _stats;
     [SerializeField] private Color _color;
+    [SerializeField] private bool _hasOnlyAirTargets = false;
     public Sprite CardSprite;
 
 
@@ -26,6 +27,7 @@ public class CardConfigurationSO : ScriptableObject
     public string CardName => _name;
     public string Description => _description;
     public List<CardStatConfiguration> Stats => _stats;
+    public bool HasOnlyAirTargets => _hasOnlyAirTargets;
 
     public Color Color => _color;
 }
