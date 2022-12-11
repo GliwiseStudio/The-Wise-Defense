@@ -17,7 +17,9 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
     private float _maxHealth;
     private float _detectionRange;
     private int _damage;
+    private float _configDamageAnimTime;
     private float _damageAnimTime;
+    private float _configHitTime;
     private float _hitTime;
     private EnemyTypes.EnemyTypesEnum _enemyType;
     private int _summonerTime; // will only be used by summoner enemy
@@ -76,8 +78,10 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
         _maxHealth = _config.MaxHealth;
         _detectionRange = _config.DetectionRange;
         _damage = _config.Damage;
-        _damageAnimTime = _config.DamageAnimTime;
-        _hitTime = _config.HitTime;
+        _configDamageAnimTime = _config.DamageAnimTime;
+        _damageAnimTime = _configDamageAnimTime;
+        _configHitTime = _config.HitTime;
+        _hitTime = _configHitTime;
         _enemyType = _config.EnemyType;
         _summonerTime = _config.SummonerTime;
         _bomberDeathDamage = _config.BomberDeathDamage;
@@ -138,6 +142,9 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
         // reset seen obstacle
         _targetGameObject = null;
         _targetTransform = null;
+        _currentSlowdownObstacle = null;
+        _damageAnimTime = _configDamageAnimTime;
+        _hitTime = _configHitTime;
 
         // reset booleans to init state
         _started = false;
@@ -177,6 +184,8 @@ public class EnemyController : RecyclableObject, IDamage, IDownStats
         _sceneCamera = FindObjectOfType<Camera>();
         _enemyHealth.Reset(_sceneCamera);
         _enemyMovement.Reset(_speed, _waypoints);
+
+        PlayWalkingAnimation();
 
         if (_enemyType == EnemyTypes.EnemyTypesEnum.summoner)
         {
