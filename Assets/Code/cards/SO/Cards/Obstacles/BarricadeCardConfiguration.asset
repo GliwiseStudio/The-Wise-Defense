@@ -26,5 +26,6 @@ MonoBehaviour:
   _stats:
   - _name: 2
     _value: 250
-  CardSprite: {fileID: 21300000, guid: e73101b73ffe17e4ea07a9ae5b580a4c, type: 3}
+  _color: {r: 0, g: 0, b: 0, a: 0}
+  CardSprite: {fileID: 21300000, guid: 372932fd304deb94fa4edace23a51a99, type: 3}
   InGameCard: 0
