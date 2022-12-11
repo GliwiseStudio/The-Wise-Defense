@@ -16,17 +16,35 @@ public class TowerBuffPower : ICardPower
         if (towerGameObject == null)
         {
 #if UNITY_EDITOR
-            Debug.LogWarning("There is no tower in the selected TowerBase. Aborting Spell activation...");
+            Debug.LogWarning("No tower or crossbow. Aborting Spell activation...");
 #endif
             return false; // there is no tower, don't activate power
         }
 
+        bool _canActivate = true;
+
         BuffKeyValue[] _buffs = new BuffKeyValue[_buffConfigurations.Length];
         for (int i = 0; i < _buffConfigurations.Length; i++)
         {
-            _buffs[i] = new BuffKeyValue(_buffConfigurations[i].Key, _buffConfigurations[i].BuffPercentage, _buffConfigurations[i].Duration);
+            if(_buffConfigurations[i].Key == "Range" && towerBase.GetTower().GetComponent<TowerController>().GetName().CompareTo("Crossbow") == 0)
+            {
+                _canActivate = false; // can't activate
+            }
+            else
+            {
+                _buffs[i] = new BuffKeyValue(_buffConfigurations[i].Key, _buffConfigurations[i].BuffPercentage, _buffConfigurations[i].Duration);
+                _canActivate = true;
+            }
         }
-        towerGameObject.GetComponent<IBuff>().Buff(_buffs);
-        return true; // power activated
+
+        if (_canActivate)
+        {
+            towerGameObject.GetComponent<IBuff>().Buff(_buffs);
+            return true; // power activated
+        }
+        else
+        {
+            return false;
+        }
     }
 }
