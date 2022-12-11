@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemyRecyclableObject>k__BackingField: {fileID: 8377236401354263248, guid: 81fe4158380c5d943b02d76ad4d75012,
     type: 3}
-  <MaxPoolObjects>k__BackingField: 10
+  <MaxPoolObjects>k__BackingField: 7
